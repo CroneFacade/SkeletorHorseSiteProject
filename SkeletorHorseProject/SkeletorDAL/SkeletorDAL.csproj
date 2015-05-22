@@ -79,11 +79,8 @@
     <Compile Include="HorseContext.cs" />
     <Compile Include="HorseContextInitializer.cs" />
     <Compile Include="Model\AboutReadOnlyModel.cs" />
-<<<<<<< HEAD
     <Compile Include="Model\HorseSaleModel.cs" />
-=======
     <Compile Include="Model\AdminLoginModel.cs" />
->>>>>>> 18f763cb550f55068532cc6013f33943b865c10b
     <Compile Include="POCO\About.cs" />
     <Compile Include="POCO\Blog.cs" />
     <Compile Include="POCO\Horse.cs" />
