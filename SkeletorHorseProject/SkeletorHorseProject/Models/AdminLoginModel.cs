@@ -10,7 +10,7 @@ namespace SkeletorHorseProject.Models
     {
         [Required, MinLength(1), MaxLength(12)]
         public string Username { get; set; }
-        [Required, MinLength(6), MaxLength(20)]
+        [Required, MinLength(1), MaxLength(20)]
         public string Password { get; set; }
     }
 }

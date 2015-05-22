@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SkeletorDAL.POCO
 {
-	class About
+	public class About
 	{
 		public int ID { get; set; }
 		public string Header1 { get; set; }

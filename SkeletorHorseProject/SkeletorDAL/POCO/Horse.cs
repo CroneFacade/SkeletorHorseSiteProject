@@ -14,8 +14,10 @@ namespace SkeletorDAL
 		public DateTime Birthday { get; set; }
 		public string Race { get; set; }
 		public int Withers { get; set; }
-		public string Prizes { get; set; }
+		public string Awards { get; set; }
 		public bool IsActive { get; set; }
+		public bool IsForSale { get; set; }
+		public string Price { get; set; }
 		public Horse()
 		{
 			
@@ -26,7 +28,7 @@ namespace SkeletorDAL
 			Birthday = birthday;
 			Race = race;
 			Withers = withers;
-			Prizes = prizes;
+			Awards = prizes;
 		}
 	}
 }
