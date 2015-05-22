@@ -42,6 +42,25 @@ namespace SkeletorDAL
                      select a).Any();
             }
         }
+        public static List<HorseSaleModel> GetHorsesForSale()
+        {
+            using (var context = new HorseContext())
+            {
+                return
+                    (from h in context.Horses
+                     where h.IsForSale
+                     select new HorseSaleModel
+                     {
+                         ID = h.ID,
+                         Birthday = h.Birthday,
+                         Name = h.Name,
+                         Prices = h.Price,
+                         Race = h.Race,
+                         Withers = h.Withers,
+                         IsForSale = h.IsForSale
+                     }).ToList();
+            }
+        }
     }
 }
 
