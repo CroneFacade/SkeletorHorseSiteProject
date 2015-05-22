@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SkeletorDAL.Helpers;
 
 namespace SkeletorDAL
 {
@@ -56,7 +57,7 @@ namespace SkeletorDAL
 
 			users = new List<User>()
 			{
-				new User("admin", "admin", 1)
+				new User("admin", "admin".SuperHash(), 1)
 			};
 		}
 
