@@ -22,13 +22,16 @@ namespace SkeletorDAL
 		{
 			
 		}
-		public Horse(string name, DateTime birthday, string race, int withers, string prizes)
+		public Horse(string name, DateTime birthday, string race, int withers, string awards, string price)
 		{
 			Name = name;
 			Birthday = birthday;
 			Race = race;
 			Withers = withers;
-			Awards = prizes;
+			Awards = awards;
+		    IsForSale = false;
+		    Price = price;
+		    IsActive = true;
 		}
 	}
 }

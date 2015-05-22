@@ -28,7 +28,7 @@ namespace SkeletorDAL
                             Header2 = a.Header2,
                             Textfield1 = a.Textfield1,
                             Textfield2 = a.Textfield2
-                        }).LastOrDefault();
+                        }).ToList().LastOrDefault();
 
             }
         }
