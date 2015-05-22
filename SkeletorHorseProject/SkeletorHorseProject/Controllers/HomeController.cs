@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SkeletorDAL;
 
 namespace SkeletorHorseProject.Controllers
 {
@@ -11,6 +12,7 @@ namespace SkeletorHorseProject.Controllers
         // GET: Home
         public ActionResult Index()
         {
+	        Repository.GetAllHorses();
             return View();
         }
     }
