@@ -125,6 +125,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseProfileController.cs" />
+    <Compile Include="Controllers\HorseSaleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,6 +146,8 @@
     <None Include="Views\AdminLogin\Login.cshtml" />
     <Content Include="Views\HorseProfile\Index.cshtml" />
     <Content Include="Views\HorseProfile\HorseBlog.cshtml" />
+    <Content Include="Views\Shared\_ForSale.cshtml" />
+    <Content Include="Views\HorseSale\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
