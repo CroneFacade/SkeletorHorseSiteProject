@@ -16,6 +16,7 @@ namespace SkeletorDAL
 		public int Withers { get; set; }
 		public string Prizes { get; set; }
 		public bool IsActive { get; set; }
+		public bool IsForSale { get; set; }
 		public Horse()
 		{
 			
