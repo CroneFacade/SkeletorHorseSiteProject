@@ -1,4 +1,5 @@
-﻿<h2>Index</h2>
+﻿@using SkeletorHorseProject.Controllers
+<h2>Index</h2>
 
 <h3>Temporary Navigation</h3>
 
@@ -16,7 +17,7 @@
         @Html.ActionLink("Contact", "Index", "Contact")
     </li>
     <li>
-        <a href="">Login (temporary) (no skeleton implemented)</a>
+        @Html.ActionLink("Login", "Login", "AdminLogin")
     </li>
     <li>
         <a href="">For Sale (no skeleton implemented)</a>
