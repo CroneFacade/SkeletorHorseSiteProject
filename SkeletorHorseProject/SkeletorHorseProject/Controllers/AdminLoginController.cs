@@ -36,7 +36,7 @@ namespace SkeletorHorseProject.Controllers
                 }
                 else
                 {
-                    return View();                    
+                    return View(model);                    
                 }
                 }
             else

@@ -28,7 +28,7 @@ namespace SkeletorDAL
 			Birthday = birthday;
 			Race = race;
 			Withers = withers;
-			Prizes = prizes;
+			Awards = prizes;
 		}
 	}
 }
