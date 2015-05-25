@@ -26,9 +26,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="True">Horses <span class="caret"></span></a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">All Horses</a></li>
-                            <li><a href="#">Horses For Sale</a></li>
-                            <li><a href="#">Sold Horses</a></li>
+                            <li>@Html.ActionLink("All Horses", "Index", "FilteredHorsePage", new {navigationId = 1}, null)</li>
+                            <li>@Html.ActionLink("Horses For Sale", "Index", "FilteredHorsePage", new {navigationId = 2}, null)</li>
+                            <li>@Html.ActionLink("Sold Horses", "Index", "FilteredHorsePage", new {navigationId = 3}, null)</li>
+                            
                         </ul>
                     </li>
                     <li>@Html.ActionLink("For Sale", "Index", "HorseSale", new { area = "" }, new { @class = "navbar-brand" })</li>
