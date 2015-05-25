@@ -153,6 +153,23 @@ namespace SkeletorDAL
                      }).ToList();
             }
         }
+
+        public static List<ImageModel> GetGalleryImages()
+        {
+            using (var context = new HorseContext())
+            {
+                return (from i in context.GalleryImages
+                        where i.Active == true
+                        select (new ImageModel
+                        {
+                            ID = i.ID,
+                            Active = i.Active,
+                            ImageList = i.ImageList,
+                            ImagePath = i.ImagePath,
+                            Name = i.Name
+                        })).ToList();
+            }
+        }
     }
 }
 
