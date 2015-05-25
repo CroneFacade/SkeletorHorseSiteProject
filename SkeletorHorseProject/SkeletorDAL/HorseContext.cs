@@ -14,7 +14,8 @@ namespace SkeletorDAL
 		public DbSet<Horse> Horses { get; set; }
 		public DbSet<Blog> Blogs { get; set; }
 		public DbSet<Post> Posts { get; set; }
-        public DbSet<About> Abouts { get; set; }
-	
+		public DbSet<About> Abouts { get; set; }
+		public DbSet<GalleryImage> GalleryImages { get; set; }
+
 	}
 }
