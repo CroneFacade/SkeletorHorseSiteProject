@@ -1,0 +1,14 @@
+﻿@model System.Collections.Generic.List<SkeletorDAL.Model.HorseModel>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h4></h4>
+<div id="horses">
+    @foreach (var horse in Model)
+    {
+        <h1>@horse.Name</h1>
+    }
+</div>

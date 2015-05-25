@@ -1,47 +1,45 @@
-﻿@{
+﻿@using SkeletorDAL.Model
+@model SkeletorDAL.Model.HorseProfileModel
+@{
     ViewBag.Title = "Index";
 }
 <div class="container">
     <div class="row">
         <div id="horse_ProfilePicture" class="col-md-3">
-            <img src="~/Images/ladda ned.jpg"/>
+            <img src="~/Images/ladda ned.jpg" />
             <dl>
-                <dt>Tävlingar</dt>
-                @for (int i = 0; i < 6; i++)
-                {
-                    <dd>Tävling @i</dd>
-                }
-                <dt>Priser</dt>
-                @for (int i = 0; i < 2; i++)
-                {
-                    <dd>Pris @i</dd>
-                }
+                <dt>About @Model.Name</dt>
+                <dd>Wither: @Model.Withers</dd>
+                <dd>Race: @Model.Race</dd>
+                <dt>Tävlingar och priser</dt>
+                <dd>
+                    @foreach (var award in Model.Awards)
+                    {
+                        @award
+
+                    }
+                </dd>
             </dl>
         </div>
         <div id="horseDescription" class="col-md-9">
             <div role="tabpanel" id="horseInformation">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Beskrivning</a></li>
-                    <li role="presentation"><a href="#medicine" aria-controls="medicine" role="tab" data-toggle="tab">Medicin</a></li>
-                    <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab">Släktträd</a></li>
+                    
+                    @foreach (var information in Model.HorseInformationModels)
+                    {
+                        <li role="presentation" class="list"><a href="#@information.Heading" aria-controls="@information.Heading" role="tab" data-toggle="tab">@information.Heading</a></li>
+                    }
                 </ul>
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="description">
-                        Tamhäst (Equus ferus caballus) är en domesticerad underart av vildhästen som tillhör släktet hästar (Equus). <br/>en domesticerades för cirka 6 000 år sedan,[källa behövs] och har sedan dess <br/>
-                        använts som dragdjur eller riddjur, men även som föda och för att producera mjölk eller djurhudar. <br/>
-                        er lång tid har man avlat fram flera skiftande typer i färg och kroppskonstitution, vilka utvecklats till <br/>ns hästraser. Idag är hästen fortfarande vida använd som arbetsdjur, till nöje och fritid, och inom sport.
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="medicine">
-                        Naturläkemedel används vardagligt som benämning på läkemedel vars verksamma beståndsdelar har ett naturligt ursprung. I svensk lagstiftning är naturläkemedel en av tre kategorier av läkemedel med naturligt ursprung, tillsammans med växtbaserade läkemedel och traditionellt växtbaserade läkemedel. Oavsett vilken kategori ett läkemedel tillhör måste de tillverkas enligt samma krav som gäller för konventionella läkemedel. Kategorin växtbaserade läkemedel godkänns på samma grunder som konventionella läkemedel där förutom produktens kvalitet också dess säkerhet och effekt måste styrkas av den som ansöker om att få produkten godkänd. Dessa läkemedel kan antingen vara receptfria eller receptbelagda beroende på bl.a. deras användningsområde. Äldre växtbaserade läkemedel kan godkännas enligt ett förenklat förfarande som traditionellt växtbaserade läkemedel. Produktens kvalitet bedöms då enligt samma krav som för andra läkemedel, men den sökande behöver inte visa säkerhet och effekt på samma sätt. I stället krävs att man kan visa att det finns en traditionell användning av växtmaterialet under minst 30 år varav minst 15 år inom EU. De får bara vara avsedda för användningsområden som lämpar sig för egenvård och de säljs därför receptfritt på apotek men även fritt på andra ställen. De ska vara märkta Traditionellt växtbaserat läkemedel...(godkänt användningsområde). Den tredje kategorin av läkemedel vars beståndsdelar är av naturligt ursprung, naturläkemedel, är baserade på djurdelar, bakteriekulturer, mineraler samt salter. Även här måste produkternas kvalitet visas på samma sätt som för konventionella läkemedel, men effekt och säkerhet baseras på en bedömning av beprövad traditionell användning i Sverige eller något land med likartad läkemedelsanvändning. Ibland kan även kompletterande studier av produkternas effekt användas till stöd för godkännandet. Även denna kategori får bara användas för egenvård och säljs receptfritt på apotek men även fritt i annan handel. De ska vara märkta med Naturläkemedel.[1].
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="family">
-                        Fråga din släkt om mer information. kiqwkequei023qrwrwrwer, Tamhäst (Equus ferus caballus) är en domesticerad underart av vildhästen som tillhör släktet hästar (Equus). <br/>en domesticerades för cirka 6 000 år sedan,[källa behövs] och har sedan dess <br/>
-                        använts som dragdjur eller riddjur, men även som föd.
+                    @foreach (var information in Model.HorseInformationModels)
+                    {
+                        <div role="tabpanel" class="tab-pane active" id="@information.Heading">
+                            @information.ContentText
+                        </div>
+                    }
 
-                        Tamhäst (Equus ferus caballus) är en domesticerad underart av vildhästen som tillhör släktet hästar (Equus). <br/>en domesticerades för cirka 6 000 år sedan,[källa behövs] och har sedan dess <br/>
-                        använts som dragdjur eller riddjur, men även som föd
-                    </div>
                 </div>
+
             </div>
         </div>
     </div>

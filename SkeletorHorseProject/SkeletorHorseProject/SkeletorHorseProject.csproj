@@ -123,6 +123,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\FilteredHorsePageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseProfileController.cs" />
     <Compile Include="Controllers\HorseSaleController.cs" />
@@ -148,6 +149,7 @@
     <Content Include="Views\HorseProfile\HorseBlog.cshtml" />
     <Content Include="Views\Shared\_ForSale.cshtml" />
     <Content Include="Views\HorseSale\Index.cshtml" />
+    <None Include="Views\FilteredHorsePage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

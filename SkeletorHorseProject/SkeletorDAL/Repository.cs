@@ -16,6 +16,98 @@ namespace SkeletorDAL
                         select h).ToList();
             }
         }
+
+        public static HorseProfileModel GetSpecificHorseById(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                return (from h in context.Horses
+                        where h.ID == id
+                        select new HorseProfileModel()
+                        {
+                            Name = h.Name,
+                            Race = h.Race,
+                            Withers = h.Withers,
+                            HorseInformationModels = new List<HorseInfomationModel>()
+                    {
+                        new HorseInfomationModel(){ContentText = "Beskrivning", Heading = "Beskrivnign"},
+                        new HorseInfomationModel(){ContentText = "Medicin", Heading = "hej"},
+                        new HorseInfomationModel(){ContentText = "Släktträd", Heading = "SLäkt"}
+                    },
+                            Awards = h.Awards
+                        }).FirstOrDefault();
+            }
+        }
+
+        public static List<HorseModel> GetHorsesDependingOnNavigation(int navigationId)
+        {
+
+            using (var context = new HorseContext())
+            {
+                List<HorseModel> horseList = new List<HorseModel>();
+                switch (navigationId)
+                {
+                    case 1:
+                        horseList = (from h in context.Horses
+                                     select new HorseModel()
+                                     {
+                                         Awards = h.Awards,
+                                         Birthday = h.Birthday,
+                                         ID = h.ID,
+                                         IsActive = h.IsActive,
+                                         IsForSale = h.IsForSale,
+                                         Name = h.Name,
+                                         Price = h.Price,
+                                         Race = h.Race,
+                                         Withers = h.Withers,
+                                         IsSold = h.IsSold,
+                                         State = "All horses"
+                                     }).ToList();
+                        break;
+
+                    case 2:
+                        horseList = (from h in context.Horses
+                                     where h.IsForSale == true
+                                     select new HorseModel()
+                                     {
+                                         Awards = h.Awards,
+                                         Birthday = h.Birthday,
+                                         ID = h.ID,
+                                         IsActive = h.IsActive,
+                                         IsForSale = h.IsForSale,
+                                         Name = h.Name,
+                                         Price = h.Price,
+                                         Race = h.Race,
+                                         Withers = h.Withers,
+                                         IsSold = h.IsSold,
+                                         State = "Horses for sale"
+
+                                     }).ToList();
+                        break;
+                    case 3:
+                        horseList = (from h in context.Horses
+                                     where h.IsSold == true
+                                     select new HorseModel()
+                                     {
+                                         Awards = h.Awards,
+                                         Birthday = h.Birthday,
+                                         ID = h.ID,
+                                         IsActive = h.IsActive,
+                                         IsForSale = h.IsForSale,
+                                         Name = h.Name,
+                                         Price = h.Price,
+                                         Race = h.Race,
+                                         Withers = h.Withers,
+                                         IsSold = h.IsSold,
+                                         State = "Sold horses"
+
+                                     }).ToList();
+                        break;
+                }
+                return horseList;
+            }
+
+        }
         public static AboutReadOnlyModel AboutReadOnly()
         {
             using (var contex = new HorseContext())
