@@ -106,6 +106,7 @@
     <Content Include="Images\Dummy2.jpg" />
     <Content Include="Images\Dummy3.jpg" />
     <Content Include="Images\ladda ned.jpg" />
+    <Content Include="Images\splash.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -126,7 +127,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -135,6 +138,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CreateHorseController.cs" />
     <Compile Include="Controllers\FilteredHorsePageController.cs" />
+    <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseProfileController.cs" />
@@ -163,11 +167,14 @@
     <Content Include="Views\Shared\_ForSale.cshtml" />
     <Content Include="Views\HorseSale\Index.cshtml" />
     <Content Include="Views\CreateHorse\CreateHorse.cshtml" />
+    <Content Include="Views\Contact\Sent.cshtml" />
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Gallery\UploadFile.cshtml" />
     <Content Include="Views\RegisterAdmin\Index.cshtml" />
     <Content Include="Views\RegisterAdmin\Register.cshtml" />
+    <Content Include="Views\Shared\_Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -177,6 +184,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Footer\" />
+    <Folder Include="Views\Gallery\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SkeletorDAL\SkeletorDAL.csproj">
