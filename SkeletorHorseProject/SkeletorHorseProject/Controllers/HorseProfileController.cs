@@ -12,8 +12,18 @@ namespace SkeletorHorseProject.Controllers
         // GET: HorseProfile
         public ActionResult Index(int id)
         {
+            var idLength = id.ToString();
             var model = Repository.GetSpecificHorseById(id);
-            return View(model);
+            if (model != null)
+            {
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
         }
 
         [ChildActionOnly]

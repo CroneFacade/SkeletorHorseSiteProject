@@ -13,8 +13,5 @@ namespace SkeletorDAL.Model
         public string Race { get; set; }
         public int Withers { get; set; }
         public string Awards { get; set; }
-
-
-
     }
 }
