@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<SkeletorDAL.Model.HorseSaleModel>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -21,35 +19,29 @@
             @Html.DisplayNameFor(model => model.Prices)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsForSale)
+            @Html.DisplayName("Purchase Information")
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var horse in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(horse.Name, "Index", "HorseProfile", new { id = horse.ID }, null)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Birthday)
+            @Html.DisplayFor(modelItem => horse.Birthday)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Race)
+            @Html.DisplayFor(modelItem => horse.Race)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Withers)
+            @Html.DisplayFor(modelItem => horse.Withers)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Prices)
+            @Html.DisplayFor(modelItem => horse.Prices)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsForSale)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Contact Us", "Index","Contact") 
         </td>
     </tr>
 }

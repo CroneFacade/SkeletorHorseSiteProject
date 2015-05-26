@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SkeletorDAL;
+using SkeletorDAL.Model;
 
 namespace SkeletorHorseProject.Controllers
 {
@@ -15,11 +16,9 @@ namespace SkeletorHorseProject.Controllers
             var horsesForSale = Repository.GetHorsesForSale();
             return View(horsesForSale);
         }
-
-
-        public ActionResult ForSale()
+        public ActionResult ForSale(List<HorseSaleModel> horses )
         {
-            return PartialView("_ForSale");
+            return PartialView("_ForSale",horses);
         }
     }
 }
