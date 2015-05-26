@@ -46,8 +46,8 @@ namespace SkeletorDAL
 
             galleryImages.Add(new GalleryImage()
             {
-                FileName = "Dummy2.jpg",
-                ImagePath = "~/Images/Dummy2.jpg",
+                FileName = "Dummy3.jpg",
+                ImagePath = "~/Images/Dummy3.jpg",
                 Active = true
             });
             

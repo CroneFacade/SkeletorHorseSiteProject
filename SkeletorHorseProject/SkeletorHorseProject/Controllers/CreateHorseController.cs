@@ -33,12 +33,13 @@ namespace SkeletorHorseProject.Controllers
 					Price = model.Price,
 					Description = model.Description,
 					Medicine = model.Medicine,
-					FamilyTree = model.FamilyTree
+					FamilyTree = model.FamilyTree,
+					ImagePath = model.ImagePath
 				};
 				Repository.AddHorse(newHorse);
-				ViewData["Error"] = "Successfully added " + model.Name;
+				return RedirectToAction("CreateHorse", "CreateHorse");
 			}
-			return View();
+			return View(model);
 		}
 	}
 }

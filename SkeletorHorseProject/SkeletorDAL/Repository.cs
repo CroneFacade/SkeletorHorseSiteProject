@@ -3,11 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SkeletorDAL.Helpers;
 using SkeletorDAL.Model;
+using SkeletorDAL.POCO;
 namespace SkeletorDAL
 {
     public static class Repository
     {
+        public static void RegisterAdmin(RegisterAdminModel model)
+        {
+            using (var context = new HorseContext())
+            {
+                var newAdmin = new User()
+                {
+                    Username = model.Username,
+                    Password = model.Password.SuperHash(),
+                    AdminLevel = model.AdminLevel,
+                    IsActive = true,
+                };
+
+                context.Users.Add(newAdmin);
+                context.SaveChanges();
+            }
+        }
         public static List<Horse> GetAllHorses()
         {
             using (var context = new HorseContext())
@@ -175,6 +193,21 @@ namespace SkeletorDAL
                             ImagePath = i.ImagePath,
                             FileName = i.FileName
                         })).ToList();
+            }
+        }
+
+        public static void AddNewFile(string fileName)
+        {
+            using (var context = new HorseContext())
+            {
+                context.GalleryImages.Add(new GalleryImage()
+                {
+                FileName = fileName,
+                ImagePath = "~/Images/" + fileName,
+                Active = true
+                }
+                    );
+                context.SaveChanges();
             }
         }
     }
