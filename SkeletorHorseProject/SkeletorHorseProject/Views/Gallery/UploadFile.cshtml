@@ -1,7 +1,7 @@
-﻿@using (Html.BeginForm("Upload", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{ @Html.AntiForgeryToken()
-    <fieldset>
-        <legend>Upload a file</legend>
-        <div class="editor-field"> @Html.TextBox("file", "", new { type = "file" }) </div>
-        <div class="editor-field"> <input type="submit" value="Upload" /> </div>
-    </fieldset> }
+﻿ @using (Html.BeginForm("Upload", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    { @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Upload a file</legend>
+            <div class="editor-field"> @Html.TextBox("file", "", new { type = "file" }) </div>
+            <div class="editor-field"> <input type="submit" value="Upload" /> </div>
+        </fieldset> }
