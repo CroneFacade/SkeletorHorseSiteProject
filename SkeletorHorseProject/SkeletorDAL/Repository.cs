@@ -61,6 +61,7 @@ namespace SkeletorDAL
                             Medicine = h.Medicine,
                             FamilyTree = h.FamilyTree,
                             Awards = h.Awards
+                        
                         }).FirstOrDefault();
             }
         }
