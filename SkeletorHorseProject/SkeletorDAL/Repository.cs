@@ -10,6 +10,7 @@ namespace SkeletorDAL
 {
     public static class Repository
     {
+        
         public static string GetAdminEmail()
         {
             using (var context = new HorseContext())

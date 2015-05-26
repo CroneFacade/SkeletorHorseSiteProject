@@ -21,7 +21,9 @@ namespace SkeletorDAL.Model
         [MaxLength(1000)]
         [DataType(DataType.MultilineText)]
         public string Message { get; set; }
-
         public HttpPostedFileBase Upload { get; set; }
+        
+        [Required(ErrorMessage = "Invalid Captcha")]
+        public string ValidationNumber { get; set; }
     }
 }
