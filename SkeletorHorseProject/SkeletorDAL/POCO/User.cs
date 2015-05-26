@@ -13,6 +13,7 @@ namespace SkeletorDAL
 		public string Password { get; set; }
 		public int AdminLevel { get; set; }
 		public bool IsActive { get; set; }
+        public string EmailAdress { get; set; }
 
 		public User()
 		{
