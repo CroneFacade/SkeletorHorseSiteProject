@@ -9,7 +9,7 @@ using SkeletorDAL.POCO;
 
 namespace SkeletorDAL
 {
-	public class HorseContextInitializer : DropCreateDatabaseIfModelChanges<HorseContext>
+	public class HorseContextInitializer : DropCreateDatabaseAlways<HorseContext>
 	{
 		private readonly List<Horse> horses;
 		private readonly List<Blog> blogs;
@@ -45,8 +45,8 @@ namespace SkeletorDAL
 
             galleryImages.Add(new GalleryImage()
             {
-                FileName = "Dummy2.jpg",
-                ImagePath = "~/Images/Dummy2.jpg",
+                FileName = "Dummy3.jpg",
+                ImagePath = "~/Images/Dummy3.jpg",
                 Active = true
             });
             
