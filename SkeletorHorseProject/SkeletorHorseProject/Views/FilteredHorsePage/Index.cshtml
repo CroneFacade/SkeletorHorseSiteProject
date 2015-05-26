@@ -2,13 +2,13 @@
 
 @{
     ViewBag.Title = "title";
-    Layout = "_Layout";
 }
 
 <h4></h4>
 <div id="horses">
     @foreach (var horse in Model)
     {
-        <h1>@horse.Name</h1>
+        <h1>@Html.ActionLink(@horse.Name, "Index", "HorseProfile", new {id = @horse.ID}, null)</h1>
+     
     }
 </div>

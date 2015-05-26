@@ -28,6 +28,7 @@ namespace SkeletorDAL
                             Name = h.Name,
                             Race = h.Race,
                             Withers = h.Withers,
+                            Birthday = h.Birthday,
                             HorseInformationModels = new List<HorseInfomationModel>()
                     {
                         new HorseInfomationModel(){ContentText = "Beskrivning", Heading = "Beskrivnign"},
