@@ -43,6 +43,12 @@ textarea {
     text-decoration: none;
 }
 
+.navigation a:active {
+    color: #000066;
+    background-color: transparent;
+    text-decoration: none;
+}
+
 .nav {
     color: #D1081D;
     text-decoration: none;
@@ -75,6 +81,7 @@ a:hover {
 
 .content {
     background-color: #ffffff;
+    font-family: Arial;
     min-height: 200px;
     margin-top: -20px;
     margin-bottom: -10px;
