@@ -100,6 +100,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
+    <Content Include="Images\e.jpg" />
     <Content Include="Images\ladda ned.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -128,14 +129,9 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
-
     <Compile Include="Controllers\CreateHorseController.cs" />
-
-
     <Compile Include="Controllers\FilteredHorsePageController.cs" />
-
     <Compile Include="Controllers\GalleryController.cs" />
-
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseProfileController.cs" />
     <Compile Include="Controllers\HorseSaleController.cs" />
