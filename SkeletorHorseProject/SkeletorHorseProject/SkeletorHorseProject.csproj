@@ -106,6 +106,7 @@
     <Content Include="Images\Dummy2.jpg" />
     <Content Include="Images\Dummy3.jpg" />
     <Content Include="Images\ladda ned.jpg" />
+    <Content Include="Images\splash.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -137,6 +138,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CreateHorseController.cs" />
     <Compile Include="Controllers\FilteredHorsePageController.cs" />
+    <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseProfileController.cs" />
@@ -167,6 +169,7 @@
     <Content Include="Views\CreateHorse\CreateHorse.cshtml" />
     <Content Include="Views\Contact\Sent.cshtml" />
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Gallery\UploadFile.cshtml" />
     <Content Include="Views\RegisterAdmin\Index.cshtml" />
@@ -181,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Footer\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SkeletorDAL\SkeletorDAL.csproj">
