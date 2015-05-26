@@ -80,10 +80,16 @@
     <Compile Include="HorseContextInitializer.cs" />
     <Compile Include="Model\AboutReadOnlyModel.cs" />
     <Compile Include="Model\CreateHorseModel.cs" />
+    <Compile Include="Model\HorseInfomationModel.cs" />
+    <Compile Include="Model\HorseModel.cs" />
+    <Compile Include="Model\HorseProfileModel.cs" />
+    <Compile Include="Model\HorseProfileModel.cs" />
     <Compile Include="Model\HorseSaleModel.cs" />
     <Compile Include="Model\AdminLoginModel.cs" />
+    <Compile Include="Model\ImageModel.cs" />
     <Compile Include="POCO\About.cs" />
     <Compile Include="POCO\Blog.cs" />
+    <Compile Include="POCO\GalleryImage.cs" />
     <Compile Include="POCO\Horse.cs" />
     <Compile Include="POCO\Post.cs" />
     <Compile Include="POCO\User.cs" />

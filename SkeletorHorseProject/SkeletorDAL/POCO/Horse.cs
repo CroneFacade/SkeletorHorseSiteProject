@@ -18,7 +18,9 @@ namespace SkeletorDAL
 		public bool IsActive { get; set; }
 		public bool IsForSale { get; set; }
 		public string Price { get; set; }
-		public Horse()
+	    public bool IsSold { get; set; }
+
+	    public Horse()
 		{
 			
 		}

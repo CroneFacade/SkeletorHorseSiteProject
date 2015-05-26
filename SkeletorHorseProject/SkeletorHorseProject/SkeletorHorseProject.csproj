@@ -128,7 +128,14 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+
     <Compile Include="Controllers\CreateHorseController.cs" />
+
+
+    <Compile Include="Controllers\FilteredHorsePageController.cs" />
+
+    <Compile Include="Controllers\GalleryController.cs" />
+
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseProfileController.cs" />
     <Compile Include="Controllers\HorseSaleController.cs" />
@@ -155,6 +162,7 @@
     <Content Include="Views\Shared\_ForSale.cshtml" />
     <Content Include="Views\HorseSale\Index.cshtml" />
     <Content Include="Views\CreateHorse\CreateHorse.cshtml" />
+    <None Include="Views\FilteredHorsePage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -164,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Gallery\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SkeletorDAL\SkeletorDAL.csproj">

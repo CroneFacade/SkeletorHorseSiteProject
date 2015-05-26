@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SkeletorDAL;
 
 namespace SkeletorHorseProject.Controllers
 {
     public class HorseProfileController : Controller
     {
         // GET: HorseProfile
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            var model = Repository.GetSpecificHorseById(id);
+            return View(model);
         }
 
         [ChildActionOnly]
