@@ -17,24 +17,21 @@ namespace SkeletorDAL
             }
         }
 
-        public static HorseProfileModel GetSpecificHorseById(int id)
+        public static HorseModel GetSpecificHorseById(int id)
         {
             using (var context = new HorseContext())
             {
                 return (from h in context.Horses
                         where h.ID == id
-                        select new HorseProfileModel()
+                        select new HorseModel()
                         {
                             Name = h.Name,
                             Race = h.Race,
                             Withers = h.Withers,
                             Birthday = h.Birthday,
-                            HorseInformationModels = new List<HorseInfomationModel>()
-                    {
-                        new HorseInfomationModel(){ContentText = "Beskrivning", Heading = "Beskrivnign"},
-                        new HorseInfomationModel(){ContentText = "Medicin", Heading = "hej"},
-                        new HorseInfomationModel(){ContentText = "Släktträd", Heading = "SLäkt"}
-                    },
+                            Description = h.Description,
+                            Medicine = h.Medicine,
+                            FamilyTree = h.FamilyTree,
                             Awards = h.Awards
                         }).FirstOrDefault();
             }
