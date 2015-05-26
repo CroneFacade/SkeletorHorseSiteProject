@@ -101,6 +101,9 @@
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Images\e.jpg" />
+    <Content Include="Images\Dummy1.jpg" />
+    <Content Include="Images\Dummy2.jpg" />
+    <Content Include="Images\Dummy3.jpg" />
     <Content Include="Images\ladda ned.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -159,6 +162,7 @@
     <Content Include="Views\HorseSale\Index.cshtml" />
     <Content Include="Views\CreateHorse\CreateHorse.cshtml" />
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -168,7 +172,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Gallery\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SkeletorDAL\SkeletorDAL.csproj">

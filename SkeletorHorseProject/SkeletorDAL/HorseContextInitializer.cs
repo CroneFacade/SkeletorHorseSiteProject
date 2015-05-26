@@ -27,6 +27,30 @@ namespace SkeletorDAL
 			Helge.IsForSale = true;
 			Adolf.IsForSale = true;
 
+            galleryImages = new List<GalleryImage>();
+
+            galleryImages.Add(new GalleryImage()
+            {
+                FileName = "Dummy1.jpg",
+                ImagePath = "~/Images/Dummy1.jpg",
+                Active = true
+            });
+
+            galleryImages.Add(new GalleryImage()
+            {
+                FileName = "Dummy2.jpg",
+                ImagePath = "~/Images/Dummy2.jpg",
+                Active = true
+            });
+
+            galleryImages.Add(new GalleryImage()
+            {
+                FileName = "Dummy2.jpg",
+                ImagePath = "~/Images/Dummy2.jpg",
+                Active = true
+            });
+            
+            
 
 
 			var HelgeBlog = new Blog("Detta är Helges Blogg", Helge, DateTime.Now, new List<Post>()

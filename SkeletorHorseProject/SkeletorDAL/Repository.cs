@@ -162,7 +162,7 @@ namespace SkeletorDAL
 		    }
 	    }
 
-        public static List<ImageModel> GetGalleryImages()
+        public static List<ImageModel> GetAllGalleryImages()
         {
             using (var context = new HorseContext())
             {
@@ -172,9 +172,8 @@ namespace SkeletorDAL
                         {
                             ID = i.ID,
                             Active = i.Active,
-                            ImageList = i.ImageList,
                             ImagePath = i.ImagePath,
-                            Name = i.Name
+                            FileName = i.FileName
                         })).ToList();
             }
         }
