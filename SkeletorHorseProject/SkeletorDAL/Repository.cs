@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SkeletorDAL.Model;
+using SkeletorDAL.POCO;
 namespace SkeletorDAL
 {
     public static class Repository
@@ -175,6 +176,21 @@ namespace SkeletorDAL
                             ImagePath = i.ImagePath,
                             FileName = i.FileName
                         })).ToList();
+            }
+        }
+
+        public static void AddNewFile(string fileName)
+        {
+            using (var context = new HorseContext())
+            {
+                context.GalleryImages.Add(new GalleryImage()
+                {
+                FileName = fileName,
+                ImagePath = "~/Images/" + fileName,
+                Active = true
+                }
+                    );
+                context.SaveChanges();
             }
         }
     }

@@ -3,39 +3,20 @@
 <h2>Gallery Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Upload new image", "UploadFile")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FileName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Active)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FileName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImagePath)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Active)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+@foreach (var image in Model)
+{
+    <div style=" margin:10px; float:left; height:200px; overflow:hidden; width:200px;">
+        <a id="ShowImage" class="fancybox-button" data-rel="fancybox-button"
+           title="Photo" href="@Url.Content(image.ImagePath)">
+            <div class="zoom">
+                <img src="@Url.Content(image.ImagePath)" style=" margin:10px; height:200px; width:200px;" alt="Image" />
+                <div class="zoom-icon"></div>
+            </div>
+        </a>
+    </div>
 }
 
-</table>
+
