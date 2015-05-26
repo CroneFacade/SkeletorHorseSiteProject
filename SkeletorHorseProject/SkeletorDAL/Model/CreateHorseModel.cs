@@ -5,11 +5,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace SkeletorDAL.Model
 {
 	public class CreateHorseModel
 	{
+        public HttpPostedFileBase Avatar { get; set; }
+
 		[Required(ErrorMessage = "What is the name of the horse?")]
 		public string Name { get; set; }
 		[Required(ErrorMessage = "(yyyy-mm-dd)")]
