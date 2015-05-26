@@ -19,13 +19,14 @@ namespace SkeletorDAL
 		public bool IsActive { get; set; }
 		public bool IsForSale { get; set; }
 		public string Price { get; set; }
-	    public bool IsSold { get; set; }
+		public bool IsSold { get; set; }
 		public string Description { get; set; }
 		public string Medicine { get; set; }
 		public string FamilyTree { get; set; }
 		public string ImagePath { get; set; }
+		public string Facebook { get; set; }
 
-	    public Horse()
+		public Horse()
 		{
 			
 		}
@@ -36,9 +37,9 @@ namespace SkeletorDAL
 			Race = race;
 			Withers = withers;
 			Awards = awards;
-		    IsForSale = false;
-		    Price = price;
-		    IsActive = true;
+			IsForSale = false;
+			Price = price;
+			IsActive = true;
 		}
 	}
 }
