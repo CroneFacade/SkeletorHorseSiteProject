@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -23,12 +24,13 @@ namespace SkeletorDAL.Model
 		public string Description { get; set; }
 		[Required(ErrorMessage = "Does the horse need any medicine?")]
 		public string Medicine { get; set; }
-		[Required(ErrorMessage = "Tell something about the family tree.")]
+		[Required(ErrorMessage = "Tell something about the family tree."), DisplayName("Family tree")]
 		public string FamilyTree { get; set; }
-		[Required(ErrorMessage = "Is the horse for sale?")]
+		[Required(ErrorMessage = "Is the horse for sale?"), DisplayName("For sale")]
 		public bool IsForSale { get; set; }
 		[Required(ErrorMessage = "What is the price of the horse?")]
 		public string Price { get; set; }
+		[DisplayName("Image path")]
 		public string ImagePath { get; set; }
 		public bool IsActive { get; set; }
 	}

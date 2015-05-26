@@ -37,9 +37,9 @@ namespace SkeletorHorseProject.Controllers
 					ImagePath = model.ImagePath
 				};
 				Repository.AddHorse(newHorse);
-				ViewData["Error"] = "Successfully added " + model.Name;
+				return RedirectToAction("CreateHorse", "CreateHorse");
 			}
-			return View();
+			return View(model);
 		}
 	}
 }
