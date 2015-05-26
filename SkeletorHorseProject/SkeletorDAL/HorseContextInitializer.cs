@@ -103,7 +103,7 @@ namespace SkeletorDAL
 			blogs.ForEach(b => context.Blogs.Add(b));
 			users.ForEach(u => context.Users.Add(u));
 			abouts.ForEach(a => context.Abouts.Add(a));
-            //galleryImages.ForEach(i => context.GalleryImages.Add((i)));
+            galleryImages.ForEach(i => context.GalleryImages.Add((i)));
 			base.InitializeDatabase(context);
 		}
 	}
