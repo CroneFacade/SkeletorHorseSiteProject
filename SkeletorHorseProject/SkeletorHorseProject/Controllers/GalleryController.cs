@@ -13,7 +13,7 @@ namespace SkeletorHorseProject.Controllers
         // GET: Gallery
         public ActionResult Index()
         {
-            var model = Repository.GetGalleryImages();
+            var model = Repository.GetAllGalleryImages();
             return View(model);
         }
     }

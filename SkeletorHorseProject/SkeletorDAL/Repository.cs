@@ -165,7 +165,7 @@ namespace SkeletorDAL
 		    }
 	    }
 
-        public static List<ImageModel> GetGalleryImages()
+        public static List<ImageModel> GetAllGalleryImages()
         {
             using (var context = new HorseContext())
             {

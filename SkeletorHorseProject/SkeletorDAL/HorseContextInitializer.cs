@@ -27,6 +27,8 @@ namespace SkeletorDAL
 			Helge.IsForSale = true;
 			Adolf.IsForSale = true;
 
+            galleryImages = new List<GalleryImage>();
+
             galleryImages.Add(new GalleryImage()
             {
                 FileName = "Dummy1.jpg",
