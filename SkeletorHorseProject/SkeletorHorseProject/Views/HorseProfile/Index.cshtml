@@ -43,24 +43,21 @@
                     <div role="tabpanel" class="tab-pane" id="facebook">
                         @Model.Facebook
                         <div id="fb-root"></div>
+                        <div id="fb-root"></div>
                         <script>
-                            (function(d, s, id) {
-                                var js, fjs = d.getElementsByTagName(s)[0];
-                                if (d.getElementById(id)) return;
-                                js = d.createElement(s);
-                                js.id = id;
-                                js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.3";
-                                fjs.parentNode.insertBefore(js, fjs);
-                            }(document, 'script', 'facebook-jssdk'));
-                        </script>
-                      
-                        <div class="fb-page" data-href="https://www.facebook.com/facebook" data-width="" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
-                            <div class="fb-xfbml-parse-ignore">
-                                <blockquote cite="https://www.facebook.com/facebook">
-                                    <a href="https://www.facebook.com/facebook">Facebook</a>
-                                </blockquote>
-                            </div>
-                        </div>
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.3";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+                        
+                        <div class="fb-post" data-href="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553" data-width="450">
+                            <div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553">
+                                <p>Be the first to know when we release a new video by subscribing to our official Facebook Developers YouTube channel! http://www.youtube.com/facebookdevelopers</p>Posted by 
+                                <a href="https://www.facebook.com/FacebookDevelopers">Facebook Developers</a> on <a href="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553">den 29 maj 2013</a></blockquote></div></div>
 
                     </div>
                 </div>
