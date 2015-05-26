@@ -19,14 +19,39 @@ namespace SkeletorDAL
 
 		public HorseContextInitializer()
 		{
-			var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005","650.000");
-			var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty,"350.000");
-			var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-","100.000");
-			var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något","1 000 000");
+			var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005","650.000"){Description = "Detta är Helges beskrivning", Medicine = "Detta är Helges Medicin", FamilyTree = "Detta är Helges släktträd"};
+            var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty, "350.000") { Description = "Detta är Jens beskrivning", Medicine = "Detta är Jens Medicin", FamilyTree = "Detta är Jens släktträd" };
+            var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000") { Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
+            var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000") { Description = "Detta är Adolf Medicin", Medicine = "Detta är Adolf beskrivning", FamilyTree = "Detta är Adolf släktträd" };
+           
 
 			Helge.IsForSale = true;
 			Adolf.IsForSale = true;
 
+            galleryImages = new List<GalleryImage>();
+
+            galleryImages.Add(new GalleryImage()
+            {
+                FileName = "Dummy1.jpg",
+                ImagePath = "~/Images/Dummy1.jpg",
+                Active = true
+            });
+
+            galleryImages.Add(new GalleryImage()
+            {
+                FileName = "Dummy2.jpg",
+                ImagePath = "~/Images/Dummy2.jpg",
+                Active = true
+            });
+
+            galleryImages.Add(new GalleryImage()
+            {
+                FileName = "Dummy3.jpg",
+                ImagePath = "~/Images/Dummy3.jpg",
+                Active = true
+            });
+            
+            
 
 
 			var HelgeBlog = new Blog("Detta är Helges Blogg", Helge, DateTime.Now, new List<Post>()
@@ -61,7 +86,7 @@ namespace SkeletorDAL
 			};
 			users = new List<User>()
 			{
-				new User("admin", "admin".SuperHash(), 1)
+				new User("admin", "admin".SuperHash(), 1, "teamnordahl123@gmail.com")
 			};
 
 			abouts = new List<About>()
@@ -79,7 +104,7 @@ namespace SkeletorDAL
 			blogs.ForEach(b => context.Blogs.Add(b));
 			users.ForEach(u => context.Users.Add(u));
 			abouts.ForEach(a => context.Abouts.Add(a));
-            //galleryImages.ForEach(i => context.GalleryImages.Add((i)));
+            galleryImages.ForEach(i => context.GalleryImages.Add((i)));
 			base.InitializeDatabase(context);
 		}
 	}

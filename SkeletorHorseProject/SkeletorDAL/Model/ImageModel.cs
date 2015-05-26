@@ -9,12 +9,9 @@ namespace SkeletorDAL.Model
 {
     public class ImageModel
     {
-        
-            [Key]
-            public Guid ID { get; set; }
-            public string Name { get; set; }
+            public int ID { get; set; }
+            public string FileName { get; set; }
             public string ImagePath { get; set; }
             public bool Active { get; set; }
-            public List<string> ImageList { get; set; }
     }
 }

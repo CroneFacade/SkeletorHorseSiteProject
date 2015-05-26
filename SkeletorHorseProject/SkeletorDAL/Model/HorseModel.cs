@@ -19,5 +19,8 @@ namespace SkeletorDAL.Model
         public string Price { get; set; }
         public bool IsSold { get; set; }
         public string State { get; set; }
+        public string Description { get; set; }
+        public string Medicine { get; set; }
+        public string FamilyTree { get; set; }
     }
 }

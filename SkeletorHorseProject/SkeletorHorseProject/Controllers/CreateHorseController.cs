@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SkeletorDAL;
 using SkeletorDAL.Model;
+using SkeletorDAL.POCO;
 
 namespace SkeletorHorseProject.Controllers
 {
@@ -20,7 +21,6 @@ namespace SkeletorHorseProject.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-
 				Horse newHorse = new Horse
 				{
 					Name = model.Name,
@@ -30,13 +30,16 @@ namespace SkeletorHorseProject.Controllers
 					Awards = model.Awards,
 					IsActive = true,
 					IsForSale = model.IsForSale,
-					Price = model.Price
+					Price = model.Price,
+					Description = model.Description,
+					Medicine = model.Medicine,
+					FamilyTree = model.FamilyTree,
+					ImagePath = model.ImagePath
 				};
-
 				Repository.AddHorse(newHorse);
-				ViewData["Error"] = "Successfully added " + model.Name;
+				return RedirectToAction("CreateHorse", "CreateHorse");
 			}
-			return View();
+			return View(model);
 		}
 	}
 }

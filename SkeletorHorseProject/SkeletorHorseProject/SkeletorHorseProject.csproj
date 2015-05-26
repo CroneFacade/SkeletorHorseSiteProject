@@ -97,9 +97,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Errorpages\ErrorPage.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
+    <Content Include="Images\e.jpg" />
+    <Content Include="Images\Dummy1.jpg" />
+    <Content Include="Images\Dummy2.jpg" />
+    <Content Include="Images\Dummy3.jpg" />
     <Content Include="Images\ladda ned.jpg" />
     <Content Include="Images\splash.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -122,7 +127,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -136,6 +143,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseProfileController.cs" />
     <Compile Include="Controllers\HorseSaleController.cs" />
+    <Compile Include="Controllers\RegisterAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -159,8 +167,14 @@
     <Content Include="Views\Shared\_ForSale.cshtml" />
     <Content Include="Views\HorseSale\Index.cshtml" />
     <Content Include="Views\CreateHorse\CreateHorse.cshtml" />
+    <Content Include="Views\Contact\Sent.cshtml" />
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
+    <Content Include="Views\Gallery\UploadFile.cshtml" />
+    <Content Include="Views\RegisterAdmin\Index.cshtml" />
+    <Content Include="Views\RegisterAdmin\Register.cshtml" />
+    <Content Include="Views\Shared\_Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

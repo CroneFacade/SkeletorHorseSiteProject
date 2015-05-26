@@ -1,0 +1,25 @@
+﻿@model IEnumerable<SkeletorDAL.Model.ImageModel>
+
+<h2>Gallery Index</h2>
+
+<p>
+    @Html.ActionLink("Upload new image", "UploadFile")
+</p>
+<body>
+@foreach (var image in Model)
+{
+    <div style="margin: 10px; float: left; height: 200px; overflow: hidden; width: 200px;">
+        <a id="ShowImage" class="fancybox-button" data-rel="fancybox-button"
+           title="Photo" href="@Url.Content(image.ImagePath)">
+            <div class="zoom">
+                <img src="@Url.Content(image.ImagePath)" style="margin: 10px; height: 200px; width: 200px;" alt="Image"/>
+                <div class="zoom-icon"></div>
+            </div>
+        </a>
+    </div>
+}
+</body>
+
+
+
+

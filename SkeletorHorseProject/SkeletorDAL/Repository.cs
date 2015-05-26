@@ -3,11 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SkeletorDAL.Helpers;
 using SkeletorDAL.Model;
+using SkeletorDAL.POCO;
 namespace SkeletorDAL
 {
     public static class Repository
     {
+        public static string GetAdminEmail()
+        {
+            using (var context = new HorseContext())
+            {
+                return
+                    (from u in context.Users
+                     where u.AdminLevel == 1
+                     select u.EmailAdress).FirstOrDefault();
+            }
+        }
+        public static void RegisterAdmin(RegisterAdminModel model)
+        {
+            using (var context = new HorseContext())
+            {
+                var newAdmin = new User()
+                {
+                    Username = model.Username,
+                    Password = model.Password.SuperHash(),
+                    AdminLevel = model.AdminLevel,
+                    IsActive = true,
+                };
+
+                context.Users.Add(newAdmin);
+                context.SaveChanges();
+            }
+        }
         public static List<Horse> GetAllHorses()
         {
             using (var context = new HorseContext())
@@ -17,24 +45,21 @@ namespace SkeletorDAL
             }
         }
 
-        public static HorseProfileModel GetSpecificHorseById(int id)
+        public static HorseModel GetSpecificHorseById(int id)
         {
             using (var context = new HorseContext())
             {
                 return (from h in context.Horses
                         where h.ID == id
-                        select new HorseProfileModel()
+                        select new HorseModel()
                         {
                             Name = h.Name,
                             Race = h.Race,
                             Withers = h.Withers,
                             Birthday = h.Birthday,
-                            HorseInformationModels = new List<HorseInfomationModel>()
-                    {
-                        new HorseInfomationModel(){ContentText = "Beskrivning", Heading = "Beskrivnign"},
-                        new HorseInfomationModel(){ContentText = "Medicin", Heading = "hej"},
-                        new HorseInfomationModel(){ContentText = "Släktträd", Heading = "SLäkt"}
-                    },
+                            Description = h.Description,
+                            Medicine = h.Medicine,
+                            FamilyTree = h.FamilyTree,
                             Awards = h.Awards
                         }).FirstOrDefault();
             }
@@ -165,7 +190,7 @@ namespace SkeletorDAL
 		    }
 	    }
 
-        public static List<ImageModel> GetGalleryImages()
+        public static List<ImageModel> GetAllGalleryImages()
         {
             using (var context = new HorseContext())
             {
@@ -175,10 +200,24 @@ namespace SkeletorDAL
                         {
                             ID = i.ID,
                             Active = i.Active,
-                            ImageList = i.ImageList,
                             ImagePath = i.ImagePath,
-                            Name = i.Name
+                            FileName = i.FileName
                         })).ToList();
+            }
+        }
+
+        public static void AddNewFile(string fileName)
+        {
+            using (var context = new HorseContext())
+            {
+                context.GalleryImages.Add(new GalleryImage()
+                {
+                FileName = fileName,
+                ImagePath = "~/Images/" + fileName,
+                Active = true
+                }
+                    );
+                context.SaveChanges();
             }
         }
     }

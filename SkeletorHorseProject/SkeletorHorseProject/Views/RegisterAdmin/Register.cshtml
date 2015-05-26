@@ -1,0 +1,39 @@
+﻿@model SkeletorDAL.Model.RegisterAdminModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register New Admin</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <div>
+        <fieldset>
+            <legend>User</legend>
+            <div class="editor-label">
+                @Html.LabelFor(u => u.Username)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(u => u.Username)
+                @Html.ValidationMessageFor(u => u.Username)
+            </div>
+            <div class="editor-label">@Html.LabelFor(u => u.Password)</div>
+            <div class="editor-field">
+                @Html.EditorFor(u => u.Password)
+                @Html.ValidationMessageFor(u => u.Password)
+            </div>
+            <div class="editor-label">@Html.LabelFor(u => u.ConfirmPassword)</div>
+            <div class="editor-field">
+                @Html.EditorFor(u => u.ConfirmPassword)
+                @Html.ValidationMessageFor(u => u.ConfirmPassword)
+            </div>
+            <div class="editor-label">@Html.LabelFor(u => u.AdminLevel)</div>
+            <div class="editor-field">
+                @Html.EditorFor(u => u.AdminLevel)
+                @Html.ValidationMessageFor(u => u.AdminLevel)
+            </div>
+            <p><input type="submit" value="Register" /></p>
+        </fieldset>
+    </div>
+}

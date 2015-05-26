@@ -12,8 +12,17 @@ namespace SkeletorHorseProject.Controllers
         // GET: FilteredHorsePage
         public ActionResult Index(int navigationId)
         {
-            var model = Repository.GetHorsesDependingOnNavigation(navigationId);
-            return View(model);
+            try
+            {
+                var model = Repository.GetHorsesDependingOnNavigation(navigationId);
+                return View(model);
+            }
+            catch (Exception)
+            {
+
+                return View();
+            }
+
         }
     }
 }
