@@ -61,6 +61,15 @@ namespace SkeletorDAL
                      }).ToList();
             }
         }
+
+	    public static void AddHorse(Horse newHorse)
+	    {
+		    using (var context = new HorseContext())
+		    {
+			    context.Horses.Add(newHorse);
+			    context.SaveChanges();
+		    }
+	    }
     }
 }
 
