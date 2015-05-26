@@ -155,7 +155,7 @@ namespace SkeletorDAL
             }
         }
 
-<<<<<<< HEAD
+
 	    public static void AddHorse(Horse newHorse)
 	    {
 		    using (var context = new HorseContext())
@@ -164,7 +164,7 @@ namespace SkeletorDAL
 			    context.SaveChanges();
 		    }
 	    }
-=======
+
         public static List<ImageModel> GetGalleryImages()
         {
             using (var context = new HorseContext())
@@ -181,7 +181,6 @@ namespace SkeletorDAL
                         })).ToList();
             }
         }
->>>>>>> 34d7a5a6e4311f81c40c567b0747f26126f3575d
     }
 }
 
