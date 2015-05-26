@@ -101,6 +101,7 @@
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Images\ladda ned.jpg" />
+    <Content Include="Images\splash.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -128,14 +129,10 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
-
     <Compile Include="Controllers\CreateHorseController.cs" />
-
-
     <Compile Include="Controllers\FilteredHorsePageController.cs" />
-
+    <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
-
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseProfileController.cs" />
     <Compile Include="Controllers\HorseSaleController.cs" />
@@ -163,6 +160,7 @@
     <Content Include="Views\HorseSale\Index.cshtml" />
     <Content Include="Views\CreateHorse\CreateHorse.cshtml" />
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -172,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Footer\" />
     <Folder Include="Views\Gallery\" />
   </ItemGroup>
   <ItemGroup>
