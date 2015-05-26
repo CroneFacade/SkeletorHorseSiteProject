@@ -9,7 +9,7 @@ using SkeletorDAL.POCO;
 
 namespace SkeletorDAL
 {
-	public class HorseContextInitializer : DropCreateDatabaseAlways<HorseContext>
+	public class HorseContextInitializer : DropCreateDatabaseIfModelChanges<HorseContext>
 	{
 		private readonly List<Horse> horses;
 		private readonly List<Blog> blogs;

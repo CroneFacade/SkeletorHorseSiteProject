@@ -19,10 +19,15 @@ namespace SkeletorDAL.Model
 		public int Withers { get; set; }
 		[Required(ErrorMessage = "Input required.")]
 		public string Awards { get; set; }
-		public bool IsActive { get; set; }
+
+		public string Description { get; set; }
+		public string Medicine { get; set; }
+		public string FamilyTree { get; set; }
 		[Required(ErrorMessage = "Input required.")]
 		public bool IsForSale { get; set; }
 		[Required(ErrorMessage = "Input required.")]
 		public string Price { get; set; }
+		public string ImagePath { get; set; }
+		public bool IsActive { get; set; }
 	}
 }
