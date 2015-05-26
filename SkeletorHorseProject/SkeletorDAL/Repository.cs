@@ -175,9 +175,8 @@ namespace SkeletorDAL
                         {
                             ID = i.ID,
                             Active = i.Active,
-                            ImageList = i.ImageList,
                             ImagePath = i.ImagePath,
-                            Name = i.Name
+                            FileName = i.FileName
                         })).ToList();
             }
         }
