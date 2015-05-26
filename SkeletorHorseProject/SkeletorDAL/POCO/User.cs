@@ -20,11 +20,12 @@ namespace SkeletorDAL
 			
 		}
 
-		public User(string username, string password, int adminLevel)
+		public User(string username, string password, int adminLevel, string emailAdress)
 		{
 			Username = username;
 			Password = password;
 			AdminLevel = adminLevel;
+		    EmailAdress = emailAdress;
 			IsActive = true;
 		}
 	}

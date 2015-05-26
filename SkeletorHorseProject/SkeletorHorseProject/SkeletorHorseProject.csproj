@@ -126,7 +126,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -169,7 +171,7 @@
     <Content Include="Views\Gallery\UploadFile.cshtml" />
     <Content Include="Views\RegisterAdmin\Index.cshtml" />
     <Content Include="Views\RegisterAdmin\Register.cshtml" />
-    <Content Include="Views\Shared\_Contant.cshtml" />
+    <Content Include="Views\Shared\_Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
