@@ -41,7 +41,24 @@ textarea {
     color: #D1081D;
     background-color: transparent;
     text-decoration: none;
- }
+}
+
+.nav {
+    color: #D1081D;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.navbar-nav {
+    color: #D1081D;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar-right {
+    padding-right: 10px;
+}
 
 a:hover {
     color: #D1081D;
@@ -49,28 +66,10 @@ a:hover {
     background-color: transparent;
  }
 
-.navbar-collapse a:hover{
-    color: #D1081D;
-    text-decoration: none;
-    background-color: transparent;
-}
-.dropdown li ul {
-    font-size: 14px;
-}
-
-.dropdown li ul a:hover{
-    color: #D1081D;
-    text-decoration: none;
-    background-color: transparent;
-}
-.dropdown-menu ul li {
-    color: #D1081D;
-    text-decoration: none;
-    background-color: transparent;
-}
-
 .carousel {
     height: 300px;
+    margin-left: -50px;
+    margin-right: -50px;
     background-color: #696969;
 }
 
@@ -79,11 +78,13 @@ a:hover {
     min-height: 200px;
     margin-top: -20px;
     margin-bottom: -10px;
-    padding: 50px 50px 50px 50px;
+    padding: 0 50px 50px 50px;
     background-image: url('../Images/splash.png');
     background-repeat: no-repeat;
     background-position-x: right;
+    background-position-y: 80%;
     background-size: 40%;
+
     
 }
 
@@ -114,19 +115,3 @@ a:hover {
  
 }
 
-.nav {
-        color: #D1081D;
-    text-decoration: none;
-    background-color: #ffffff;
-}
-
-.navbar-nav {
-    color: #D1081D;
-    background-color: transparent;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.navbar-right {
-    padding-right: 10px;
-}

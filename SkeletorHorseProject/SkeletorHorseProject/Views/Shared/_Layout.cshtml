@@ -31,19 +31,22 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Contact", "Index", "Contact", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("About", "Index", "About", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Contact", "Index", "Contact", new {area = ""}, new {@class = "navbar-brand"})</li>
+                    <li>@Html.ActionLink("About", "Index", "About", new {area = ""}, new {@class = "navbar-brand"})</li>
                 </ul>
             </div>
 
         </div>
-        <div class="carousel">
-            Här är en Karusell!
-        </div>
+
+
 
         <div class="content">
             @RenderBody()
         </div>
+
+
+
+
         <div class="footer">
             @Html.Action("Index", "Footer")
         </div>
