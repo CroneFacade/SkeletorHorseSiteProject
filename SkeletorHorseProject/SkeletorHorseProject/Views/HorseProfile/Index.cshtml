@@ -1,5 +1,5 @@
 ﻿@using SkeletorDAL.Model
-@model SkeletorDAL.Model.HorseProfileModel
+@model SkeletorDAL.Model.HorseModel
 @{
     ViewBag.Title = "Index";
 }
@@ -25,20 +25,20 @@
         <div id="horseDescription" class="col-md-9">
             <div role="tabpanel" id="horseInformation">
                 <ul class="nav nav-tabs" role="tablist">
-                    
-                    @foreach (var information in Model.HorseInformationModels)
-                    {
-                        <li role="presentation" class="list"><a href="#@information.Heading" aria-controls="@information.Heading" role="tab" data-toggle="tab">@information.Heading</a></li>
-                    }
+                    <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+                        <li role="presentation"><a href="#medicine" aria-controls="medicine" role="tab" data-toggle="tab">Medicine</a></li>
+                        <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Famliy-tree</a></li>            
                 </ul>
                 <div class="tab-content">
-                    @foreach (var information in Model.HorseInformationModels)
-                    {
-                        <div role="tabpanel" class="tab-pane active" id="@information.Heading">
-                            @information.ContentText
-                        </div>
-                    }
-
+                    <div role="tabpanel" class="tab-pane active" id="description">
+                        @Model.Description
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="medicine">
+                        @Model.Medicine
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="family-tree">
+                        @Model.FamilyTree
+                    </div>
                 </div>
 
             </div>
