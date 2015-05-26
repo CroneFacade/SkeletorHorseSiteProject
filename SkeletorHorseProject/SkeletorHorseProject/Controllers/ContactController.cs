@@ -31,11 +31,19 @@ namespace SkeletorHorseProject.Controllers
                 message.Body = string.Format(body, model.EmailAdress, model.Subject, model.Message);
                 message.IsBodyHtml = true;
 
-                using (var smtp = new SmtpClient())
+                if (model.ValidationNumber =="5")
                 {
-                    await smtp.SendMailAsync(message);
-                    return RedirectToAction("Sent");
+                    using (var smtp = new SmtpClient())
+                    {
+                        await smtp.SendMailAsync(message);
+                        return RedirectToAction("Sent");
+                    }
                 }
+                else
+                {
+                    ViewBag.WrongAnswer = "Wrong Answer";
+                }
+
             }
             return View("Index");
 
@@ -46,5 +54,7 @@ namespace SkeletorHorseProject.Controllers
         {
             return View();
         }
+
+
     }
 }
