@@ -25,21 +25,19 @@
         <div id="horseDescription" class="col-md-9">
             <div role="tabpanel" id="horseInformation">
                 <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="list"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
-                        <li role="presentation" class="list"><a href="#medicine" aria-controls="medicine" role="tab" data-toggle="tab">Medicine</a></li>
-                        <li role="presentation" class="list"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Famliy-tree</a></li>
-                   
+                    <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+                        <li role="presentation"><a href="#medicine" aria-controls="medicine" role="tab" data-toggle="tab">Medicine</a></li>
+                        <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Famliy-tree</a></li>            
                 </ul>
                 <div class="tab-content">
-
                     <div role="tabpanel" class="tab-pane active" id="description">
                         @Model.Description
                     </div>
-                    <div role="tabpanel" class="tab-pane active" id="medicine">
+                    <div role="tabpanel" class="tab-pane" id="medicine">
                         @Model.Medicine
                     </div>
-                    <div role="tabpanel" class="tab-pane active" id="family-tree">
-                       @Model.FamilyTree
+                    <div role="tabpanel" class="tab-pane" id="family-tree">
+                        @Model.FamilyTree
                     </div>
                 </div>
 
