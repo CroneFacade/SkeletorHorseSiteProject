@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using SkeletorDAL.POCO;
 
 namespace SkeletorDAL
 {
@@ -19,6 +20,10 @@ namespace SkeletorDAL
 		public bool IsForSale { get; set; }
 		public string Price { get; set; }
 	    public bool IsSold { get; set; }
+		public string Description { get; set; }
+		public string Medicine { get; set; }
+		public string FamilyTree { get; set; }
+		public string ImagePath { get; set; }
 
 	    public Horse()
 		{
