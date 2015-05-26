@@ -138,6 +138,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseProfileController.cs" />
     <Compile Include="Controllers\HorseSaleController.cs" />
+    <Compile Include="Controllers\RegisterAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +165,8 @@
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Gallery\UploadFile.cshtml" />
+    <Content Include="Views\RegisterAdmin\Index.cshtml" />
+    <Content Include="Views\RegisterAdmin\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
