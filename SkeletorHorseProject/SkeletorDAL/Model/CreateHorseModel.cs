@@ -11,7 +11,6 @@ namespace SkeletorDAL.Model
 {
 	public class CreateHorseModel
 	{
-        public HttpPostedFileBase Avatar { get; set; }
 
 		[Required(ErrorMessage = "What is the name of the horse?")]
 		public string Name { get; set; }
