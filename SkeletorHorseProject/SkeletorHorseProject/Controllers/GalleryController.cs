@@ -40,7 +40,7 @@ namespace SkeletorHorseProject.Controllers
                     {
                         var path = Path.Combine(Server.MapPath("~/Images"), fileName);
                         file.SaveAs(path);
-                        Repository.AddNewFile(fileName);
+                        Repository.AddNewFile(fileName, path);
                     }
                     else
                     {
@@ -62,6 +62,17 @@ namespace SkeletorHorseProject.Controllers
                 ViewBag.Message = "Upload failed";
                 return RedirectToAction("UploadFile");
             }
+        }
+
+        public ActionResult DeleteImage(int id, string path)
+        {
+            string fullPath = Request.MapPath(path);
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
+            }
+            Repository.DeleteGalleryImage(id);
+            return RedirectToAction("Index");
         }
     }
 }

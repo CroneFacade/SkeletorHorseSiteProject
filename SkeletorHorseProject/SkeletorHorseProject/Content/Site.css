@@ -28,6 +28,10 @@ textarea {
     box-shadow: 0 0 10px 5px #C4C4C4;
 }
 
+.loggoButton {
+    margin-top: -16px;
+}
+
 .navigation {
     height: 120px;
     background-color: #ffffff;
@@ -75,7 +79,7 @@ a:hover {
     background-color: transparent;
  }
 
-.carousel {
+.slider-container {
     height: 300px;
     margin-left: -50px;
     margin-right: -50px;
@@ -85,7 +89,7 @@ a:hover {
 .content {
     background-color: #ffffff;
     font-family: Arial;
-    min-height: 200px;
+    min-height: 700px;
     margin-top: -20px;
     margin-bottom: -10px;
     padding: 0 50px 50px 50px;
@@ -124,8 +128,53 @@ a:hover {
     text-decoration: none;
  
 }
-.horse_ProfilePicture {
-    height: auto;
-
+#puffContainer {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.puff {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+#horseContainer {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+
+.horseIMG {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+.horse_ProfilePicture {
+    height: auto;
+}
+#contact {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+#googleMap {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+
+.slider-item {
+	width: auto;
+    height: 300px;
+	
+	opacity: 0.92;
+}
+
+.slider-item .panel-footer {
+	height: 55px;
+	line-height: 33px;
+}
+.hiddenoo {
+	display: none;
+}

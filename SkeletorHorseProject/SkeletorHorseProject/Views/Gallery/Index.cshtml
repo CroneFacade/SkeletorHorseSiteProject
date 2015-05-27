@@ -3,25 +3,32 @@
 
 
 <body>
-    <br />
-    <div class="btn-btn-default">
-        <input type="button" value="Upload new image" onclick="location.href='@Url.Action("UploadFile", "Gallery")'" />
-    </div>
+<br/>
+    @if (User.Identity.IsAuthenticated)
+    {  <div class="btn-btn-default">
+        <input type="button" value="Upload new image" onclick="location.href = '@Url.Action("UploadFile", "Gallery")'" />
+    </div> }
+  
 
     <br />
     @foreach (var image in Model)
     {
+        
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@image.ID" style="margin-bottom: 5px;">
             <img src="@Url.Content(image.ImagePath)" style="margin: -12px; height: 200px; width: 200px;" alt="Image" />
         </button>
+        if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Delete image", "DeleteImage", "Gallery", new { id = image.ID, path = image.ImagePath }, null)}
 
-        <div id="@image.ID" class="modal fade" tabindex="-1">
-            <div id="lightbox" class="modal-dialog">
-                <div class="modal-content; col-md-12; span9 centred" style="max-width: 3000px">
-                    <img src="@Url.Content(image.ImagePath)" class="img-responsive; img-responsive center-block" />
-                </div>
-            </div>
-        </div>
+
+                                                                                                <div id="@image.ID" class="modal fade" tabindex="-1">
+                                                                                                    <div id="lightbox" class="modal-dialog">
+                                                                                                        <div class="modal-content; col-md-12; span9 centred" style="max-width: 3000px">
+                                                                                                            <img src="@Url.Content(image.ImagePath)" class="img-responsive; img-responsive center-block" />
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
 
     }
 </body>
