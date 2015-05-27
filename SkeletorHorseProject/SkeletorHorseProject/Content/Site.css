@@ -25,6 +25,10 @@ textarea {
     box-shadow: 0 0 10px 5px #C4C4C4;
 }
 
+.loggoButton {
+    margin-top: -30px;
+}
+
 .navigation {
     height: 120px;
     background-color: #ffffff;
