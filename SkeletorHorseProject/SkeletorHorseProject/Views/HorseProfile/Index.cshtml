@@ -28,7 +28,7 @@
                     <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
                     <li role="presentation"><a href="#medicine" aria-controls="medicine" role="tab" data-toggle="tab">Medicine</a></li>
                     <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Famliy-tree</a></li>
-                    <li role="presentation"><a href="#facebook" aria-controls="family-tree" role="tab" data-toggle="tab">Facebook</a></li>
+                  
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="description">
@@ -40,8 +40,8 @@
                     <div role="tabpanel" class="tab-pane" id="family-tree">
                         @Model.FamilyTree
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="facebook">
-                        @Model.Facebook
+                    
+                      
 
                     </div>
 
@@ -50,11 +50,11 @@
 
         </div>
     </div>
-</div>
+
 
 <div class="row">
     <div class="col-md-3"></div>
-    <div id="horseBlog" class="col-md-9">@Html.Action("HorseBlog")</div>
+    <div id="horseBlog" class="col-md-9">@Html.Action("HorseBlog", new{id = @Model.ID})</div>
 
 </div>
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,7 @@ namespace SkeletorDAL.Model
         public string Description { get; set; }
         public string Medicine { get; set; }
         public string FamilyTree { get; set; }
-        public string Facebook { get; set; }
+        public string FacebookPath { get; set; }
+ 
     }
 }

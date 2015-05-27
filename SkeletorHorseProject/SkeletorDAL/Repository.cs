@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc.Html;
 using SkeletorDAL.Helpers;
 using SkeletorDAL.Model;
 using SkeletorDAL.POCO;
@@ -55,6 +57,7 @@ namespace SkeletorDAL
                         where h.ID == id
                         select new HorseModel()
                         {
+                            ID = id,
                             Name = h.Name,
                             Race = h.Race,
                             Withers = h.Withers,
@@ -221,6 +224,19 @@ namespace SkeletorDAL
                 }
                     );
                 context.SaveChanges();
+            }
+        }
+
+        public static string GetFacebookPath(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var query =
+                    (from h in context.Horses
+                    where h.ID == id
+                    select h.FacebookPath).First();
+
+                return query;
             }
         }
     }
