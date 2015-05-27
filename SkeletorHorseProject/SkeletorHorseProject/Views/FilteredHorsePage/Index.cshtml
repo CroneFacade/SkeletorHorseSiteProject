@@ -3,22 +3,31 @@
 @{
     ViewBag.Title = "title";
 }
+<body>
+    <div id="filtering_horses">
 
-<h4></h4>
-<div id="filtering_horses">
-
-    @if (Model.Count == 0)
-    {
-        <p>No horses avalible</p>
-    }
-    else
-    {
-        foreach (var horse in Model)
+        @if (Model.Count == 0)
         {
-            <img src="~/Images/e.jpg">
-            <p>Name: @horse.Name</p>
-            <p>Birthday: @horse.Birthday.ToShortDateString()</p>
-            <p>@Html.ActionLink(("Go to " + @horse.Name + "'s profile page"), "Index", "HorseProfile", new { id = @horse.ID }, null)</p>
+            <p>No horses avalible</p>
         }
-    }
-</div>
+        else
+        {
+            foreach (var horse in Model)
+            {
+                <div id="horse">
+                    <img src="~/Images/e.jpg">
+                    <p>
+                        Name: @horse.Name
+                    </p>
+                    <p>
+                        Birthday: @horse.Birthday.ToShortDateString()
+                    </p>
+                    <p>
+                        @Html.ActionLink(("Go to " + @horse.Name + "'s profile page"), "Index", "HorseProfile", new { id = @horse.ID }, null)
+                    </p>
+                </div>
+
+            }
+        }
+    </div>
+</body>

@@ -15,6 +15,9 @@ textarea {
     max-width: 280px;
 }
 
+#lightbox {
+    min-width: 30px;
+}
 .wrapper {
     max-width: 1024px;
     height: auto;
@@ -124,5 +127,9 @@ a:hover {
     background-color: transparent;
     text-decoration: none;
  
+}
+.horse_ProfilePicture {
+    height: auto;
+
 }
 

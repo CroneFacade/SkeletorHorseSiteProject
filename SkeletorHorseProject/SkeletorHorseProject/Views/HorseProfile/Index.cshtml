@@ -7,20 +7,26 @@
     <div class="row">
         <div id="horse_ProfilePicture" class="col-md-3">
             <img src="~/Images/ladda ned.jpg" />
-            <dl>
-                <dt>About @Model.Name</dt>
-                <dd>Wither: @Model.Withers</dd>
-                <dd>Race: @Model.Race</dd>
-                <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
-                <dt>Tävlingar och priser</dt>
-                <dd>
-                    @foreach (var award in Model.Awards)
-                    {
-                        @award
+	        <dl>
+		        <dt>About @Model.Name</dt>
+		        <dd>Wither: @Model.Withers</dd>
+		        <dd>Race: @Model.Race</dd>
+		        <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
+		        <dt>Tävlingar och priser</dt>
+		        <dd>
+			        @foreach (var award in Model.Awards)
+			        {
+				        @award
 
-                    }
-                </dd>
-            </dl>
+			        }
+		        </dd>
+	        </dl>
+			<p>
+				@if (User.Identity.IsAuthenticated)
+				{
+					@Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = Model.ID }, null)
+				}
+			</p>
         </div>
         <div id="horseDescription" class="col-md-9">
             <div role="tabpanel" id="horseInformation">
@@ -42,32 +48,19 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="facebook">
                         @Model.Facebook
-                        <div id="fb-root"></div>
-                        <div id="fb-root"></div>
-                        <script>
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.3";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-                        
-                        <div class="fb-post" data-href="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553" data-width="450">
-                            <div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553">
-                                <p>Be the first to know when we release a new video by subscribing to our official Facebook Developers YouTube channel! http://www.youtube.com/facebookdevelopers</p>Posted by 
-                                <a href="https://www.facebook.com/FacebookDevelopers">Facebook Developers</a> on <a href="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553">den 29 maj 2013</a></blockquote></div></div>
 
                     </div>
-                </div>
 
+                </div>
             </div>
+
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div id="horseBlog" class="col-md-9">@Html.Action("HorseBlog")</div>
-    </div>
 </div>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div id="horseBlog" class="col-md-9">@Html.Action("HorseBlog")</div>
+
+</div>
+

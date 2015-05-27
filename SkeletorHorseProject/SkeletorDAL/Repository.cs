@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace SkeletorDAL
                 return
                     (from u in context.Users
                      where u.AdminLevel == 1
-                     select u.EmailAdress).FirstOrDefault();
+                     select u.Email).FirstOrDefault();
             }
         }
         public static void RegisterAdmin(RegisterAdminModel model)
@@ -28,6 +29,7 @@ namespace SkeletorDAL
                 var newAdmin = new User()
                 {
                     Username = model.Username,
+                    Email = model.Email,
                     Password = model.Password.SuperHash(),
                     AdminLevel = model.AdminLevel,
                     IsActive = true,
@@ -181,7 +183,15 @@ namespace SkeletorDAL
                      }).ToList();
             }
         }
-
+		public static Horse GetFullInformationOnSpecificHorseById(int id)
+		{
+			using (var context = new HorseContext())
+			{
+				return (from h in context.Horses
+						where h.ID == id
+						select h).FirstOrDefault();
+			}
+		}
 
 	    public static void AddHorse(Horse newHorse)
 	    {
@@ -191,6 +201,14 @@ namespace SkeletorDAL
 			    context.SaveChanges();
 		    }
 	    }
+		public static void UpdateHorseProfile(Horse horse)
+		{
+			using (var context = new HorseContext())
+			{
+				context.Entry(horse).State = EntityState.Modified;
+				context.SaveChanges();
+			}
+		}
 
         public static List<ImageModel> GetAllGalleryImages()
         {
