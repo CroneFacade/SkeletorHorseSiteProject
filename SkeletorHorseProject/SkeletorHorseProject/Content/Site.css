@@ -124,4 +124,26 @@ a:hover {
     text-decoration: none;
  
 }
+#puffContainer {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.puff {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+#horseContainer {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.horseIMG {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
 
