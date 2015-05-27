@@ -34,6 +34,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Contact", "Index", "Contact", new {area = ""}, new {@class = "navbar-brand"})</li>
                     <li>@Html.ActionLink("About", "Index", "About", new {area = ""}, new {@class = "navbar-brand"})</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Log out", "LogOut", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    }
                 </ul>
             </div>
 
