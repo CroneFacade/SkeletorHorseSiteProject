@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using SkeletorDAL;
-using System.IO;
+using SkeletorDAL.Model;
 
 namespace SkeletorHorseProject.Controllers
 {
@@ -28,72 +29,14 @@ namespace SkeletorHorseProject.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult HorseBlog()
+        public ActionResult HorseBlog(int id)
         {
-            return PartialView();
-        }
-
-        public ActionResult UploadProfilePicture(int id)
-        {
-            return View(id);
-        }
-
-        [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase file, int id)
-        {
-
-            
-
-            try
+            var facebookUrl = Repository.GetFacebookPath(id);
+            var horseModel = new HorseModel()
             {
-                if (file.ContentLength > 0)
-                {
-                    var fileName = Path.GetFileName(file.FileName);
-                    fileName = id + fileName;
-
-                    if (fileName.EndsWith(".jpg") ||
-                        fileName.EndsWith(".png") ||
-                        fileName.EndsWith(".bmp") ||
-                        fileName.EndsWith(".gif") ||
-                        fileName.EndsWith(".jpeg"))
-                    {
-
-                        RemoveOldImage(id);
-
-                        var path = Path.Combine(Server.MapPath("~/ProfileImages"), fileName);
-                        file.SaveAs(path);
-                        Repository.AddNewFile(fileName, path);
-                    }
-                    else
-                    {
-                        ViewBag.Message = "Incorrect file type, please only upload jpg, jpeg, bmp, png or gif";
-                        return RedirectToAction("UploadProfilePicture", id);
-                    }
-
-
-                }
-                ViewBag.Message = "Upload successful";
-
-
-
-
-                return RedirectToAction("Index", id);
-            }
-            catch
-            {
-                ViewBag.Message = "Upload failed";
-                return RedirectToAction("UploadProfilePicture", id);
-            }
-        }
-
-        private void RemoveOldImage(int id)
-        {
-            string path = Repository.RemoveOldProfileImage(id);
-
-            if (System.IO.File.Exists(path))
-            {
-                System.IO.File.Delete(path);
-            }
+                FacebookPath = facebookUrl
+            };
+            return PartialView(horseModel);
         }
     }
 }
