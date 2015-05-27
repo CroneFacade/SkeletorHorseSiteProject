@@ -7,6 +7,7 @@
     <div class="row">
         <div id="horse_ProfilePicture" class="col-md-3">
             <img src="~/Images/ladda ned.jpg" />
+            @Html.ActionLink("Change Image", "UploadProfilePicture", "HorseProfile", new { id = Model.ID }, null)
             <dl>
                 <dt>About @Model.Name</dt>
                 <dd>Wither: @Model.Withers</dd>

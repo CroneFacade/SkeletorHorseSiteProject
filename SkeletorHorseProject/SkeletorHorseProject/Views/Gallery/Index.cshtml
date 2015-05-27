@@ -3,10 +3,12 @@
 
 
 <body>
-    <br />
-    <div class="btn-btn-default">
+<br/>
+    @if (User.Identity.IsAuthenticated)
+    {  <div class="btn-btn-default">
         <input type="button" value="Upload new image" onclick="location.href = '@Url.Action("UploadFile", "Gallery")'" />
-    </div>
+    </div> }
+  
 
     <br />
     @foreach (var image in Model)
