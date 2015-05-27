@@ -24,7 +24,7 @@
 			<p>
 				@if (User.Identity.IsAuthenticated)
 				{
-					@Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
+					@Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = Model.ID }, null)
 				}
 			</p>
         </div>
