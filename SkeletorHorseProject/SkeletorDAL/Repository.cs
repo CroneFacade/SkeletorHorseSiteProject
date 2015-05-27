@@ -11,7 +11,7 @@ namespace SkeletorDAL
 {
     public static class Repository
     {
-        
+
         public static string GetAdminEmail()
         {
             using (var context = new HorseContext())
@@ -39,24 +39,12 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
-        public static List<HorseModel> GetAllHorses()
+        public static List<Horse> GetAllHorses()
         {
             using (var context = new HorseContext())
             {
                 return (from h in context.Horses
-                        select new HorseModel()
-                        {
-                           ID = h.ID,
-                            Name = h.Name,
-                            Race = h.Race,
-                            Withers = h.Withers,
-                            Birthday = h.Birthday,
-                            Description = h.Description,
-                            Medicine = h.Medicine,
-                            FamilyTree = h.FamilyTree,
-                            Awards = h.Awards
-                        
-                        }).ToList();
+                        select h).ToList();
             }
         }
 
@@ -76,8 +64,9 @@ namespace SkeletorDAL
                             Description = h.Description,
                             Medicine = h.Medicine,
                             FamilyTree = h.FamilyTree,
-                            Awards = h.Awards
-                        
+                            Awards = h.Awards,
+                            ImagePath = h.ImagePath
+
                         }).FirstOrDefault();
             }
         }
@@ -104,7 +93,8 @@ namespace SkeletorDAL
                                          Race = h.Race,
                                          Withers = h.Withers,
                                          IsSold = h.IsSold,
-                                         State = "All horses"
+                                         State = "All horses",
+                                         ImagePath = h.ImagePath
                                      }).ToList();
                         break;
 
@@ -123,8 +113,8 @@ namespace SkeletorDAL
                                          Race = h.Race,
                                          Withers = h.Withers,
                                          IsSold = h.IsSold,
-                                         State = "Horses for sale"
-
+                                         State = "Horses for sale",
+                                         ImagePath = h.ImagePath
                                      }).ToList();
                         break;
                     case 3:
@@ -142,8 +132,8 @@ namespace SkeletorDAL
                                          Race = h.Race,
                                          Withers = h.Withers,
                                          IsSold = h.IsSold,
-                                         State = "Sold horses"
-
+                                         State = "Sold horses",
+                                         ImagePath = h.ImagePath
                                      }).ToList();
                         break;
                 }
@@ -196,32 +186,32 @@ namespace SkeletorDAL
                      }).ToList();
             }
         }
-		public static Horse GetFullInformationOnSpecificHorseById(int id)
-		{
-			using (var context = new HorseContext())
-			{
-				return (from h in context.Horses
-						where h.ID == id
-						select h).FirstOrDefault();
-			}
-		}
+        public static Horse GetFullInformationOnSpecificHorseById(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                return (from h in context.Horses
+                        where h.ID == id
+                        select h).FirstOrDefault();
+            }
+        }
 
-	    public static void AddHorse(Horse newHorse)
-	    {
-		    using (var context = new HorseContext())
-		    {
-			    context.Horses.Add(newHorse);
-			    context.SaveChanges();
-		    }
-	    }
-		public static void UpdateHorseProfile(Horse horse)
-		{
-			using (var context = new HorseContext())
-			{
-				context.Entry(horse).State = EntityState.Modified;
-				context.SaveChanges();
-			}
-		}
+       public static void AddHorse(Horse newHorse)
+     {
+      using (var context = new HorseContext())
+      {
+       context.Horses.Add(newHorse);
+       context.SaveChanges();
+      }
+     }
+  public static void UpdateHorseProfile(Horse horse)
+  {
+   using (var context = new HorseContext())
+   {
+    context.Entry(horse).State = EntityState.Modified;
+    context.SaveChanges();
+   }
+  }
 
         public static List<ImageModel> GetAllGalleryImages()
         {
@@ -271,6 +261,29 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
+
+        public static void AddNewFilePathToHorse(string imagePath, int horseId)
+        {
+            using (var context = new HorseContext())
+            {
+                var horse = context.Horses.Find(horseId);
+                horse.ImagePath = imagePath;
+                context.SaveChanges();
+            }
+        }
+
+        public static string GetFacebookPath(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var query =
+                    (from h in context.Horses
+                     where h.ID == id
+                     select h.FacebookPath).First();
+
+                return query;
+            }
+        }
     }
 }
-
+        
