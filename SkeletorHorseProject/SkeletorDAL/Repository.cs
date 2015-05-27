@@ -64,7 +64,8 @@ namespace SkeletorDAL
                             Description = h.Description,
                             Medicine = h.Medicine,
                             FamilyTree = h.FamilyTree,
-                            Awards = h.Awards
+                            Awards = h.Awards,
+                            ImagePath = h.ImagePath
                         
                         }).FirstOrDefault();
             }
@@ -92,7 +93,8 @@ namespace SkeletorDAL
                                          Race = h.Race,
                                          Withers = h.Withers,
                                          IsSold = h.IsSold,
-                                         State = "All horses"
+                                         State = "All horses",
+                                         ImagePath = h.ImagePath
                                      }).ToList();
                         break;
 
@@ -111,8 +113,8 @@ namespace SkeletorDAL
                                          Race = h.Race,
                                          Withers = h.Withers,
                                          IsSold = h.IsSold,
-                                         State = "Horses for sale"
-
+                                         State = "Horses for sale",
+                                         ImagePath = h.ImagePath
                                      }).ToList();
                         break;
                     case 3:
@@ -130,8 +132,8 @@ namespace SkeletorDAL
                                          Race = h.Race,
                                          Withers = h.Withers,
                                          IsSold = h.IsSold,
-                                         State = "Sold horses"
-
+                                         State = "Sold horses",
+                                         ImagePath = h.ImagePath
                                      }).ToList();
                         break;
                 }
@@ -256,6 +258,19 @@ namespace SkeletorDAL
             {
                 var image = context.GalleryImages.Find(id);
                 context.GalleryImages.Remove(image);
+                context.SaveChanges();
+            }
+        }
+
+        public static void AddNewFilePathToHorse(string imageName, int horseId)
+        {
+            string imagePath = @"~/ProfileImages/" + imageName;
+
+
+            using (var context = new HorseContext())
+            {
+                var horse = context.Horses.Find(horseId);
+                horse.ImagePath = imagePath;
                 context.SaveChanges();
             }
         }

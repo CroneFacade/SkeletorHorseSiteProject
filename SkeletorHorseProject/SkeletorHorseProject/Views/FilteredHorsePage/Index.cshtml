@@ -15,7 +15,7 @@
             foreach (var horse in Model)
             {
                 <div id="horse">
-                    <img src="~/Images/e.jpg">
+                    <img src="@Url.Content(horse.ImagePath)" style=" height: 250px; width: 200px;" alt="Image" />
                     <p>
                         Name: @horse.Name
                     </p>

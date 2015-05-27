@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div id="horse_ProfilePicture" class="col-md-3">
-            <img src="~/Images/ladda ned.jpg" />
+            <img src="@Url.Content(Model.ImagePath)" style=" height: 250px; width: 200px;" alt="Image" />
             @Html.ActionLink("Change Image", "UploadProfilePicture", "HorseProfile", new { id = Model.ID }, null)
             <dl>
                 <dt>About @Model.Name</dt>

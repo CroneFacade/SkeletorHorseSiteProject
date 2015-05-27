@@ -23,5 +23,7 @@ namespace SkeletorDAL.Model
         public string Medicine { get; set; }
         public string FamilyTree { get; set; }
         public string Facebook { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

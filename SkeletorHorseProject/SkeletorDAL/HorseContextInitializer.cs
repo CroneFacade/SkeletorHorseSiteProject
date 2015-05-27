@@ -19,11 +19,12 @@ namespace SkeletorDAL
 
 		public HorseContextInitializer()
 		{
-			var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005","650.000"){Description = "Detta är Helges beskrivning", Medicine = "Detta är Helges Medicin", FamilyTree = "Detta är Helges släktträd"};
-            var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty, "350.000") { Description = "Detta är Jens beskrivning", Medicine = "Detta är Jens Medicin", FamilyTree = "Detta är Jens släktträd" };
-            var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000") { Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
-            var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000") { Description = "Detta är Adolf Medicin", Medicine = "Detta är Adolf beskrivning", FamilyTree = "Detta är Adolf släktträd" };
+            var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005", "650.000") { ImagePath = @"~/ProfileImages/1Dummy1.jpg", Description = "Detta är Helges beskrivning", Medicine = "Detta är Helges Medicin", FamilyTree = "Detta är Helges släktträd" };
+            var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty, "350.000") { ImagePath = "~/ProfileImages/2Dummy2.jpg", Description = "Detta är Jens beskrivning", Medicine = "Detta är Jens Medicin", FamilyTree = "Detta är Jens släktträd" };
+            var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000") { ImagePath = "~/ProfileImages/3Dummy3.jpg", Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
+            var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000") { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Adolf Medicin", Medicine = "Detta är Adolf beskrivning", FamilyTree = "Detta är Adolf släktträd" };
            
+            
 
 			Helge.IsForSale = true;
 			Adolf.IsForSale = true;
@@ -48,6 +49,29 @@ namespace SkeletorDAL
             {
                 FileName = "Dummy3.jpg",
                 ImagePath = "~/Images/Dummy3.jpg",
+                Active = true
+            });
+
+            //Profile pictures
+
+            galleryImages.Add(new GalleryImage()
+            {
+                FileName = "1Dummy1.jpg",
+                ImagePath = "~/ProfileImages/1Dummy1.jpg",
+                Active = true
+            });
+
+            galleryImages.Add(new GalleryImage()
+            {
+                FileName = "2Dummy2.jpg",
+                ImagePath = "~/ProfileImages/2Dummy2.jpg",
+                Active = true
+            });
+
+            galleryImages.Add(new GalleryImage()
+            {
+                FileName = "3Dummy3.jpg",
+                ImagePath = "~/ProfileImages/3Dummy3.jpg",
                 Active = true
             });
             

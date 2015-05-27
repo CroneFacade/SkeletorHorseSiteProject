@@ -42,7 +42,7 @@ namespace SkeletorHorseProject.Controllers
         public ActionResult Upload(HttpPostedFileBase file, int id)
         {
 
-            
+            string imageFileName = "";
 
             try
             {
@@ -63,6 +63,7 @@ namespace SkeletorHorseProject.Controllers
                         var path = Path.Combine(Server.MapPath("~/ProfileImages"), fileName);
                         file.SaveAs(path);
                         Repository.AddNewFile(fileName, path);
+                        imageFileName = fileName;
                     }
                     else
                     {
@@ -74,10 +75,10 @@ namespace SkeletorHorseProject.Controllers
                 }
                 ViewBag.Message = "Upload successful";
 
+                Repository.AddNewFilePathToHorse(imageFileName, id);
 
 
-
-                return RedirectToAction("Index", id);
+                return RedirectToAction("Index", new { id = id });
             }
             catch
             {

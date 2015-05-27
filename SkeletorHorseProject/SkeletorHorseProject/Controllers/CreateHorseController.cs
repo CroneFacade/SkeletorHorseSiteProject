@@ -34,7 +34,7 @@ namespace SkeletorHorseProject.Controllers
 					Description = model.Description,
 					Medicine = model.Medicine,
 					FamilyTree = model.FamilyTree,
-					ImagePath = model.ImagePath
+                    ImagePath = "~/ProfileImages/DefaultHead.jpg"
 				};
 				Repository.AddHorse(newHorse);
 				return RedirectToAction("CreateHorse", "CreateHorse");
