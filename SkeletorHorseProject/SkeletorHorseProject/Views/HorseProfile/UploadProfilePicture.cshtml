@@ -1,0 +1,16 @@
+﻿@model int
+
+@{
+    ViewBag.Title = "UploadProfilePicture";
+}
+
+<h2>UploadProfilePicture</h2>
+
+@using (Html.BeginForm("Upload", "HorseProfile", new {id = Model}, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Upload an avatar image</legend>
+        <p>Only .jpg .jpeg . png and .gif allowed, image will be resized to 200px wide and 250px high</p>
+        <div class="editor-field"> @Html.TextBox("file", "", new { type = "file" }) </div>
+        <div class="editor-field"> <input type="submit" value="Upload" /> </div>
+    </fieldset> }
