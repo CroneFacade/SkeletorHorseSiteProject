@@ -39,12 +39,24 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
-        public static List<Horse> GetAllHorses()
+        public static List<HorseModel> GetAllHorses()
         {
             using (var context = new HorseContext())
             {
                 return (from h in context.Horses
-                        select h).ToList();
+                        select new HorseModel()
+                        {
+                           ID = h.ID,
+                            Name = h.Name,
+                            Race = h.Race,
+                            Withers = h.Withers,
+                            Birthday = h.Birthday,
+                            Description = h.Description,
+                            Medicine = h.Medicine,
+                            FamilyTree = h.FamilyTree,
+                            Awards = h.Awards
+                        
+                        }).ToList();
             }
         }
 
