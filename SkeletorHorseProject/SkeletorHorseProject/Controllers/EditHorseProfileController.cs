@@ -27,7 +27,9 @@ namespace SkeletorHorseProject.Controllers
 	        model.FamilyTree = currentHorse.FamilyTree;
 	        model.IsForSale = currentHorse.IsForSale;
 	        model.Price = currentHorse.Price;
-	        model.ImagePath = currentHorse.ImagePath;
+            model.IsActive = !currentHorse.IsActive;
+            model.FacebookPath = currentHorse.FacebookPath;
+            model.IsSold = !currentHorse.IsSold;
             return View(model);
         }
 		[HttpPost]
@@ -47,7 +49,9 @@ namespace SkeletorHorseProject.Controllers
 				currentHorse.FamilyTree = model.FamilyTree;
 				currentHorse.IsForSale = model.IsForSale;
 				currentHorse.Price = model.Price;
-				currentHorse.ImagePath = model.ImagePath;
+		        currentHorse.IsActive = !model.IsActive;
+		        currentHorse.FacebookPath = model.FacebookPath;
+		        currentHorse.IsSold = !model.IsSold;
 				Repository.UpdateHorseProfile(currentHorse);
 			    return RedirectToAction("Index", "HorseProfile", new { id = id});
 		    }

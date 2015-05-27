@@ -31,7 +31,11 @@ namespace SkeletorDAL.Model
 		public bool IsForSale { get; set; }
 		[Required(ErrorMessage = "What is the price of the horse?")]
 		public string Price { get; set; }
-		[DisplayName("Image path")]
-		public string ImagePath { get; set; }
+		[DisplayName("Facebook path")]
+	    public string FacebookPath { get; set; }
+        [DisplayName("Sold")]
+        public bool IsSold { get; set; }
+        [DisplayName("Delete horse")]
+        public bool IsActive { get; set; }
 	}
 }

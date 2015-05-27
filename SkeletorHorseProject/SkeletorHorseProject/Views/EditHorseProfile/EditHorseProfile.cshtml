@@ -51,21 +51,32 @@
 			<td>@Html.TextAreaFor(m => m.Awards)</td>
 			<td>@Html.ValidationMessageFor(model => model.Awards, "")</td>
 		</tr>
-		<tr>
-			<td>@Html.LabelFor(m => m.IsForSale)</td>
-			<td>@Html.CheckBoxFor(m => m.IsForSale)</td>
-			<td>@Html.ValidationMessageFor(model => model.IsForSale, "")</td>
-		</tr>
+	    <tr>
+	        <td>@Html.LabelFor(m => m.IsForSale)</td>
+	        <td>@Html.CheckBoxFor(m => m.IsForSale)</td>
+	        <td>@Html.ValidationMessageFor(model => model.IsForSale, "")</td>
+	    </tr>
+
 		<tr>
 			<td>@Html.LabelFor(m => m.Price)</td>
 			<td>@Html.TextBoxFor(m => m.Price)</td>
 			<td>@Html.ValidationMessageFor(model => model.Price, "")</td>
 		</tr>
-		<tr>
-			<td>@Html.LabelFor(m => m.ImagePath)</td>
-			<td>@Html.TextBoxFor(m => m.ImagePath)</td>
-			<td>@Html.ValidationMessageFor(model => model.ImagePath, "")</td>
-		</tr>
+	    <tr>
+	        <td>@Html.LabelFor(m => m.FacebookPath)</td>
+	        <td>@Html.TextBoxFor(m => m.FacebookPath)</td>
+	        <td>@Html.ValidationMessageFor(model => model.FacebookPath, "")</td>
+	    </tr>
+	    <tr>
+	        <td>@Html.LabelFor(m => m.IsActive)</td>
+	        <td>@Html.CheckBoxFor(m => m.IsActive)</td>
+	        <td>@Html.ValidationMessageFor(model => model.IsActive, "")</td>
+	    </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.IsSold)</td>
+            <td>@Html.CheckBoxFor(m => m.IsSold)</td>
+            <td>@Html.ValidationMessageFor(model => model.IsSold, "")</td>
+        </tr>
 	</table>
 	<input type="submit" value="Submit" />
 

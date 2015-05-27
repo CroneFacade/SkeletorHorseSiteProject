@@ -102,6 +102,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
+    <Content Include="SlideImages\11273579_10153379658529083_1657643802_o.jpg" />
+    <Content Include="SlideImages\11273734_10153379658554083_662969880_o.jpg" />
+    <Content Include="SlideImages\11281642_10153379658559083_1233648017_o.jpg" />
+    <Content Include="SlideImages\11303908_10153379658549083_514197402_o.jpg" />
+    <Content Include="SlideImages\11351072_10153379658534083_240410302_o.jpg" />
     <Content Include="Images\e.jpg" />
     <Content Include="Images\Dummy1.jpg" />
     <Content Include="Images\Dummy2.jpg" />
