@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Permissions;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using SkeletorDAL.POCO;
@@ -24,13 +25,13 @@ namespace SkeletorDAL
 		public string Medicine { get; set; }
 		public string FamilyTree { get; set; }
 		public string ImagePath { get; set; }
-		public string Facebook { get; set; }
+		public string FacebookPath { get; set; }
 
 		public Horse()
 		{
 			
 		}
-		public Horse(string name, DateTime birthday, string race, int withers, string awards, string price)
+		public Horse(string name, DateTime birthday, string race, int withers, string awards, string price, string url)
 		{
 			Name = name;
 			Birthday = birthday;
@@ -40,6 +41,9 @@ namespace SkeletorDAL
 			IsForSale = false;
 			Price = price;
 			IsActive = true;
+		    FacebookPath = url;
 		}
+
+	
 	}
 }
