@@ -28,6 +28,10 @@ textarea {
     box-shadow: 0 0 10px 5px #C4C4C4;
 }
 
+.loggoButton {
+    margin-top: -16px;
+}
+
 .navigation {
     height: 120px;
     background-color: #ffffff;
@@ -123,5 +127,30 @@ a:hover {
     background-color: transparent;
     text-decoration: none;
  
+}
+#puffContainer {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.puff {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+#horseContainer {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.horseIMG {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+.horse_ProfilePicture {
+    height: auto;
 }
 

@@ -1,0 +1,72 @@
+﻿@model SkeletorDAL.Model.EditHorseProfileModel
+@{
+	ViewBag.Title = "EditHorseProfile";
+}
+
+<h2>EDITERA HESTAR</h2>
+
+
+@using (Html.BeginForm("EditHorseProfile", "EditHorseProfile", new { id = Model.ID }, FormMethod.Post, null))
+{
+
+	@Html.AntiForgeryToken()
+	<table>
+		<tr>
+			<td>@Html.LabelFor(m => m.Name)</td>
+			<td>@Html.TextBoxFor(m => m.Name)</td>
+			<td>@Html.ValidationMessageFor(model => model.Name, "")</td>
+		</tr>
+		<tr>
+			<td>@Html.LabelFor(m => m.Birthday)</td>
+			<td>@Html.TextBoxFor(m => m.Birthday)</td>
+			<td>@Html.ValidationMessageFor(model => model.Birthday, "")</td>
+		</tr>
+		<tr>
+			<td>@Html.LabelFor(m => m.Race)</td>
+			<td>@Html.TextBoxFor(m => m.Race)</td>
+			<td>@Html.ValidationMessageFor(model => model.Race, "")</td>
+		</tr>
+		<tr>
+			<td>@Html.LabelFor(m => m.Withers)</td>
+			<td>@Html.TextBoxFor(m => m.Withers)</td>
+			<td>@Html.ValidationMessageFor(model => model.Withers, "")</td>
+		</tr>
+		<tr>
+			<td>@Html.LabelFor(m => m.Description)</td>
+			<td>@Html.TextAreaFor(m => m.Description)</td>
+			<td>@Html.ValidationMessageFor(model => model.Description, "")</td>
+		</tr>
+		<tr>
+			<td>@Html.LabelFor(m => m.Medicine)</td>
+			<td>@Html.TextAreaFor(m => m.Medicine)</td>
+			<td>@Html.ValidationMessageFor(model => model.Medicine, "")</td>
+		</tr>
+		<tr>
+			<td>@Html.LabelFor(m => m.FamilyTree)</td>
+			<td>@Html.TextAreaFor(m => m.FamilyTree)</td>
+			<td>@Html.ValidationMessageFor(model => model.FamilyTree, "")</td>
+		</tr>
+		<tr>
+			<td>@Html.LabelFor(m => m.Awards)</td>
+			<td>@Html.TextAreaFor(m => m.Awards)</td>
+			<td>@Html.ValidationMessageFor(model => model.Awards, "")</td>
+		</tr>
+		<tr>
+			<td>@Html.LabelFor(m => m.IsForSale)</td>
+			<td>@Html.CheckBoxFor(m => m.IsForSale)</td>
+			<td>@Html.ValidationMessageFor(model => model.IsForSale, "")</td>
+		</tr>
+		<tr>
+			<td>@Html.LabelFor(m => m.Price)</td>
+			<td>@Html.TextBoxFor(m => m.Price)</td>
+			<td>@Html.ValidationMessageFor(model => model.Price, "")</td>
+		</tr>
+		<tr>
+			<td>@Html.LabelFor(m => m.ImagePath)</td>
+			<td>@Html.TextBoxFor(m => m.ImagePath)</td>
+			<td>@Html.ValidationMessageFor(model => model.ImagePath, "")</td>
+		</tr>
+	</table>
+	<input type="submit" value="Submit" />
+
+}
