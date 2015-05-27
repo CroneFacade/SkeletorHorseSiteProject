@@ -15,6 +15,9 @@ textarea {
     max-width: 280px;
 }
 
+#lightbox {
+    min-width: 30px;
+}
 .wrapper {
     max-width: 1024px;
     height: auto;
@@ -39,6 +42,12 @@ textarea {
 
 .navigation a:hover {
     color: #D1081D;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.navigation a:active {
+    color: #000066;
     background-color: transparent;
     text-decoration: none;
 }
@@ -75,6 +84,7 @@ a:hover {
 
 .content {
     background-color: #ffffff;
+    font-family: Arial;
     min-height: 200px;
     margin-top: -20px;
     margin-bottom: -10px;

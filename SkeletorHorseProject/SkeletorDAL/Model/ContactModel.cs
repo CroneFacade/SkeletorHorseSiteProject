@@ -14,14 +14,16 @@ namespace SkeletorDAL.Model
         public string Subject { get; set; }
 
         [Required(ErrorMessage = "Can not be empty")]
-        [EmailAddress(ErrorMessage = "Invalid adress")]
+        [EmailAddress(ErrorMessage = "Invalid adress, try again (example@teamnordahl.com)")]
         public string EmailAdress { get; set; }
 
         [Required(ErrorMessage = "Can not be empty")]
         [MaxLength(1000)]
         [DataType(DataType.MultilineText)]
         public string Message { get; set; }
-
         public HttpPostedFileBase Upload { get; set; }
+        
+        [Required(ErrorMessage = "Invalid Captcha")]
+        public string ValidationNumber { get; set; }
     }
 }

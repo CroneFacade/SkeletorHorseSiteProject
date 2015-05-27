@@ -31,13 +31,28 @@ namespace SkeletorHorseProject.Controllers
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Images"), fileName);
-                    file.SaveAs(path);
-                    Repository.AddNewFile(fileName);
+
+                    if (fileName.EndsWith(".jpg") ||
+                        fileName.EndsWith(".png") ||
+                        fileName.EndsWith(".bmp") ||
+                        fileName.EndsWith(".gif") ||
+                        fileName.EndsWith(".jpeg"))
+                    {
+                        var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                        file.SaveAs(path);
+                        Repository.AddNewFile(fileName);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Incorrect file type, please only upload jpg, jpeg, bmp, png or gif";
+                        return RedirectToAction("UploadFile");
+                    }
+
+
                 }
                 ViewBag.Message = "Upload successful";
 
-                
+
 
 
                 return RedirectToAction("Index");
