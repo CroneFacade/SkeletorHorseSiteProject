@@ -137,6 +137,7 @@
     <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CreateHorseController.cs" />
+    <Compile Include="Controllers\EditHorseProfileController.cs" />
     <Compile Include="Controllers\FilteredHorsePageController.cs" />
     <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
@@ -168,6 +169,7 @@
     <Content Include="Views\HorseSale\Index.cshtml" />
     <Content Include="Views\CreateHorse\CreateHorse.cshtml" />
     <Content Include="Views\Contact\Sent.cshtml" />
+    <Content Include="Views\EditHorseProfile\EditHorseProfile.cshtml" />
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />

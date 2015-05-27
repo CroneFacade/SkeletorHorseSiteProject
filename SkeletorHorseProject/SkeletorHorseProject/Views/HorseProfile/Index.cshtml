@@ -7,20 +7,26 @@
     <div class="row">
         <div id="horse_ProfilePicture" class="col-md-3">
             <img src="~/Images/ladda ned.jpg" />
-            <dl>
-                <dt>About @Model.Name</dt>
-                <dd>Wither: @Model.Withers</dd>
-                <dd>Race: @Model.Race</dd>
-                <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
-                <dt>Tävlingar och priser</dt>
-                <dd>
-                    @foreach (var award in Model.Awards)
-                    {
-                        @award
+	        <dl>
+		        <dt>About @Model.Name</dt>
+		        <dd>Wither: @Model.Withers</dd>
+		        <dd>Race: @Model.Race</dd>
+		        <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
+		        <dt>Tävlingar och priser</dt>
+		        <dd>
+			        @foreach (var award in Model.Awards)
+			        {
+				        @award
 
-                    }
-                </dd>
-            </dl>
+			        }
+		        </dd>
+	        </dl>
+			<p>
+				@if (User.Identity.IsAuthenticated)
+				{
+					@Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
+				}
+			</p>
         </div>
         <div id="horseDescription" class="col-md-9">
             <div role="tabpanel" id="horseInformation">

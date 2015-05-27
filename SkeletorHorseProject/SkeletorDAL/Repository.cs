@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -182,7 +183,15 @@ namespace SkeletorDAL
                      }).ToList();
             }
         }
-
+		public static Horse GetFullInformationOnSpecificHorseById(int id)
+		{
+			using (var context = new HorseContext())
+			{
+				return (from h in context.Horses
+						where h.ID == id
+						select h).FirstOrDefault();
+			}
+		}
 
 	    public static void AddHorse(Horse newHorse)
 	    {
@@ -192,6 +201,14 @@ namespace SkeletorDAL
 			    context.SaveChanges();
 		    }
 	    }
+		public static void UpdateHorseProfile(Horse horse)
+		{
+			using (var context = new HorseContext())
+			{
+				context.Entry(horse).State = EntityState.Modified;
+				context.SaveChanges();
+			}
+		}
 
         public static List<ImageModel> GetAllGalleryImages()
         {
