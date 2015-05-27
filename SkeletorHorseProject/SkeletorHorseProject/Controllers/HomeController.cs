@@ -12,8 +12,8 @@ namespace SkeletorHorseProject.Controllers
         // GET: Home
         public ActionResult Index()
         {
-	        var horses =Repository.GetAllHorses();
-            return View(horses);
+	        var images =Repository.GetAllGalleryImages();
+            return View(images);
         }
     }
 }

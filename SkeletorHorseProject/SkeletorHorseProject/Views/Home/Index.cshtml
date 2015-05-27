@@ -1,22 +1,14 @@
 ﻿@using System.Collections.Specialized
 @using SkeletorHorseProject.Controllers
-@model List<SkeletorDAL.Model.HorseModel>
-
+@model List<SkeletorDAL.Model.ImageModel>
 
 <div class="slider-container">
     <div class="hiddenoo">
         <div class="owl-carousel slider">
-            @foreach (var horse in Model)
+            @foreach (var image in Model)
             {
                 <div class="panel panel-primary slider-item">
-                    <div class="panel-heading">@horse.Name</div>
-                    <div class="panel-body">
-                        @horse.Description
-                    </div>
-                    <div class="panel-footer">
-                        By @Html.ActionLink(horse.Name, "Index", "HorseProfile", new { id = 2 }, null)
-                        <a class="btn btn-primary pull-right" href="@Url.Action("Index", "FilteredHorsePage", null)">Visit Blog;</a>
-                    </div>
+                    <img src="@Url.Content(image.ImagePath)" />
                 </div>
             }
         </div>
