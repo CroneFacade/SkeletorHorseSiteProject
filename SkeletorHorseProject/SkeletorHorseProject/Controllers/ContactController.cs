@@ -31,7 +31,7 @@ namespace SkeletorHorseProject.Controllers
                 message.Body = string.Format(body, model.EmailAdress, model.Subject, model.Message);
                 message.IsBodyHtml = true;
 
-                if (model.ValidationNumber =="5")
+                if (model.ValidationNumber == "gHft3")
                 {
                     using (var smtp = new SmtpClient())
                     {
@@ -41,7 +41,7 @@ namespace SkeletorHorseProject.Controllers
                 }
                 else
                 {
-                    ViewBag.WrongAnswer = "Wrong Answer";
+                    ViewBag.WrongAnswer = "Wrong answer. Please try again and this time make sure you've spelled it right.";
                 }
 
             }
