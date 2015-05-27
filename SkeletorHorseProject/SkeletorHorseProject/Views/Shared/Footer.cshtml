@@ -1,0 +1,13 @@
+﻿@model  List<SkeletorDAL.Model.FooterModel>
+@{
+    ViewBag.Title = "Footer";
+}
+
+
+@foreach (var link in Model)
+{
+    <ul>
+        <li><a href="@link.Url">@link.Name</a></li>
+    </ul>
+}
+

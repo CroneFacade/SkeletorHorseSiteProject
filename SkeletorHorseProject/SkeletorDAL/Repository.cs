@@ -10,6 +10,17 @@ namespace SkeletorDAL
 {
     public static class Repository
     {
+        
+        public static string GetAdminEmail()
+        {
+            using (var context = new HorseContext())
+            {
+                return
+                    (from u in context.Users
+                     where u.AdminLevel == 1
+                     select u.EmailAdress).FirstOrDefault();
+            }
+        }
         public static void RegisterAdmin(RegisterAdminModel model)
         {
             using (var context = new HorseContext())
@@ -51,6 +62,7 @@ namespace SkeletorDAL
                             Medicine = h.Medicine,
                             FamilyTree = h.FamilyTree,
                             Awards = h.Awards
+                        
                         }).FirstOrDefault();
             }
         }

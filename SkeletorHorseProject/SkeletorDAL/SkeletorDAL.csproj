@@ -79,7 +79,10 @@
     <Compile Include="HorseContext.cs" />
     <Compile Include="HorseContextInitializer.cs" />
     <Compile Include="Model\AboutReadOnlyModel.cs" />
+    <Compile Include="Model\ContactModel.cs" />
     <Compile Include="Model\CreateHorseModel.cs" />
+
+    <Compile Include="Model\FooterModel.cs" />
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Model\HorseInfomationModel.cs" />
     <Compile Include="Model\HorseModel.cs" />
