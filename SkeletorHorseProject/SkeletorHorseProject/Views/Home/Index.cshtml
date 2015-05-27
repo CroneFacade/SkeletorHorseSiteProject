@@ -1,8 +1,26 @@
 ﻿@using System.Collections.Specialized
 @using SkeletorHorseProject.Controllers
+@model List<SkeletorDAL.Model.HorseModel>
 
-<div class="carousel">
-     Här är en karusell!
+
+<div class="slider-container">
+    <div class="hiddenoo">
+        <div class="owl-carousel slider">
+            @foreach (var horse in Model)
+            {
+                <div class="panel panel-primary slider-item">
+                    <div class="panel-heading">@horse.Name</div>
+                    <div class="panel-body">
+                        @horse.Description
+                    </div>
+                    <div class="panel-footer">
+                        By @Html.ActionLink(horse.Name, "Index", "HorseProfile", new { id = 2 }, null)
+                        <a class="btn btn-primary pull-right" href="@Url.Action("Index", "FilteredHorsePage", null)">Visit Blog;</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
 
 
@@ -41,3 +59,25 @@
         ">
     </div>
 </div>
+@section Styles {
+    <link href="~/Content/owl.carousel.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".slider").owlCarousel({
+                autoPlay: 5000,
+                singleItem: true,
+                //items: 1,
+                responsive: true,
+                navigation: false,
+                afterInit: function (event) {
+                    $(".slider-container > .hiddenoo").fadeIn(100);
+                }
+            });
+        });
+    </script>
+}
+
