@@ -178,6 +178,7 @@
     <Content Include="Views\RegisterAdmin\Index.cshtml" />
     <Content Include="Views\RegisterAdmin\Register.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
+    <Content Include="Views\Gallery\DeleteImage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
