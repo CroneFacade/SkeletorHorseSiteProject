@@ -89,7 +89,7 @@ a:hover {
 .content {
     background-color: #ffffff;
     font-family: Arial;
-    min-height: 200px;
+    min-height: 700px;
     margin-top: -20px;
     margin-bottom: -10px;
     padding: 0 50px 50px 50px;
@@ -152,6 +152,16 @@ a:hover {
 }
 .horse_ProfilePicture {
     height: auto;
+}
+#contact {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+#googleMap {
+    width: 300px;
+    float: left;
+    padding: 30px;
 }
 
 .slider-item {
