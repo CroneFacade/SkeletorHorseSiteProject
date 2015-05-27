@@ -223,6 +223,16 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
+
+        public static void DeleteGalleryImage(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var image = context.GalleryImages.Find(id);
+                context.GalleryImages.Remove(image);
+                context.SaveChanges();
+            }
+        }
     }
 }
 
