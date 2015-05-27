@@ -13,19 +13,19 @@ namespace SkeletorDAL
 		public string Password { get; set; }
 		public int AdminLevel { get; set; }
 		public bool IsActive { get; set; }
-        public string EmailAdress { get; set; }
+        public string Email { get; set; }
 
 		public User()
 		{
 			
 		}
 
-		public User(string username, string password, int adminLevel, string emailAdress)
+		public User(string username, string password, int adminLevel, string email)
 		{
 			Username = username;
 			Password = password;
 			AdminLevel = adminLevel;
-		    EmailAdress = emailAdress;
+		    Email = email;
 			IsActive = true;
 		}
 	}

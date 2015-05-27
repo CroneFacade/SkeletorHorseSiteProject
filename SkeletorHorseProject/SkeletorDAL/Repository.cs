@@ -18,7 +18,7 @@ namespace SkeletorDAL
                 return
                     (from u in context.Users
                      where u.AdminLevel == 1
-                     select u.EmailAdress).FirstOrDefault();
+                     select u.Email).FirstOrDefault();
             }
         }
         public static void RegisterAdmin(RegisterAdminModel model)
@@ -28,6 +28,7 @@ namespace SkeletorDAL
                 var newAdmin = new User()
                 {
                     Username = model.Username,
+                    Email = model.Email,
                     Password = model.Password.SuperHash(),
                     AdminLevel = model.AdminLevel,
                     IsActive = true,

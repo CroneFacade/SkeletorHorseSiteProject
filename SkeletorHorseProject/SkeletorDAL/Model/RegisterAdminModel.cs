@@ -15,6 +15,10 @@ namespace SkeletorDAL.Model
         public string Username { get; set; }
 
         [Required]
+        [EmailAddress(ErrorMessage = "Invalid address, try again (example@teamnordahl.se)")]
+        public string Email { get; set; }
+
+        [Required]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
         [StringLength(20, MinimumLength = 1, ErrorMessage = "Password must be 1-20 characters long")]
