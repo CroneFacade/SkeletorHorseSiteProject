@@ -56,6 +56,7 @@ namespace SkeletorDAL
                         where h.ID == id
                         select new HorseModel()
                         {
+                           ID = h.ID,
                             Name = h.Name,
                             Race = h.Race,
                             Withers = h.Withers,
@@ -237,6 +238,16 @@ namespace SkeletorDAL
                 Active = true
                 }
                     );
+                context.SaveChanges();
+            }
+        }
+
+        public static void DeleteGalleryImage(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var image = context.GalleryImages.Find(id);
+                context.GalleryImages.Remove(image);
                 context.SaveChanges();
             }
         }
