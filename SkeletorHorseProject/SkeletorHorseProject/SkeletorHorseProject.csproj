@@ -106,6 +106,7 @@
     <Content Include="Images\Dummy2.jpg" />
     <Content Include="Images\Dummy3.jpg" />
     <Content Include="Images\ladda ned.jpg" />
+    <Content Include="resources\logga.png" />
     <Content Include="resources\splash.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
