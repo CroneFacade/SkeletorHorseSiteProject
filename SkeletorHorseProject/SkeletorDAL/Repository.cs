@@ -56,7 +56,7 @@ namespace SkeletorDAL
                         where h.ID == id
                         select new HorseModel()
                         {
-                           ID = h.ID,
+                            ID = h.ID,
                             Name = h.Name,
                             Race = h.Race,
                             Withers = h.Withers,
@@ -227,21 +227,29 @@ namespace SkeletorDAL
             }
         }
 
-        public static void AddNewFile(string fileName)
+        public static void AddNewFile(string fileName, string path)
         {
             using (var context = new HorseContext())
             {
                 context.GalleryImages.Add(new GalleryImage()
                 {
                 FileName = fileName,
-                ImagePath = "~/Images/" + fileName,
+                ImagePath = path,
                 Active = true
                 }
                     );
                 context.SaveChanges();
             }
         }
-
+        public static string RemoveOldProfileImage(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                return (from h in context.GalleryImages
+                        where h.FileName.StartsWith(id + "")
+                        select h.ImagePath).FirstOrDefault();
+            };
+        }
         public static void DeleteGalleryImage(int id)
         {
             using (var context = new HorseContext())
