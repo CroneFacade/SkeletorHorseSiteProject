@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using SkeletorDAL;
+using SkeletorDAL.Model;
 using System.IO;
 
 namespace SkeletorHorseProject.Controllers
@@ -25,12 +27,6 @@ namespace SkeletorHorseProject.Controllers
             }
 
 
-        }
-
-        [ChildActionOnly]
-        public ActionResult HorseBlog()
-        {
-            return PartialView();
         }
 
         public ActionResult UploadProfilePicture(int id)
@@ -82,19 +78,30 @@ namespace SkeletorHorseProject.Controllers
             }
             catch
             {
-                ViewBag.Message = "Upload failed";
+                ViewBag.Message = "Upload Failed";
                 return RedirectToAction("UploadProfilePicture", id);
             }
         }
 
         private void RemoveOldImage(int id)
         {
-            string path = Repository.RemoveOldProfileImage(id);
-
-            if (System.IO.File.Exists(path))
+            var path = Repository.RemoveOldProfileImage(id);
+            if (System.IO.File.Exists(path)) //Detta funkar inte just nu
             {
                 System.IO.File.Delete(path);
             }
+        }
+
+
+        [ChildActionOnly]
+        public ActionResult HorseBlog(int id)
+        {
+            var facebookUrl = Repository.GetFacebookPath(id);
+            var horseModel = new HorseModel()
+            {
+                FacebookPath = facebookUrl
+            };
+            return PartialView(horseModel);
         }
     }
 }

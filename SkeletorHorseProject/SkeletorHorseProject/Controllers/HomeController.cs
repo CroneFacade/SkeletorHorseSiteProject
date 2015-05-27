@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using SkeletorDAL;
 
 namespace SkeletorHorseProject.Controllers
@@ -12,8 +13,14 @@ namespace SkeletorHorseProject.Controllers
         // GET: Home
         public ActionResult Index()
         {
-	        Repository.GetAllHorses();
-            return View();
+	        var images =Repository.GetAllGalleryImages();
+            return View(images);
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
         }
     }
 }

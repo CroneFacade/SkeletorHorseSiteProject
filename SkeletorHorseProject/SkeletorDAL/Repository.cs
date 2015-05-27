@@ -11,7 +11,7 @@ namespace SkeletorDAL
 {
     public static class Repository
     {
-        
+
         public static string GetAdminEmail()
         {
             using (var context = new HorseContext())
@@ -66,7 +66,6 @@ namespace SkeletorDAL
                             FamilyTree = h.FamilyTree,
                             Awards = h.Awards,
                             ImagePath = h.ImagePath
-                        
                         }).FirstOrDefault();
             }
         }
@@ -186,32 +185,32 @@ namespace SkeletorDAL
                      }).ToList();
             }
         }
-		public static Horse GetFullInformationOnSpecificHorseById(int id)
-		{
-			using (var context = new HorseContext())
-			{
-				return (from h in context.Horses
-						where h.ID == id
-						select h).FirstOrDefault();
-			}
-		}
+        public static Horse GetFullInformationOnSpecificHorseById(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                return (from h in context.Horses
+                        where h.ID == id
+                        select h).FirstOrDefault();
+            }
+        }
 
-	    public static void AddHorse(Horse newHorse)
-	    {
-		    using (var context = new HorseContext())
-		    {
-			    context.Horses.Add(newHorse);
-			    context.SaveChanges();
-		    }
-	    }
-		public static void UpdateHorseProfile(Horse horse)
-		{
-			using (var context = new HorseContext())
-			{
-				context.Entry(horse).State = EntityState.Modified;
-				context.SaveChanges();
-			}
-		}
+        public static void AddHorse(Horse newHorse)
+        {
+            using (var context = new HorseContext())
+            {
+                context.Horses.Add(newHorse);
+                context.SaveChanges();
+            }
+        }
+        public static void UpdateHorseProfile(Horse horse)
+        {
+            using (var context = new HorseContext())
+            {
+                context.Entry(horse).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
 
         public static List<ImageModel> GetAllGalleryImages()
         {
@@ -235,9 +234,9 @@ namespace SkeletorDAL
             {
                 context.GalleryImages.Add(new GalleryImage()
                 {
-                FileName = fileName,
-                ImagePath = path,
-                Active = true
+                    FileName = fileName,
+                    ImagePath = path,
+                    Active = true
                 }
                     );
                 context.SaveChanges();
@@ -245,12 +244,20 @@ namespace SkeletorDAL
         }
         public static string RemoveOldProfileImage(int id)
         {
+            string path = "";
+            
             using (var context = new HorseContext())
             {
-                return (from h in context.GalleryImages
+                GalleryImage image = (from h in context.GalleryImages
                         where h.FileName.StartsWith(id + "")
-                        select h.ImagePath).FirstOrDefault();
+                        select h).FirstOrDefault();
+
+                path = image.ImagePath;
+                context.GalleryImages.Remove(image);
+                context.SaveChanges();
             };
+
+            return path;
         }
         public static void DeleteGalleryImage(int id)
         {
@@ -266,12 +273,24 @@ namespace SkeletorDAL
         {
             string imagePath = @"~/ProfileImages/" + imageName;
 
-
             using (var context = new HorseContext())
             {
                 var horse = context.Horses.Find(horseId);
                 horse.ImagePath = imagePath;
                 context.SaveChanges();
+            }
+        }
+
+        public static string GetFacebookPath(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var query =
+                    (from h in context.Horses
+                     where h.ID == id
+                     select h.FacebookPath).First();
+
+                return query;
             }
         }
     }

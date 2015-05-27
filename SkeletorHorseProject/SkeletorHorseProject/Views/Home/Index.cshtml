@@ -1,8 +1,18 @@
 ﻿@using System.Collections.Specialized
 @using SkeletorHorseProject.Controllers
+@model List<SkeletorDAL.Model.ImageModel>
 
-<div class="carousel">
-     Här är en karusell!
+<div class="slider-container">
+    <div class="hiddenoo">
+        <div class="owl-carousel slider">
+            @foreach (var image in Model)
+            {
+                <div class="panel panel-primary slider-item">
+                    <img src="@Url.Content(image.ImagePath)" />
+                </div>
+            }
+        </div>
+    </div>
 </div>
 
 
@@ -21,23 +31,46 @@
     </div>
 </div>
 
-<div id="horseContainer" class="col-md-12">
+<div id="puffHorseContainer" class="col-md-12">
     <div class="row">
-        <div class="horseIMG">
-            <img src="/Images/Dummy1.jpg">
+        <div class="horsePuff">
+            <img class="horsePuffImg" src="~/Images/e.jpg" />
         </div>
-        <div class="horseIMG">
-            <img src="/Images/Dummy2.jpg">
+        <div class="horsePuff">
+            <img class="horsePuffImg" src="~/Images/e.jpg" />
         </div>
-        <div class="horseIMG">
-            <img src="/Images/Dummy3.jpg">
+        <div class="horsePuff">
+            <img class="horsePuffImg" src="~/Images/e.jpg" />
         </div>
-        <div class="horseIMG">
-            <img src="/Images/e.jpg">
+        <div class="horsePuff">
+            <img class="horsePuffImg" src="~/Images/e.jpg" />
         </div>
-        <div class="horseIMG">
-            <img src="/Images/ladda ned.jpg" style="margin: -12px; height: 100px; width: 100px;" alt="Image">
+        <div class="horsePuff">
+            <img class="horsePuffImg" src="~/Images/e.jpg" />
         </div>
-        ">
     </div>
 </div>
+
+
+@section Styles {
+    <link href="~/Content/owl.carousel.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".slider").owlCarousel({
+                autoPlay: 5000,
+                singleItem: true,
+                //items: 1,
+                responsive: true,
+                navigation: false,
+                afterInit: function (event) {
+                    $(".slider-container > .hiddenoo").fadeIn(100);
+                }
+            });
+        });
+    </script>
+}
+

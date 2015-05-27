@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,5 +14,6 @@ namespace SkeletorDAL.Model
         public string Race { get; set; }
         public int Withers { get; set; }
         public string Awards { get; set; }
+        public string FacebookPath { get; set; }
     }
 }

@@ -79,17 +79,12 @@ a:hover {
     background-color: transparent;
  }
 
-.carousel {
-    height: 300px;
-    margin-left: -50px;
-    margin-right: -50px;
-    background-color: #696969;
-}
+
 
 .content {
     background-color: #ffffff;
     font-family: Arial;
-    min-height: 200px;
+    min-height: 1000px;
     margin-top: -20px;
     margin-bottom: -10px;
     padding: 0 50px 50px 50px;
@@ -130,6 +125,7 @@ a:hover {
 }
 #puffContainer {
     max-width: 1024px;
+    min-height: 300px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -138,10 +134,21 @@ a:hover {
     float: left;
     padding: 30px;
 }
-#horseContainer {
+#puffHorseContainer {
     max-width: 1024px;
+    min-height: 300px;
     margin-left: auto;
     margin-right: auto;
+}
+.horsePuff {
+    width: 175px;
+    float: left;
+    padding: 10px;
+}
+
+.horsePuffImg {
+    height: 140px;
+    height: 140px;
 }
 
 
@@ -154,3 +161,34 @@ a:hover {
     height: auto;
 }
 
+.slider-container {
+    height: 310px;
+    margin-left: -50px;
+    margin-right: -50px;
+    background-color: #696969;
+}
+
+#contact {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+#googleMap {
+    width: 300px;
+    float: left;
+    padding: 30px;
+}
+
+.slider-item {
+	width: auto;
+    height: 290px;
+
+}
+
+.slider-item .panel-footer {
+	height: 55px;
+	line-height: 33px;
+}
+.hiddenoo {
+	display: none;
+}
