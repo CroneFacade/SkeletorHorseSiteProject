@@ -81,7 +81,7 @@
     <Compile Include="Model\AboutReadOnlyModel.cs" />
     <Compile Include="Model\ContactModel.cs" />
     <Compile Include="Model\CreateHorseModel.cs" />
-
+    <Compile Include="Model\EditHorseProfileModel.cs" />
     <Compile Include="Model\FooterModel.cs" />
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Model\HorseInfomationModel.cs" />

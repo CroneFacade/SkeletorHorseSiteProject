@@ -63,5 +63,16 @@ namespace SkeletorHorseProject.Controllers
                 return RedirectToAction("UploadFile");
             }
         }
+
+        public ActionResult DeleteImage(int id, string path)
+        {
+            string fullPath = Request.MapPath(path);
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
+            }
+            Repository.DeleteGalleryImage(id);
+            return RedirectToAction("Index");
+        }
     }
 }

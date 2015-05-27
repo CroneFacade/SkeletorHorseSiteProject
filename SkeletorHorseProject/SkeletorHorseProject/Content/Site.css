@@ -28,6 +28,10 @@ textarea {
     box-shadow: 0 0 10px 5px #C4C4C4;
 }
 
+.loggoButton {
+    margin-top: -16px;
+}
+
 .navigation {
     height: 120px;
     background-color: #ffffff;
@@ -145,5 +149,8 @@ a:hover {
     width: 300px;
     float: left;
     padding: 30px;
+}
+.horse_ProfilePicture {
+    height: auto;
 }
 
