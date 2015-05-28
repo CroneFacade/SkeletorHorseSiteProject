@@ -86,9 +86,12 @@ namespace SkeletorHorseProject.Controllers
         private void RemoveOldImage(int id)
         {
             var path = Repository.RemoveOldProfileImage(id);
-            if (System.IO.File.Exists(path)) //Detta funkar inte just nu
+
+            string fullPath = Request.MapPath(path);
+
+            if (System.IO.File.Exists(fullPath)) 
             {
-                System.IO.File.Delete(path);
+                System.IO.File.Delete(fullPath);
             }
         }
 

@@ -113,7 +113,6 @@
     <Content Include="Images\Dummy3.jpg" />
     <Content Include="Images\ladda ned.jpg" />
     <Content Include="ProfileImages\1Dummy1.jpg" />
-    <Content Include="ProfileImages\2Dummy2.jpg" />
     <Content Include="ProfileImages\3Dummy3.jpg" />
     <Content Include="ProfileImages\DefaultHead.jpg" />
     <Content Include="resources\norobot.jpg" />
