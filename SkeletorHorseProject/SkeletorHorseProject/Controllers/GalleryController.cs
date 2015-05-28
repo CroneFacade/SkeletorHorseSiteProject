@@ -39,7 +39,9 @@ namespace SkeletorHorseProject.Controllers
                         fileName.EndsWith(".jpeg"))
                     {
                         var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                    
                         file.SaveAs(path);
+                       path = "~/Images/" + fileName;
                         Repository.AddNewFile(fileName, path);
                     }
                     else

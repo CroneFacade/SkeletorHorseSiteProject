@@ -5,29 +5,36 @@
 }
 <body>
     <div id="filtering_horses" style="overflow: hidden">
+        <table>
+            <tr id="rad">
 
-        @if (Model.Count == 0)
-        {
-            <p>No horses avalible</p>
-        }
-        else
-        {
-                foreach (var horse in Model)
-                {
-                <div id="horse">
-                    <img src="@Url.Content(horse.ImagePath)" style=" height: 250px; width: 200px;" alt="Image" />
-                    <p>
-                        Name: @horse.Name
-                    </p>
-                    <p>
-                        Birthday: @horse.Birthday.ToShortDateString()
-                    </p>
-                    <p>
-                        @Html.ActionLink(("Go to " + @horse.Name + "'s profile page"), "Index", "HorseProfile", new { id = @horse.ID }, null)
-                    </p>
-                </div>
-
-                }
-        }
+                
+                    @if (Model.Count == 0)
+                    {
+                        <p>No horses avalible</p>
+                    }
+                    else
+                    {
+                        foreach (var horse in Model)
+                        {
+                            <td>
+                                <div id="horse" style="margin-right: 20px">
+                                    <img src="@Url.Content(horse.ImagePath)" style=" height: 250px; width: 200px;" alt="Image" />
+                                    <p>
+                                        Name: @horse.Name
+                                    </p>
+                                    <p>
+                                        Birthday: @horse.Birthday.ToShortDateString()
+                                    </p>
+                                    <p>
+                                        @Html.ActionLink(("Go to " + @horse.Name + "'s profile page"), "Index", "HorseProfile", new { id = @horse.ID }, null)
+                                    </p>
+                                </div>
+                            </td>
+                        }
+                    }
+                            
+            </tr>
+        </table>
     </div>
 </body>

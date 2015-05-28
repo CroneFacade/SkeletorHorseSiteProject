@@ -20,10 +20,10 @@ namespace SkeletorDAL
 
 		public HorseContextInitializer()
 		{
-            var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005", "650.000", ("https://www.facebook.com/pages/Vida-V%C3%A4rldens-Vaccin/320385781327841?ref=hl")) { ImagePath = @"~/ProfileImages/1Dummy1.jpg", Description = "Detta är Helges beskrivning", Medicine = "Detta är Helges Medicin", FamilyTree = "Detta är Helges släktträd" };
-            var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty, "350.000", ("https://www.facebook.com/ByggmaxSverige?fref=ts")) { ImagePath = "~/ProfileImages/2Dummy2.gif", Description = "Detta är Jens beskrivning", Medicine = "Detta är Jens Medicin", FamilyTree = "Detta är Jens släktträd" };
-            var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000", "www.facebook.com/therese.sango?fref=ufi") { ImagePath = "~/ProfileImages/3Dummy3.jpg", Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
-            var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", "www.facebook.com/therese.sango?fref=ufi") { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Adolf Medicin", Medicine = "Detta är Adolf beskrivning", FamilyTree = "Detta är Adolf släktträd" };
+            var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005", "650.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = @"~/ProfileImages/1Dummy1.jpg", Description = "Detta är Helges beskrivning", Medicine = "Detta är Helges Medicin", FamilyTree = "Detta är Helges släktträd" };
+            var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty, "350.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/2Dummy2.gif", Description = "Detta är Jens beskrivning", Medicine = "Detta är Jens Medicin", FamilyTree = "Detta är Jens släktträd" };
+            var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/3Dummy3.jpg", Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
+            var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Adolf Medicin", Medicine = "Detta är Adolf beskrivning", FamilyTree = "Detta är Adolf släktträd" };
 
            
             
@@ -42,8 +42,8 @@ namespace SkeletorDAL
 
             galleryImages.Add(new GalleryImage()
             {
-                FileName = "Dummy2.gif",
-                ImagePath = "~/Images/Dummy2.gif",
+                FileName = "Dummy2.jpg",
+                ImagePath = "~/Images/Dummy2.jpg",
                 Active = true
             });
 
@@ -65,8 +65,8 @@ namespace SkeletorDAL
 
             galleryImages.Add(new GalleryImage()
             {
-                FileName = "2Dummy2.jpg",
-                ImagePath = "~/ProfileImages/2Dummy2.jpg",
+                FileName = "2Dummy2.gif",
+                ImagePath = "~/ProfileImages/2Dummy2.gif",
                 Active = true
             });
 

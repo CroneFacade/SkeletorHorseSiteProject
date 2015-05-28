@@ -217,7 +217,7 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 return (from i in context.GalleryImages
-                        where i.Active == true
+                        where i.Active == true && i.ImagePath.StartsWith(@"~/Images/")
                         select (new ImageModel
                         {
                             ID = i.ID,

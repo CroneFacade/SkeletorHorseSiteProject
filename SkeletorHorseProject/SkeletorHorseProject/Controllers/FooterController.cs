@@ -13,7 +13,12 @@ namespace SkeletorHorseProject.Controllers
         public ActionResult Index()
         {
             List<FooterModel> list = new List<FooterModel>()
+            
             {
+                new FooterModel()  {
+                Name = "",
+                Url = "blogspot.com"
+            },
                 new FooterModel()  {
                 Name = "Triton",
                 Url = "blogspot.com"
