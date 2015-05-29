@@ -17,15 +17,15 @@ namespace SkeletorDAL.Model
 		public DateTime Birthday { get; set; }
 		[Required(ErrorMessage = "Pony, Camargue etc.")]
 		public string Race { get; set; }
-		[Required(ErrorMessage = "Centimeter. (mankhöjd)")]
+		[Required(ErrorMessage = "Wither in Centimeters. (mankhöjd)")]
 		public int Withers { get; set; }
-		[Required(ErrorMessage = "If the horse has won any awards.")]
+		[Required(ErrorMessage = "Has the horse won any awards.")]
 		public string Awards { get; set; }
-		[Required(ErrorMessage = "Tell something about the horse.")]
+		[Required(ErrorMessage = "Write something about the horse.")]
 		public string Description { get; set; }
 		[Required(ErrorMessage = "Does the horse need any medicine?")]
 		public string Medicine { get; set; }
-		[Required(ErrorMessage = "Tell something about the family tree."), DisplayName("Family tree")]
+		[Required(ErrorMessage = "Write something about the family tree."), DisplayName("Family tree")]
 		public string FamilyTree { get; set; }
 		[Required(ErrorMessage = "Is the horse for sale?"), DisplayName("For sale")]
 		public bool IsForSale { get; set; }
