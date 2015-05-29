@@ -37,11 +37,11 @@ namespace SkeletorDAL.Model
         public bool IsSold { get; set; }
         [DisplayName("Delete horse")]
         public bool IsActive { get; set; }
-
+        [DisplayName("Last updated")]
         public DateTime LastUpdated { get; set; }
         public bool Breeding { get; set; }
-        public bool Sold { get; set; }
         public string Gender { get; set; }
+        [DisplayName("Is for rent")]
         public bool Rent { get; set; }
 	}
 }

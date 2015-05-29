@@ -1,83 +1,108 @@
 ﻿@model SkeletorDAL.Model.EditHorseProfileModel
 @{
-	ViewBag.Title = "EditHorseProfile";
+    ViewBag.Title = "EditHorseProfile";
 }
 
-<h2>Edit Horses</h2>
+<h2>EDIT HORSE</h2>
+
 
 
 @using (Html.BeginForm("EditHorseProfile", "EditHorseProfile", new { id = Model.ID }, FormMethod.Post, null))
 {
 
-	@Html.AntiForgeryToken()
-	<table>
-		<tr>
-			<td>@Html.LabelFor(m => m.Name)</td>
-			<td>@Html.TextBoxFor(m => m.Name)</td>
-			<td>@Html.ValidationMessageFor(model => model.Name, "")</td>
-		</tr>
-		<tr>
-			<td>@Html.LabelFor(m => m.Birthday)</td>
-			<td>@Html.TextBoxFor(m => m.Birthday)</td>
-			<td>@Html.ValidationMessageFor(model => model.Birthday, "")</td>
-		</tr>
-		<tr>
-			<td>@Html.LabelFor(m => m.Race)</td>
-			<td>@Html.TextBoxFor(m => m.Race)</td>
-			<td>@Html.ValidationMessageFor(model => model.Race, "")</td>
-		</tr>
-		<tr>
-			<td>@Html.LabelFor(m => m.Withers)</td>
-			<td>@Html.TextBoxFor(m => m.Withers)</td>
-			<td>@Html.ValidationMessageFor(model => model.Withers, "")</td>
-		</tr>
-		<tr>
-			<td>@Html.LabelFor(m => m.Description)</td>
-			<td>@Html.TextAreaFor(m => m.Description)</td>
-			<td>@Html.ValidationMessageFor(model => model.Description, "")</td>
-		</tr>
-		<tr>
-			<td>@Html.LabelFor(m => m.Medicine)</td>
-			<td>@Html.TextAreaFor(m => m.Medicine)</td>
-			<td>@Html.ValidationMessageFor(model => model.Medicine, "")</td>
-		</tr>
-		<tr>
-			<td>@Html.LabelFor(m => m.FamilyTree)</td>
-			<td>@Html.TextAreaFor(m => m.FamilyTree)</td>
-			<td>@Html.ValidationMessageFor(model => model.FamilyTree, "")</td>
-		</tr>
-		<tr>
-			<td>@Html.LabelFor(m => m.Awards)</td>
-			<td>@Html.TextAreaFor(m => m.Awards)</td>
-			<td>@Html.ValidationMessageFor(model => model.Awards, "")</td>
-		</tr>
-	    <tr>
-	        <td>@Html.LabelFor(m => m.IsForSale)</td>
-	        <td>@Html.CheckBoxFor(m => m.IsForSale)</td>
-	        <td>@Html.ValidationMessageFor(model => model.IsForSale, "")</td>
-	    </tr>
+    @Html.AntiForgeryToken()
+    <div>
+        <fieldset>
+            <div>@Html.LabelFor(m => m.Name)</div>
+            <div>
+                @Html.TextBoxFor(m => m.Name)
+                @Html.ValidationMessageFor(model => model.Name, "")
+            </div>
+            <div>@Html.LabelFor(m => m.Birthday)</div>
+            <div>
+                @Html.TextBoxFor(m => m.Birthday)
+                @Html.ValidationMessageFor(model => model.Birthday, "")
+            </div>
+            <div>@Html.LabelFor(m => m.Race)</div>
+            <div>
+                @Html.TextBoxFor(m => m.Race)
+                @Html.ValidationMessageFor(model => model.Race, "")
+            </div>
+            <div>@Html.LabelFor(m => m.Withers)</div>
+            <div>
+                @Html.TextBoxFor(m => m.Withers)
+                @Html.ValidationMessageFor(model => model.Withers, "")
+            </div>
 
-		<tr>
-			<td>@Html.LabelFor(m => m.Price)</td>
-			<td>@Html.TextBoxFor(m => m.Price)</td>
-			<td>@Html.ValidationMessageFor(model => model.Price, "")</td>
-		</tr>
-	    <tr>
-	        <td>@Html.LabelFor(m => m.FacebookPath)</td>
-	        <td>@Html.TextBoxFor(m => m.FacebookPath)</td>
-	        <td>@Html.ValidationMessageFor(model => model.FacebookPath, "")</td>
-	    </tr>
-	    <tr>
-	        <td>@Html.LabelFor(m => m.IsActive)</td>
-	        <td>@Html.CheckBoxFor(m => m.IsActive)</td>
-	        <td>@Html.ValidationMessageFor(model => model.IsActive, "")</td>
-	    </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.IsSold)</td>
-            <td>@Html.CheckBoxFor(m => m.IsSold)</td>
-            <td>@Html.ValidationMessageFor(model => model.IsSold, "")</td>
-        </tr>
-	</table>
-	<input type="submit" value="Submit" />
+
+            <div>@Html.LabelFor(m => m.Description)</div>
+            <div>
+                @Html.TextAreaFor(m => m.Description)
+                @Html.ValidationMessageFor(model => model.Description, "")
+            </div>
+
+            <div>@Html.LabelFor(m => m.Medicine)</div>
+            <div>
+                @Html.TextAreaFor(m => m.Medicine)
+                @Html.ValidationMessageFor(model => model.Medicine, "")
+            </div>
+
+
+            <div>@Html.LabelFor(m => m.FamilyTree)</div>
+            <div>
+                @Html.TextAreaFor(m => m.FamilyTree)
+                @Html.ValidationMessageFor(model => model.FamilyTree, "")
+            </div>
+
+
+            <div>@Html.LabelFor(m => m.Awards)</div>
+            <div>
+                @Html.TextAreaFor(m => m.Awards)
+                @Html.ValidationMessageFor(model => model.Awards, "")
+            </div>
+
+            <div>@Html.LabelFor(m => m.Price)</div>
+            <div>
+                @Html.TextBoxFor(m => m.Price)
+                @Html.ValidationMessageFor(model => model.Price, "")
+            </div>
+
+            <div>@Html.LabelFor(m => m.FacebookPath)</div>
+            <div>
+                @Html.TextBoxFor(m => m.FacebookPath)
+                @Html.ValidationMessageFor(model => model.FacebookPath, "")
+            </div>
+
+            <div>@Html.LabelFor(m => m.Gender)</div>
+            <div>
+                Male @Html.RadioButtonFor(m => m.Gender, "Male")
+                Female @Html.RadioButtonFor(m => m.Gender, "Female")
+
+                @Html.ValidationMessageFor(model => model.IsSold, "")
+            </div>
+            @*@Html.RadioButtonFor(model => model.gender, "Male", new { @checked = true }) and
+                @Html.RadioButtonFor(model => model.gender, "Female", new { @checked = true })*@
+
+
+            <div>@Html.LabelFor(m => m.IsForSale)</div>
+            <div>
+                @Html.CheckBoxFor(m => m.IsForSale)
+                @Html.ValidationMessageFor(model => model.IsForSale, "")
+            </div>
+
+            <div>@Html.LabelFor(m => m.IsSold)</div>
+            <div>
+                @Html.CheckBoxFor(m => m.IsSold)
+                @Html.ValidationMessageFor(model => model.IsSold, "")
+            </div>
+
+            <div>@Html.LabelFor(m => m.IsActive)</div>
+            <div>
+                @Html.CheckBoxFor(m => m.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive, "")
+            </div>
+            <input type="submit" value="Submit" />
+        </fieldset>
+    </div>
 
 }
