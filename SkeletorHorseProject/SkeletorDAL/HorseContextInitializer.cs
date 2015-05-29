@@ -83,29 +83,30 @@ namespace SkeletorDAL
             });
             
             
-
-
-			var HelgeBlog = new Blog("Detta är Helges Blogg", Helge, DateTime.Now, new List<Post>()
+			var HelgeBlog = new Blog("Detta är Helges Blogg", DateTime.Now, new List<Post>()
 			{
 				new Post("Helges första inlägg", DateTime.Now, "Hjehhej"),
 				new Post("Helges andra inlägg", DateTime.Now, "ghahhaha")
 			});
-			var JensBlog = new Blog("Detta är Jens Blogg", Jens, DateTime.Now, new List<Post>()
+		    Helge.Blog = HelgeBlog;
+			var JensBlog = new Blog("Detta är Jens Blogg", DateTime.Now, new List<Post>()
 			{
 					new Post("Jens första inlägg", DateTime.Now, "jensjensjens"),
 				new Post("Jens andra inlägg", DateTime.Now, "HUAhuhuehu")
 			});
-			var GöstaBlog = new Blog("Detta är Gösta Blogg", Gösta, DateTime.Now, new List<Post>()
+		    Jens.Blog = JensBlog;
+			var GöstaBlog = new Blog("Detta är Gösta Blogg", DateTime.Now, new List<Post>()
 			{
 				new Post("Gösta första inlägg", DateTime.Now, "ffffffffffffffffffffffffffffsafa"),
 				new Post("Gösta andra inlägg", DateTime.Now, "Gösta e bääääääääst")
 			});
-			var AdolfBlog = new Blog("Detta är Adolf Blogg", Adolf, DateTime.Now, new List<Post>()
+		    Gösta.Blog = GöstaBlog;
+			var AdolfBlog = new Blog("Detta är Adolf Blogg", DateTime.Now, new List<Post>()
 			{
 				new Post("Adolfs första inlägg", DateTime.Now, "Adolf shalalala"),
 				new Post("Adolfs andra inlägg", DateTime.Now, "dsaaaaaaaaa")
 			});
-
+		    Adolf.Blog = AdolfBlog;
 			horses = new List<Horse>()
 			{
 			Helge, Jens, Gösta, Adolf

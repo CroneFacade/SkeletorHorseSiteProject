@@ -1,12 +1,12 @@
 ﻿@using SkeletorDAL.Model
-@model SkeletorDAL.Model.HorseModel
+@model SkeletorDAL.Model.HorseProfileModel
 @{
     ViewBag.Title = "Index";
 }
 <div class="container">
     <div class="row">
         <div id="horse_ProfilePicture" class="col-md-3">
-            <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image"/>
+            <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image" />
             <p>
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -19,7 +19,7 @@
                 <dd>Wither: @Model.Withers</dd>
                 <dd>Race: @Model.Race</dd>
                 <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
-                <dt>Tävlingar och priser</dt>
+                <dt>Races and Prizes</dt>
                 <dd>
                     @foreach (var award in Model.Awards)
                     {
@@ -28,12 +28,12 @@
                     }
                 </dd>
             </dl>
-			<p>
-				@if (User.Identity.IsAuthenticated)
-				{
-					@Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
-				}
-			</p>
+            <p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
+                }
+            </p>
         </div>
         <div id="horseDescription" class="col-md-9">
             <div role="tabpanel" id="horseInformation">
@@ -41,43 +41,55 @@
                     <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
                     <li role="presentation"><a href="#Health" aria-controls="Health" role="tab" data-toggle="tab">Health</a></li>
                     <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Famliy-tree</a></li>
-                  
+                    <li role="presentation"><a href="#horseBlog" aria-controls="family-tree" role="tab" data-toggle="tab">Blog</a></li>
+
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="description">
-                        Camarguehäst är en hästras av ponnytyp som härstammar från Rhônedeltat i sydvästra Frankrike. Rasen utmärker sig bland annat genom sin färg som alltid är skimmel, samt för sin stora säkerhet på foten i sanka och vattenrika områden. Camarguehästarna är svarta, bruna eller fuxar vid födseln, men ljusnar med åldern till att bli helt vita, men de kan även bli flugskimlar. Detta kallas för avblekbar skimmel, den enda färgen som förekommer hos rasen. Rasen kommer ursprungligen från träskområden i södra Frankrike där den främst används för att fösa boskap. Temperamentet är ofta mycket stabilt och de är lugna och nyfikna. I vila sparar de energi, men vid arbete ger de sitt bästa. Camarguehästarna används även av Frankrikes cowboys, så kallade Gardian
-                        Camarguehäst är en hästras av ponnytyp som härstammar från Rhônedeltat i sydvästra Frankrike. Rasen utmärker sig bland annat genom sin färg som alltid är skimmel, samt för sin stora säkerhet på foten i sanka och vattenrika områden. Camarguehästarna är svarta, bruna eller fuxar vid födseln, men ljusnar med åldern till att bli helt vita, men de kan även bli flugskimlar. Detta kallas för avblekbar skimmel, den enda färgen som förekommer hos rasen. Rasen kommer ursprungligen från träskområden i södra Frankrike där den främst används för att fösa boskap. Temperamentet är ofta mycket stabilt och de är lugna och nyfikna. I vila sparar de energi, men vid arbete ger de sitt bästa. Camarguehästarna används även av Frankrikes cowboys, så kallade Gardian
-                        Camarguehäst är en hästras av ponnytyp som härstammar från Rhônedeltat i sydvästra Frankrike. Rasen utmärker sig bland annat genom sin färg som alltid är skimmel, samt för sin stora säkerhet på foten i sanka och vattenrika områden. Camarguehästarna är svarta, bruna eller fuxar vid födseln, men ljusnar med åldern till att bli helt vita, men de kan även bli flugskimlar. Detta kallas för avblekbar skimmel, den enda färgen som förekommer hos rasen. Rasen kommer ursprungligen från träskområden i södra Frankrike där den främst används för att fösa boskap. Temperamentet är ofta mycket stabilt och de är lugna och nyfikna. I vila sparar de energi, men vid arbete ger de sitt bästa. Camarguehästarna används även av Frankrikes cowboys, så kallade Gardian
-</div>
+                        @Model.Description
+                    </div>
                     <div role="tabpanel" class="tab-pane" id="Health">
                         <dl>
+<<<<<<< HEAD
+                            <dt>Vaccination: </dt>
+                            <dd>Tetanus</dd>
+                            <dd>Hepatitis A</dd>
+                            <dd>hepatitis B</dd>
+                            <dd>Horsepestilence</dd>
+                            <dt>Diseases: </dt>
+                            <dd>None</dd>                    
+=======
                             <dt>Vaccinationer: </dt>
-                            <dd>Stelkramp</dd>
-                            <dd>Hepatit A</dd>
-                            <dd>Hepatit B</dd>
-                            <dd>Hästpest</dd>
-                            <dt>Sjukdomar: </dt>
-                            <dd>Inga</dd>                    
+                            <dd>@Model.Medicine</dd>
+                       
+>>>>>>> 25b34b1da73fc282defb6b8e9a4e84815d327c39
                         </dl>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="family-tree">
-                        Camarguehäst är en hästras av ponnytyp som marguehäst är en hästras av ponnytyp som marguehäst är en häsdsadsdytyp som härstammar från Rhônedeltat i sydvästra Frankrike. Rasen utmärker sig bland annat genom sin färg som alltid är skimmel, samt för sin stora säkerhet på foten i sanka och vattenrika områden. Camarguehästarna är svarta, bruna eller fuxar vid födseln, men ljusnar med åldern till att bli helt vita, men de kan även bli flugskimlar. Detta kallas för avblekbar skimmel, den enda färgen som förekommer hos rasen. Rasen kommer ursprungligen från träskområden i södra Frankrike där den främst används för att fösa boskap. Temperamentet är ofta mycket stabilt och de är lugna och nyfikna. I vila sparar de energi, men vid arbete ger de sitt bästa. Camarguehästarna används även av Frankrikes cowboys, så kallade Gardian
-                        Camarguehäst är en hästras av ponnytyp som marguehäst är en hästras av ponnytyp som marguehäst är en häsdsadsdytyp som härstammar från Rhônedeltat i sydvästra Frankrike. Rasen utmärker sig bland annat genom sin färg som alltid är skimmel, samt för sin stora säkerhet på foten i sanka och vattenrika områden. Camarguehästarna är svarta, bruna eller fuxar vid födseln, men ljusnar med åldern till att bli helt vita, men de kan även bli flugskimlar. Detta kallas för avblekbar skimmel, den enda färgen som förekommer hos rasen. Rasen kommer ursprungligen från träskområden i södra Frankrike där den främst används för att fösa boskap. Temperamentet är ofta mycket stabilt och de är lugna och nyfikna. I vila sparar de energi, men vid arbete ger de sitt bästa. Camarguehästarna används även av Frankrikes cowboys, så kallade Gardian
 
+                    @Model.FamilyTree
                     </div>
-                  
+                    <div role="tabpanel" class="tab-pane" id="horseBlog">
+                       @foreach (var blog in Model.Blog.Posts)
+                       {
+                           <h4>@blog.Title</h4>
+                           <p style="font-size: 6px;"></p>
+                           <br/>
+                           <p>@blog.Content</p>
+                       }
                     </div>
 
                 </div>
+
             </div>
-
         </div>
+
     </div>
-
-<hr/>
-<div class="row" style="margin-top: 25px;">
-    <div class="col-md-4"></div>
-    <div id="horseBlog" class="col-md-8">@Html.Action("HorseBlog", new{id = @Model.ID})</div>
-
 </div>
 
+<hr />
+<div class="row" style="margin-top: 25px;">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">@Html.Action("HorseBlog", new { id = @Model.ID })</div>
+
+</div>
