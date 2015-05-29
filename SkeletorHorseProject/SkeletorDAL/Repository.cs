@@ -50,8 +50,8 @@ namespace SkeletorDAL
 
         public static HorseProfileModel GetSpecificHorse(int id)
         {
-            using (var context = new HorseContext())
-            {
+            var context = new HorseContext();
+            
                 return (from h in context.Horses
                         where h.ID == id
                         select new HorseProfileModel()
@@ -66,7 +66,7 @@ namespace SkeletorDAL
                             FamilyTree = h.FamilyTree,
                             Awards = h.Awards,
                             ImagePath = h.ImagePath,
-                            Blog = new Blog(),
+                            Blog = h.Blog,
                             IsSold = h.IsSold,
                             FacebookPath = h.FacebookPath,
                             IsActive = h.IsActive,
@@ -74,7 +74,7 @@ namespace SkeletorDAL
                             Price = h.Price
                         }).FirstOrDefault();
             }
-        }
+        
 
         public static HorseModel GetSpecificHorseById(int id)
         {
