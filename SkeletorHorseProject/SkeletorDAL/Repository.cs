@@ -22,6 +22,14 @@ namespace SkeletorDAL
                      select u.Email).FirstOrDefault();
             }
         }
+        public static List<FooterModel> GetAllFooterLinks()
+        {
+            using (var context = new HorseContext())
+            {
+                return (from l in context.FooterLinks
+                        select new FooterModel { Name = l.LinkName, Url = l.LinkURL }).ToList();
+            }
+        }
         public static void RegisterAdmin(RegisterAdminModel model)
         {
             using (var context = new HorseContext())

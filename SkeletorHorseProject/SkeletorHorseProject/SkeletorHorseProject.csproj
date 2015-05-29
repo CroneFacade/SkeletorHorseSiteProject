@@ -193,6 +193,7 @@
     <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\HorseProfile\UploadProfilePicture.cshtml" />
     <Content Include="Views\Gallery\DeleteImage.cshtml" />
+    <Content Include="Views\Footer\EditLinks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -202,7 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Footer\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SkeletorDAL\SkeletorDAL.csproj">
