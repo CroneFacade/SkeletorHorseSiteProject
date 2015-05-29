@@ -27,6 +27,10 @@ namespace SkeletorDAL.Model
 
         public string ImagePath { get; set; }
         public string FacebookPath { get; set; }
-
+        public DateTime LastUpdated { get; set; }
+        public bool Breeding { get; set; }
+        public bool Sold { get; set; }
+        public string Gender { get; set; }
+        public bool Rent { get; set; }
     }
 }

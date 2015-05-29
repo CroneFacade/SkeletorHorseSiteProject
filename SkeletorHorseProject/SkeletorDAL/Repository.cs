@@ -48,6 +48,34 @@ namespace SkeletorDAL
             }
         }
 
+        public static HorseProfileModel GetSpecificHorse(int id)
+        {
+            var context = new HorseContext();
+            
+                return (from h in context.Horses
+                        where h.ID == id
+                        select new HorseProfileModel()
+                        {
+                            ID = h.ID,
+                            Name = h.Name,
+                            Race = h.Race,
+                            Withers = h.Withers,
+                            Birthday = h.Birthday,
+                            Description = h.Description,
+                            Medicine = h.Medicine,
+                            FamilyTree = h.FamilyTree,
+                            Awards = h.Awards,
+                            ImagePath = h.ImagePath,
+                            Blog = h.Blog,
+                            IsSold = h.IsSold,
+                            FacebookPath = h.FacebookPath,
+                            IsActive = h.IsActive,
+                            IsForSale = h.IsForSale,
+                            Price = h.Price
+                        }).FirstOrDefault();
+            }
+        
+
         public static HorseModel GetSpecificHorseById(int id)
         {
             using (var context = new HorseContext())
