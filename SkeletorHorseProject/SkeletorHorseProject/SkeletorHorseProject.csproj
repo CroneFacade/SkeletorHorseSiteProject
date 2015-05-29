@@ -196,6 +196,7 @@
     <Content Include="Views\HorseProfile\UploadProfilePicture.cshtml" />
     <Content Include="Views\Gallery\DeleteImage.cshtml" />
     <Content Include="Views\Footer\EditLinks.cshtml" />
+    <Content Include="Views\Footer\AddNewLink.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

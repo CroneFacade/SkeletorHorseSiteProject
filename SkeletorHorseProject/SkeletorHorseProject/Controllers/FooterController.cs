@@ -22,5 +22,30 @@ namespace SkeletorHorseProject.Controllers
         {
             return View(Repository.GetAllFooterLinks());
         }
+
+        [ChildActionOnly]
+        public ActionResult AddNewLink(FooterModel model)
+        {
+            return PartialView(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult AddNewFooterLink(FooterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Repository.AddNewFooterLink(model);
+                return RedirectToAction("EditLinks");
+            }
+            else
+            {
+                return RedirectToAction("EditLinks");
+            }
+        }
+        public ActionResult DeleteFooterLink(int id)
+        {
+            Repository.DeleteFooterLink(id);
+            return RedirectToAction("EditLinks");
+        }
     }
 }

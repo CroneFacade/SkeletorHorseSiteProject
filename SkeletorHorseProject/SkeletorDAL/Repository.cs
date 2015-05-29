@@ -27,9 +27,32 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 return (from l in context.FooterLinks
-                        select new FooterModel { Name = l.LinkName, Url = l.LinkURL }).ToList();
+                        select new FooterModel { ID = l.ID, Name = l.LinkName, Url = l.LinkURL }).ToList();
             }
         }
+
+        public static void AddNewFooterLink(FooterModel model)
+        {
+            using(var context = new HorseContext())
+            {
+                context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url });
+                context.SaveChanges();
+            }
+        }
+
+        public static void DeleteFooterLink(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var footerToDelete = (from l in context.FooterLinks
+                                      where l.ID == id
+                                      select l).FirstOrDefault();
+
+                context.FooterLinks.Remove(footerToDelete);
+                context.SaveChanges();
+            }
+        }
+
         public static void RegisterAdmin(RegisterAdminModel model)
         {
             using (var context = new HorseContext())
