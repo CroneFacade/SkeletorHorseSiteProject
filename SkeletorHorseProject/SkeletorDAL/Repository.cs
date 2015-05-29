@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using SkeletorDAL.Helpers;
 using SkeletorDAL.Model;
 using SkeletorDAL.POCO;
@@ -231,11 +232,36 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
-        public static void UpdateHorseProfile(Horse horse)
+        public static void UpdateHorseProfile(EditHorseProfileModel horse)
         {
             using (var context = new HorseContext())
             {
                 context.Entry(horse).State = EntityState.Modified;
+
+                var newHorse = new Horse
+                {
+                    Name = horse.Name,
+                    Birthday = horse.Birthday,
+                    Race = horse.Race,
+                    Awards = horse.Awards,
+                    Blog = 
+
+                }
+                currentHorse.ID = id;
+                currentHorse.Name = model.Name;
+                currentHorse.Birthday = model.Birthday;
+                currentHorse.Race = model.Race;
+                currentHorse.Withers = model.Withers;
+                currentHorse.Awards = model.Awards;
+                currentHorse.Description = model.Description;
+                currentHorse.Medicine = model.Medicine;
+                currentHorse.FamilyTree = model.FamilyTree;
+                currentHorse.IsForSale = model.IsForSale;
+                currentHorse.Price = model.Price;
+                currentHorse.IsActive = model.IsActive;
+                currentHorse.FacebookPath = model.FacebookPath;
+                currentHorse.IsSold = model.IsSold;
+                currentHorse.Gender = model.Gender;
                 context.SaveChanges();
             }
         }
@@ -270,6 +296,7 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
+
         public static string RemoveOldProfileImage(int id)
         {
             string path = "";
