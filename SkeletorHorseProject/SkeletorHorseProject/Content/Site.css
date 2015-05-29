@@ -193,3 +193,13 @@ a:hover {
 .hiddenoo {
 	display: none;
 }
+.GalleryWrapper{
+  width:1024px;
+  display:block;
+}
+.GalleryAlineImg{
+    width:auto;
+    padding-left:20px;
+    display:block;
+    float:left;
+}

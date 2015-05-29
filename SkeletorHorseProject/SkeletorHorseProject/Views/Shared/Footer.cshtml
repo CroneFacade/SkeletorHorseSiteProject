@@ -3,6 +3,11 @@
     ViewBag.Title = "Footer";
 }
 
+@if (User.Identity.IsAuthenticated)
+{<p>
+        @Html.ActionLink("Edit Links", "EditLinks", "Footer")
+    </p>
+}
 
 @foreach (var link in Model)
 {

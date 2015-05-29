@@ -39,8 +39,21 @@ namespace SkeletorHorseProject.Controllers
 		    var currentHorse = Repository.GetFullInformationOnSpecificHorseById(id);
 		    if (ModelState.IsValid)
 		    {
-			    
-				Repository.UpdateHorseProfile(currentHorse);
+		        currentHorse.Name = model.Name;
+		        currentHorse.Birthday = model.Birthday;
+		        currentHorse.Race = model.Race;
+		        currentHorse.Awards = model.Awards;
+		        currentHorse.Description = model.Description;
+		        currentHorse.Medicine = model.Medicine;
+		        currentHorse.FamilyTree = model.FamilyTree;
+		        currentHorse.IsForSale = model.IsForSale;
+		        currentHorse.Price = model.Price;
+		        currentHorse.IsActive = model.IsActive;
+		        currentHorse.FacebookPath = model.FacebookPath;
+		        currentHorse.IsSold = model.IsSold;
+		        currentHorse.Gender = model.Gender;
+				Repository.UpdateHorseProfile(model);
+
 			    return RedirectToAction("Index", "HorseProfile", new { id = id});
 		    }
 		    return View(model);
