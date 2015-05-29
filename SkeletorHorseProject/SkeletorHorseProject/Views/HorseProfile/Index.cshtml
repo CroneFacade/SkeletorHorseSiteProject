@@ -1,5 +1,5 @@
 ﻿@using SkeletorDAL.Model
-@model SkeletorDAL.Model.HorseModel
+@model SkeletorDAL.Model.HorseProfileModel
 @{
     ViewBag.Title = "Index";
 }
@@ -46,23 +46,27 @@
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="description">
+                        @Model.Description
                     </div>
                     <div role="tabpanel" class="tab-pane" id="Health">
                         <dl>
                             <dt>Vaccinationer: </dt>
-                            <dd>Stelkramp</dd>
-                            <dd>Hepatit A</dd>
-                            <dd>Hepatit B</dd>
-                            <dd>Hästpest</dd>
-                            <dt>Sjukdomar: </dt>
-                            <dd>Inga</dd>
+                            <dd>@Model.Medicine</dd>
+                       
                         </dl>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="family-tree">
-                        Camarguehäst är en hästras av ponnytyp som marguehäst är en hästras av ponnytyp som marguehäst är en häsdsadsdytyp som härstammar från Rhônedeltat i sydvästra Frankrike. Rasen utmärker sig bland annat genom sin färg som alltid är skimmel, samt för sin stora säkerhet på foten i sanka och vattenrika områden. Camarguehästarna är svarta, bruna eller fuxar vid födseln, men ljusnar med åldern till att bli helt vita, men de kan även bli flugskimlar. Detta kallas för avblekbar skimmel, den enda färgen som förekommer hos rasen. Rasen kommer ursprungligen från träskområden i södra Frankrike där den främst används för att fösa boskap. Temperamentet är ofta mycket stabilt och de är lugna och nyfikna. I vila sparar de energi, men vid arbete ger de sitt bästa. Camarguehästarna används även av Frankrikes cowboys, så kallade Gardian
-                        Camarguehäst är en hästras av ponnytyp som marguehäst är en hästras av ponnytyp som marguehäst är en häsdsadsdytyp som härstammar från Rhônedeltat i sydvästra Frankrike. Rasen utmärker sig bland annat genom sin färg som alltid är skimmel, samt för sin stora säkerhet på foten i sanka och vattenrika områden. Camarguehästarna är svarta, bruna eller fuxar vid födseln, men ljusnar med åldern till att bli helt vita, men de kan även bli flugskimlar. Detta kallas för avblekbar skimmel, den enda färgen som förekommer hos rasen. Rasen kommer ursprungligen från träskområden i södra Frankrike där den främst används för att fösa boskap. Temperamentet är ofta mycket stabilt och de är lugna och nyfikna. I vila sparar de energi, men vid arbete ger de sitt bästa. Camarguehästarna används även av Frankrikes cowboys, så kallade Gardian
+
+                    @Model.FamilyTree
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="family-tree">
+                    <div role="tabpanel" class="tab-pane" id="horseBlog">
+                       @foreach (var blog in Model.Blog.Posts)
+                       {
+                           <h4>@blog.Title</h4>
+                           <p style="font-size: 6px;"></p>
+                           <br/>
+                           <p>@blog.Content</p>
+                       }
                     </div>
 
                 </div>
@@ -76,6 +80,6 @@
 <hr />
 <div class="row" style="margin-top: 25px;">
     <div class="col-md-4"></div>
-    <div id="horseBlog" class="col-md-8">@Html.Action("HorseBlog", new { id = @Model.ID })</div>
+    <div class="col-md-8">@Html.Action("HorseBlog", new { id = @Model.ID })</div>
 
 </div>
