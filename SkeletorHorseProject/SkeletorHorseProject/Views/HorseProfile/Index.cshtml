@@ -1,4 +1,5 @@
 ﻿@using SkeletorDAL.Model
+@using SkeletorHorseProject.Controllers
 @model SkeletorDAL.Model.HorseProfileModel
 @{
     ViewBag.Title = "Index";
@@ -52,21 +53,35 @@
                         <dl>
                             <dt>Vaccinationer: </dt>
                             <dd>@Model.Medicine</dd>
-                       
+
                         </dl>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="family-tree">
 
-                    @Model.FamilyTree
+                        @Model.FamilyTree
                     </div>
                     <div role="tabpanel" class="tab-pane" id="horseBlog">
-                       @foreach (var blog in Model.Blog.Posts)
-                       {
-                           <h4>@blog.Title</h4>
-                           <p style="font-size: 6px;"></p>
-                           <br/>
-                           <p>@blog.Content</p>
-                       }
+                        @foreach (var blog in Model.Blog.Posts)
+                        {
+                            <h4>@blog.Title</h4>
+                            <p style="font-size: 9px;">@blog.Created</p>
+                            <br />
+                            <p>@blog.Content</p>
+                            <hr/>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBlogPost" aria-expanded="false" aria-controls="addBlogPost">
+                                Add blogpost
+                            </button>
+                            <div class="collapse" id="addBlogPost">
+                                <div class="well">
+                                    @Html.Action("AddBlogPost", new{blog = @Model.Blog})
+                             
+                                </div>
+                             
+                            </div>
+                        }
                     </div>
 
                 </div>

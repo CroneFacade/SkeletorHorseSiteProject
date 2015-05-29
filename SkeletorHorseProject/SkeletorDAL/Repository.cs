@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using SkeletorDAL.Helpers;
 using SkeletorDAL.Model;
 using SkeletorDAL.POCO;
+using SkeletorHorseProject.Controllers;
+
 namespace SkeletorDAL
 {
     public static class Repository
@@ -50,31 +54,56 @@ namespace SkeletorDAL
 
         public static HorseProfileModel GetSpecificHorse(int id)
         {
-            var context = new HorseContext();
-            
-                return (from h in context.Horses
-                        where h.ID == id
-                        select new HorseProfileModel()
-                        {
-                            ID = h.ID,
-                            Name = h.Name,
-                            Race = h.Race,
-                            Withers = h.Withers,
-                            Birthday = h.Birthday,
-                            Description = h.Description,
-                            Medicine = h.Medicine,
-                            FamilyTree = h.FamilyTree,
-                            Awards = h.Awards,
-                            ImagePath = h.ImagePath,
-                            Blog = h.Blog,
-                            IsSold = h.IsSold,
-                            FacebookPath = h.FacebookPath,
-                            IsActive = h.IsActive,
-                            IsForSale = h.IsForSale,
-                            Price = h.Price
-                        }).FirstOrDefault();
+
+            using (var context = new HorseContext())
+            {
+                var horse = (from h in context.Horses
+                             where h.ID == id
+                             select new HorseProfileModel()
+                             {
+                                 ID = h.ID,
+                                 Name = h.Name,
+                                 Race = h.Race,
+                                 Withers = h.Withers,
+                                 Birthday = h.Birthday,
+                                 Description = h.Description,
+                                 Medicine = h.Medicine,
+                                 FamilyTree = h.FamilyTree,
+                                 Awards = h.Awards,
+                                 ImagePath = h.ImagePath,
+                                 Blog = new BlogModel()
+                                 {
+                                     ID = h.Blog.ID,
+                                     HorseId = h.ID,
+                                     Created = h.Blog.Created,
+                                     Description = h.Blog.Description,
+                                 },
+                                 IsSold = h.IsSold,
+                                 FacebookPath = h.FacebookPath,
+                                 IsActive = h.IsActive,
+                                 IsForSale = h.IsForSale,
+                                 Price = h.Price
+                             }).FirstOrDefault();
+
+                List<Post> posts = (from h in context.Horses
+                                    where h.ID == horse.ID
+                                    select h.Blog.Posts).FirstOrDefault();
+
+                List<BlogPostModel> blogposts = posts.Select(x => new BlogPostModel()
+                {
+                    BlogID = x.Blog.ID,
+                    ID = x.ID,
+                    IsActive = x.IsActive,
+                    Created = x.Created,
+                    Content = x.Content,
+                    Title = x.Title
+                }).ToList();
+
+                horse.Blog.Posts = blogposts;
+                return horse;
             }
-        
+            
+        }
 
         public static HorseModel GetSpecificHorseById(int id)
         {
@@ -273,12 +302,12 @@ namespace SkeletorDAL
         public static string RemoveOldProfileImage(int id)
         {
             string path = "";
-            
+
             using (var context = new HorseContext())
             {
                 GalleryImage image = (from h in context.GalleryImages
-                        where h.FileName.StartsWith(id + "")
-                        select h).FirstOrDefault();
+                                      where h.FileName.StartsWith(id + "")
+                                      select h).FirstOrDefault();
 
                 path = image.ImagePath;
                 context.GalleryImages.Remove(image);
@@ -321,6 +350,24 @@ namespace SkeletorDAL
                 return query;
             }
         }
+
+        public static int AddNewBlogPost(BlogPostModel blogpost, int blogId)
+        {
+            var horseId = 0;
+            using (var context = new HorseContext())
+            {
+                var blog = context.Blogs.Find(blogId);
+                var newBlogpost = new Post(blogpost.Title, blogpost.Created, blogpost.Content) { Blog = blog, ID = blogpost.ID, Created = blogpost.Created };
+                blog.Posts.Add(newBlogpost);
+                context.SaveChanges();
+                horseId = (from h in context.Horses
+                           where h.Blog.ID == blogId
+                           select h.ID).FirstOrDefault();
+            }
+            return horseId;
+        }
+
+
     }
 }
 
