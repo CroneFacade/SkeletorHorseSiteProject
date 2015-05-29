@@ -90,6 +90,7 @@
     <Compile Include="Model\HorseSaleModel.cs" />
     <Compile Include="Model\AdminLoginModel.cs" />
     <Compile Include="Model\ImageModel.cs" />
+    <Compile Include="Model\LatestUpdatesForHomePage.cs" />
     <Compile Include="Model\RegisterAdminModel.cs" />
     <Compile Include="Model\UploadFileModel.cs" />
     <Compile Include="POCO\About.cs" />

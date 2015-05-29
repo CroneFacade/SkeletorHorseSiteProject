@@ -293,6 +293,33 @@ namespace SkeletorDAL
                 return query;
             }
         }
+
+        public static List<HorseModel> GetLatestUpdates()
+        {
+            using (var context = new HorseContext())
+            {
+                var query =
+                    (from h in context.Horses
+                        select new HorseModel() {ID = h.ID, ImagePath = h.ImagePath}
+                        ).ToList();
+
+                if (query.Count > 5)
+                {
+                    var HM = new List<HorseModel>();
+
+                   HM.Add(query[0]);
+                   HM.Add(query[1]);
+                   HM.Add(query[2]);
+                   HM.Add(query[3]);
+                   HM.Add(query[4]);
+                }
+                
+                return query;
+
+            }
+        }
+
+      
     }
 }
 
