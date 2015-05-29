@@ -35,6 +35,7 @@ namespace SkeletorDAL
         public bool Sold { get; set; }
         public string Gender { get; set; }
         public bool Rent { get; set; }
+	    public virtual Blog Blog { get; set; }
 		public Horse()
 		{
 			
