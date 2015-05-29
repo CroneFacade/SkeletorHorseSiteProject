@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Permissions;
 using System.Security.Policy;
@@ -13,6 +14,7 @@ namespace SkeletorDAL
 	{
 		public int ID { get; set; }
 		public string Name { get; set; }
+         [Column(TypeName = "datetime2")]
 		public DateTime Birthday { get; set; }
 		public string Race { get; set; }
 		public int Withers { get; set; }
@@ -27,12 +29,12 @@ namespace SkeletorDAL
 		public string ImagePath { get; set; }
 		public string FacebookPath { get; set; }
 
+         [Column(TypeName = "datetime2")]
         public DateTime LastUpdated { get; set; }
         public bool Breeding { get; set; }
         public bool Sold { get; set; }
         public string Gender { get; set; }
         public bool Rent { get; set; }
-        public virtual Blog blog { get; set; }
 		public Horse()
 		{
 			
@@ -48,6 +50,7 @@ namespace SkeletorDAL
 			Price = price;
 			IsActive = true;
 		    FacebookPath = url;
+    
 		}
 
 	

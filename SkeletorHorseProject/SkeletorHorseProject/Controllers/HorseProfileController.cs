@@ -16,7 +16,7 @@ namespace SkeletorHorseProject.Controllers
         public ActionResult Index(int id)
         {
             var idLength = id.ToString();
-            var model = Repository.GetSpecificHorseById(id);
+            var model = Repository.GetSpecificHorse(id);
             if (model != null)
             {
                 return View(model);
