@@ -3,6 +3,6 @@
 @foreach (var video in Model)
 {
     <div><iframe title="YouTube video player" width="480" height="390" src="@video.VideoURL" frameborder="0"></iframe></div>
-    @Html.ActionLink("Delete this video", "DeleteYoutubeVideoFromHorse", new { id=video.ID})
+    @Html.ActionLink("Delete this video", "DeleteYoutubeVideoFromHorse", new { id = video.ID }, new { onclick = "return confirm('Are you sure you wish to delete this article?');" })
 }
 
