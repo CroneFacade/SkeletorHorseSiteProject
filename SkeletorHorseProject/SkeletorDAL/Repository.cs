@@ -140,6 +140,7 @@ namespace SkeletorDAL
                 {
                     case 1:
                         horseList = (from h in context.Horses
+                                     where h.IsActive == true    
                                      select new HorseModel()
                                      {
                                          Awards = h.Awards,
@@ -159,7 +160,7 @@ namespace SkeletorDAL
 
                     case 2:
                         horseList = (from h in context.Horses
-                                     where h.IsForSale == true
+                                     where h.IsForSale == true && h.IsActive == true
                                      select new HorseModel()
                                      {
                                          Awards = h.Awards,
@@ -178,7 +179,7 @@ namespace SkeletorDAL
                         break;
                     case 3:
                         horseList = (from h in context.Horses
-                                     where h.IsSold == true
+                                     where h.IsSold == true && h.IsActive == true
                                      select new HorseModel()
                                      {
                                          Awards = h.Awards,
@@ -245,13 +246,34 @@ namespace SkeletorDAL
                      }).ToList();
             }
         }
-        public static Horse GetFullInformationOnSpecificHorseById(int id)
+        public static EditHorseProfileModel GetFullInformationOnSpecificHorseById(int id, EditHorseProfileModel model)
         {
             using (var context = new HorseContext())
             {
-                return (from h in context.Horses
+                var currentHorse = (from h in context.Horses
                         where h.ID == id
-                        select h).FirstOrDefault();
+                        select new EditHorseProfileModel
+                        {
+                            Awards = h.Awards,
+                            Birthday = h.Birthday,
+                            Breeding = h.Breeding,
+                            Description = h.Description,
+                            FacebookPath = h.FacebookPath,
+                            FamilyTree = h.FamilyTree,
+                            Gender = h.Gender,
+                            IsActive = !h.IsActive,     
+                            IsForSale = h.IsForSale,
+                            IsSold =  h.IsSold,
+                            Rent = h.Rent,
+                            Price = h.Price,
+                            Medicine = h.Medicine,
+                            Name = h.Name,
+                            Race = h.Race,
+                            Withers = h.Withers,
+                            LastUpdated = DateTime.Now
+                            
+                        }).FirstOrDefault();
+                return currentHorse;
             }
         }
 
@@ -263,10 +285,28 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
-        public static void UpdateHorseProfile(Horse horse)
+        public static void UpdateHorseProfile(int horseID, EditHorseProfileModel model)
         {
             using (var context = new HorseContext())
             {
+
+                var horse = context.Horses.Find(horseID);
+                horse.Name = model.Name;
+                horse.Birthday = model.Birthday;
+                horse.Race = model.Race;
+                horse.Awards = model.Awards;
+                horse.Description = model.Description;
+                horse.Medicine = model.Medicine;
+                horse.FamilyTree = model.FamilyTree;
+                horse.IsForSale = model.IsForSale;
+                horse.Price = model.Price;
+                horse.IsActive = !model.IsActive;
+                horse.FacebookPath = model.FacebookPath;
+                horse.IsSold = model.IsSold;
+                horse.Gender = model.Gender;
+                horse.Breeding = model.Breeding;
+
+                
                 context.Entry(horse).State = EntityState.Modified;
                 context.SaveChanges();
             }
