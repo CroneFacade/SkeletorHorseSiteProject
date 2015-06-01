@@ -11,7 +11,44 @@ namespace SkeletorDAL
 {
     public static class Repository
     {
-
+        public static List<ImageModel> GetAllSlideShowImages()
+        {
+            using (var context = new HorseContext())
+            {
+                return (from i in context.SlideShowImages
+                        where i.Active == true && i.ImagePath.StartsWith(@"~/SlideImages/")
+                        select (new ImageModel
+                        {
+                            ID = i.ID,
+                            Active = i.Active,
+                            ImagePath = i.ImagePath,
+                            FileName = i.FileName
+                        })).ToList();
+            }
+        }
+        public static void AddNewSlideShowFile(string fileName, string path)
+        {
+            using (var context = new HorseContext())
+            {
+                context.SlideShowImages.Add(new SlideShowImage()
+                {
+                    FileName = fileName,
+                    ImagePath = path,
+                    Active = true
+                }
+                    );
+                context.SaveChanges();
+            }
+        }
+        public static void DeleteSlideShowImage(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var image = context.SlideShowImages.Find(id);
+                context.SlideShowImages.Remove(image);
+                context.SaveChanges();
+            }
+        }
         public static string GetAdminEmail()
         {
             using (var context = new HorseContext())

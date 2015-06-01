@@ -17,7 +17,7 @@ namespace SkeletorDAL
 		private readonly List<User> users;
 		private readonly List<About> abouts;
 		private readonly List<GalleryImage> galleryImages;
-
+        
 		public HorseContextInitializer()
 		{
             var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005", "650.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = @"~/ProfileImages/1Dummy1.jpg", Description = "Detta är Helges beskrivning", Medicine = "Detta är Helges Medicin", FamilyTree = "Detta är Helges släktträd" };
@@ -76,6 +76,8 @@ namespace SkeletorDAL
                 ImagePath = "~/ProfileImages/3Dummy3.jpg",
                 Active = true
             });
+
+           
             
             
 			var HelgeBlog = new Blog("Detta är Helges Blogg", DateTime.Now, new List<Post>()
@@ -132,6 +134,7 @@ namespace SkeletorDAL
 			users.ForEach(u => context.Users.Add(u));
 			abouts.ForEach(a => context.Abouts.Add(a));
             galleryImages.ForEach(i => context.GalleryImages.Add((i)));
+            
 			base.InitializeDatabase(context);
 		}
 	}
