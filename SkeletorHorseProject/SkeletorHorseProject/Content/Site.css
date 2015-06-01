@@ -25,7 +25,7 @@ textarea {
 .wrapper {
     max-width: 1024px;
     height: auto;
-    background-color: #000;
+    background-color: #ffffff;
     margin-left: auto;
     margin-right: auto;
     -webkit-box-shadow: 0 0 10px 5px #C4C4C4;
@@ -87,7 +87,7 @@ a:hover {
     background-color: #ffffff;
     font-family: Arial;
     min-height: 1000px;
-    margin-top: -20px;
+    margin-top: 20px;
     margin-bottom: -10px;
     padding: 0 50px 50px 50px;
     background-image: url('../Images/splash.png');
@@ -175,6 +175,7 @@ a:hover {
 
 .slider-container {
     height: 310px;
+    margin-top: -20px;
     margin-left: -50px;
     margin-right: -50px;
     margin-bottom: 30px;
@@ -235,13 +236,11 @@ a:hover {
     color: #000000;
 }
 
-.breadcrumbs a {
-    color: #000000;
-}
+    .breadcrumbs a {
+        color: #000000;
+    }
 
-.breadcrumbs a:hover{
-    color: #0000ff;
-    text-decoration: none;
-    
-}
-
+        .breadcrumbs a:hover {
+            color: #0000ff;
+            text-decoration: none;
+        }
