@@ -27,6 +27,37 @@ namespace SkeletorDAL
                      select u.Email).FirstOrDefault();
             }
         }
+        public static HorseProfileModel GetHorseProfileById(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var currentHorse = (from h in context.Horses
+                                    where h.ID == id
+                                    select new HorseProfileModel
+                                    {
+                                        Awards = h.Awards,
+                                        Birthday = h.Birthday,
+                                        Breeding = h.Breeding,
+                                        Description = h.Description,
+                                        FacebookPath = h.FacebookPath,
+                                        FamilyTree = h.FamilyTree,
+                                        Gender = h.Gender,
+                                        IsActive = !h.IsActive,
+                                        IsForSale = h.IsForSale,
+                                        IsSold = h.IsSold,
+                                        Rent = h.Rent,
+                                        Price = h.Price,
+                                        Medicine = h.Medicine,
+                                        Name = h.Name,
+                                        Race = h.Race,
+                                        Withers = h.Withers,
+                                        ImagePath = h.ImagePath
+
+                                    }).FirstOrDefault();
+
+                return currentHorse;
+            }
+        }
         public static List<FooterModel> GetAllFooterLinks()
         {
             using (var context = new HorseContext())
@@ -38,7 +69,7 @@ namespace SkeletorDAL
 
         public static void AddNewFooterLink(FooterModel model)
         {
-            using(var context = new HorseContext())
+            using (var context = new HorseContext())
             {
                 context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url });
                 context.SaveChanges();
@@ -134,7 +165,7 @@ namespace SkeletorDAL
                 horse.Blog.Posts = blogposts;
                 return horse;
             }
-            
+
         }
 
         public static HorseModel GetSpecificHorseById(int id)
@@ -169,7 +200,7 @@ namespace SkeletorDAL
                 {
                     case 1:
                         horseList = (from h in context.Horses
-                                     where h.IsActive == true    
+                                     where h.IsActive == true
                                      select new HorseModel()
                                      {
                                          Awards = h.Awards,
@@ -280,28 +311,28 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 var currentHorse = (from h in context.Horses
-                        where h.ID == id
-                        select new EditHorseProfileModel
-                        {
-                            Awards = h.Awards,
-                            Birthday = h.Birthday,
-                            Breeding = h.Breeding,
-                            Description = h.Description,
-                            FacebookPath = h.FacebookPath,
-                            FamilyTree = h.FamilyTree,
-                            Gender = h.Gender,
-                            IsActive = !h.IsActive,     
-                            IsForSale = h.IsForSale,
-                            IsSold =  h.IsSold,
-                            Rent = h.Rent,
-                            Price = h.Price,
-                            Medicine = h.Medicine,
-                            Name = h.Name,
-                            Race = h.Race,
-                            Withers = h.Withers,
-                            LastUpdated = DateTime.Now
-                            
-                        }).FirstOrDefault();
+                                    where h.ID == id
+                                    select new EditHorseProfileModel
+                                    {
+                                        Awards = h.Awards,
+                                        Birthday = h.Birthday,
+                                        Breeding = h.Breeding,
+                                        Description = h.Description,
+                                        FacebookPath = h.FacebookPath,
+                                        FamilyTree = h.FamilyTree,
+                                        Gender = h.Gender,
+                                        IsActive = !h.IsActive,
+                                        IsForSale = h.IsForSale,
+                                        IsSold = h.IsSold,
+                                        Rent = h.Rent,
+                                        Price = h.Price,
+                                        Medicine = h.Medicine,
+                                        Name = h.Name,
+                                        Race = h.Race,
+                                        Withers = h.Withers,
+                                        LastUpdated = DateTime.Now
+
+                                    }).FirstOrDefault();
                 return currentHorse;
             }
         }
@@ -335,7 +366,7 @@ namespace SkeletorDAL
                 horse.Gender = model.Gender;
                 horse.Breeding = model.Breeding;
 
-                
+
                 context.Entry(horse).State = EntityState.Modified;
                 context.SaveChanges();
             }
@@ -447,20 +478,20 @@ namespace SkeletorDAL
             {
                 var query =
                     (from h in context.Horses
-                        select new HorseModel() {ID = h.ID, ImagePath = h.ImagePath}
+                     select new HorseModel() { ID = h.ID, ImagePath = h.ImagePath }
                         ).ToList();
 
                 if (query.Count > 5)
                 {
                     var HM = new List<HorseModel>();
 
-                   HM.Add(query[0]);
-                   HM.Add(query[1]);
-                   HM.Add(query[2]);
-                   HM.Add(query[3]);
-                   HM.Add(query[4]);
+                    HM.Add(query[0]);
+                    HM.Add(query[1]);
+                    HM.Add(query[2]);
+                    HM.Add(query[3]);
+                    HM.Add(query[4]);
                 }
-                
+
                 return query;
 
             }
