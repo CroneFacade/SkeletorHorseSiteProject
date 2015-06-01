@@ -44,15 +44,15 @@
            
         </div>
 
-        <div class="breadcrumb">
-            @Html.ActionLink("Home", "Index", "Home")
+        <div class="breadcrumbs">
+            @Html.ActionLink("Home", "Index", "Home") &ensp;
             @if (ViewContext.RouteData.Values["controller"].ToString() != "Home")
             {
-                @:> @Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(), "Index", ViewContext.RouteData.Values["controller"].ToString())
+                @:> &ensp; @Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(), "Index", ViewContext.RouteData.Values["controller"].ToString())
 }
             @if (ViewContext.RouteData.Values["action"].ToString() != "Index")
             {
-                @:> @Html.ActionLink(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString())
+                @:> &ensp; @Html.ActionLink(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString())
 }
         </div>
 
