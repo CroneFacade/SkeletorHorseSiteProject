@@ -1,0 +1,24 @@
+﻿@model SkeletorDAL.Model.HorseVideoModel
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddNewHorseVideo", "HorseProfile", new { id = @Model.HorseID }, FormMethod.Post, null))
+{
+
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>Video Name</td>
+            <td>@Html.TextBoxFor(m => m.VideoName)</td>
+            <td>@Html.ValidationMessageFor(model => model.VideoName, "")</td>
+        </tr>
+        <tr>
+            <td>Video URL</td>
+            <td>@Html.TextBoxFor(m => m.VideoURL)</td>
+            <td>@Html.ValidationMessageFor(model => model.VideoURL, "")</td>
+        </tr>
+    </table>
+    <input type="submit" value="Add new video" />
+}

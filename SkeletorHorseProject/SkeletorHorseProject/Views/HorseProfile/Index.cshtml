@@ -44,15 +44,21 @@
                     <li role="presentation"><a href="#gallery" aria-controls="Health" role="tab" data-toggle="tab">Gallery</a></li>
                     <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Famliy-tree</a></li>
                     <li role="presentation"><a href="#horseBlog" aria-controls="family-tree" role="tab" data-toggle="tab">Blog</a></li>
-
+                    <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="description">
                         @Model.Description
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="health">
+                    <div role="tabpanel" class="tab-pane" id="videos">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @Html.Action("AddNewHorseVideo", new { id = Model.ID })
+                        }
+                        @Html.Action("GetHorseVideos", new { id = Model.ID })
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="Health">
                         <dl>
-
                             <dt>Vaccination: </dt>
                             <dd>Tetanus</dd>
                             <dd>Hepatitis A</dd>

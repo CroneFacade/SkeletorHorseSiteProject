@@ -105,6 +105,7 @@
     <Compile Include="Model\HorseProfileModel.cs" />
     <Compile Include="Model\HorseSaleModel.cs" />
     <Compile Include="Model\AdminLoginModel.cs" />
+    <Compile Include="Model\HorseVideoModel.cs" />
     <Compile Include="Model\ImageModel.cs" />
     <Compile Include="Model\LatestUpdatesForHomePage.cs" />
     <Compile Include="Model\RegisterAdminModel.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="POCO\Post.cs" />
     <Compile Include="POCO\SlideShowImage.cs" />
     <Compile Include="POCO\User.cs" />
+    <Compile Include="POCO\YoutubeVideoURL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>

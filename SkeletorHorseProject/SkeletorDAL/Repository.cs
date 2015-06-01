@@ -75,11 +75,30 @@ namespace SkeletorDAL
 
         public static void AddNewFooterLink(FooterModel model)
         {
-            using(var context = new HorseContext())
+            using (var context = new HorseContext())
             {
                 context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url });
                 context.SaveChanges();
             }
+        }
+
+        public static List<HorseVideoModel> GetHorseVideosByID(int id)
+        {
+            List<HorseVideoModel> listToReturn = new List<HorseVideoModel>();
+
+            using (var context = new HorseContext())
+            {
+                List<YoutubeVideoURL> videoList = (from v in context.Horses
+                        where v.ID == id
+                        select v.YoutubeVideoURLs).FirstOrDefault();
+
+                foreach (var video in videoList)
+                {
+                    listToReturn.Add(new HorseVideoModel() {ID = video.ID, HorseID = id ,VideoName = video.VideoName, VideoURL = video.VideoURL });
+                }
+            }
+
+            return listToReturn;
         }
 
         public static void DeleteFooterLink(int id)
@@ -194,6 +213,40 @@ namespace SkeletorDAL
                             ImagePath = h.ImagePath
                         }).FirstOrDefault();
             }
+        }
+
+        public static void AddNewYoutubeVideoToHorse(HorseVideoModel model)
+        {
+            using(var context = new HorseContext())
+            {
+                var horse = (from h in context.Horses
+                            where h.ID == model.HorseID
+                            select h).FirstOrDefault();
+
+                horse.YoutubeVideoURLs.Add(new YoutubeVideoURL() { VideoName = model.VideoName, VideoURL = model.VideoURL });
+
+                context.SaveChanges();
+            }
+        }
+
+        public static int DeleteYoutubeVideoFromHorse(int id)
+        {
+            int horseID;
+
+            using (var context = new HorseContext())
+            {
+                var videoToRemove = (from y in context.YoutubeVideoURLs
+                                     where y.ID == id
+                                     select y).FirstOrDefault();
+
+                horseID = videoToRemove.Horse.ID;
+
+                context.YoutubeVideoURLs.Remove(videoToRemove);
+                context.SaveChanges();
+                
+            }
+
+            return horseID;
         }
 
         public static List<HorseModel> GetHorsesDependingOnNavigation(int navigationId)
@@ -504,26 +557,24 @@ namespace SkeletorDAL
             {
                 var query =
                     (from h in context.Horses
-                        select new HorseModel() {ID = h.ID, ImagePath = h.ImagePath}
+                     select new HorseModel() { ID = h.ID, ImagePath = h.ImagePath }
                         ).ToList();
 
                 if (query.Count > 5)
                 {
                     var HM = new List<HorseModel>();
 
-                   HM.Add(query[0]);
-                   HM.Add(query[1]);
-                   HM.Add(query[2]);
-                   HM.Add(query[3]);
-                   HM.Add(query[4]);
+                    HM.Add(query[0]);
+                    HM.Add(query[1]);
+                    HM.Add(query[2]);
+                    HM.Add(query[3]);
+                    HM.Add(query[4]);
                 }
-                
+
                 return query;
 
             }
         }
-
-
 		public static EditAboutModel GetLatestAboutInformation()
 		{
 			using (var context = new HorseContext())

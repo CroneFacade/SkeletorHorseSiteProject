@@ -228,6 +228,8 @@
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\HorseProfile\GetHorseVideos.cshtml" />
+    <Content Include="Views\HorseProfile\AddNewHorseVideo.cshtml" />
     <Content Include="Views\Shared\_horseProfileGallery.cshtml" />
     <Content Include="Views\HorseProfile\Gallery.cshtml" />
     <Content Include="Views\HorseProfile\UploadGalleryImage.cshtml" />
