@@ -1,0 +1,16 @@
+﻿@model IEnumerable<SkeletorDAL.Model.ImageModel>
+
+@using (Html.BeginForm("Upload", "EditSlideShowImages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Upload a file</legend>
+        <p>Only .jpg .jpeg . png and .gif allowed</p>
+        <div class="editor-field"> @Html.TextBox("file", "", new { type = "file" }) </div>
+        <div class="editor-field"> <input type="submit" value="Upload" /> </div>
+    </fieldset> 
+}
+
+@Html.Action("SliderGallery")
+
+
+

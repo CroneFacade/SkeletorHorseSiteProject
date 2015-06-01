@@ -13,9 +13,15 @@
             }
         </div>
     </div>
-</div>  
+</div>
+<br />
+@if (User.Identity.IsAuthenticated)
+{  <div class="btn-btn-default">
+        <input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
+    </div> }
+          
 
-
+<br />
 
 <div id="puffContainer" class="col-md-12">
     <div class="row">
@@ -32,7 +38,28 @@
 </div>
 
 <div id="puffHorseContainer" class="col-md-12">
+<<<<<<< HEAD
+    <div class="row">
+        <div class="horsePuff">
+            <a href="http://localhost:55849/HorseProfile/Index/1">  <img class="horsePuffImg" src="~/Images/hest.jpg" style="height: 150px; width: 150px;" /></a>
+        </div>
+        <div class="horsePuff">
+            <a href="http://localhost:55849/HorseProfile/Index/3">  <img class="horsePuffImg" src="~/Images/Dummy3.jpg" style="height: 150px; width: 150px;" /></a>
+        </div>
+        <div class="horsePuff">
+            <a href="http://localhost:55849/HorseProfile/Index/4">  <img class="horsePuffImg" src="~/Images/Dummy1.jpg" style="height: 150px; width: 150px;" /></a>
+        </div>
+
+        <div class="horsePuff">
+            <img class="horsePuffImg" src="~/Images/ladda ned.jpg" style="height: 150px; width: 150px;" />
+        </div>
+        <div class="horsePuff">
+            <img class="horsePuffImg" src="~/SlideImages/11281642_10153379658559083_1233648017_o.jpg" style="height: 150px; width: 150px;" />
+        </div>
+    </div>
+=======
   @Html.Action("LatestUpdates", "Home")
+>>>>>>> 399da2aeb34228fc34fb8dc5bbafe17c6b47582c
 </div>
 
 
