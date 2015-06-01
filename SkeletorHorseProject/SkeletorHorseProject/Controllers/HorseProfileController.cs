@@ -35,7 +35,7 @@ namespace SkeletorHorseProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase file, int id)
+        public ActionResult UploadProfilePicture(HttpPostedFileBase file, int id)
         {
 
             string imageFileName = "";
@@ -118,13 +118,70 @@ namespace SkeletorHorseProject.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult AddBlogPostToBlog(BlogPostModel blogpost, int blogID)
         {
-            if (ModelState.IsValid)
-            {
-                var horseIdThatRecivedTheBlogPost = Repository.AddNewBlogPost(blogpost, blogID);
-                return RedirectToAction("Index", new { id = horseIdThatRecivedTheBlogPost });
-            }
-            return View("_AddBlogPost", blogpost);
+            if (!ModelState.IsValid) return View("_AddBlogPost", blogpost);
+            var horseIdThatRecivedTheBlogPost = Repository.AddNewBlogPost(blogpost, blogID);
+            return RedirectToAction("Index", new { id = horseIdThatRecivedTheBlogPost });
+        }
 
+        [ChildActionOnly]
+        public ActionResult Gallery(int id)
+        {
+            List<HorseProfileGalleryImagesModel> images = Repository.GetHorseProfileGalleryImages(id);
+            return PartialView("_horseProfileGallery", images);
+        }
+
+        public ActionResult UploadGalleryImage(int id)
+        {
+            return View(id);
+        }
+
+        [HttpPost]
+        public ActionResult UploadGalleryImage(HttpPostedFileBase file, int id)
+        {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = id + Path.GetFileName(file.FileName);
+
+                    if (fileName.EndsWith(".jpg") ||
+                        fileName.EndsWith(".png") ||
+                        fileName.EndsWith(".bmp") ||
+                        fileName.EndsWith(".gif") ||
+                        fileName.EndsWith(".jpeg"))
+                    {
+                        var path = Path.Combine(Server.MapPath("~/HorseProfileImages"), fileName);
+
+                        file.SaveAs(path);
+                        path = "~/HorseProfileImages/" + fileName;
+                        Repository.AddNewFile(fileName, path);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Incorrect file type, please only upload jpg, jpeg, bmp, png or gif";
+                        return RedirectToAction("UploadGalleryImage");
+                    }
+
+
+                }
+                ViewBag.Message = "Upload successful";
+
+
+
+
+                return RedirectToAction("Index", new{id=id});
+            }
+            catch
+            {
+                ViewBag.Message = "Upload failed";
+                return RedirectToAction("UploadGalleryImage");
+            }
+        }
+
+        [ChildActionOnly]
+        public ActionResult UploadImageButton(int id)
+        {
+            return View(id);
         }
     }
 }

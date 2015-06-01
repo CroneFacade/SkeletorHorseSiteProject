@@ -349,6 +349,23 @@ namespace SkeletorDAL
 
             return path;
         }
+
+        public static List<HorseProfileGalleryImagesModel> GetHorseProfileGalleryImages(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                return (from i in context.GalleryImages
+                        where i.Active == true && i.ImagePath.StartsWith(@"~/HorseProfileImages/" + id)
+                        select (new HorseProfileGalleryImagesModel()
+                        {
+                            ID = i.ID,
+                            Active = i.Active,
+                            ImagePath = i.ImagePath,
+                            FileName = i.FileName,
+                            HorseID = id
+                        })).ToList();
+            }
+        }
         public static void DeleteGalleryImage(int id)
         {
             using (var context = new HorseContext())
@@ -426,6 +443,7 @@ namespace SkeletorDAL
             }
         }
 
+     
     }
 }
 

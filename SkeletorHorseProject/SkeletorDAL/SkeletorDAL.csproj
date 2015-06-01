@@ -100,6 +100,7 @@
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Model\HorseInfomationModel.cs" />
     <Compile Include="Model\HorseModel.cs" />
+    <Compile Include="Model\HorseProfileGalleryImagesModel.cs" />
     <Compile Include="Model\HorseProfileModel.cs" />
     <Compile Include="Model\HorseSaleModel.cs" />
     <Compile Include="Model\AdminLoginModel.cs" />

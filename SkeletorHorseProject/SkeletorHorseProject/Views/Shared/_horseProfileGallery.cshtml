@@ -1,11 +1,7 @@
-﻿@model IEnumerable<SkeletorDAL.Model.ImageModel>
+﻿@model IEnumerable<SkeletorDAL.Model.HorseProfileGalleryImagesModel>
 
 <body>
-    <br />
-    @if (User.Identity.IsAuthenticated)
-    {  <div class="btn-btn-default">
-        <input type="button" value="Upload new image" onclick="location.href = '@Url.Action("UploadFile", "Gallery")'" />
-    </div> }
+   
     <br />
     <div class="GalleryWrapper">
 
@@ -33,3 +29,4 @@
         }
     </div>
 </body>
+
