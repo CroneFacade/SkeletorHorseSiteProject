@@ -165,8 +165,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
-    <Compile Include="Controllers\BlogModel.cs" />
-    <Compile Include="Controllers\BlogPostModel.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CreateHorseController.cs" />
     <Compile Include="Controllers\EditAboutPageController.cs" />
@@ -213,6 +211,8 @@
     <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\HorseProfile\UploadProfilePicture.cshtml" />
     <Content Include="Views\Gallery\DeleteImage.cshtml" />
+    <Content Include="Views\Shared\_AddBlogPost.cshtml" />
+    <Content Include="Views\HorseProfile\AddBlogPostToBlog.cshtml" />
     <Content Include="Views\Footer\EditLinks.cshtml" />
     <Content Include="Views\Footer\AddNewLink.cshtml" />
     <Content Include="Views\Home\LatestUpdates.cshtml" />

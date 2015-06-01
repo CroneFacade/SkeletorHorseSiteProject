@@ -89,7 +89,7 @@ namespace SkeletorHorseProject.Controllers
 
             string fullPath = Request.MapPath(path);
 
-            if (System.IO.File.Exists(fullPath)) 
+            if (System.IO.File.Exists(fullPath))
             {
                 System.IO.File.Delete(fullPath);
             }
@@ -105,6 +105,26 @@ namespace SkeletorHorseProject.Controllers
                 FacebookPath = facebookUrl
             };
             return PartialView(horseModel);
+        }
+
+
+        [ChildActionOnly]
+        public ActionResult AddBlogPost(BlogModel blog)
+        {
+          
+            var blogpost = new BlogPostModel(){BlogID = blog.ID};           
+            return PartialView("_AddBlogPost", blogpost);
+        }
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult AddBlogPostToBlog(BlogPostModel blogpost, int blogID)
+        {
+            if (ModelState.IsValid)
+            {
+                var horseIdThatRecivedTheBlogPost = Repository.AddNewBlogPost(blogpost, blogID);
+                return RedirectToAction("Index", new { id = horseIdThatRecivedTheBlogPost });
+            }
+            return View("_AddBlogPost", blogpost);
+
         }
     }
 }

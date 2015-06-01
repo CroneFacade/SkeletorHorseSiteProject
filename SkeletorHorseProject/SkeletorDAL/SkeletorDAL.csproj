@@ -91,6 +91,8 @@
     <Compile Include="HorseContext.cs" />
     <Compile Include="HorseContextInitializer.cs" />
     <Compile Include="Model\AboutReadOnlyModel.cs" />
+    <Compile Include="Model\BlogModel.cs" />
+    <Compile Include="Model\BlogPostModel.cs" />
     <Compile Include="Model\ContactModel.cs" />
     <Compile Include="Model\CreateHorseModel.cs" />
     <Compile Include="Model\EditAboutModel.cs" />
@@ -117,7 +119,9 @@
     <Compile Include="Repository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Mvc.sitemap" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
