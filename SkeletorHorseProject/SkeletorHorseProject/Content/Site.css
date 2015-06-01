@@ -1,7 +1,10 @@
 ﻿body {
     padding-bottom: 10px;
 }
-
+.breadcrumb {
+    height: 30px;
+    
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

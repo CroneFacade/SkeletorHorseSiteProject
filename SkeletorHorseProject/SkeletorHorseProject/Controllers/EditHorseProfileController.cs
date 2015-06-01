@@ -25,11 +25,12 @@ namespace SkeletorHorseProject.Controllers
 	        model.Description = currentHorse.Description;
 	        model.Medicine = currentHorse.Medicine;
 	        model.FamilyTree = currentHorse.FamilyTree;
-	        model.IsForSale = currentHorse.IsForSale;
+	        model.IsForSale = !currentHorse.IsForSale;
 	        model.Price = currentHorse.Price;
-            model.IsActive = !currentHorse.IsActive;
+            model.IsActive = currentHorse.IsActive;
             model.FacebookPath = currentHorse.FacebookPath;
             model.IsSold = !currentHorse.IsSold;
+            model.Gender = currentHorse.Gender;
             return View(model);
         }
 		[HttpPost]
@@ -38,21 +39,21 @@ namespace SkeletorHorseProject.Controllers
 		    var currentHorse = Repository.GetFullInformationOnSpecificHorseById(id);
 		    if (ModelState.IsValid)
 		    {
-			    currentHorse.ID = id;
-				currentHorse.Name = model.Name;
-				currentHorse.Birthday = model.Birthday;
-				currentHorse.Race = model.Race;
-				currentHorse.Withers = model.Withers;
-				currentHorse.Awards = model.Awards;
-				currentHorse.Description = model.Description;
-				currentHorse.Medicine = model.Medicine;
-				currentHorse.FamilyTree = model.FamilyTree;
-				currentHorse.IsForSale = model.IsForSale;
-				currentHorse.Price = model.Price;
-		        currentHorse.IsActive = !model.IsActive;
-		        currentHorse.FacebookPath = model.FacebookPath;
-		        currentHorse.IsSold = !model.IsSold;
+                currentHorse.Name = model.Name;
+                currentHorse.Birthday = model.Birthday;
+                currentHorse.Race = model.Race;
+                currentHorse.Awards = model.Awards;
+                currentHorse.Description = model.Description;
+                currentHorse.Medicine = model.Medicine;
+                currentHorse.FamilyTree = model.FamilyTree;
+                currentHorse.IsForSale = model.IsForSale;
+                currentHorse.Price = model.Price;
+                currentHorse.IsActive = model.IsActive;
+                currentHorse.FacebookPath = model.FacebookPath;
+                currentHorse.IsSold = model.IsSold;
+                currentHorse.Gender = model.Gender;
 				Repository.UpdateHorseProfile(currentHorse);
+
 			    return RedirectToAction("Index", "HorseProfile", new { id = id});
 		    }
 		    return View(model);

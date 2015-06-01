@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using SkeletorDAL.Helpers;
 using SkeletorDAL.Model;
 using SkeletorDAL.POCO;
@@ -301,6 +302,7 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
+
         public static string RemoveOldProfileImage(int id)
         {
             string path = "";
