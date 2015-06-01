@@ -167,7 +167,9 @@
     <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CreateHorseController.cs" />
+    <Compile Include="Controllers\EditAboutPageController.cs" />
     <Compile Include="Controllers\EditHorseProfileController.cs" />
+    <Compile Include="Controllers\EditSlideShowImagesController.cs" />
     <Compile Include="Controllers\FilteredHorsePageController.cs" />
     <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
@@ -201,6 +203,10 @@
     <Content Include="Views\CreateHorse\CreateHorse.cshtml" />
     <Content Include="Views\Contact\Sent.cshtml" />
     <Content Include="Views\EditHorseProfile\EditHorseProfile.cshtml" />
+    <Content Include="Views\EditSlideShowImages\UploadSlideshowFile.cshtml" />
+    <Content Include="Views\EditSlideShowImages\Index.cshtml" />
+    <Content Include="Views\EditSlideShowImages\SliderGallery.cshtml" />
+    <Content Include="Views\EditAboutPage\EditAbout.cshtml" />
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
@@ -224,6 +230,12 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Print\Index.cshtml" />
+    <Content Include="Views\HorseProfile\GetHorseVideos.cshtml" />
+    <Content Include="Views\HorseProfile\AddNewHorseVideo.cshtml" />
+    <Content Include="Views\Shared\_horseProfileGallery.cshtml" />
+    <Content Include="Views\HorseProfile\Gallery.cshtml" />
+    <Content Include="Views\HorseProfile\UploadGalleryImage.cshtml" />
+    <Content Include="Views\HorseProfile\UploadImageButton.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -233,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="HorseProfileImages\" />
     <Folder Include="Views\PuffContainer\" />
   </ItemGroup>
   <ItemGroup>

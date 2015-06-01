@@ -16,7 +16,44 @@ namespace SkeletorDAL
 {
     public static class Repository
     {
-
+        public static List<ImageModel> GetAllSlideShowImages()
+        {
+            using (var context = new HorseContext())
+            {
+                return (from i in context.SlideShowImages
+                        where i.Active == true && i.ImagePath.StartsWith(@"~/SlideImages/")
+                        select (new ImageModel
+                        {
+                            ID = i.ID,
+                            Active = i.Active,
+                            ImagePath = i.ImagePath,
+                            FileName = i.FileName
+                        })).ToList();
+            }
+        }
+        public static void AddNewSlideShowFile(string fileName, string path)
+        {
+            using (var context = new HorseContext())
+            {
+                context.SlideShowImages.Add(new SlideShowImage()
+                {
+                    FileName = fileName,
+                    ImagePath = path,
+                    Active = true
+                }
+                    );
+                context.SaveChanges();
+            }
+        }
+        public static void DeleteSlideShowImage(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var image = context.SlideShowImages.Find(id);
+                context.SlideShowImages.Remove(image);
+                context.SaveChanges();
+            }
+        }
         public static string GetAdminEmail()
         {
             using (var context = new HorseContext())
@@ -74,6 +111,25 @@ namespace SkeletorDAL
                 context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url });
                 context.SaveChanges();
             }
+        }
+
+        public static List<HorseVideoModel> GetHorseVideosByID(int id)
+        {
+            List<HorseVideoModel> listToReturn = new List<HorseVideoModel>();
+
+            using (var context = new HorseContext())
+            {
+                List<YoutubeVideoURL> videoList = (from v in context.Horses
+                        where v.ID == id
+                        select v.YoutubeVideoURLs).FirstOrDefault();
+
+                foreach (var video in videoList)
+                {
+                    listToReturn.Add(new HorseVideoModel() {ID = video.ID, HorseID = id ,VideoName = video.VideoName, VideoURL = video.VideoURL });
+                }
+            }
+
+            return listToReturn;
         }
 
         public static void DeleteFooterLink(int id)
@@ -188,6 +244,40 @@ namespace SkeletorDAL
                             ImagePath = h.ImagePath
                         }).FirstOrDefault();
             }
+        }
+
+        public static void AddNewYoutubeVideoToHorse(HorseVideoModel model)
+        {
+            using(var context = new HorseContext())
+            {
+                var horse = (from h in context.Horses
+                            where h.ID == model.HorseID
+                            select h).FirstOrDefault();
+
+                horse.YoutubeVideoURLs.Add(new YoutubeVideoURL() { VideoName = model.VideoName, VideoURL = model.VideoURL });
+
+                context.SaveChanges();
+            }
+        }
+
+        public static int DeleteYoutubeVideoFromHorse(int id)
+        {
+            int horseID;
+
+            using (var context = new HorseContext())
+            {
+                var videoToRemove = (from y in context.YoutubeVideoURLs
+                                     where y.ID == id
+                                     select y).FirstOrDefault();
+
+                horseID = videoToRemove.Horse.ID;
+
+                context.YoutubeVideoURLs.Remove(videoToRemove);
+                context.SaveChanges();
+                
+            }
+
+            return horseID;
         }
 
         public static List<HorseModel> GetHorsesDependingOnNavigation(int navigationId)
@@ -420,13 +510,33 @@ namespace SkeletorDAL
 
             return path;
         }
-        public static void DeleteGalleryImage(int id)
+
+        public static List<HorseProfileGalleryImagesModel> GetHorseProfileGalleryImages(int id)
         {
             using (var context = new HorseContext())
             {
+                return (from i in context.GalleryImages
+                        where i.Active == true && i.ImagePath.StartsWith(@"~/HorseProfileImages/" + id)
+                        select (new HorseProfileGalleryImagesModel()
+                        {
+                            ID = i.ID,
+                            Active = i.Active,
+                            ImagePath = i.ImagePath,
+                            FileName = i.FileName,
+                            HorseID = id
+                        })).ToList();
+            }
+        }
+        public static int DeleteGalleryImage(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                int horseid = 0;
                 var image = context.GalleryImages.Find(id);
+                horseid = image.FileName[0];
                 context.GalleryImages.Remove(image);
                 context.SaveChanges();
+                return horseid;
             }
         }
 
@@ -496,6 +606,48 @@ namespace SkeletorDAL
 
             }
         }
+		public static EditAboutModel GetLatestAboutInformation()
+		{
+			using (var context = new HorseContext())
+			{
+				var query =
+					(from a in context.Abouts
+					 orderby a.ID descending
+					 select
+						 new EditAboutModel()
+						 {
+							 ID = a.ID,
+							 Header1 = a.Header1,
+							 Header2 = a.Header2,
+							 Textfield1 = a.Textfield1,
+							 Textfield2 = a.Textfield2
+						 }).FirstOrDefault();
+
+				return query;
+			}
+		}
+
+		public static About GetLatestAbout()
+		{
+			using (var context = new HorseContext())
+			{
+				var query =
+					(from a in context.Abouts
+					 orderby a.ID descending
+					 select a).FirstOrDefault();
+
+				return query;
+			}
+		}
+
+		public static void UpdateAbouts(About about)
+		{
+			using (var context = new HorseContext())
+			{
+				context.Entry(about).State = EntityState.Modified;
+				context.SaveChanges();
+			}
+		}
 
     }
 }

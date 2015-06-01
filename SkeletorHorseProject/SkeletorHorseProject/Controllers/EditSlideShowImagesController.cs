@@ -9,18 +9,26 @@ using System.IO;
 
 namespace SkeletorHorseProject.Controllers
 {
-    public class GalleryController : Controller
+    public class EditSlideShowImagesController : Controller
     {
-        // GET: Gallery
+        // GET: EditSlideShowImages
         public ActionResult Index()
         {
-            var model = Repository.GetAllGalleryImages();
+            var model = Repository.GetAllSlideShowImages();
             return View(model);
-        }
 
-        public ActionResult UploadFile()
+        }
+        public ActionResult UploadSlideshowFile()
         {
+
             return View();
+        }
+        [ChildActionOnly]
+        public ActionResult SliderGallery()
+        {
+
+            var model = Repository.GetAllSlideShowImages();
+            return View(model);
         }
 
         [HttpPost]
@@ -38,16 +46,16 @@ namespace SkeletorHorseProject.Controllers
                         fileName.EndsWith(".gif") ||
                         fileName.EndsWith(".jpeg"))
                     {
-                        var path = Path.Combine(Server.MapPath("~/Images"), fileName);
-                    
+                        var path = Path.Combine(Server.MapPath("~/SlideImages"), fileName);
+
                         file.SaveAs(path);
-                       path = "~/Images/" + fileName;
-                        Repository.AddNewFile(fileName, path);
+                        path = "~/SlideImages/" + fileName;
+                        Repository.AddNewSlideShowFile(fileName, path);
                     }
                     else
                     {
                         ViewBag.Message = "Incorrect file type, please only upload jpg, jpeg, bmp, png or gif";
-                        return RedirectToAction("UploadFile");
+                        return RedirectToAction("UploadSlideshowFile");
                     }
 
 
@@ -55,17 +63,16 @@ namespace SkeletorHorseProject.Controllers
                 ViewBag.Message = "Upload successful";
 
 
+                return View("UploadSlideshowFile");
 
 
-                return RedirectToAction("Index");
             }
             catch
             {
                 ViewBag.Message = "Upload failed";
-                return RedirectToAction("UploadFile");
+                return RedirectToAction("UploadSlideshowFile");
             }
         }
-
         public ActionResult DeleteImage(int id, string path)
         {
             string fullPath = Request.MapPath(path);
@@ -73,8 +80,8 @@ namespace SkeletorHorseProject.Controllers
             {
                 System.IO.File.Delete(fullPath);
             }
-            var horseId = Repository.DeleteGalleryImage(id);
-            return RedirectToAction("Index", horseId);
+            Repository.DeleteSlideShowImage(id);
+            return RedirectToAction("UploadSlideshowFile");
         }
     }
 }

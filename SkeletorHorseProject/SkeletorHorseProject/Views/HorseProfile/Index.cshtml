@@ -40,18 +40,25 @@
             <div role="tabpanel" id="horseInformation">
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
-                    <li role="presentation"><a href="#Health" aria-controls="Health" role="tab" data-toggle="tab">Health</a></li>
+                    <li role="presentation"><a href="#health" aria-controls="health" role="tab" data-toggle="tab">Health</a></li>
+                    <li role="presentation"><a href="#gallery" aria-controls="Health" role="tab" data-toggle="tab">Gallery</a></li>
                     <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Famliy-tree</a></li>
                     <li role="presentation"><a href="#horseBlog" aria-controls="family-tree" role="tab" data-toggle="tab">Blog</a></li>
-
+                    <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="description">
                         @Model.Description
                     </div>
+                    <div role="tabpanel" class="tab-pane" id="videos">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @Html.Action("AddNewHorseVideo", new { id = Model.ID })
+                        }
+                        @Html.Action("GetHorseVideos", new { id = Model.ID })
+                    </div>
                     <div role="tabpanel" class="tab-pane" id="Health">
                         <dl>
-
                             <dt>Vaccination: </dt>
                             <dd>Tetanus</dd>
                             <dd>Hepatitis A</dd>
@@ -62,8 +69,6 @@
 
                             <dt>Vaccinationer: </dt>
                             <dd>@Model.Medicine</dd>
-
-
                         </dl>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="family-tree">
@@ -75,9 +80,9 @@
                         {
                             <h4>@blog.Title</h4>
                             <p style="font-size: 9px;">@blog.Created</p>
-                            <br />
+                            <br/>
                             <p>@blog.Content</p>
-                            <hr />
+                            <hr/>
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -86,12 +91,20 @@
                             </button>
                             <div class="collapse" data-toggle="collapse" data-target=".navbar-collapse" id="addBlogPost">
                                 <div class="well">
-                                    @Html.Action("AddBlogPost", new { blog = @Model.Blog })
-
+                                    @Html.Action("AddBlogPost", new {blog = @Model.Blog})
                                 </div>
 
                             </div>
                         }
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="gallery">
+                        <br/>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @Html.Action("UploadImageButton", new {id = @Model.ID})
+                        }
+                        <br/>
+                        @Html.Action("Gallery", new {id = @Model.ID})
                     </div>
 
                 </div>

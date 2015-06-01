@@ -17,6 +17,9 @@ namespace SkeletorDAL
 		public DbSet<About> Abouts { get; set; }
         public DbSet<FooterLink> FooterLinks { get; set; }
 		public DbSet<GalleryImage> GalleryImages { get; set; }
+        public DbSet<YoutubeVideoURL> YoutubeVideoURLs { get; set; }
+        public System.Data.Entity.DbSet<SkeletorDAL.Model.EditHorseProfileModel> EditHorseProfileModels { get; set; }
+        public DbSet<SlideShowImage> SlideShowImages { get; set; }
 
 	}
 }

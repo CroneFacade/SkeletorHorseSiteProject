@@ -6,34 +6,36 @@
 <body>
     <div id="filtering_horses" style="overflow: hidden">
         <table>
-            <tr id="rad">
+            <tr id="horseRow">
 
-                
-                    @if (Model.Count == 0)
+
+                @if (Model.Count == 0)
+                {
+                    <p>No horses avalible</p>
+                }
+                else
+                {
+                    foreach (var horse in Model)
                     {
-                        <p>No horses avalible</p>
-                    }
-                    else
-                    {
-                        foreach (var horse in Model)
-                        {
-                            <td>
-                                <div id="horse" style="margin-right: 20px">
-                                    <img src="@Url.Content(horse.ImagePath)" style=" height: 250px; width: 200px;" alt="Image" />
-                                    <p>
-                                        Name: @horse.Name
+                        <td>
+                            <div id="horse">
+                                <img src="@Url.Content(horse.ImagePath)" style=" height: 250px; width: 200px;" alt="Image" />
+                                <div class="horseInfoBox">
+                                    <p id="horseName">
+                                        @Html.ActionLink((@horse.Name), "Index", "HorseProfile", new { id = @horse.ID }, null)
                                     </p>
-                                    <p>
-                                        Birthday: @horse.Birthday.ToShortDateString()
+                                    <p class="horseParagraf">
+                                        Birthday: @horse.Birthday.ToShortDateString() <br />
+                                        Gender: @horse.Gender <br />
+                                        Breeding: @horse.Breeding
                                     </p>
-                                    <p>
-                                        @Html.ActionLink(("Go to " + @horse.Name + "'s profile page"), "Index", "HorseProfile", new { id = @horse.ID }, null)
-                                    </p>
+
                                 </div>
-                            </td>
-                        }
+                            </div>
+                        </td>
                     }
-                            
+                }
+
             </tr>
         </table>
     </div>

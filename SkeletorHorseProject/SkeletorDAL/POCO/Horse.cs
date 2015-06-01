@@ -36,6 +36,7 @@ namespace SkeletorDAL
         public string Gender { get; set; }
         public bool Rent { get; set; }
 	    public virtual Blog Blog { get; set; }
+        public virtual List<YoutubeVideoURL> YoutubeVideoURLs { get; set; }
 		public Horse()
 		{
 			
@@ -50,8 +51,8 @@ namespace SkeletorDAL
 			IsForSale = false;
 			Price = price;
 			IsActive = true;
-		    FacebookPath = url;
-    
+            FacebookPath = url;
+            YoutubeVideoURLs = new List<YoutubeVideoURL>();
 		}
 
 	
