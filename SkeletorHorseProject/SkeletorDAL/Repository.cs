@@ -496,13 +496,16 @@ namespace SkeletorDAL
                         })).ToList();
             }
         }
-        public static void DeleteGalleryImage(int id)
+        public static int DeleteGalleryImage(int id)
         {
             using (var context = new HorseContext())
             {
+                int horseid = 0;
                 var image = context.GalleryImages.Find(id);
+                horseid = image.FileName[0];
                 context.GalleryImages.Remove(image);
                 context.SaveChanges();
+                return horseid;
             }
         }
 

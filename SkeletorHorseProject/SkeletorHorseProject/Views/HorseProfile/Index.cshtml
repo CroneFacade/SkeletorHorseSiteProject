@@ -98,11 +98,12 @@
                         }
                     </div>
                     <div role="tabpanel" class="tab-pane" id="gallery">
+                        <br/>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            @Html.Action("UploadImageButton", new { id = @Model.ID })
+                            @Html.Action("UploadImageButton", new {id = @Model.ID})
                         }
-                 
+                        <br/>
                         @Html.Action("Gallery", new {id = @Model.ID})
                     </div>
 

@@ -244,3 +244,55 @@ a:hover {
             color: #0000ff;
             text-decoration: none;
         }
+
+#filtering_horses {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#horse {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #EBEBEB;
+    margin-left: 25px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-box-shadow: 0 0 2px 2px #c4c4c4;
+    box-shadow: 0 0 2px 2px #c4c4c4;
+}
+
+    #horse img {
+        -webkit-box-shadow: 0 5px 5px 0 #B5B5B5;
+        box-shadow: 0 5px 5px 0 #B5B5B5;
+    }
+
+.horseInfoBox {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+#horseName {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    -ms-text-shadow: 1px 1px 1px #ffffff;
+    text-shadow: 1px 1px 1px #fff;
+    color: #2c2c2c;
+}
+
+    #horseName a {
+        color: #2c2c2c;
+        text-decoration: none;
+    }
+
+        #horseName a:hover, #horseName a:focus, #horseName a:active {
+            color: #D1081D;
+            text-decoration: none;
+        }
+
+.horseParagraf {
+    margin-top: -7px;
+    font-family: Arial;
+}

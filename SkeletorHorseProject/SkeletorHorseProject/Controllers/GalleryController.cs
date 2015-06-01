@@ -73,8 +73,8 @@ namespace SkeletorHorseProject.Controllers
             {
                 System.IO.File.Delete(fullPath);
             }
-            Repository.DeleteGalleryImage(id);
-            return RedirectToAction("Index");
+            var horseId = Repository.DeleteGalleryImage(id);
+            return RedirectToAction("Index", horseId);
         }
     }
 }
