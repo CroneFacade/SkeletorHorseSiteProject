@@ -20,7 +20,7 @@
                 <dd>Wither: @Model.Withers</dd>
                 <dd>Race: @Model.Race</dd>
                 <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
-                <dt>Tävlingar och priser</dt>
+                <dt>Races and Prizes</dt>
                 <dd>
                     @foreach (var award in Model.Awards)
                     {
@@ -51,8 +51,18 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="Health">
                         <dl>
+
+                            <dt>Vaccination: </dt>
+                            <dd>Tetanus</dd>
+                            <dd>Hepatitis A</dd>
+                            <dd>hepatitis B</dd>
+                            <dd>Horsepestilence</dd>
+                            <dt>Diseases: </dt>
+                            <dd>None</dd>
+
                             <dt>Vaccinationer: </dt>
                             <dd>@Model.Medicine</dd>
+
 
                         </dl>
                     </div>
@@ -67,19 +77,19 @@
                             <p style="font-size: 9px;">@blog.Created</p>
                             <br />
                             <p>@blog.Content</p>
-                            <hr/>
+                            <hr />
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBlogPost" aria-expanded="false" aria-controls="addBlogPost">
                                 Add blogpost
                             </button>
-                            <div class="collapse" id="addBlogPost">
+                            <div class="collapse" data-toggle="collapse" data-target=".navbar-collapse" id="addBlogPost">
                                 <div class="well">
-                                    @Html.Action("AddBlogPost", new{blog = @Model.Blog})
-                             
+                                    @Html.Action("AddBlogPost", new { blog = @Model.Blog })
+
                                 </div>
-                             
+
                             </div>
                         }
                     </div>

@@ -6,6 +6,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using System.Xml.Schema;
 using SkeletorDAL.Helpers;
 using SkeletorDAL.Model;
 using SkeletorDAL.POCO;
@@ -26,6 +27,37 @@ namespace SkeletorDAL
                      select u.Email).FirstOrDefault();
             }
         }
+        public static List<FooterModel> GetAllFooterLinks()
+        {
+            using (var context = new HorseContext())
+            {
+                return (from l in context.FooterLinks
+                        select new FooterModel { ID = l.ID, Name = l.LinkName, Url = l.LinkURL }).ToList();
+            }
+        }
+
+        public static void AddNewFooterLink(FooterModel model)
+        {
+            using(var context = new HorseContext())
+            {
+                context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url });
+                context.SaveChanges();
+            }
+        }
+
+        public static void DeleteFooterLink(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var footerToDelete = (from l in context.FooterLinks
+                                      where l.ID == id
+                                      select l).FirstOrDefault();
+
+                context.FooterLinks.Remove(footerToDelete);
+                context.SaveChanges();
+            }
+        }
+
         public static void RegisterAdmin(RegisterAdminModel model)
         {
             using (var context = new HorseContext())
@@ -299,6 +331,7 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
+
         public static string RemoveOldProfileImage(int id)
         {
             string path = "";
@@ -367,6 +400,31 @@ namespace SkeletorDAL
             return horseId;
         }
 
+
+        public static List<HorseModel> GetLatestUpdates()
+        {
+            using (var context = new HorseContext())
+            {
+                var query =
+                    (from h in context.Horses
+                        select new HorseModel() {ID = h.ID, ImagePath = h.ImagePath}
+                        ).ToList();
+
+                if (query.Count > 5)
+                {
+                    var HM = new List<HorseModel>();
+
+                   HM.Add(query[0]);
+                   HM.Add(query[1]);
+                   HM.Add(query[2]);
+                   HM.Add(query[3]);
+                   HM.Add(query[4]);
+                }
+                
+                return query;
+
+            }
+        }
 
     }
 }

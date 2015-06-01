@@ -1,12 +1,24 @@
 ﻿@model SkeletorHorseProject.Controllers.BlogPostModel
 
-@using(Html.BeginForm("AddBlogPostToBlog", "HorseProfile", new { blogID = Model.BlogID }, FormMethod.Post, null))
+@using (Html.BeginForm("AddBlogPostToBlog", "HorseProfile", new { blogID = Model.BlogID }, FormMethod.Post, null))
 {
-@Html.AntiForgeryToken()
-@Html.LabelFor(m => m.Title)
-@Html.TextBoxFor(m => m.Title)
-@Html.LabelFor(m => m.Content)
-@Html.TextBoxFor(m => m.Content)
-<input type="submit" value="Add post" />
+    @Html.AntiForgeryToken()
+    <div class="row">
 
-                                    }
+        @Html.Label("Subject")
+    </div>
+    <div class="row">
+        @Html.TextBoxFor(m => m.Title)
+        </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.Content)
+    </div>
+    <div class="row">
+        @Html.TextAreaFor(m => m.Content)
+    </div>
+                <div class="row">
+            <input type="submit" value="Add post" />
+        </div>
+
+}

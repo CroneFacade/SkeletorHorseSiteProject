@@ -15,7 +15,10 @@ namespace SkeletorDAL
 		public DbSet<Blog> Blogs { get; set; }
 		public DbSet<Post> Posts { get; set; }
 		public DbSet<About> Abouts { get; set; }
+        public DbSet<FooterLink> FooterLinks { get; set; }
 		public DbSet<GalleryImage> GalleryImages { get; set; }
+
+        public System.Data.Entity.DbSet<SkeletorDAL.Model.EditHorseProfileModel> EditHorseProfileModels { get; set; }
 
 	}
 }
