@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SkeletorDAL.Model;
+using SkeletorDAL;
 
 namespace SkeletorHorseProject.Controllers
 {
@@ -12,33 +13,39 @@ namespace SkeletorHorseProject.Controllers
         [ChildActionOnly]
         public ActionResult Index()
         {
-            List<FooterModel> list = new List<FooterModel>()
-            
-            {
-                new FooterModel()  {
-                Name = "",
-                Url = "blogspot.com"
-            },
-                new FooterModel()  {
-                Name = "Triton",
-                Url = "blogspot.com"
-            },
-             new FooterModel()  {
-                Name = "Leila",
-                Url = "blogspot.com"
-            },
-             new FooterModel()  {
-                Name = "Flilip",
-                Url = "blogspot.com"
-            },
-             new FooterModel()  {
-                Name = "Stoffe",
-                Url = "blogspot.com"
-            },
-
-            };
+             var list = Repository.GetAllFooterLinks();
             
             return PartialView("Footer", list);
+        }
+
+        public ActionResult EditLinks()
+        {
+            return View(Repository.GetAllFooterLinks());
+        }
+
+        [ChildActionOnly]
+        public ActionResult AddNewLink(FooterModel model)
+        {
+            return PartialView(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult AddNewFooterLink(FooterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Repository.AddNewFooterLink(model);
+                return RedirectToAction("EditLinks");
+            }
+            else
+            {
+                return RedirectToAction("EditLinks");
+            }
+        }
+        public ActionResult DeleteFooterLink(int id)
+        {
+            Repository.DeleteFooterLink(id);
+            return RedirectToAction("EditLinks");
         }
     }
 }

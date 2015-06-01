@@ -1,0 +1,20 @@
+﻿@model SkeletorDAL.Model.FooterModel
+
+@using (Html.BeginForm("AddNewFooterLink", "Footer", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>Link Name</td>
+            <td>@Html.TextBoxFor(m => m.Name)</td>
+            <td>@Html.ValidationMessageFor(model => model.Name, "")</td>
+        </tr>
+        <tr>
+            <td>Link URL</td>
+            <td>@Html.TextBoxFor(m => m.Url)</td>
+            <td>@Html.ValidationMessageFor(model => model.Url, "")</td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit" />
+}

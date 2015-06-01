@@ -32,5 +32,12 @@ namespace SkeletorHorseProject.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }
+        
+        [ChildActionOnly]
+        public ActionResult LatestUpdates()
+        {
+            var latest = Repository.GetLatestUpdates();
+            return PartialView(latest);
+        }
     }
 }

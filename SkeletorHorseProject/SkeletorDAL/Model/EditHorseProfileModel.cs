@@ -14,6 +14,7 @@ namespace SkeletorDAL.Model
 		[Required(ErrorMessage = "What is the name of the horse?")]
 		public string Name { get; set; }
 		[Required(ErrorMessage = "(yyyy-mm-dd)")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime Birthday { get; set; }
 		[Required(ErrorMessage = "Pony, Camargue etc.")]
 		public string Race { get; set; }
@@ -37,11 +38,11 @@ namespace SkeletorDAL.Model
         public bool IsSold { get; set; }
         [DisplayName("Delete horse")]
         public bool IsActive { get; set; }
-
+        [DisplayName("Last updated")]
         public DateTime LastUpdated { get; set; }
-        public bool Breeding { get; set; }
-        public bool Sold { get; set; }
+        public string Breeding { get; set; }
         public string Gender { get; set; }
+        [DisplayName("Is for rent")]
         public bool Rent { get; set; }
 	}
 }

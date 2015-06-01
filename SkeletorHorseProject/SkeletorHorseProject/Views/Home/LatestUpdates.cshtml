@@ -1,0 +1,19 @@
+﻿
+@using System.Web.UI.WebControls
+@model List<SkeletorDAL.Model.HorseModel>
+
+
+
+<div class="row">
+
+    @foreach (var x in @Model)
+    {
+        <div id="puffHorseContainer">
+            <a class="horsePuff" href="@Url.Content("~/HorseProfile/Index/" + x.ID)"> <img src="@Url.Content(x.ImagePath)" style="height: 150px; width: 150px" /></a>
+        </div>
+
+    }
+
+
+</div>
+
