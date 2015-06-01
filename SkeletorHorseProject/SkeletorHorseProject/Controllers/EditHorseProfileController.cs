@@ -23,7 +23,8 @@ namespace SkeletorHorseProject.Controllers
 	    public ActionResult EditHorseProfile(int id, EditHorseProfileModel model)
 	    {
 		    var horseModel = Repository.GetFullInformationOnSpecificHorseById(id, model);
-		    if (ModelState.IsValid)
+		    @TempData["CheckboxError"] = "The fields 'For sale' and 'Sold' can't both be checked";
+            if (ModelState.IsValid && (model.IsForSale == true && model.IsSold == false) || (model.IsForSale == false && model.IsSold == true))
 		    {
 				Repository.UpdateHorseProfile(id, model);
 

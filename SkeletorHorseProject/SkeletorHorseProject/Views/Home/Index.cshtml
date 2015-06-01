@@ -13,9 +13,15 @@
             }
         </div>
     </div>
-</div>  
+</div>
+<br />
+@if (User.Identity.IsAuthenticated)
+{  <div class="btn-btn-default">
+        <input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
+    </div> }
+          
 
-
+<br />
 
 <div id="puffContainer" class="col-md-12">
     <div class="row">
@@ -32,7 +38,10 @@
 </div>
 
 <div id="puffHorseContainer" class="col-md-12">
+
+
   @Html.Action("LatestUpdates", "Home")
+
 </div>
 
 

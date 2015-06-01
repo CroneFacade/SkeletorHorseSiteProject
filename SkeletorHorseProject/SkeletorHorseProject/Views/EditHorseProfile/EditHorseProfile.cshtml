@@ -1,4 +1,5 @@
-﻿@model SkeletorDAL.Model.EditHorseProfileModel
+﻿@using System.Web.UI.WebControls
+@model SkeletorDAL.Model.EditHorseProfileModel
 
 @{
     ViewBag.Title = "EditHorseProfile";
@@ -120,6 +121,10 @@
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.IsForSale)
+                    @if (Model.IsForSale && Model.IsSold)
+                    {
+                        @TempData["CheckboxError"]
+                    }
                     @Html.ValidationMessageFor(model => model.IsForSale, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -130,6 +135,10 @@
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.IsSold)
+                    @if (Model.IsForSale && Model.IsSold)
+                    {
+                        @TempData["CheckboxError"]
+                    }
                     @Html.ValidationMessageFor(model => model.IsSold, "", new { @class = "text-danger" })
                 </div>
             </div>

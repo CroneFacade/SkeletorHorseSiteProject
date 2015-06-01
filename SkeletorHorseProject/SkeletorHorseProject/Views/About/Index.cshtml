@@ -1,6 +1,15 @@
 ﻿@model SkeletorDAL.Model.AboutReadOnlyModel
 @using SkeletorHorseProject.Models
 <h2>About</h2>
+<p>
+	@if (User.Identity.IsAuthenticated)
+	{
+		@Html.ActionLink("Edit", "EditAbout", "EditAboutPage")
+	}
+</p>
+
+
+
 
 
 <h3>@Model.Header1</h3> 
