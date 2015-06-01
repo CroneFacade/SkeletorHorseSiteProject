@@ -263,7 +263,7 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
-        public static void UpdateHorseProfile(EditHorseProfileModel horse)
+        public static void UpdateHorseProfile(Horse horse)
         {
             using (var context = new HorseContext())
             {
