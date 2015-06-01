@@ -10,7 +10,7 @@ using SkeletorDAL.POCO;
 
 namespace SkeletorDAL
 {
-	public class HorseContextInitializer : DropCreateDatabaseAlways<HorseContext>
+	public class HorseContextInitializer : DropCreateDatabaseIfModelChanges<HorseContext>
 	{
 		private readonly List<Horse> horses;
 		private readonly List<Blog> blogs;
@@ -124,7 +124,7 @@ namespace SkeletorDAL
 			abouts = new List<About>()
 			{
 				new About("Header1",@"balblablalblablalbla","Header2","heuheuehuehueheuheuhe"),
-				new About("Header1 Header up to date", 
+				new About("Team Nordahl", 
 						  @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et enim quis sem blandit mollis eu sed nibh. Pellentesque eu neque erat. Nullam tempus purus velit, sed ullamcorper est suscipit ac. Aenean molestie odio ut purus tristique tempus. Suspendisse sed purus eget augue vulputate dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel fermentum nunc. Nam nec dapibus tortor. Cras tellus nibh, fringilla ut facilisis et, fringilla sit amet erat. In tempor bibendum turpis eget sollicitudin. Praesent pharetra rhoncus metus, a cursus massa consectetur pharetra. Nulla pulvinar nisi quis sem molestie, in luctus mi scelerisque. Nulla facilisi. Duis sit amet volutpat diam. Proin vitae auctor lectus.", "Header2 up to date", 
 						  @"Maecenas finibus viverra tincidunt. Praesent vitae est sed sem pharetra consequat. Phasellus facilisis lacus velit, id lacinia elit facilisis sit amet. Nullam luctus, nisi sit amet bibendum convallis, justo felis sodales eros, nec rutrum tellus sapien ornare ex. Morbi fermentum tristique magna ut hendrerit. Mauris tincidunt ante ut libero mollis, eu pulvinar nunc dapibus. Fusce vestibulum nibh dui, ut blandit nisl pellentesque eu. In id sapien eget neque suscipit sollicitudin at quis augue. Quisque ac eleifend leo, in porta dolor. Pellentesque luctus lectus sapien, a pulvinar velit faucibus quis. Curabitur a mattis eros. Aenean lorem turpis, accumsan nec consequat in, tincidunt vitae velit. Nulla quis tellus convallis, ullamcorper purus at, pellentesque ligula.")
 			};
