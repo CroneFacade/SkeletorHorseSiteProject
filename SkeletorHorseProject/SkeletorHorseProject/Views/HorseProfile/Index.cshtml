@@ -42,11 +42,18 @@
                     <li role="presentation"><a href="#Health" aria-controls="Health" role="tab" data-toggle="tab">Health</a></li>
                     <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Famliy-tree</a></li>
                     <li role="presentation"><a href="#horseBlog" aria-controls="family-tree" role="tab" data-toggle="tab">Blog</a></li>
-
+                    <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="description">
                         @Model.Description
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="videos">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @Html.Action("AddNewHorseVideo", new { id = Model.ID })
+                        }
+                        @Html.Action("GetHorseVideos", new { id = Model.ID })
                     </div>
                     <div role="tabpanel" class="tab-pane" id="Health">
                         <dl>
@@ -57,26 +64,26 @@
                             <dd>hepatitis B</dd>
                             <dd>Horsepestilence</dd>
                             <dt>Diseases: </dt>
-                            <dd>None</dd>                    
+                            <dd>None</dd>
 
                             <dt>Vaccinationer: </dt>
                             <dd>@Model.Medicine</dd>
-                       
+
 
                         </dl>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="family-tree">
 
-                    @Model.FamilyTree
+                        @Model.FamilyTree
                     </div>
                     <div role="tabpanel" class="tab-pane" id="horseBlog">
-                       @foreach (var blog in Model.Blog.Posts)
-                       {
-                           <h4>@blog.Title</h4>
-                           <p style="font-size: 6px;"></p>
-                           <br/>
-                           <p>@blog.Content</p>
-                       }
+                        @foreach (var blog in Model.Blog.Posts)
+                        {
+                            <h4>@blog.Title</h4>
+                            <p style="font-size: 6px;"></p>
+                            <br />
+                            <p>@blog.Content</p>
+                        }
                     </div>
 
                 </div>

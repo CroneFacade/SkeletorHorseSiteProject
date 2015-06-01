@@ -26,6 +26,9 @@ namespace SkeletorDAL
             var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/3Dummy3.jpg", Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
             var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Adolf Medicin", Medicine = "Detta är Adolf beskrivning", FamilyTree = "Detta är Adolf släktträd" };
 
+            Helge.YoutubeVideoURLs.Add(new YoutubeVideoURL() { VideoName = "Test Video", VideoURL = @"http://www.youtube.com/embed/3rYoRaxgOE0?autoplay=0" });
+
+
             footerlinks = new List<FooterLink>();
 
             footerlinks.Add(new FooterLink { LinkName = "TestLink One", LinkURL = "http://www.google.com" });

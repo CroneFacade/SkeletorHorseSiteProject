@@ -34,6 +34,53 @@ namespace SkeletorHorseProject.Controllers
             return View(id);
         }
 
+        public ActionResult DeleteYoutubeVideoFromHorse(int id)
+        {
+            int horseID = Repository.DeleteYoutubeVideoFromHorse(id);
+            return RedirectToAction("Index", new { id = horseID });
+        }
+
+        [ChildActionOnly]
+        public ActionResult GetHorseVideos(int id)
+        {
+            return PartialView(Repository.GetHorseVideosByID(id)); 
+        }
+
+        [ChildActionOnly]
+        public ActionResult AddNewHorseVideo(int id)
+        {
+            return View(new HorseVideoModel() { HorseID = id});
+        }
+
+        [HttpPost]
+        public ActionResult AddNewHorseVideo(HorseVideoModel model, int id)
+        {
+            model.HorseID = id;
+
+            if (ModelState.IsValid && model.VideoURL.Contains("youtube.com"))
+            {
+                string embedStringBeginning = @"http://www.youtube.com/embed/";
+                string embedStringEnd = @"?autoplay=0";
+
+                string youtubeURL = model.VideoURL;
+
+                string[] splitURL = youtubeURL.Split('=');
+
+                string youtubeID = splitURL[1];
+
+                string fullYoutubeEmbedLink = embedStringBeginning + youtubeID + embedStringEnd;
+
+                model.VideoURL = fullYoutubeEmbedLink;
+
+                Repository.AddNewYoutubeVideoToHorse(model);
+
+                return RedirectToAction("Index", new { id = model.HorseID });
+            }
+
+            return RedirectToAction("Index", new { id = model.HorseID });
+            
+        }
+
         [HttpPost]
         public ActionResult Upload(HttpPostedFileBase file, int id)
         {
