@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using SkeletorHorseProject.Controllers;
 
 namespace SkeletorDAL.Model
 {
@@ -25,7 +26,7 @@ namespace SkeletorDAL.Model
         public string FamilyTree { get; set; }
         public string ImagePath { get; set; }
         public string FacebookPath { get; set; }
-        public Blog Blog { get; set; }
+        public BlogModel Blog { get; set; }
 
         public HorseProfileModel()
         {

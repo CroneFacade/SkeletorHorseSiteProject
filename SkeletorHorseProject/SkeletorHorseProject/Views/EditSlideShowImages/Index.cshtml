@@ -1,16 +1,14 @@
-﻿@model IEnumerable<SkeletorDAL.Model.ImageModel>
+﻿@model IEnumerable<SkeletorDAL.Model.SlideShowImgModel>
 
 <body>
-    <br />
-    @if (User.Identity.IsAuthenticated)
-    {  <div class="btn-btn-default">
-        <input type="button" value="Upload new image" onclick="location.href = '@Url.Action("UploadFile", "Gallery")'" />
-    </div> }
-    <br />
     <div class="GalleryWrapper">
+
 
         @foreach (var image in Model)
         {
+
+
+
             <div class="GalleryAlineImg">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@image.ID" style="margin-bottom: 5px;">
                     <img src="@Url.Content(image.ImagePath)" style="margin: -12px; height: 200px; width: 200px;" alt="Image" />
@@ -18,7 +16,7 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {<p>
-                    @Html.ActionLink("Delete image", "DeleteImage", "Gallery", new { id = image.ID, path = image.ImagePath }, new { onclick = "return confirm('Are you sure you wish to delete this article?');" })
+                    @Html.ActionLink("Delete image", "DeleteImage", "EditSlideShowImages", new { id = image.ID, path = image.ImagePath }, new { onclick = "return confirm('Are you sure you wish to delete this article?');" })
                 </p>
                 }
 
@@ -30,6 +28,12 @@
                     </div>
                 </div>
             </div>
+
+
+
         }
+
+
+
     </div>
 </body>
