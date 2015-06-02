@@ -209,12 +209,9 @@
     <Content Include="Views\EditSlideShowImages\Index.cshtml" />
     <Content Include="Views\EditSlideShowImages\SliderGallery.cshtml" />
     <Content Include="Views\EditAboutPage\EditAbout.cshtml" />
-
     <Content Include="Views\EditHorseProfile\EditEditors.cshtml" />
     <Content Include="Views\EditHorseProfile\_AddEditor.cshtml" />
-
     <Content Include="Views\EditPuff\Edit.cshtml" />
-
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
@@ -246,6 +243,7 @@
     <Content Include="Views\HorseProfile\UploadImageButton.cshtml" />
     <Content Include="Views\HorseProfile\FamilyTree.cshtml" />
     <Content Include="Views\Shared\_Puff.cshtml" />
+    <Content Include="Views\HorseProfile\EditFamilyTree.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -46,6 +46,7 @@ namespace SkeletorDAL
             var LillBritt = new Horse("LillBritt", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är LillBritt Medicin", Medicine = "Detta är LillBritt beskrivning", FamilyTree = "Detta är LillBritts släktträd" };
             var Lisa = new Horse("Lisa", DateTime.Now, "Camargue", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Lisa Medicin", Medicine = "Detta är Lisa beskrivning", FamilyTree = "Detta är Lisas släktträd" };
 
+            Helge.Tree = new FamilyTree() { FatherName = "Åke", FatherDescription = "Åke är pappan", MotherName = "Åsa", MotherDescription = "Åsa är mamma", Children = new List<Child>() { new Child() { Name = "Grete", Description = "Grete är en unge" }, new Child() { Name = "Martin", Description = "Martin är en unge" } } };
             Helge.YoutubeVideoURLs.Add(new YoutubeVideoURL() { VideoName = "Test Video", VideoURL = @"http://www.youtube.com/embed/3rYoRaxgOE0?autoplay=0" });
 
 

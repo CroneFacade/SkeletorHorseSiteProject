@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SkeletorDAL.Model;
 
 namespace SkeletorDAL.POCO
 {
-    class FamilyTree
+    public class FamilyTree
     {
         public int ID { get; set; }
         public string MotherName { get; set; }
