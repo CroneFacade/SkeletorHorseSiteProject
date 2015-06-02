@@ -18,7 +18,7 @@
                         <img src="@Url.Content(image.ImagePath)" style="margin: -12px; height: 200px; width: 200px;" alt="Image" />
                     </button>
 
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
                     {
                         
                         <div class="overlay">

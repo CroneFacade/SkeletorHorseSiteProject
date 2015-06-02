@@ -36,7 +36,7 @@
     </ul>
 </div>
 <div id="edit_tree">
-   @if (User.Identity.IsAuthenticated)
+   @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
    {
        <button class="btn-default" value="Edit family tree">
            @Html.Action("EditFamilyTree", new{id=Model.horseid})

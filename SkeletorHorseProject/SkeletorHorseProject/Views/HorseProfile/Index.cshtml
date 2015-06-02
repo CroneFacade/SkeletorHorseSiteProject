@@ -9,7 +9,7 @@
         <div id="horse_ProfilePicture" class="col-md-3">
             <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image" />
             <p>
-                @if (User.Identity.IsAuthenticated)
+                @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
                 {
                     @Html.ActionLink("Change Image", "UploadProfilePicture", "HorseProfile", new { id = Model.ID }, null)
                 }
@@ -29,7 +29,7 @@
                 </dd>
             </dl>
             <p>
-                @if (User.Identity.IsAuthenticated)
+                @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
                 {
                     @Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
                     <br/>
@@ -53,7 +53,7 @@
                         @Model.Description
                     </div>
                     <div role="tabpanel" class="tab-pane" id="videos">
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated && Model.AdminId.Contains(int.Parse(User.Identity.Name)))
                         {
                             @Html.Action("AddNewHorseVideo", new { id = Model.ID })
                         }
@@ -86,7 +86,7 @@
                             <p>@blog.Content</p>
                             <hr />
                         }
-                        @if (User.Identity.IsAuthenticated && Model.AdminName.Contains(User.Identity.Name))
+                        @if (User.Identity.IsAuthenticated && Model.AdminId.Contains(int.Parse(User.Identity.Name)))
                         {
                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBlogPost" aria-expanded="false" aria-controls="addBlogPost">
                                 Add blogpost
@@ -101,7 +101,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="gallery">
                         <br />
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated && Model.AdminId.Contains(int.Parse(User.Identity.Name)))
                         {
                             @Html.Action("UploadImageButton", new { id = @Model.ID })
                         }
