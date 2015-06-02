@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -16,6 +17,27 @@ namespace SkeletorDAL
 {
     public static class Repository
     {
+
+        public static FamilyTreeModel GetFamilyTree(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var horse = (from c in context.Horses
+                    where c.ID == id
+                    select new FamilyTreeModel()
+                    {
+                        Father = new ParentModel() {Name = c.Tree.FatherName, Description = c.Tree.FatherDescription},
+                        Mother = new ParentModel() {Name = c.Tree.MotherName, Description = c.Tree.MotherDescription},
+                        horseid = id,
+                        HorseName = c.Name
+                    }).FirstOrDefault();
+                List<Child> listOfChildren = (from c in context.Horses
+                    where c.ID == id
+                    select c.Tree.Children).FirstOrDefault();
+                    horse.Children = listOfChildren.Select(childModel => new ChildModel() {Name = childModel.Name, Description = childModel.Description}).ToList();
+                return horse;
+            }
+        }
         public static List<ImageModel> GetAllSlideShowImages()
         {
             using (var context = new HorseContext())
@@ -373,8 +395,10 @@ namespace SkeletorDAL
                         {
                             Header1 = a.Header1,
                             Header2 = a.Header2,
+                            Header3 = a.Header3,
                             Textfield1 = a.Textfield1,
-                            Textfield2 = a.Textfield2
+                            Textfield2 = a.Textfield2,
+                            Textfield3 = a.Textfield3
                         }).ToList().LastOrDefault();
 
             }
@@ -769,22 +793,38 @@ namespace SkeletorDAL
 			}
 		}
 
+
         public static void RemoveEditorFromHorse(int horseId, int editorid)
         {
             using (var context = new HorseContext())
             {
                 var horse =
                     (from h in context.Horses
-                     where h.ID == horseId
-                     select h).FirstOrDefault();
+                        where h.ID == horseId
+                        select h).FirstOrDefault();
                 var Editor =
                     (from e in context.Users
-                     where e.ID == editorid
-                     select e).FirstOrDefault();
+                        where e.ID == editorid
+                        select e).FirstOrDefault();
 
                 horse.AssignedEditors.Remove(Editor);
                 context.SaveChanges();
 
+            }
+        }
+
+        public static void EditHorseFamilyTree(FamilyTreeModel model)
+        {
+            using (var context = new HorseContext())
+            {
+                FamilyTree familyTree = new FamilyTree()
+                {
+                    MotherName = model.Mother.Name, 
+                    MotherDescription = model.Mother.Description, 
+                    FatherName = model.Father.Name, 
+                    FatherDescription = model.Father.Description, 
+                };
+           
             }
         }
     }

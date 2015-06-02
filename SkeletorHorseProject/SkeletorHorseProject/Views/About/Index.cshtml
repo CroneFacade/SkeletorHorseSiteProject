@@ -1,6 +1,6 @@
 ﻿@model SkeletorDAL.Model.AboutReadOnlyModel
 @using SkeletorHorseProject.Models
-<h2>About</h2>
+
 <p>
 	@if (User.Identity.IsAuthenticated)
 	{
@@ -12,11 +12,13 @@
     <div class="AboutInfoBox">
         <h1>@Model.Header1</h1>
         <p>@Model.Textfield1</p>
+        <hr/>
     </div>
 
     <div class="AboutInfoBox">
         <h1>@Model.Header2</h1>
         <p>@Model.Textfield2</p>
+        <hr />
     </div>
 
     <div class="AboutInfoBox">
