@@ -207,6 +207,8 @@
     <Content Include="Views\EditSlideShowImages\Index.cshtml" />
     <Content Include="Views\EditSlideShowImages\SliderGallery.cshtml" />
     <Content Include="Views\EditAboutPage\EditAbout.cshtml" />
+    <Content Include="Views\EditHorseProfile\EditEditors.cshtml" />
+    <Content Include="Views\EditHorseProfile\_AddEditor.cshtml" />
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />

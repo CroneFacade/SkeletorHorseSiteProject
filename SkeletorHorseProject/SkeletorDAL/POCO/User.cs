@@ -14,6 +14,7 @@ namespace SkeletorDAL
 		public int AdminLevel { get; set; }
 		public bool IsActive { get; set; }
         public string Email { get; set; }
+        public List<Horse> AssignedHorses { get; set; } 
 
 		public User()
 		{
@@ -27,6 +28,7 @@ namespace SkeletorDAL
 			AdminLevel = adminLevel;
 		    Email = email;
 			IsActive = true;
+            AssignedHorses = new List<Horse>();
 		}
 	}
 }

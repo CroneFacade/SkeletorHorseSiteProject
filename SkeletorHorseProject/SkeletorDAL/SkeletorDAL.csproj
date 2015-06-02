@@ -97,6 +97,7 @@
     <Compile Include="Model\CreateHorseModel.cs" />
     <Compile Include="Model\EditAboutModel.cs" />
     <Compile Include="Model\EditHorseProfileModel.cs" />
+    <Compile Include="Model\EditorModel.cs" />
     <Compile Include="Model\FooterModel.cs" />
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Model\HorseInfomationModel.cs" />

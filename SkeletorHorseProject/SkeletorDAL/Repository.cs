@@ -649,6 +649,51 @@ namespace SkeletorDAL
 			}
 		}
 
+        public static List<EditorModel> GetEditorForSpecificHorse(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var users =
+                    (from h in context.Horses
+                        where h.ID == id
+                        select h.AssignedEditors).FirstOrDefault();
+                List<EditorModel> model = new List<EditorModel>();
+                var horseName =
+                    (from h in context.Horses
+                        where h.ID == id
+                        select h.Name).FirstOrDefault();
+                
+                foreach (var user in users)
+                {
+                    model.Add(new EditorModel(){EditorId = user.ID,EditorName = user.Username,HorseId = id,HorseName = horseName});
+                }
+                return model;
+            }
+        }
+
+        public static void AddEditor(EditorModel editor, int horseId)
+        {
+            using (var context = new HorseContext())
+            {
+                var EditorId = editor.EditorId;
+               
+
+                var horse =
+                    (from h in context.Horses
+                        where h.ID == horseId
+                        select h).FirstOrDefault();
+                var Editor =
+                    (from e in context.Users
+                     where e.ID == EditorId
+                     select e).FirstOrDefault();
+
+                if (horse != null)
+                    horse.AssignedEditors.Add(Editor);
+                
+                if (Editor != null) 
+                    Editor.AssignedHorses.Add(horse);
+            }
+        }
     }
 }
 
