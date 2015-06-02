@@ -83,5 +83,10 @@ namespace SkeletorHorseProject.Controllers
             Repository.DeleteSlideShowImage(id);
             return RedirectToAction("UploadSlideshowFile");
         }
+
+        public ActionResult CropImage(int id, string path)
+        {
+            return RedirectToAction("UploadSlideshowFile");
+        }
     }
 }

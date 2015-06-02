@@ -108,13 +108,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\familyTree.css" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\SlideShow.css" />
     <Content Include="Errorpages\ErrorPage.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Images\hest.jpg" />
+    <Content Include="Scripts\slideshow.size.js" />
     <Content Include="SlideImages\11273579_10153379658529083_1657643802_o.jpg" />
     <Content Include="SlideImages\11273734_10153379658554083_662969880_o.jpg" />
     <Content Include="SlideImages\11281642_10153379658559083_1233648017_o.jpg" />
@@ -208,7 +211,12 @@
     <Content Include="Views\EditSlideShowImages\Index.cshtml" />
     <Content Include="Views\EditSlideShowImages\SliderGallery.cshtml" />
     <Content Include="Views\EditAboutPage\EditAbout.cshtml" />
+
+    <Content Include="Views\EditHorseProfile\EditEditors.cshtml" />
+    <Content Include="Views\EditHorseProfile\_AddEditor.cshtml" />
+
     <Content Include="Views\EditPuff\Edit.cshtml" />
+
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
@@ -238,6 +246,7 @@
     <Content Include="Views\HorseProfile\Gallery.cshtml" />
     <Content Include="Views\HorseProfile\UploadGalleryImage.cshtml" />
     <Content Include="Views\HorseProfile\UploadImageButton.cshtml" />
+    <Content Include="Views\HorseProfile\FamilyTree.cshtml" />
     <Content Include="Views\Shared\_Puff.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

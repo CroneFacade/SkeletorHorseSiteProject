@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SkeletorDAL.Model.EditorModel>
+
+@{
+    ViewBag.Title = "EditEditors";
+}
+
+<h2>EditEditors</h2>
+
+@Html.Action("AddEditor","EditHorseProfile")
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EditorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HorseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HorseId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HorseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HorseId)
+        </td>
+        <td>          
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

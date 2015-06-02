@@ -1,0 +1,15 @@
+﻿@model SkeletorDAL.Model.EditorModel
+
+@using (Html.BeginForm("AddEditor", "EditHorseProfile", new {id = Model.HorseId} ,FormMethod.Post, null))
+{
+
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>Editor Name</td>
+            <td>@Html.EditorFor(model => model.EditorName, new {htmlAttributes = new {@class = "form-control"}})</td>
+            <td>@Html.ValidationMessageFor(model => model.EditorName, "")</td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit" />
+}
