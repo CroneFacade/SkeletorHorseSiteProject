@@ -8,16 +8,17 @@ using SkeletorDAL;
 
 namespace SkeletorHorseProject.Controllers
 {
+    [Authorize]
     public class FooterController : Controller
     {
-        [ChildActionOnly]
+        [ChildActionOnly,AllowAnonymous]
         public ActionResult Index()
         {
              var list = Repository.GetAllFooterLinks();
             
             return PartialView("Footer", list);
         }
-
+       
         public ActionResult EditLinks()
         {
             return View(Repository.GetAllFooterLinks());

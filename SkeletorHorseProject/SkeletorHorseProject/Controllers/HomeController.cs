@@ -26,7 +26,7 @@ namespace SkeletorHorseProject.Controllers
             }
             return View(list);
         }
-
+        [Authorize]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();

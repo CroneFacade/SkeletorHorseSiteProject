@@ -10,10 +10,11 @@ using SkeletorDAL.Model;
 using System.IO;
 
 namespace SkeletorHorseProject.Controllers
-{
+{   [Authorize]
     public class HorseProfileController : Controller
     {
         // GET: HorseProfile
+        [AllowAnonymous]
         public ActionResult Index(int id)
         {
             var model = Repository.GetSpecificHorse(id);
@@ -47,6 +48,7 @@ namespace SkeletorHorseProject.Controllers
         }
 
         [ChildActionOnly]
+
         public ActionResult AddNewHorseVideo(int id)
         {
             return View(new HorseVideoModel() { HorseID = id });
@@ -142,6 +144,7 @@ namespace SkeletorHorseProject.Controllers
             }
         }
 
+        [AllowAnonymous]
         [ChildActionOnly]
         public ActionResult HorseBlog(int id)
         {
@@ -169,6 +172,7 @@ namespace SkeletorHorseProject.Controllers
             return RedirectToAction("Index", new { id = horseIdThatRecivedTheBlogPost });
         }
 
+        [AllowAnonymous]
         [ChildActionOnly]
         public ActionResult Gallery(int id)
         {
@@ -242,7 +246,7 @@ namespace SkeletorHorseProject.Controllers
             return RedirectToAction("Index", new { id = horseid });
         }
 
-
+        [AllowAnonymous]
         public ActionResult FamilyTree(int id)
         {
 

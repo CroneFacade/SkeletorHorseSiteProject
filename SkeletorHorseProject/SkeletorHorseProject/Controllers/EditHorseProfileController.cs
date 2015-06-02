@@ -9,6 +9,7 @@ using SkeletorDAL.Model;
 
 namespace SkeletorHorseProject.Controllers
 {
+    [Authorize]
     public class EditHorseProfileController : Controller
     {
         // GET: EditHorseProfile

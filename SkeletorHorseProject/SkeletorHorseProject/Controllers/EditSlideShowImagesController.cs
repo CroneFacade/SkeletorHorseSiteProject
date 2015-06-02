@@ -9,6 +9,7 @@ using System.IO;
 
 namespace SkeletorHorseProject.Controllers
 {
+    [Authorize]
     public class EditSlideShowImagesController : Controller
     {
         // GET: EditSlideShowImages

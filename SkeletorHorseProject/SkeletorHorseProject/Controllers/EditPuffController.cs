@@ -8,6 +8,7 @@ using SkeletorDAL.Model;
 
 namespace SkeletorHorseProject.Controllers
 {
+    [Authorize]
 	public class EditPuffController : Controller
 	{
 		// GET: EditPuff
