@@ -170,6 +170,7 @@
     <Compile Include="Controllers\CreateHorseController.cs" />
     <Compile Include="Controllers\EditAboutPageController.cs" />
     <Compile Include="Controllers\EditHorseProfileController.cs" />
+    <Compile Include="Controllers\EditPuffController.cs" />
     <Compile Include="Controllers\EditSlideShowImagesController.cs" />
     <Compile Include="Controllers\FilteredHorsePageController.cs" />
     <Compile Include="Controllers\FooterController.cs" />
@@ -208,6 +209,7 @@
     <Content Include="Views\EditSlideShowImages\Index.cshtml" />
     <Content Include="Views\EditSlideShowImages\SliderGallery.cshtml" />
     <Content Include="Views\EditAboutPage\EditAbout.cshtml" />
+    <Content Include="Views\EditPuff\Edit.cshtml" />
     <None Include="Views\FilteredHorsePage\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
@@ -238,6 +240,7 @@
     <Content Include="Views\HorseProfile\UploadGalleryImage.cshtml" />
     <Content Include="Views\HorseProfile\UploadImageButton.cshtml" />
     <Content Include="Views\HorseProfile\FamilyTree.cshtml" />
+    <Content Include="Views\Shared\_Puff.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -248,7 +251,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="HorseProfileImages\" />
-    <Folder Include="Views\PuffContainer\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SkeletorDAL\SkeletorDAL.csproj">

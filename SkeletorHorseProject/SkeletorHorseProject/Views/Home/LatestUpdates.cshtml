@@ -6,13 +6,13 @@
 
 <div class="row">
 
-    @foreach (var x in @Model)
+    @for (int i = 0; i < 5; i++)
     {
         <div id="puffHorseContainer">
-            <a class="horsePuff" href="@Url.Content("~/HorseProfile/Index/" + x.ID)"> <img src="@Url.Content(x.ImagePath)" style="height: 150px; width: 150px" /></a>
+            <a class="horsePuff" href="@Url.Content("~/HorseProfile/Index/" + Model[i].ID)"> <img src="@Url.Content(Model[i].ImagePath)" style="height: 150px; width: 150px" /></a>
         </div>
-
     }
+    
 
 </div>
 

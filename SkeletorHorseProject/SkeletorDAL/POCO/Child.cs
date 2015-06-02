@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SkeletorDAL.POCO
 {
-    public class FooterLink
+    class Child
     {
         public int ID { get; set; }
-        public string LinkName { get; set; }
-        public string LinkURL { get; set; }
-        public int Column { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public virtual FamilyTree FamilyTree { get; set; }
     }
 }

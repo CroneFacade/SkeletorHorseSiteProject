@@ -100,7 +100,7 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 return (from l in context.FooterLinks
-                        select new FooterModel { ID = l.ID, Name = l.LinkName, Url = l.LinkURL }).ToList();
+                        select new FooterModel { ID = l.ID, Name = l.LinkName, Url = l.LinkURL, Column = l.Column }).ToList();
             }
         }
 
@@ -108,7 +108,7 @@ namespace SkeletorDAL
         {
             using (var context = new HorseContext())
             {
-                context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url });
+                context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url, Column = model.Column });
                 context.SaveChanges();
             }
         }
@@ -457,7 +457,7 @@ namespace SkeletorDAL
                 horse.Breeding = model.Breeding;
 
 
-                context.Entry(horse).State = EntityState.Modified;
+	            context.Entry(horse).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
@@ -648,7 +648,61 @@ namespace SkeletorDAL
 				context.SaveChanges();
 			}
 		}
+		public static About SetAboutValues(EditAboutModel model, About about)
+		{
+			about.ID = model.ID;
+			about.Header1 = model.Header1;
+			about.Header2 = model.Header2;
+			about.Textfield1 = model.Textfield1;
+			about.Textfield2 = model.Textfield2;
+			return about;
+		}
 
+		public static EditPuffModel GetPuffs()
+		{
+			using (var context = new HorseContext())
+			{
+				var query =
+					(from p in context.Puffs
+					 orderby p.ID descending
+					 select
+						new EditPuffModel()
+						{
+							ID = p.ID,
+							Header1 = p.Header1,
+							Header2 = p.Header2,
+							Header3 = p.Header3,
+							Textfield1 = p.Textfield1,
+							Textfield2 = p.Textfield2,
+							Textfield3 = p.Textfield3,
+							Link1 = p.Link1,
+							Link2 = p.Link2,
+							Link3 = p.Link3
+						}).FirstOrDefault();
+				return query;
+			}
+		}
+
+		public static void UpdatePuffs(EditPuffModel model)
+		{
+			using (var context = new HorseContext())
+			{
+
+				var puff = context.Puffs.First();
+				puff.Header1 = model.Header1;
+				puff.Header2 = model.Header2;
+				puff.Header3 = model.Header3;
+				puff.Textfield1 = model.Textfield1;
+				puff.Textfield2 = model.Textfield2;
+				puff.Textfield3 = model.Textfield3;
+				puff.Link1 = model.Link1;
+				puff.Link2 = model.Link2;
+				puff.Link3 = model.Link3;
+
+				context.Entry(puff).State = EntityState.Modified;
+				context.SaveChanges();
+			}
+		}
     }
 }
 
