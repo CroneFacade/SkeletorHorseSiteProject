@@ -198,6 +198,16 @@ namespace SkeletorDAL
 
             using (var context = new HorseContext())
             {
+                var admins =
+                    (from h in context.Horses
+                        where h.ID == id
+                        select h.AssignedEditors).FirstOrDefault();
+
+                var adminNames = new List<string>();
+                foreach (var admin in admins)
+                {
+                    adminNames.Add(admin.Username);
+                }
                 var horse = (from h in context.Horses
                              where h.ID == id
                              select new HorseProfileModel()
@@ -223,9 +233,11 @@ namespace SkeletorDAL
                                  FacebookPath = h.FacebookPath,
                                  IsActive = h.IsActive,
                                  IsForSale = h.IsForSale,
-                                 Price = h.Price
+                                 Price = h.Price,                               
+                                 
                              }).FirstOrDefault();
 
+                horse.AdminName = adminNames;
                 List<Post> posts = (from h in context.Horses
                                     where h.ID == horse.ID
                                     select h.Blog.Posts).FirstOrDefault();
@@ -643,8 +655,10 @@ namespace SkeletorDAL
 							 ID = a.ID,
 							 Header1 = a.Header1,
 							 Header2 = a.Header2,
+                             Header3 = a.Header3,
 							 Textfield1 = a.Textfield1,
-							 Textfield2 = a.Textfield2
+							 Textfield2 = a.Textfield2,
+                             Textfield3 = a.Textfield3
 						 }).FirstOrDefault();
 
 				return query;
@@ -677,8 +691,10 @@ namespace SkeletorDAL
 			about.ID = model.ID;
 			about.Header1 = model.Header1;
 			about.Header2 = model.Header2;
+            about.Header3 = model.Header3;
 			about.Textfield1 = model.Textfield1;
 			about.Textfield2 = model.Textfield2;
+            about.Textfield3 = model.Textfield3;
 			return about;
 		}
 
@@ -743,14 +759,20 @@ namespace SkeletorDAL
                         select h).FirstOrDefault();
                 var Editor =
                     (from e in context.Users
-                     where e.ID == EditorId
+                     where e.Username == editor.EditorName
                      select e).FirstOrDefault();
-
+               
+                if (horse.AssignedEditors==null)
+                {
+                    horse.AssignedEditors= new List<User>();
+                }
+                if (Editor.AssignedHorses == null)
+                {
+                    Editor.AssignedHorses = new List<Horse>();
+                }
                 if (horse != null)
                     horse.AssignedEditors.Add(Editor);
-                
-                if (Editor != null) 
-                    Editor.AssignedHorses.Add(horse);
+                context.SaveChanges();
             }
         }
 
@@ -774,6 +796,26 @@ namespace SkeletorDAL
 				context.SaveChanges();
 			}
 		}
+
+
+        public static void RemoveEditorFromHorse(int horseId, int editorid)
+        {
+            using (var context = new HorseContext())
+            {
+                var horse =
+                    (from h in context.Horses
+                        where h.ID == horseId
+                        select h).FirstOrDefault();
+                var Editor =
+                    (from e in context.Users
+                        where e.ID == editorid
+                        select e).FirstOrDefault();
+
+                horse.AssignedEditors.Remove(Editor);
+                context.SaveChanges();
+
+            }
+        }
 
         public static void EditHorseFamilyTree(FamilyTreeModel model)
         {
