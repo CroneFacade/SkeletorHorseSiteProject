@@ -254,7 +254,9 @@ a:hover {
 
 #horse {
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+    width: 200px;
+    float: left;
     background-color: #EBEBEB;
     margin-left: 25px;
     -webkit-border-radius: 5px 5px 5px 5px;
@@ -269,7 +271,7 @@ a:hover {
     }
 
 .horseInfoBox {
-    padding-top: 10px;
+    padding-top: 15px;
     padding-left: 10px;
     padding-bottom: 10px;
 }

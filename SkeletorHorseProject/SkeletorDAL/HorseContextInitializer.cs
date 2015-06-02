@@ -10,7 +10,7 @@ using SkeletorDAL.POCO;
 
 namespace SkeletorDAL
 {
-	public class HorseContextInitializer : DropCreateDatabaseIfModelChanges<HorseContext>
+	public class HorseContextInitializer : DropCreateDatabaseAlways<HorseContext>
 	{
 		private readonly List<Horse> horses;
 		private readonly List<Blog> blogs;
@@ -24,6 +24,9 @@ namespace SkeletorDAL
             var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty, "350.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/2Dummy2.gif", Description = "Detta är Jens beskrivning", Medicine = "Detta är Jens Medicin", FamilyTree = "Detta är Jens släktträd" };
             var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/3Dummy3.jpg", Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
             var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Adolf Medicin", Medicine = "Detta är Adolf beskrivning", FamilyTree = "Detta är Adolf släktträd" };
+            var Hermina = new Horse("Hermina", DateTime.Now, "Camargue", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Herminas Medicin", Medicine = "Detta är Herminas beskrivning", FamilyTree = "Detta är Herminas släktträd" };
+            var LillBritt = new Horse("LillBritt", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är LillBritt Medicin", Medicine = "Detta är LillBritt beskrivning", FamilyTree = "Detta är LillBritts släktträd" };
+            var Lisa = new Horse("Lisa", DateTime.Now, "Camargue", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Lisa Medicin", Medicine = "Detta är Lisa beskrivning", FamilyTree = "Detta är Lisas släktträd" };
 
             Helge.YoutubeVideoURLs.Add(new YoutubeVideoURL() { VideoName = "Test Video", VideoURL = @"http://www.youtube.com/embed/3rYoRaxgOE0?autoplay=0" });
 
@@ -113,7 +116,7 @@ namespace SkeletorDAL
 		    Adolf.Blog = AdolfBlog;
 			horses = new List<Horse>()
 			{
-			Helge, Jens, Gösta, Adolf
+			Helge, Jens, Gösta, Adolf, Hermina, LillBritt, Lisa
 			};
 
 			blogs = new List<Blog>()
