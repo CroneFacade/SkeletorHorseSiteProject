@@ -176,6 +176,16 @@ namespace SkeletorDAL
 
             using (var context = new HorseContext())
             {
+                var admins =
+                    (from h in context.Horses
+                        where h.ID == id
+                        select h.AssignedEditors).FirstOrDefault();
+
+                var adminNames = new List<string>();
+                foreach (var admin in admins)
+                {
+                    adminNames.Add(admin.Username);
+                }
                 var horse = (from h in context.Horses
                              where h.ID == id
                              select new HorseProfileModel()
@@ -201,9 +211,11 @@ namespace SkeletorDAL
                                  FacebookPath = h.FacebookPath,
                                  IsActive = h.IsActive,
                                  IsForSale = h.IsForSale,
-                                 Price = h.Price
+                                 Price = h.Price,                               
+                                 
                              }).FirstOrDefault();
 
+                horse.AdminName = adminNames;
                 List<Post> posts = (from h in context.Horses
                                     where h.ID == horse.ID
                                     select h.Blog.Posts).FirstOrDefault();
@@ -719,14 +731,20 @@ namespace SkeletorDAL
                         select h).FirstOrDefault();
                 var Editor =
                     (from e in context.Users
-                     where e.ID == EditorId
+                     where e.Username == editor.EditorName
                      select e).FirstOrDefault();
-
+               
+                if (horse.AssignedEditors==null)
+                {
+                    horse.AssignedEditors= new List<User>();
+                }
+                if (Editor.AssignedHorses == null)
+                {
+                    Editor.AssignedHorses = new List<Horse>();
+                }
                 if (horse != null)
                     horse.AssignedEditors.Add(Editor);
-                
-                if (Editor != null) 
-                    Editor.AssignedHorses.Add(horse);
+                context.SaveChanges();
             }
         }
 
@@ -751,6 +769,24 @@ namespace SkeletorDAL
 			}
 		}
 
+        public static void RemoveEditorFromHorse(int horseId, int editorid)
+        {
+            using (var context = new HorseContext())
+            {
+                var horse =
+                    (from h in context.Horses
+                     where h.ID == horseId
+                     select h).FirstOrDefault();
+                var Editor =
+                    (from e in context.Users
+                     where e.ID == editorid
+                     select e).FirstOrDefault();
+
+                horse.AssignedEditors.Remove(Editor);
+                context.SaveChanges();
+
+            }
+        }
     }
 }
 

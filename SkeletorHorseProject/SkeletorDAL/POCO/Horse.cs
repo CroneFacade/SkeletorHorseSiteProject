@@ -37,7 +37,7 @@ namespace SkeletorDAL
         public bool Rent { get; set; }
 	    public virtual Blog Blog { get; set; }
         public virtual List<YoutubeVideoURL> YoutubeVideoURLs { get; set; }
-        public List<User> AssignedEditors { get; set; } 
+        public virtual List<User> AssignedEditors { get; set; } 
 
 		public Horse()
 		{
