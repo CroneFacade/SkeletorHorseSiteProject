@@ -64,12 +64,43 @@ namespace SkeletorDAL
                      select u.Email).FirstOrDefault();
             }
         }
+        public static HorseProfileModel GetHorseProfileById(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                var currentHorse = (from h in context.Horses
+                                    where h.ID == id
+                                    select new HorseProfileModel
+                                    {
+                                        Awards = h.Awards,
+                                        Birthday = h.Birthday,
+                                        Breeding = h.Breeding,
+                                        Description = h.Description,
+                                        FacebookPath = h.FacebookPath,
+                                        FamilyTree = h.FamilyTree,
+                                        Gender = h.Gender,
+                                        IsActive = !h.IsActive,
+                                        IsForSale = h.IsForSale,
+                                        IsSold = h.IsSold,
+                                        Rent = h.Rent,
+                                        Price = h.Price,
+                                        Medicine = h.Medicine,
+                                        Name = h.Name,
+                                        Race = h.Race,
+                                        Withers = h.Withers,
+                                        ImagePath = h.ImagePath
+
+                                    }).FirstOrDefault();
+
+                return currentHorse;
+            }
+        }
         public static List<FooterModel> GetAllFooterLinks()
         {
             using (var context = new HorseContext())
             {
                 return (from l in context.FooterLinks
-                        select new FooterModel { ID = l.ID, Name = l.LinkName, Url = l.LinkURL }).ToList();
+                        select new FooterModel { ID = l.ID, Name = l.LinkName, Url = l.LinkURL, Column = l.Column }).ToList();
             }
         }
 
@@ -77,7 +108,7 @@ namespace SkeletorDAL
         {
             using (var context = new HorseContext())
             {
-                context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url });
+                context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url, Column = model.Column });
                 context.SaveChanges();
             }
         }
@@ -190,7 +221,7 @@ namespace SkeletorDAL
                 horse.Blog.Posts = blogposts;
                 return horse;
             }
-            
+
         }
 
         public static HorseModel GetSpecificHorseById(int id)
@@ -259,7 +290,7 @@ namespace SkeletorDAL
                 {
                     case 1:
                         horseList = (from h in context.Horses
-                                     where h.IsActive == true    
+                                     where h.IsActive == true
                                      select new HorseModel()
                                      {
                                          Awards = h.Awards,
@@ -370,28 +401,28 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 var currentHorse = (from h in context.Horses
-                        where h.ID == id
-                        select new EditHorseProfileModel
-                        {
-                            Awards = h.Awards,
-                            Birthday = h.Birthday,
-                            Breeding = h.Breeding,
-                            Description = h.Description,
-                            FacebookPath = h.FacebookPath,
-                            FamilyTree = h.FamilyTree,
-                            Gender = h.Gender,
-                            IsActive = !h.IsActive,     
-                            IsForSale = h.IsForSale,
-                            IsSold =  h.IsSold,
-                            Rent = h.Rent,
-                            Price = h.Price,
-                            Medicine = h.Medicine,
-                            Name = h.Name,
-                            Race = h.Race,
-                            Withers = h.Withers,
-                            LastUpdated = DateTime.Now
-                            
-                        }).FirstOrDefault();
+                                    where h.ID == id
+                                    select new EditHorseProfileModel
+                                    {
+                                        Awards = h.Awards,
+                                        Birthday = h.Birthday,
+                                        Breeding = h.Breeding,
+                                        Description = h.Description,
+                                        FacebookPath = h.FacebookPath,
+                                        FamilyTree = h.FamilyTree,
+                                        Gender = h.Gender,
+                                        IsActive = !h.IsActive,
+                                        IsForSale = h.IsForSale,
+                                        IsSold = h.IsSold,
+                                        Rent = h.Rent,
+                                        Price = h.Price,
+                                        Medicine = h.Medicine,
+                                        Name = h.Name,
+                                        Race = h.Race,
+                                        Withers = h.Withers,
+                                        LastUpdated = DateTime.Now
+
+                                    }).FirstOrDefault();
                 return currentHorse;
             }
         }
@@ -425,7 +456,7 @@ namespace SkeletorDAL
                 horse.Gender = model.Gender;
                 horse.Breeding = model.Breeding;
 
-                
+
                 context.Entry(horse).State = EntityState.Modified;
                 context.SaveChanges();
             }
@@ -496,13 +527,16 @@ namespace SkeletorDAL
                         })).ToList();
             }
         }
-        public static void DeleteGalleryImage(int id)
+        public static int DeleteGalleryImage(int id)
         {
             using (var context = new HorseContext())
             {
+                int horseid = 0;
                 var image = context.GalleryImages.Find(id);
+                horseid = image.FileName[0];
                 context.GalleryImages.Remove(image);
                 context.SaveChanges();
+                return horseid;
             }
         }
 

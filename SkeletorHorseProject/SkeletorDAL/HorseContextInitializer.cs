@@ -33,9 +33,21 @@ namespace SkeletorDAL
 
             footerlinks = new List<FooterLink>();
 
-            footerlinks.Add(new FooterLink { LinkName = "TestLink One", LinkURL = "http://www.google.com" });
-            footerlinks.Add(new FooterLink { LinkName = "TestLink Two", LinkURL = "http://www.google.com" });
-            footerlinks.Add(new FooterLink { LinkName = "TestLink Three", LinkURL = "http://www.google.com" });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink One", LinkURL = "http://www.google.com", Column = 1});
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Two", LinkURL = "http://www.google.com", Column = 1});
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Three", LinkURL = "http://www.google.com", Column = 1});
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Four", LinkURL = "http://www.google.com", Column = 1 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Five", LinkURL = "http://www.google.com", Column = 2 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Six", LinkURL = "http://www.google.com", Column = 2 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Seven", LinkURL = "http://www.google.com", Column = 2 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Eight", LinkURL = "http://www.google.com", Column = 2 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Nine", LinkURL = "http://www.google.com", Column = 2 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Ten", LinkURL = "http://www.google.com", Column = 3 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Eleven", LinkURL = "http://www.google.com", Column = 3 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Twelve", LinkURL = "http://www.google.com", Column = 3 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Thirteen", LinkURL = "http://www.google.com", Column = 3 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Fourteen", LinkURL = "http://www.google.com", Column = 4 });
+            footerlinks.Add(new FooterLink { LinkName = "TestLink Fifteen", LinkURL = "http://www.google.com", Column = 4 });
 
 
 			Helge.IsForSale = true;

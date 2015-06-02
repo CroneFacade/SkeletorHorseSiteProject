@@ -1,0 +1,98 @@
+﻿@model SkeletorDAL.Model.HorseProfileModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+    <body>
+        <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image" />
+        <br/>
+        <br/>
+        <div>
+       
+            <dt>
+                @Html.DisplayNameFor(model => model.Breeding):  @Html.DisplayFor(model => model.Breeding)
+            </dt> <br/>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender):  @Html.DisplayFor(model => model.Gender)
+            </dt> <br/>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Name):  @Html.DisplayFor(model => model.Name)
+            </dt> <br/>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Rent):  @Html.DisplayFor(model => model.Rent)
+            </dt> <br/>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Birthday):  @Html.DisplayFor(model => model.Birthday)
+            </dt> <br/>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Race):  @Html.DisplayFor(model => model.Race)
+            </dt> <br/>
+
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Withers):  @Html.DisplayFor(model => model.Withers)
+            </dt> <br/>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Awards):  @Html.DisplayFor(model => model.Awards)
+            </dt> <br/>
+
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive):  @Html.DisplayFor(model => model.IsActive)
+            </dt> <br/>
+    
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsForSale):  @Html.DisplayFor(model => model.IsForSale)
+            </dt> <br/>
+    
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Price):  @Html.DisplayFor(model => model.Price)
+            </dt> <br/>
+
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsSold):  @Html.DisplayFor(model => model.IsSold)
+            </dt> <br/>
+
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.State):  @Html.DisplayFor(model => model.State)
+            </dt><br/>
+    
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description):  @Html.DisplayFor(model => model.Description)
+            </dt> <br/>
+    
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Medicine):  @Html.DisplayFor(model => model.Medicine)
+            </dt> <br/>
+
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FamilyTree):  @Html.DisplayFor(model => model.FamilyTree)
+            </dt> <br/>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FacebookPath):  @Html.DisplayFor(model => model.FacebookPath)
+            </dt> <br/>
+        </div>
+    </body>
+</html>

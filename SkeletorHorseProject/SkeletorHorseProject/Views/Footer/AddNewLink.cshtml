@@ -7,13 +7,19 @@
     <table>
         <tr>
             <td>Link Name</td>
-            <td>@Html.TextBoxFor(m => m.Name)</td>
+            <td>@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })</td>
             <td>@Html.ValidationMessageFor(model => model.Name, "")</td>
         </tr>
         <tr>
             <td>Link URL</td>
-            <td>@Html.TextBoxFor(m => m.Url)</td>
+            <td>@Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })</td>
             <td>@Html.ValidationMessageFor(model => model.Url, "")</td>
+        </tr>
+        <tr>
+            <td>Link Column (Only 1-4 will be displayed)</td>
+            <td>@Html.EditorFor(m => m.Column, new { htmlAttributes = new { @class = "form-control" } })</td>
+            <td>@Html.ValidationMessageFor(model => model.Column, "")</td>
+
         </tr>
     </table>
     <input type="submit" value="Submit" />

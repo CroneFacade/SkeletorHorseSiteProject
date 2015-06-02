@@ -15,7 +15,6 @@ namespace SkeletorHorseProject.Controllers
         // GET: HorseProfile
         public ActionResult Index(int id)
         {
-            var idLength = id.ToString();
             var model = Repository.GetSpecificHorse(id);
             if (model != null)
             {
@@ -158,8 +157,8 @@ namespace SkeletorHorseProject.Controllers
         [ChildActionOnly]
         public ActionResult AddBlogPost(BlogModel blog)
         {
-          
-            var blogpost = new BlogPostModel(){BlogID = blog.ID};           
+
+            var blogpost = new BlogPostModel() { BlogID = blog.ID };
             return PartialView("_AddBlogPost", blogpost);
         }
         [HttpPost, ValidateAntiForgeryToken]
@@ -216,7 +215,7 @@ namespace SkeletorHorseProject.Controllers
 
 
 
-                return RedirectToAction("Index", new{id=id});
+                return RedirectToAction("Index", new { id = id });
             }
             catch
             {
@@ -230,5 +229,19 @@ namespace SkeletorHorseProject.Controllers
         {
             return View(id);
         }
+
+
+        public ActionResult DeleteImage(int id, string path, int horseid)
+        {
+            string fullPath = Request.MapPath(path);
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
+            }
+            Repository.DeleteGalleryImage(id);
+            return RedirectToAction("Index", new{id = horseid});
+        }
+
+
     }
 }
