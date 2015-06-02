@@ -4,9 +4,9 @@
 }
 
 @if (User.Identity.IsAuthenticated)
-{<p>
+{ <div class="editFooterLinks">
         @Html.ActionLink("Edit Links", "EditLinks", "Footer")
-    </p>
+  </div>
 }
 
 @*Column 1*@
