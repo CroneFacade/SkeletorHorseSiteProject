@@ -100,7 +100,7 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 return (from l in context.FooterLinks
-                        select new FooterModel { ID = l.ID, Name = l.LinkName, Url = l.LinkURL }).ToList();
+                        select new FooterModel { ID = l.ID, Name = l.LinkName, Url = l.LinkURL, Column = l.Column }).ToList();
             }
         }
 
@@ -108,7 +108,7 @@ namespace SkeletorDAL
         {
             using (var context = new HorseContext())
             {
-                context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url });
+                context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url, Column = model.Column });
                 context.SaveChanges();
             }
         }

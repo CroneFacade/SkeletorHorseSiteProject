@@ -11,5 +11,6 @@ namespace SkeletorDAL.POCO
         public int ID { get; set; }
         public string LinkName { get; set; }
         public string LinkURL { get; set; }
+        public int Column { get; set; }
     }
 }
