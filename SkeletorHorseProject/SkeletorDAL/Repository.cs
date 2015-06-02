@@ -203,10 +203,10 @@ namespace SkeletorDAL
                      where h.ID == id
                      select h.AssignedEditors).FirstOrDefault();
 
-                var adminNames = new List<string>();
+                var adminIds = new List<int>();
                 foreach (var admin in admins)
                 {
-                    adminNames.Add(admin.Username);
+                    adminIds.Add(admin.ID);
                 }
                 var horse = (from h in context.Horses
                              where h.ID == id
@@ -237,7 +237,7 @@ namespace SkeletorDAL
 
                              }).FirstOrDefault();
 
-                horse.AdminName = adminNames;
+                horse.AdminId = adminIds;
                 List<Post> posts = (from h in context.Horses
                                     where h.ID == horse.ID
                                     select h.Blog.Posts).FirstOrDefault();
@@ -403,6 +403,18 @@ namespace SkeletorDAL
 
             }
         }
+
+        public static int GetAdminId(string username)
+        {
+            using (var context = new HorseContext())
+            {
+                return
+                    (from u in context.Users
+                        where u.Username == username
+                        select u.ID).FirstOrDefault();
+            }
+            
+        }
         public static bool AuthenticateAdminLogin(string username, string password)
         {
             using (var context = new HorseContext())
@@ -432,34 +444,34 @@ namespace SkeletorDAL
                      }).ToList();
             }
         }
-        public static EditHorseProfileModel GetFullInformationOnSpecificHorseById(int id, EditHorseProfileModel model)
+        public static EditHorseProfileModel GetFullInformationOnSpecificHorseById(int id)
         {
             using (var context = new HorseContext())
             {
-                var currentHorse = (from h in context.Horses
-                                    where h.ID == id
-                                    select new EditHorseProfileModel
-                                    {
-                                        Awards = h.Awards,
-                                        Birthday = h.Birthday,
-                                        Breeding = h.Breeding,
-                                        Description = h.Description,
-                                        FacebookPath = h.FacebookPath,
-                                        FamilyTree = h.FamilyTree,
-                                        Gender = h.Gender,
-                                        IsActive = !h.IsActive,
-                                        IsForSale = h.IsForSale,
-                                        IsSold = h.IsSold,
-                                        Rent = h.Rent,
-                                        Price = h.Price,
-                                        Medicine = h.Medicine,
-                                        Name = h.Name,
-                                        Race = h.Race,
-                                        Withers = h.Withers,
-                                        LastUpdated = DateTime.Now
 
-                                    }).FirstOrDefault();
-                return currentHorse;
+                return (from h in context.Horses
+                    where h.ID == id
+                    select new EditHorseProfileModel
+                    {
+                        Awards = h.Awards,
+                        Birthday = h.Birthday,
+                        Breeding = h.Breeding,
+                        Description = h.Description,
+                        FacebookPath = h.FacebookPath,
+                        FamilyTree = h.FamilyTree,
+                        Gender = h.Gender,
+                        IsActive = h.IsActive,
+                        IsForSale = h.IsForSale,
+                        IsSold = h.IsSold,
+                        Medicine = h.Medicine,
+                        Rent = h.Rent,
+                        Name = h.Name,
+                        Price = h.Price,
+                        Race = h.Race,
+                        Withers = h.Withers
+                    }).FirstOrDefault();
+
+
             }
         }
 

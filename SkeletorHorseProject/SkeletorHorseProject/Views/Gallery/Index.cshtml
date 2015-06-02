@@ -2,7 +2,7 @@
 
 <body>
     <br />
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
     {  <div class="btn-btn-default">
         <input type="button" value="Upload new image" onclick="location.href = '@Url.Action("UploadFile", "Gallery")'" />
     </div> }
@@ -16,7 +16,7 @@
                     <img src="@Url.Content(image.ImagePath)" style="margin: -12px; height: 200px; width: 200px;" alt="Image" />
                 </button>
 
-                @if (User.Identity.IsAuthenticated)
+                @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
                 {<p>
                     @Html.ActionLink("Delete image", "DeleteImage", "Gallery", new { id = image.ID, path = image.ImagePath }, new { onclick = "return confirm('Are you sure you wish to delete this article?');" })
                 </p>

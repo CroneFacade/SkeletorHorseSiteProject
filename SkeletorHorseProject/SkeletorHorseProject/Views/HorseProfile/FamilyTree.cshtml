@@ -31,6 +31,7 @@
                         </ul>
                     </li>
 
+<<<<<<< HEAD
                 </ul>
             </li>
         </ul>
@@ -46,5 +47,19 @@
             </button>
         }
     </div>
+=======
+            </ul>
+        </li>
+    </ul>
+</div>
+<div id="edit_tree">
+   @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+   {
+       <button class="btn-default" value="Edit family tree">
+           @Html.Action("EditFamilyTree", new{id=Model.horseid})
+       </button>
+   }
+</div>
+>>>>>>> a0944e6a22cc6d701be205ad845c144c90d4c3bb
 </body>
 </html>

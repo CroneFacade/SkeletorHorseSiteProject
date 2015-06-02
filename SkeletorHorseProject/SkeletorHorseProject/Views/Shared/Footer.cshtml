@@ -3,63 +3,65 @@
     ViewBag.Title = "Footer";
 }
 
-@if (User.Identity.IsAuthenticated)
-{<p>
+
+@if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+{
+    <div class="editFooterLinks">
         @Html.ActionLink("Edit Links", "EditLinks", "Footer")
-    </p>
+    </div>
 }
 
-@*Column 1*@
-<div class="FooterContainer">
-    <div class="FooterColumn">
+    @*Column 1*@
+    <div class="FooterContainer">
+        <div class="FooterColumn">
 
-        @foreach (var link in Model)
-        {
-            if (link.Column == 1)
+            @foreach (var link in Model)
             {
-                <ul>
-                    <li><a href="@link.Url">@link.Name</a></li>
-                </ul>
+                if (link.Column == 1)
+                {
+                    <ul>
+                        <li><a href="@link.Url">@link.Name</a></li>
+                    </ul>
+                }
             }
-        }
-    </div>
+        </div>
 
-    @*Column 2*@
-    <div class="FooterColumn">
-        @foreach (var link in Model)
-        {
-            if (link.Column == 2)
+        @*Column 2*@
+        <div class="FooterColumn">
+            @foreach (var link in Model)
             {
-                <ul>
-                    <li><a href="@link.Url">@link.Name</a></li>
-                </ul>
+                if (link.Column == 2)
+                {
+                    <ul>
+                        <li><a href="@link.Url">@link.Name</a></li>
+                    </ul>
+                }
             }
-        }
-    </div>
+        </div>
 
-    @*Column 3*@
-    <div class="FooterColumn">
-        @foreach (var link in Model)
-        {
-            if (link.Column == 3)
+        @*Column 3*@
+        <div class="FooterColumn">
+            @foreach (var link in Model)
             {
-                <ul>
-                    <li><a href="@link.Url">@link.Name</a></li>
-                </ul>
+                if (link.Column == 3)
+                {
+                    <ul>
+                        <li><a href="@link.Url">@link.Name</a></li>
+                    </ul>
+                }
             }
-        }
-    </div>
+        </div>
 
-    @*Column 4*@
-    <div class="FooterColumn">
-        @foreach (var link in Model)
-        {
-            if (link.Column == 4)
+        @*Column 4*@
+        <div class="FooterColumn">
+            @foreach (var link in Model)
             {
-                <ul>
-                    <li><a href="@link.Url">@link.Name</a></li>
-                </ul>
+                if (link.Column == 4)
+                {
+                    <ul>
+                        <li><a href="@link.Url">@link.Name</a></li>
+                    </ul>
+                }
             }
-        }
+        </div>
     </div>
-</div>

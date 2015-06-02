@@ -32,7 +32,7 @@ namespace SkeletorDAL
 
          [Column(TypeName = "datetime2")]
         public DateTime LastUpdated { get; set; }
-        public string Breeding { get; set; }
+        public bool Breeding { get; set; }
         public bool Sold { get; set; }
         public string Gender { get; set; }
         public bool Rent { get; set; }

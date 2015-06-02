@@ -13,7 +13,7 @@ namespace SkeletorDAL.Model
     public class HorseProfileModel
     {
         public int ID { get; set; }
-        public string Breeding { get; set; }
+        public bool Breeding { get; set; }
         public string Gender { get; set; }
         public string Name { get; set; }
         [DisplayName("Is for rent")]
@@ -36,7 +36,7 @@ namespace SkeletorDAL.Model
         public string ImagePath { get; set; }
         public string FacebookPath { get; set; }
         public BlogModel Blog { get; set; }
-        public List<string> AdminName { get; set; }
+        public List<int> AdminId { get; set; }
         public HorseProfileModel()
         {
             

@@ -246,10 +246,10 @@ namespace SkeletorHorseProject.Controllers
         public ActionResult FamilyTree(int id)
         {
 
-            //var model = Repository.GetFamilyTree(id);
+            var model = Repository.GetFamilyTree(id);
 
-            //return View(model);
-            return View();
+            return View(model);
+    
         }
 
         public ActionResult EditParentsInFamilyTree(int id)
