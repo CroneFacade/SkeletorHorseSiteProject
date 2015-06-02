@@ -4,25 +4,41 @@
     Layout = null;
 }
 
-@using (Html.BeginForm("EditHorseFamilyTree", "HorseProfile", new{id = Model.horseid, name = Model.HorseName}, FormMethod.Post))
+@using (Html.BeginForm("EditHorseFamilyTree", "HorseProfile", new { id = Model.horseid, name = Model.HorseName }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    @Html.LabelFor(m => m.Father.Name)
-    @Html.TextBoxFor(m => m.Father.Name)
-    @Html.LabelFor(m => m.Father.Description)
-    @Html.TextBoxFor(m => m.Father.Description)
-    @Html.LabelFor(m => m.Mother.Name)
-    @Html.TextBoxFor(m => m.Mother.Name)
-    @Html.LabelFor(m => m.Father.Description)
-    @Html.TextBoxFor(m => m.Father.Description)
-    foreach (var child in Model.Children)
-    {
-        @Html.LabelFor(m => m.Children)
-        @Html.TextBoxFor(m => m.Children)
-    }
-    <input type="submit" value="Save" />
+    <div>
+        @Html.Label("Fathers name:")
 
-}
-{
+        @Html.TextBoxFor(m => m.Father.Name)
+    </div>
+    <div>
+        @Html.Label("Fathers description")
+        @Html.TextBoxFor(m => m.Father.Description)
+    </div>
+    <div>
+        @Html.Label("Mothers name")
+        @Html.TextBoxFor(m => m.Mother.Name)
+    </div>
+    <div>
+        @Html.Label("Mothers description")
+        @Html.TextBoxFor(m => m.Mother.Description)
+    </div>
+    <div>
+        @foreach (var child in Model.Children)
+        {   <br />
+            @Html.Label("Child name")
+            @Html.TextBoxFor(m => child.Name)
+            <br/>
+            @Html.Label("Child description")
+
+            @Html.TextBoxFor(m => child.Description)
+        }
+
+    </div>
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+
 
 }
