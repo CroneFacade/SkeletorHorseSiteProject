@@ -10,6 +10,8 @@ using SkeletorDAL.POCO;
 
 namespace SkeletorDAL
 {
+
+
     public class HorseContextInitializer : DropCreateDatabaseAlways<HorseContext>
     {
         private readonly List<Horse> horses;
@@ -18,8 +20,24 @@ namespace SkeletorDAL
         private readonly List<About> abouts;
         private readonly List<GalleryImage> galleryImages;
         private readonly List<FooterLink> footerlinks;
+	    private readonly List<Puff> puffs; 
         public HorseContextInitializer()
         {
+			puffs = new List<Puff>();
+			puffs.Add(new Puff()
+			{
+				Header1 = "Cupcake Ipsum",
+				Textfield1 = "Sugar plum gummies cake ice cream lollipop biscuit chocolate. Sesame snaps cookie donut bonbon. Chocolate cake liquorice tiramisu cake apple pie muffin tootsie roll sugar plum sugar plum. Icing pudding muffin gingerbread icing. Gummies brownie bonbon cotton candy soufflé cheesecake. Fruitcake macaroon chocolate cake bear claw. Cake dragée cheesecake soufflé cotton candy icing macaroon sugar plum. Bonbon bear claw lollipop toffee. Jelly pudding sesame snaps. Jelly pudding sesame snaps.",
+				Link1 = "http://www.cupcakeipsum.com",
+				Header2 = "Bacon Ipsum",
+				Textfield2 = "Bacon ipsum dolor amet ham jerky flank, pork kevin ground round boudin tri-tip fatback jowl cow corned beef. Bacon landjaeger ham turducken, pork belly porchetta capicola frankfurter tongue pork loin. Kielbasa brisket hamburger picanha spare ribs, pork belly strip steak shank capicola chicken ball tip boudin. Prosciutto jowl alcatra, boudin chuck pork chop tenderloin meatloaf frankfurter jerky. Chuck bresaola beef ribs swine. Pork belly shankle turducken strip steak frankfurter cupim spare ribs. Kielbasa ground round ham strip steak.",
+				Link2 = "https://baconipsum.com/",
+				Header3 = "Veggie Ipsum",
+				Textfield3 = "Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard wakame kohlrabi beetroot carrot watercress. Azuki bean chickweed potato bell pepper artichoke.",
+				Link3 = "http://veggieipsum.com/"
+			});
+
+
             var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005", "650.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = @"~/ProfileImages/1Dummy1.jpg", Description = "Detta är Helges beskrivning", Medicine = "Detta är Helges Medicin", FamilyTree = "Detta är Helges släktträd" };
             var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty, "350.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/2Dummy2.gif", Description = "Detta är Jens beskrivning", Medicine = "Detta är Jens Medicin", FamilyTree = "Detta är Jens släktträd" };
             var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/3Dummy3.jpg", Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
@@ -142,12 +160,16 @@ namespace SkeletorDAL
 
             abouts = new List<About>()
 			{
-				new About("Header1","Text here for header 1","Header2","Text here for header 2", "Header3", "Text here for header 3")
-            };
-        }
+				new About("Header1",@"balblablalblablalbla","Header2","heuheuehuehueheuheuhe", "fwqojfwq", "fijsedfiwqfwwq"),
+				new About("Team Nordahl", 
+						  @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et enim quis sem blandit mollis eu sed nibh. Pellentesque eu neque erat. Nullam tempus purus velit, sed ullamcorper est suscipit ac. Aenean molestie odio ut purus tristique tempus. Suspendisse sed purus eget augue vulputate dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel fermentum nunc. Nam nec dapibus tortor. Cras tellus nibh, fringilla ut facilisis et, fringilla sit amet erat. In tempor bibendum turpis eget sollicitudin. Praesent pharetra rhoncus metus, a cursus massa consectetur pharetra. Nulla pulvinar nisi quis sem molestie, in luctus mi scelerisque. Nulla facilisi. Duis sit amet volutpat diam. Proin vitae auctor lectus.", "Header2 up to date", 
+						  @"Maecenas finibus viverra tincidunt. Praesent vitae est sed sem pharetra consequat. Phasellus facilisis lacus velit, id lacinia elit facilisis sit amet. Nullam luctus, nisi sit amet bibendum convallis, justo felis sodales eros, nec rutrum tellus sapien ornare ex. Morbi fermentum tristique magna ut hendrerit. Mauris tincidunt ante ut libero mollis, eu pulvinar nunc dapibus. Fusce vestibulum nibh dui, ut blandit nisl pellentesque eu. In id sapien eget neque suscipit sollicitudin at quis augue. Quisque ac eleifend leo, in porta dolor. Pellentesque luctus lectus sapien, a pulvinar velit faucibus quis. Curabitur a mattis eros. Aenean lorem turpis, accumsan nec consequat in, tincidunt vitae velit. Nulla quis tellus convallis, ullamcorper purus at, pellentesque ligula.", "HEADER 3", "TEXT3")
+			};
+		}
 
         public override void InitializeDatabase(HorseContext context)
         {
+			puffs.ForEach(p => context.Puffs.Add(p));
             horses.ForEach(h => context.Horses.Add(h));
             blogs.ForEach(b => context.Blogs.Add(b));
             users.ForEach(u => context.Users.Add(u));

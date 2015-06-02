@@ -97,6 +97,7 @@
     <Compile Include="Model\CreateHorseModel.cs" />
     <Compile Include="Model\EditAboutModel.cs" />
     <Compile Include="Model\EditHorseProfileModel.cs" />
+    <Compile Include="Model\EditPuffModel.cs" />
     <Compile Include="Model\FooterModel.cs" />
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Model\HorseInfomationModel.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="POCO\GalleryImage.cs" />
     <Compile Include="POCO\Horse.cs" />
     <Compile Include="POCO\Post.cs" />
+    <Compile Include="POCO\Puff.cs" />
     <Compile Include="POCO\SlideShowImage.cs" />
     <Compile Include="POCO\User.cs" />
     <Compile Include="POCO\YoutubeVideoURL.cs" />
