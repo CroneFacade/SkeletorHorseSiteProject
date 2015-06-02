@@ -40,9 +40,10 @@ namespace SkeletorHorseProject.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult AddEditor()
+        public ActionResult AddEditor(int id)
         {
             var editor =  new EditorModel();
+            editor.HorseId = id;
             return PartialView("_AddEditor",editor);
         }
         
@@ -52,12 +53,18 @@ namespace SkeletorHorseProject.Controllers
             if (ModelState.IsValid)
             {
                 Repository.AddEditor(editor, horseId);
-                return RedirectToAction("EditEditors");
+                return RedirectToAction("EditEditors", new{ id=horseId});
             }
             else
             {
-                return RedirectToAction("EditEditors");
+                return RedirectToAction("EditEditors", new { id = horseId });
             }
+        }
+
+        public ActionResult DeleteEditorForHorse(int horseId, int editorid)
+        {
+            Repository.RemoveEditorFromHorse(horseId,editorid);
+            return RedirectToAction("EditEditors", new { id = horseId });
         }
     }
 }

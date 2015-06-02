@@ -39,6 +39,18 @@
 	
 .owl-carousel .owl-item{
 	float: left;
+
+height:auto;
+    width: 100%;
+}
+.owl-carousel .owl-item img {
+    height:auto;
+   width: 100%;
+    display: block;
+}
+img {
+ height: inherit; 
+ max-height: 100%;
 }
 .owl-controls .owl-page,
 .owl-controls .owl-buttons div{

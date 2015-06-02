@@ -20,20 +20,28 @@
                 <a href="#">@Model.Father.Name</a>
                 <ul>
                     <li>
-                        <a href="#">DENNA HEESTEN</a>
-                        <ul>
-                            @foreach (var child in Model.Children)
-                            {
+                        <a href="#">@Model.HorseName</a>
+                    <ul>
+                        @foreach (var child in Model.Children)
+                        {
                             <li>
                                 <a href="#">@child.Name</a>
                             </li>}
-                            
-                        </ul>
-                    </li>
-                  
-                </ul>
-            </li>
-        </ul>
-    </div>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+</div>
+<div id="edit_tree">
+   @if (User.Identity.IsAuthenticated)
+   {
+       <button class="btn-default" value="Edit family tree">
+           @Html.Action("EditFamilyTree", new{id=Model.horseid})
+       </button>
+   }
+</div>
 </body>
 </html>
