@@ -4,7 +4,10 @@
         Layout = null;
     }
 
-    <body>
+<script>function Crop() {alert("Funkar men ändå inte");}</script>
+<script src="~/Scripts/slideshow.size.js"></script>
+
+<body>
         <div class="GalleryWrapper">
 
 
@@ -16,9 +19,22 @@
                     </button>
 
                     @if (User.Identity.IsAuthenticated)
-                    {<p>
-                        @Html.ActionLink("Delete image", "DeleteImage", "EditSlideShowImages", new { id = image.ID, path = image.ImagePath }, new { onclick = "return confirm('Are you sure you wish to delete this article?');" })
-                    </p>
+                    {
+                        
+                        <div class="overlay">
+                            <div class="overlay-inner">
+                                
+                                @Html.ActionLink("Crop", "CropImage", "EditSlideShowImages", new { id = image.ID, path = image.ImagePath }, new { onclick = "Crop();" })
+                                
+
+
+                                <p>
+                                    @Html.ActionLink("Delete image", "DeleteImage", "EditSlideShowImages", new {id = image.ID, path = image.ImagePath}, new {onclick = "return confirm('Are you sure you wish to delete this article?');"})
+                                </p>
+
+                            </div>
+                        </div>
+
                     }
 
                     <div id="@image.ID" class="modal fade" tabindex="-1">

@@ -5,12 +5,13 @@
 <div class="slider-container">
     <div class="hiddenoo">
         <div class="owl-carousel slider">
-            @foreach (var image in Model)
-            {
-                <div class="panel panel-primary slider-item">
-                    <img src="@Url.Content(image)" />
-                </div>
-            }
+
+                @foreach (var image in Model)
+                {
+                    <div class="panel panel-primary slider-item">
+                        <img src="@Url.Content(image)" />
+                    </div>
+                }
         </div>
     </div>
 </div>
