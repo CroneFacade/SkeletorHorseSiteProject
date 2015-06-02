@@ -39,5 +39,12 @@ namespace SkeletorHorseProject.Controllers
             var latest = Repository.GetLatestUpdates();
             return PartialView(latest);
         }
+		
+		[ChildActionOnly]
+		public ActionResult GetPuffsToHome()
+		{
+			var puffsModel = Repository.GetPuffs();
+			return PartialView("_Puff", puffsModel);
+		}
     }
 }
