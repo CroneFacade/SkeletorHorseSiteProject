@@ -2,28 +2,34 @@
 
 <div class="row">
     <div class="puff">
-        <p><b>@Model.Header1</b></p>
-        <p>@Model.Textfield1</p>
+        <h1>@Model.Header1</h1>
+        <p>
+            @Model.Textfield1
         @if (Model.Link1 != null)
         {
-            <a href="@Model.Link1">Read more</a>
+            <a href="@Model.Link1">[ ... ]</a>
         }
+    </p>
     </div>
     <div class="puff">
-        <p><b>@Model.Header2</b></p>
-        <p>@Model.Textfield2</p>
+        <h1>@Model.Header2</h1>
+        <p>
+            @Model.Textfield2
         @if (Model.Link2 != null)
         {
-            <a href="@Model.Link2">Read more</a>
+            <a href="@Model.Link2">[ ... ]</a>
         }
+    </p>
     </div>
     <div class="puff">
-        <p><b>@Model.Header3</b></p>
-        <p>@Model.Textfield3</p>
+        <h1>@Model.Header3</h1>
+        <p>
+            @Model.Textfield3
         @if (Model.Link3 != null)
         {
-            <a href="@Model.Link3">Read more</a>
+            <a href="@Model.Link3">[ ... ]</a>
         }
+    </p>
     </div>
 </div>
 
