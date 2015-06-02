@@ -10,8 +10,6 @@ using SkeletorDAL.POCO;
 
 namespace SkeletorDAL
 {
-
-
     public class HorseContextInitializer : DropCreateDatabaseAlways<HorseContext>
     {
         private readonly List<Horse> horses;
@@ -26,14 +24,15 @@ namespace SkeletorDAL
 			puffs = new List<Puff>();
 			puffs.Add(new Puff()
 			{
-				Header1 = "Cupcake Ipsum",
-				Textfield1 = "Sugar plum gummies cake ice cream lollipop biscuit chocolate. Sesame snaps cookie donut bonbon. Chocolate cake liquorice tiramisu cake apple pie muffin tootsie roll sugar plum sugar plum. Icing pudding muffin gingerbread icing. Gummies brownie bonbon cotton candy soufflé cheesecake. Fruitcake macaroon chocolate cake bear claw. Cake dragée cheesecake soufflé cotton candy icing macaroon sugar plum. Bonbon bear claw lollipop toffee. Jelly pudding sesame snaps. Jelly pudding sesame snaps.",
+				Header1 = "Team Nordahl",
+                Textfield1 = "Fusce sed convallis sem. Aliquam erat volutpat. Sed rutrum, dolor sed maximus molestie, nulla erat volutpat lectus, non iaculis nisl magna quis sapien. Vivamus a suscipit dolor. Vestibulum vulputate in arcu quis posuere. Nulla ut velit vel lorem imperdiet rhoncus sed pulvinar purus. Maecenas ut rutrum eros. Curabitur sed velit sem. Phasellus dictum, lorem quis elementum elementum, sapien dui eleifend ex, at ornare augue mi id nunc. Nulla vitae mauris ut urna vulputate iaculis blandit blandit sem. Proin eget justo nec libero imperdiet cras amet.",
 				Link1 = "http://www.cupcakeipsum.com",
-				Header2 = "Bacon Ipsum",
-				Textfield2 = "Bacon ipsum dolor amet ham jerky flank, pork kevin ground round boudin tri-tip fatback jowl cow corned beef. Bacon landjaeger ham turducken, pork belly porchetta capicola frankfurter tongue pork loin. Kielbasa brisket hamburger picanha spare ribs, pork belly strip steak shank capicola chicken ball tip boudin. Prosciutto jowl alcatra, boudin chuck pork chop tenderloin meatloaf frankfurter jerky. Chuck bresaola beef ribs swine. Pork belly shankle turducken strip steak frankfurter cupim spare ribs. Kielbasa ground round ham strip steak.",
+				Header2 = "Horses for Sale",
+				Textfield2 = "Suspendisse facilisis tincidunt dui, vel commodo elit ultrices eu. Integer ac lacus quam. Donec efficitur nisi nec elit egestas, id luctus libero aliquam. Cras in lacus quam. Curabitur mattis tincidunt orci eu aliquam. Phasellus vehicula nisi et dignissim pretium. Proin pretium fermentum felis, quis vulputate ex finibus nec." +
+                            "Nullam in neque nec purus iaculis viverra. Etiam ut cursus massa. Donec in fringilla arcu, eget viverra nulla. Etiam posuere odio tempor tortor ullamcorper finibus. Ut a euismod urna. Maecenas quis tellus sit amet lacus sed.",
 				Link2 = "https://baconipsum.com/",
-				Header3 = "Veggie Ipsum",
-				Textfield3 = "Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard wakame kohlrabi beetroot carrot watercress. Azuki bean chickweed potato bell pepper artichoke.",
+				Header3 = "Our Stallions",
+                Textfield3 = "Nulla facilisi. Morbi pharetra nec mi dapibus semper. Nam dignissim ligula non arcu ultrices, eu facilisis lectus consectetur. Sed eu nunc ante. Nulla sed maximus ipsum. Donec tempor odio massa, sed faucibus nibh elementum at. Mauris arcu libero, consequat quis dapibus consequat, hendrerit quis leo. Integer ut tellus ut nibh venenatis pellentesque. Sed nunc leo, blandit et ornare mattis, iaculis a lacus. In malesuada pellentesque elit euismod finibus. Curabitur luctus diam vitae orci pellentesque consectetur.",
 				Link3 = "http://veggieipsum.com/"
 			});
 
