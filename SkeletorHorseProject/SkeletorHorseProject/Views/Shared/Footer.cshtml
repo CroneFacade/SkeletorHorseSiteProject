@@ -9,47 +9,57 @@
     </p>
 }
 
-
 @*Column 1*@
-@foreach (var link in Model)
-{
-    if (link.Column == 1)
-    {
-        <ul>
-            <li><a href="@link.Url">@link.Name</a></li>
-        </ul>
-    }
-}
+<div class="FooterContainer">
+    <div class="FooterColumn">
 
-@*Column 2*@
-@foreach (var link in Model)
-{
-    if (link.Column == 2)
-    {
-        <ul>
-            <li><a href="@link.Url">@link.Name</a></li>
-        </ul>
-    }
-}
+        @foreach (var link in Model)
+        {
+            if (link.Column == 1)
+            {
+                <ul>
+                    <li><a href="@link.Url">@link.Name</a></li>
+                </ul>
+            }
+        }
+    </div>
 
-@*Column 3*@
-@foreach (var link in Model)
-{
-    if (link.Column == 3)
-    {
-        <ul>
-            <li><a href="@link.Url">@link.Name</a></li>
-        </ul>
-    }
-}
+    @*Column 2*@
+    <div class="FooterColumn">
+        @foreach (var link in Model)
+        {
+            if (link.Column == 2)
+            {
+                <ul>
+                    <li><a href="@link.Url">@link.Name</a></li>
+                </ul>
+            }
+        }
+    </div>
 
-@*Column 4*@
-@foreach (var link in Model)
-{
-    if (link.Column == 4)
-    {
-        <ul>
-            <li><a href="@link.Url">@link.Name</a></li>
-        </ul>
-    }
-}
+    @*Column 3*@
+    <div class="FooterColumn">
+        @foreach (var link in Model)
+        {
+            if (link.Column == 3)
+            {
+                <ul>
+                    <li><a href="@link.Url">@link.Name</a></li>
+                </ul>
+            }
+        }
+    </div>
+
+    @*Column 4*@
+    <div class="FooterColumn">
+        @foreach (var link in Model)
+        {
+            if (link.Column == 4)
+            {
+                <ul>
+                    <li><a href="@link.Url">@link.Name</a></li>
+                </ul>
+            }
+        }
+    </div>
+</div>
