@@ -32,5 +32,32 @@ namespace SkeletorHorseProject.Controllers
 		    }
 		    return View(model);
 	    }
+
+        public ActionResult EditEditors(int id)
+        {
+            var Editors = Repository.GetEditorForSpecificHorse(id);
+            return View(Editors);
+        }
+
+        [ChildActionOnly]
+        public ActionResult AddEditor()
+        {
+            var editor =  new EditorModel();
+            return PartialView("_AddEditor",editor);
+        }
+        
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult AddEditor(EditorModel editor, int horseId)
+        {
+            if (ModelState.IsValid)
+            {
+                Repository.AddEditor(editor, horseId);
+                return RedirectToAction("EditEditors");
+            }
+            else
+            {
+                return RedirectToAction("EditEditors");
+            }
+        }
     }
 }
