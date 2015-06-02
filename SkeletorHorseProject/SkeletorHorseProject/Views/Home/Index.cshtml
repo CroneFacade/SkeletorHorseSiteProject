@@ -15,9 +15,9 @@
 		</div>
 	</div>
 </div>
-<br />
+
 <p>
-	@if (User.Identity.IsAuthenticated)
+	@if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
 	{
 		@*<div class="btn-btn-default">
 				<input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
@@ -26,18 +26,12 @@
 	}
 </p>
 
-
-<br />
-
 <div id="puffContainer" class="col-md-12">
 	@Html.Action("GetPuffsToHome", "Home")
 </div>
 
 <div id="puffHorseContainer" class="col-md-12">
-
-
-	@Html.Action("LatestUpdates", "Home")
-
+    @Html.Action("LatestUpdates", "Home")
 </div>
 
 
@@ -62,7 +56,6 @@
         });
     </script>
 }
-
 
 
     <script>
@@ -99,6 +92,3 @@
     </script>
 
 
-
-
-}

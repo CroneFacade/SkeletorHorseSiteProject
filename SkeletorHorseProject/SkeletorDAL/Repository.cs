@@ -203,10 +203,10 @@ namespace SkeletorDAL
                         where h.ID == id
                         select h.AssignedEditors).FirstOrDefault();
 
-                var adminNames = new List<string>();
+                var adminIds = new List<int>();
                 foreach (var admin in admins)
                 {
-                    adminNames.Add(admin.Username);
+                    adminIds.Add(admin.ID);
                 }
                 var horse = (from h in context.Horses
                              where h.ID == id
@@ -237,7 +237,7 @@ namespace SkeletorDAL
                                  
                              }).FirstOrDefault();
 
-                horse.AdminName = adminNames;
+                horse.AdminId = adminIds;
                 List<Post> posts = (from h in context.Horses
                                     where h.ID == horse.ID
                                     select h.Blog.Posts).FirstOrDefault();
@@ -402,6 +402,18 @@ namespace SkeletorDAL
                         }).ToList().LastOrDefault();
 
             }
+        }
+
+        public static int GetAdminId(string username)
+        {
+            using (var context = new HorseContext())
+            {
+                return
+                    (from u in context.Users
+                        where u.Username == username
+                        select u.ID).FirstOrDefault();
+            }
+            
         }
         public static bool AuthenticateAdminLogin(string username, string password)
         {

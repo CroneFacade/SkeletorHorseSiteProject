@@ -36,7 +36,7 @@ namespace SkeletorDAL.Model
         public string ImagePath { get; set; }
         public string FacebookPath { get; set; }
         public BlogModel Blog { get; set; }
-        public List<string> AdminName { get; set; }
+        public List<int> AdminId { get; set; }
         public HorseProfileModel()
         {
             
