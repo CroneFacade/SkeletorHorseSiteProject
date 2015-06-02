@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SkeletorDAL.Model
 {
-    public class Parent
+    public class ParentModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

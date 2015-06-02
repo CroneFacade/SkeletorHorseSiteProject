@@ -16,13 +16,7 @@
         <th>
             @Html.DisplayNameFor(model => model.HorseName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EditorId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HorseId)
-        </th>
-        <th></th>
+
     </tr>
 
 @foreach (var item in Model) {
@@ -33,14 +27,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.HorseName)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EditorId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HorseId)
-        </td>
+
         <td>          
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "DeleteEditorForHorse", new {horseId = item.HorseId, editorId = item.EditorId })
         </td>
     </tr>
 }

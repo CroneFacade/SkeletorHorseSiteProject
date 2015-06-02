@@ -4,24 +4,28 @@
 @model List<string>
 
 <div class="slider-container">
-    <div class="hiddenoo">
-        <div class="owl-carousel slider">
-
-                @foreach (var image in Model)
-                {
-                    <div class="panel panel-primary slider-item">
-                        <img src="@Url.Content(image)" />
-                    </div>
-                }
-        </div>
-    </div>
+	<div class="hiddenoo">
+		<div class="owl-carousel slider">
+			@foreach (var image in Model)
+			{
+				<div class="panel panel-primary slider-item">
+					<img src="@Url.Content(image)" />
+				</div>
+			}
+		</div>
+	</div>
 </div>
 <br />
-@if (User.Identity.IsAuthenticated)
-{  <div class="btn-btn-default">
-        <input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
-    </div> }
-          
+<p>
+	@if (User.Identity.IsAuthenticated)
+	{
+		@*<div class="btn-btn-default">
+				<input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
+			</div> }*@
+		@Html.ActionLink("Edit SlideShow", "UploadSlideshowFile", "EditSlideShowImages")
+	}
+</p>
+
 
 <br />
 
@@ -32,13 +36,13 @@
 <div id="puffHorseContainer" class="col-md-12">
 
 
-  @Html.Action("LatestUpdates", "Home")
+	@Html.Action("LatestUpdates", "Home")
 
 </div>
 
 
 @section Styles {
-    <link href="~/Content/owl.carousel.css" rel="stylesheet" />
+	<link href="~/Content/owl.carousel.css" rel="stylesheet" />
 }
 
 @section Scripts {
@@ -57,6 +61,8 @@
             });
         });
     </script>
+}
+
 
 
     <script>
