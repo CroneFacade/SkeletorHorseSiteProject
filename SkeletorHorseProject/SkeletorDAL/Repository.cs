@@ -828,7 +828,12 @@ namespace SkeletorDAL
                     FatherName = model.Father.Name, 
                     FatherDescription = model.Father.Description, 
                 };
-           
+                var list = model.Children.Select(childModel => new Child() {Name = childModel.Name, Description = childModel.Description}).ToList();
+                familyTree.Children = list;
+
+                var horse = context.Horses.Find(model.horseid);
+                horse.Tree = familyTree;
+                context.SaveChanges();
             }
         }
     }

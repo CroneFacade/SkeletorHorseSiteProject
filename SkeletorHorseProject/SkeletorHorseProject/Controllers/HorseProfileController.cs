@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -252,16 +253,19 @@ namespace SkeletorHorseProject.Controllers
 
         public ActionResult EditFamilyTree(int id)
         {
-            var model = new FamilyTreeModel();
-            model.horseid = id;
+           
+            var model = Repository.GetFamilyTree(id);
+
             return View(model);
 
         }
 
+        [HttpPost]
         public ActionResult EditHorseFamilyTree(int id, string name, FamilyTreeModel model)
         {
             model.HorseName = name;
             model.horseid = id;
+    
             Repository.EditHorseFamilyTree(model);
             return RedirectToAction("Index", new {id = id});
         }
