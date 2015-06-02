@@ -10,7 +10,9 @@ namespace SkeletorDAL.Model
     {
         public string Header1 { get; set; }
         public string Header2 { get; set; }
+        public string Header3 { get; set; }
         public string Textfield1 { get; set; }
         public string Textfield2 { get; set; }
+        public string Textfield3 { get; set; }
     }
 }
