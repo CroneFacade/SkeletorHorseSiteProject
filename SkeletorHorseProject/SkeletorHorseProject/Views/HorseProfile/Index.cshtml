@@ -73,7 +73,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="family-tree">
 
-                        @Model.FamilyTree
+                        @Html.Action("FamilyTree", new{id=Model.ID})
                     </div>
                     <div role="tabpanel" class="tab-pane" id="horseBlog">
                         @foreach (var blog in Model.Blog.Posts)
