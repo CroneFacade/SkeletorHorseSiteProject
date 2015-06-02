@@ -1,34 +1,35 @@
 ﻿@model SkeletorDAL.Model.EditPuffModel
 
 <div class="row">
-	<div class="puff">
-		<p><b>@Model.Header1</b></p>
-		<p>@Model.Textfield1</p>
-		@if (Model.Link1 != null)
-		{
-			<a href="@Model.Link1">Read more</a>
-		}
-	</div>
-	<div class="puff">
-		<p><b>@Model.Header2</b></p>
-		<p>@Model.Textfield2</p>
-		@if (Model.Link2 != null)
-		{
-			<a href="@Model.Link2">Read more</a>
-		}
-	</div>
-	<div class="puff">
-		<p><b>@Model.Header3</b></p>
-		<p>@Model.Textfield3</p>
-		@if (Model.Link3 != null)
-		{
-			<a href="@Model.Link3">Read more</a>
-		}
-	</div>
-	<p>
-		@if (User.Identity.IsAuthenticated)
-		{
-			@Html.ActionLink("Edit puffs", "Edit", "EditPuff")
-		}
-	</p>
+    <div class="puff">
+        <p><b>@Model.Header1</b></p>
+        <p>@Model.Textfield1</p>
+        @if (Model.Link1 != null)
+        {
+            <a href="@Model.Link1">Read more</a>
+        }
+    </div>
+    <div class="puff">
+        <p><b>@Model.Header2</b></p>
+        <p>@Model.Textfield2</p>
+        @if (Model.Link2 != null)
+        {
+            <a href="@Model.Link2">Read more</a>
+        }
+    </div>
+    <div class="puff">
+        <p><b>@Model.Header3</b></p>
+        <p>@Model.Textfield3</p>
+        @if (Model.Link3 != null)
+        {
+            <a href="@Model.Link3">Read more</a>
+        }
+    </div>
 </div>
+
+<p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Edit Puffs", "Edit", "EditPuff")
+    }
+</p>
