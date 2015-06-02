@@ -1,0 +1,27 @@
+﻿@model SkeletorDAL.Model.ParentModel
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("EditHorseFamilyTree", "HorseProfile", new {id = Model.horseid, name = Model.HorseName}, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        @Html.Label("Fathers name:")
+
+        @Html.TextBoxFor(m => m.FatherName)
+    </div>
+    <div>
+        @Html.Label("Fathers description")
+        @Html.TextBoxFor(m => m.FatherDescription)
+    </div>
+    <div>
+        @Html.Label("Mothers name")
+        @Html.TextBoxFor(m => m.MotherName)
+    </div>
+    <div>
+        @Html.Label("Mothers description")
+        @Html.TextBoxFor(m => m.MotherDescription)
+    </div>
+
+}

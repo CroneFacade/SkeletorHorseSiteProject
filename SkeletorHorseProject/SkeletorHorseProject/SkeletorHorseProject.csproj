@@ -246,6 +246,8 @@
     <Content Include="Views\HorseProfile\FamilyTree.cshtml" />
     <Content Include="Views\Shared\_Puff.cshtml" />
     <Content Include="Views\HorseProfile\EditFamilyTree.cshtml" />
+    <Content Include="Views\HorseProfile\EditParentsInFamilyTree.cshtml" />
+    <Content Include="Views\HorseProfile\EditChildrenInFamilyTree.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

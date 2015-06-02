@@ -4,7 +4,7 @@
     Layout = null;
 }
 
-@using (Html.BeginForm("EditHorseFamilyTree", "HorseProfile", new { id = Model.horseid, name = Model.HorseName }, FormMethod.Post))
+@using (Html.BeginForm("EditHorseFamilyTree", "HorseProfile", new { id = Model.horseid, name = Model.HorseName, children = Model.Children }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div>

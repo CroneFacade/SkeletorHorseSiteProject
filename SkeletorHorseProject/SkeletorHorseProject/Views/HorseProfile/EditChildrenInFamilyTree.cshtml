@@ -1,0 +1,18 @@
+﻿@model List<SkeletorDAL.Model.ChildModel>
+           @{
+    Layout = null;
+}
+
+
+    @foreach(var child in Model){
+
+    <div>
+        @Html.Label("Childs name:")
+
+        @Html.TextBoxFor(m => child.Name)
+    </div>
+    <div>
+    
+        @Html.TextBoxFor(m => child.Description)
+    </div>
+}

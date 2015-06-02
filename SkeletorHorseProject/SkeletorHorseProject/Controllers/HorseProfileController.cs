@@ -246,15 +246,16 @@ namespace SkeletorHorseProject.Controllers
         public ActionResult FamilyTree(int id)
         {
 
-            var model = Repository.GetFamilyTree(id);
+            //var model = Repository.GetFamilyTree(id);
 
-            return View(model);
+            //return View(model);
+            return View();
         }
 
-        public ActionResult EditFamilyTree(int id)
+        public ActionResult EditParentsInFamilyTree(int id)
         {
-           
-            var model = Repository.GetFamilyTree(id);
+
+            var model = Repository.GetParentsInFamilyTree(id);
 
             return View(model);
 
@@ -265,9 +266,15 @@ namespace SkeletorHorseProject.Controllers
         {
             model.HorseName = name;
             model.horseid = id;
-    
             Repository.EditHorseFamilyTree(model);
             return RedirectToAction("Index", new {id = id});
+        }
+
+        public ActionResult EditChildrenInFamilyTree(int id)
+        {
+            var model = Repository.GetChildrenInFamilyTree(id);
+
+            return View(model);
         }
     }
 }
