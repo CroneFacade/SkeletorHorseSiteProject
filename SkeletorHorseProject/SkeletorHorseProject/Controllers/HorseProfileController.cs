@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -42,13 +43,13 @@ namespace SkeletorHorseProject.Controllers
         [ChildActionOnly]
         public ActionResult GetHorseVideos(int id)
         {
-            return PartialView(Repository.GetHorseVideosByID(id)); 
+            return PartialView(Repository.GetHorseVideosByID(id));
         }
 
         [ChildActionOnly]
         public ActionResult AddNewHorseVideo(int id)
         {
-            return View(new HorseVideoModel() { HorseID = id});
+            return View(new HorseVideoModel() { HorseID = id });
         }
 
         [HttpPost]
@@ -77,7 +78,7 @@ namespace SkeletorHorseProject.Controllers
             }
 
             return RedirectToAction("Index", new { id = model.HorseID });
-            
+
         }
 
         [HttpPost]
@@ -238,27 +239,35 @@ namespace SkeletorHorseProject.Controllers
                 System.IO.File.Delete(fullPath);
             }
             Repository.DeleteGalleryImage(id);
-            return RedirectToAction("Index", new{id = horseid});
+            return RedirectToAction("Index", new { id = horseid });
         }
 
 
         public ActionResult FamilyTree(int id)
         {
-           var model = new FamilyTreeModel()
-           {
-                   horseid= id,
-                   Father = new Parent(){Name= "Åke", Description = "Jag är pappa"},
-                   Mother = new Parent() { Name = "Karin du Nord", Description = "Jag är mamma"},
-                   Children = new List<Child>()
-                   {
-                       new Child() { Name = "Pelle", Description = "jag är ett barn"},
-                       new Child() {Name = "Greta", Description = "Jag är ett annat barn"},
-                       new Child() {Name = "Siv", Description = "Jag är ett annat barn"},
-                       new Child() {Name = "Sven-Engelbert", Description = "Jag är ett annat barn"},
-                   }
-           };
-       
-           return View(model);
+
+            var model = Repository.GetFamilyTree(id);
+
+            return View(model);
+        }
+
+        public ActionResult EditFamilyTree(int id)
+        {
+           
+            var model = Repository.GetFamilyTree(id);
+
+            return View(model);
+
+        }
+
+        [HttpPost]
+        public ActionResult EditHorseFamilyTree(int id, string name, FamilyTreeModel model)
+        {
+            model.HorseName = name;
+            model.horseid = id;
+    
+            Repository.EditHorseFamilyTree(model);
+            return RedirectToAction("Index", new {id = id});
         }
     }
 }

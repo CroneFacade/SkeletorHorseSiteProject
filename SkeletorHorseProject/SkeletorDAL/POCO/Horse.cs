@@ -26,6 +26,7 @@ namespace SkeletorDAL
 		public string Description { get; set; }
 		public string Medicine { get; set; }
 		public string FamilyTree { get; set; }
+	    public FamilyTree Tree { get; set; }
 		public string ImagePath { get; set; }
 		public string FacebookPath { get; set; }
 
@@ -37,7 +38,7 @@ namespace SkeletorDAL
         public bool Rent { get; set; }
 	    public virtual Blog Blog { get; set; }
         public virtual List<YoutubeVideoURL> YoutubeVideoURLs { get; set; }
-        public List<User> AssignedEditors { get; set; } 
+        public virtual List<User> AssignedEditors { get; set; } 
 
 		public Horse()
 		{

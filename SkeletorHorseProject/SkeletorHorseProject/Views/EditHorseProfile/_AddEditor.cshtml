@@ -1,6 +1,6 @@
 ﻿@model SkeletorDAL.Model.EditorModel
 
-@using (Html.BeginForm("AddEditor", "EditHorseProfile", new {id = Model.HorseId} ,FormMethod.Post, null))
+@using (Html.BeginForm("AddEditor", "EditHorseProfile", new {horseId = Model.HorseId }, FormMethod.Post, null))
 {
 
     @Html.AntiForgeryToken()

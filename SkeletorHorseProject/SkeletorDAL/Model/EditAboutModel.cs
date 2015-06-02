@@ -12,9 +12,12 @@ namespace SkeletorDAL.Model
 		public int ID { get; set; }
 		public string Header1 { get; set; }
 		public string Header2 { get; set; }
+        public string Header3 { get; set; }
 		[DataType(DataType.MultilineText)]
 		public string Textfield1 { get; set; }
 		[DataType(DataType.MultilineText)]
 		public string Textfield2 { get; set; }
+        [DataType(DataType.MultilineText)]
+        public string Textfield3 { get; set; }
 	}
 }
