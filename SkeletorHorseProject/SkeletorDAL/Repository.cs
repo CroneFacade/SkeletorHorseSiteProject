@@ -383,8 +383,10 @@ namespace SkeletorDAL
                         {
                             Header1 = a.Header1,
                             Header2 = a.Header2,
+                            Header3 = a.Header3,
                             Textfield1 = a.Textfield1,
-                            Textfield2 = a.Textfield2
+                            Textfield2 = a.Textfield2,
+                            Textfield3 = a.Textfield3
                         }).ToList().LastOrDefault();
 
             }

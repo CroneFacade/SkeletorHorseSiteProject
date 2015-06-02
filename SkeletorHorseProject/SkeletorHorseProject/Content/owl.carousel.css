@@ -150,4 +150,9 @@
 	min-height: 150px;
 	background: url(AjaxLoader.gif) no-repeat center center
 }
+.slideshow.img.resize{
+   max-width:50%;
+   max-height:100%;
+}
+
 
