@@ -3,7 +3,7 @@
     ViewBag.Title = "Footer";
 }
 
-@if (User.Identity.IsAuthenticated)
+@if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
 {<p>
         @Html.ActionLink("Edit Links", "EditLinks", "Footer")
     </p>

@@ -2,7 +2,7 @@
 @using SkeletorHorseProject.Models
 
 <p>
-	@if (User.Identity.IsAuthenticated)
+	@if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
 	{
 		@Html.ActionLink("Edit", "EditAbout", "EditAboutPage")
 	}

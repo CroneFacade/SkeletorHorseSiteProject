@@ -31,7 +31,9 @@ namespace SkeletorHorseProject.Controllers
                 bool isValid = Repository.AuthenticateAdminLogin(model.Username,model.Password.SuperHash());
                 if (isValid)
                 {
-                    FormsAuthentication.SetAuthCookie(model.Username,false);
+
+                    FormsAuthentication.SetAuthCookie(Repository.GetAdminId(model.Username).ToString(),false);
+                   
                     return RedirectToAction("Index","Home");
                 }
                 else
