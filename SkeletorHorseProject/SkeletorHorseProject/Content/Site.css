@@ -103,7 +103,8 @@ a:hover {
     -webkit-box-shadow: inset 0 0 100px 1px #000000;
     box-shadow: inset 0 0 100px 1px #000000;
     padding-top: 50px;
-    padding-left: 50px;
+ 
+
 }
 
     .footer ul {
@@ -297,4 +298,19 @@ a:hover {
 .horseParagraf {
     margin-top: -7px;
     font-family: Arial;
+}
+
+.FooterContainer {
+    width: 900px;
+    height: auto;
+    margin-left: 150px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+
+}
+
+.FooterColumn {
+    margin-left: 15px;
+
+    float: left;
 }
