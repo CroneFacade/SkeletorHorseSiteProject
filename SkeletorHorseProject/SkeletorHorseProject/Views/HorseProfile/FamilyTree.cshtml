@@ -1,0 +1,39 @@
+﻿@model SkeletorDAL.Model.FamilyTreeModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FamilyTree</title>
+    <link href="~/Content/familyTree.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="tree">
+        <ul>
+            <li>
+                <a href="#">@Model.Mother.Name</a>
+                <a href="#">@Model.Father.Name</a>
+                <ul>
+                    <li>
+                        <a href="#">DENNA HEESTEN</a>
+                        <ul>
+                            @foreach (var child in Model.Children)
+                            {
+                            <li>
+                                <a href="#">@child.Name</a>
+                            </li>}
+                            
+                        </ul>
+                    </li>
+                  
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

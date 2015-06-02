@@ -141,7 +141,6 @@ namespace SkeletorHorseProject.Controllers
             }
         }
 
-
         [ChildActionOnly]
         public ActionResult HorseBlog(int id)
         {
@@ -243,5 +242,23 @@ namespace SkeletorHorseProject.Controllers
         }
 
 
+        public ActionResult FamilyTree(int id)
+        {
+           var model = new FamilyTreeModel()
+           {
+                   horseid= id,
+                   Father = new Parent(){Name= "Åke", Description = "Jag är pappa"},
+                   Mother = new Parent() { Name = "Karin du Nord", Description = "Jag är mamma"},
+                   Children = new List<Child>()
+                   {
+                       new Child() { Name = "Pelle", Description = "jag är ett barn"},
+                       new Child() {Name = "Greta", Description = "Jag är ett annat barn"},
+                       new Child() {Name = "Siv", Description = "Jag är ett annat barn"},
+                       new Child() {Name = "Sven-Engelbert", Description = "Jag är ett annat barn"},
+                   }
+           };
+       
+           return View(model);
+        }
     }
 }

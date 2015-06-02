@@ -93,10 +93,17 @@
     <Compile Include="Model\AboutReadOnlyModel.cs" />
     <Compile Include="Model\BlogModel.cs" />
     <Compile Include="Model\BlogPostModel.cs" />
+    <Compile Include="Model\Child.cs" />
     <Compile Include="Model\ContactModel.cs" />
     <Compile Include="Model\CreateHorseModel.cs" />
     <Compile Include="Model\EditAboutModel.cs" />
     <Compile Include="Model\EditHorseProfileModel.cs" />
+
+    <Compile Include="Model\EditorModel.cs" />
+
+    <Compile Include="Model\FamilyTreeModel.cs" />
+    <Compile Include="Model\EditPuffModel.cs" />
+
     <Compile Include="Model\FooterModel.cs" />
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Model\HorseInfomationModel.cs" />
@@ -108,15 +115,19 @@
     <Compile Include="Model\HorseVideoModel.cs" />
     <Compile Include="Model\ImageModel.cs" />
     <Compile Include="Model\LatestUpdatesForHomePage.cs" />
+    <Compile Include="Model\Parent.cs" />
     <Compile Include="Model\RegisterAdminModel.cs" />
     <Compile Include="Model\SlideShowImgModel.cs" />
     <Compile Include="Model\UploadFileModel.cs" />
     <Compile Include="POCO\About.cs" />
     <Compile Include="POCO\Blog.cs" />
+    <Compile Include="POCO\Child.cs" />
+    <Compile Include="POCO\FamilyTree.cs" />
     <Compile Include="POCO\FooterLink.cs" />
     <Compile Include="POCO\GalleryImage.cs" />
     <Compile Include="POCO\Horse.cs" />
     <Compile Include="POCO\Post.cs" />
+    <Compile Include="POCO\Puff.cs" />
     <Compile Include="POCO\SlideShowImage.cs" />
     <Compile Include="POCO\User.cs" />
     <Compile Include="POCO\YoutubeVideoURL.cs" />
