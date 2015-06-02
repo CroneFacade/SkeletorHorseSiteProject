@@ -621,8 +621,10 @@ namespace SkeletorDAL
 							 ID = a.ID,
 							 Header1 = a.Header1,
 							 Header2 = a.Header2,
+                             Header3 = a.Header3,
 							 Textfield1 = a.Textfield1,
-							 Textfield2 = a.Textfield2
+							 Textfield2 = a.Textfield2,
+                             Textfield3 = a.Textfield3
 						 }).FirstOrDefault();
 
 				return query;
@@ -655,8 +657,10 @@ namespace SkeletorDAL
 			about.ID = model.ID;
 			about.Header1 = model.Header1;
 			about.Header2 = model.Header2;
+            about.Header3 = model.Header3;
 			about.Textfield1 = model.Textfield1;
 			about.Textfield2 = model.Textfield2;
+            about.Textfield3 = model.Textfield3;
 			return about;
 		}
 
