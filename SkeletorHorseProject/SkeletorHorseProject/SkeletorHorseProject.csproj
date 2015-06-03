@@ -117,6 +117,7 @@
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Images\hest.jpg" />
+    <Content Include="resources\background_camargue_horse.jpg" />
     <Content Include="Scripts\slideshow.size.js" />
     <Content Include="SlideImages\11273579_10153379658529083_1657643802_o.jpg" />
     <Content Include="SlideImages\11273734_10153379658554083_662969880_o.jpg" />

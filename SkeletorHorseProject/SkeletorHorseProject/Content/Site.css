@@ -1,6 +1,6 @@
 ﻿body {
     padding-bottom: 10px;
-}
+  }
 
 .breadcrumb {
     height: 30px;
@@ -87,15 +87,16 @@ a:hover {
 .content {
     background-color: #ffffff;
     font-family: Arial;
-    min-height: 1020px;
+    min-height: 500px;
+    overflow: auto;
     margin-top: 20px;
     margin-bottom: -10px;
     padding: 0 50px 50px 50px;
-    background-image: url('../Images/splash.png');
+    background-image: url('../resources/background_camargue_horse.jpg');
     background-repeat: no-repeat;
     background-position-x: right;
-    background-position-y: 80%;
-    background-size: 40%;
+    background-position-y: bottom;
+
 }
 
 .footer {
@@ -145,26 +146,27 @@ a:hover {
     padding: 15px;
 }
 
-.puff h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 24px;
-    text-shadow: 1px 1px 1px #A1A1A1;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
+    .puff h1 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 24px;
+        text-shadow: 1px 1px 1px #A1A1A1;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
 
-.puff p {
-    text-align: justify;
-}
+    .puff p {
+        text-align: justify;
+    }
 
     .puff a {
         color: #0000ff;
         font-weight: bold;
     }
-    .puff a:hover, a:focus {
-        color: #D1081D;
-        text-decoration: none;
-    }
+
+        .puff a:hover, a:focus {
+            color: #D1081D;
+            text-decoration: none;
+        }
 
 #puffHorseContainer {
     max-width: 1024px;
@@ -370,6 +372,5 @@ a:hover {
         -webkit-column-gap: 25px;
         column-count: 2;
         column-gap: 25px;
-
         text-align: justify;
     }
