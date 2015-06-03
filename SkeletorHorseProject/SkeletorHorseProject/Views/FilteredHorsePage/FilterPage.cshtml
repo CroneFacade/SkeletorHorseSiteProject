@@ -9,32 +9,38 @@
     @Html.Action("Search","FilteredHorsePage")
     <div id="filtering_horses" style="overflow: visible; display: block; width: 1024px;" >
    
-        
-        @if (Model.Count == 0)
-        {
-            <p>No horses avalible</p>
-        }
-        else
-        {
-            foreach (var horse in Model)
-            {
-                <div id="horse">
-                    <a href="@Url.Content("~/horseprofile/index/" + horse.ID)"><img src="@Url.Content(horse.ImagePath)" style=" height: 250px; width: 200px;" alt="Image" /></a>
-                    <div class="horseInfoBox">
-                        <p id="horseName">
-                            @Html.ActionLink((@horse.Name), "Index", "HorseProfile", new { id = @horse.ID }, null)
-                        </p>
-                        <p class="horseParagraf">
-                            Birthday: @horse.Birthday.ToShortDateString() <br />
-                            Gender: @horse.Gender <br />
-                            Breeding: @horse.Breeding
-                        </p>
+       
+                @if (Model.Count == 0)
+                {
+                    <p>No horses avalible</p>
+                }
+                else
+                {
+                    foreach (var horse in Model)
+                    {
+                            <div id="horse">
+                                <a href="@Url.Content("~/horseprofile/index/" + horse.ID)"><img src="@Url.Content(horse.ImagePath)" style=" height: 250px; width: 200px;" alt="Image" /></a>
+                                <div class="horseInfoBox">
+                                    <p id="horseName">
+                                        @Html.ActionLink((@horse.Name), "Index", "HorseProfile", new { id = @horse.ID }, null)
+                                    </p>
+                                    <p class="horseParagraf">
 
-                    </div>
-                </div>
+                                        Birthday: @horse.Birthday.ToShortDateString() <br />
+                                        Gender: @horse.Gender <br />
+                                        
+                            </p>
+                                        @if (horse.Breeding)
+                                        {
+                                            <p>Breeding: @horse.Breeding</p> 
+                                        }
+                          
 
-            }
-        }
+                                </div>
+                            </div>
+
+                    }
+                }
 
 
 
