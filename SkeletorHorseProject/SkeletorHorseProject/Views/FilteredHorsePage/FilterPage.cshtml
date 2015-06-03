@@ -24,10 +24,16 @@
                                         @Html.ActionLink((@horse.Name), "Index", "HorseProfile", new { id = @horse.ID }, null)
                                     </p>
                                     <p class="horseParagraf">
+
                                         Birthday: @horse.Birthday.ToShortDateString() <br />
                                         Gender: @horse.Gender <br />
-                                        Breeding: @horse.Breeding
-                                    </p>
+                                        
+                            </p>
+                                        @if (horse.Breeding)
+                                        {
+                                            <p>Breeding: @horse.Breeding</p> 
+                                        }
+                          
 
                                 </div>
                             </div>

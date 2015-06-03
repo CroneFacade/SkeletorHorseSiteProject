@@ -9,59 +9,66 @@
     <div class="editFooterLinks">
         @Html.ActionLink("Edit Links", "EditLinks", "Footer")
     </div>
+    
 }
 
-    @*Column 1*@
+@*Column 1*@
     <div class="FooterContainer">
-        <div class="FooterColumn">
+    <div class="FooterColumn">
 
-            @foreach (var link in Model)
+        @foreach (var link in Model)
+        {
+            if (link.Column == 1)
             {
-                if (link.Column == 1)
-                {
-                    <ul>
-                        <li><a href="@link.Url">@link.Name</a></li>
-                    </ul>
-                }
+                <ul>
+                    <li><a href="@link.Url">@link.Name</a></li>
+                </ul>
             }
-        </div>
-
-        @*Column 2*@
-        <div class="FooterColumn">
-            @foreach (var link in Model)
-            {
-                if (link.Column == 2)
-                {
-                    <ul>
-                        <li><a href="@link.Url">@link.Name</a></li>
-                    </ul>
-                }
-            }
-        </div>
-
-        @*Column 3*@
-        <div class="FooterColumn">
-            @foreach (var link in Model)
-            {
-                if (link.Column == 3)
-                {
-                    <ul>
-                        <li><a href="@link.Url">@link.Name</a></li>
-                    </ul>
-                }
-            }
-        </div>
-
-        @*Column 4*@
-        <div class="FooterColumn">
-            @foreach (var link in Model)
-            {
-                if (link.Column == 4)
-                {
-                    <ul>
-                        <li><a href="@link.Url">@link.Name</a></li>
-                    </ul>
-                }
-            }
-        </div>
+        }
     </div>
+
+    @*Column 2*@
+    <div class="FooterColumn">
+        @foreach (var link in Model)
+        {
+            if (link.Column == 2)
+            {
+                <ul>
+                    <li><a href="@link.Url">@link.Name</a></li>
+                </ul>
+            }
+        }
+    </div>
+
+    @*Column 3*@
+    <div class="FooterColumn">
+        @foreach (var link in Model)
+        {
+            if (link.Column == 3)
+            {
+                <ul>
+                    <li><a href="@link.Url">@link.Name</a></li>
+                </ul>
+            }
+        }
+    </div>
+
+    @*Column 4*@
+    <div class="FooterColumn">
+        @foreach (var link in Model)
+        {
+            if (link.Column == 4)
+            {
+                <ul>
+                    <li><a href="@link.Url">@link.Name</a></li>
+                </ul>
+            }
+        }
+    </div>
+        <div class="copyrights">
+            Copyright © 2015 Skeletor
+            <img src="~/resources/SkeletorLogo.png"/> 
+            Project. All rights reserved  
+        </div>
+</div>
+
