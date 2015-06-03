@@ -10,5 +10,7 @@ namespace SkeletorDAL.Model
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public int horseid { get; set; }
+        public string HorseName { get; set; }
     }
 }

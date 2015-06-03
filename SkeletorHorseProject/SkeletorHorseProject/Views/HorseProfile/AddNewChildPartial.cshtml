@@ -1,0 +1,21 @@
+﻿@model SkeletorDAL.Model.ChildModel
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddNewChildToHorse", "HorseProfile", new { id = Model.horseid, horseName = Model.HorseName }, FormMethod.Post))
+{
+    <div>
+        @Html.Label("Name")
+        @Html.TextBoxFor(m => m.Name)
+    </div>
+    <div>
+        @Html.Label("Description")
+        @Html.TextBoxFor(m => m.Description)
+    </div>
+    <div>
+        <input type="submit" value="Save child" />
+    </div>
+}
+

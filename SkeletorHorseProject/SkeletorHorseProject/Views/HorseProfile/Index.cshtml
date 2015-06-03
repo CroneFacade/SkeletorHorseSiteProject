@@ -15,27 +15,32 @@
                 }
             </p>
             <dl>
-                
-                
-                
+
+
+
                 <dt>About @Model.Name</dt>
                 <dd>Wither: @Model.Withers</dd>
                 <dd>Race: @Model.Race</dd>
                 <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
                 <dt>Races and Prizes</dt>
-                <dd>
-                    @foreach (var award in Model.Awards)
-                    {
-                        @award
 
-                    }
-                </dd>
+
+
+                @if (Model.Awards != null)
+                {
+                    <dd>
+                        Awards: @Model.Awards
+                    </dd>
+
+                }
+
+
             </dl>
             <p>
                 @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
                 {
                     @Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
-                    <br/>
+                    <br />
                     @Html.ActionLink("Edit Editors", "EditEditors", "EditHorseProfile", new { id = @Model.ID }, null)
 
                 }
@@ -56,11 +61,15 @@
                         @Model.Description
                     </div>
                     <div role="tabpanel" class="tab-pane" id="videos">
-                        @if (User.Identity.IsAuthenticated && Model.AdminId.Contains(int.Parse(User.Identity.Name)))
+                        @if (User.Identity.IsAuthenticated)
                         {
-                            @Html.Action("AddNewHorseVideo", new { id = Model.ID })
+                            if (Model.AdminId.Contains(int.Parse(User.Identity.Name)) || User.Identity.Name == "1")
+                            {
+                                @Html.Action("AddNewHorseVideo", new { id = Model.ID })
+                            }
+                            @Html.Action("GetHorseVideos", new { id = Model.ID })
                         }
-                        @Html.Action("GetHorseVideos", new { id = Model.ID })
+
                     </div>
                     <div role="tabpanel" class="tab-pane" id="health">
                         <dl>
@@ -78,7 +87,8 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="family-tree">
 
-                        @Html.Action("FamilyTree", new{id=Model.ID})
+                        @Html.Action("FamilyTree", new { id = Model.ID, horseName = Model.Name })
+
                     </div>
                     <div role="tabpanel" class="tab-pane" id="horseBlog">
                         @foreach (var blog in Model.Blog.Posts)
@@ -89,25 +99,33 @@
                             <p>@blog.Content</p>
                             <hr />
                         }
-                        @if (User.Identity.IsAuthenticated && Model.AdminId.Contains(int.Parse(User.Identity.Name)))
+                        @if (User.Identity.IsAuthenticated)
                         {
-                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBlogPost" aria-expanded="false" aria-controls="addBlogPost">
-                                Add blogpost
-                            </button>
-                            <div class="collapse" data-toggle="collapse" data-target=".navbar-collapse" id="addBlogPost">
-                                <div class="well">
-                                    @Html.Action("AddBlogPost", new { blog = @Model.Blog })
-                                </div>
+                            if (Model.AdminId.Contains(int.Parse(User.Identity.Name)) || int.Parse(User.Identity.Name) == 1)
+                            {
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBlogPost" aria-expanded="false" aria-controls="addBlogPost">
+                                    Add blogpost
+                                </button>
+                                <div class="collapse" data-toggle="collapse" data-target=".navbar-collapse" id="addBlogPost">
+                                    <div class="well">
+                                        @Html.Action("AddBlogPost", new { blog = @Model.Blog })
+                                    </div>
 
-                            </div>
+                                </div>
+                            }
                         }
+
                     </div>
                     <div role="tabpanel" class="tab-pane" id="gallery">
                         <br />
-                        @if (User.Identity.IsAuthenticated && Model.AdminId.Contains(int.Parse(User.Identity.Name)))
+                        @if (User.Identity.IsAuthenticated)
                         {
-                            @Html.Action("UploadImageButton", new { id = @Model.ID })
+                            if (Model.AdminId.Contains(int.Parse(User.Identity.Name)) || int.Parse(User.Identity.Name) == 1)
+                            {
+                                @Html.Action("UploadImageButton", new { id = @Model.ID })
+                            }
                         }
+
                         <br />
                         @Html.Action("Gallery", new { id = @Model.ID })
                     </div>

@@ -14,13 +14,12 @@ namespace SkeletorDAL.Model
 		[Required(ErrorMessage = "What is the name of the horse?")]
 		public string Name { get; set; }
 		[Required(ErrorMessage = "(yyyy-mm-dd)")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
 		public DateTime Birthday { get; set; }
 		[Required(ErrorMessage = "Pony, Camargue etc.")]
 		public string Race { get; set; }
 		[Required(ErrorMessage = "Wither in Centimeters. (mankhöjd)")]
 		public int Withers { get; set; }
-		[Required(ErrorMessage = "Has the horse won any awards.")]
 		public string Awards { get; set; }
 		[Required(ErrorMessage = "Write something about the horse.")]
 		public string Description { get; set; }
