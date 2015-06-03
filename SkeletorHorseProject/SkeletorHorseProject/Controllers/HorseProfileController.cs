@@ -97,6 +97,7 @@ namespace SkeletorHorseProject.Controllers
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
+                    fileName = fileName.ToLower();
                     fileName = id + fileName;
 
                     if (fileName.EndsWith(".jpg") ||
