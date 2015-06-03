@@ -282,6 +282,10 @@ namespace SkeletorHorseProject.Controllers
         public ActionResult EditChildrenInFamilyTree(int id)
         {
             var model = Repository.GetChildrenInFamilyTree(id);
+            if (model == null)
+            {
+                model = new List<ChildModel>(){new ChildModel(){horseid = id}};
+            }
             return View(model);
         }
 

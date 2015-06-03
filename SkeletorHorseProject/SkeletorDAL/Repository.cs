@@ -247,6 +247,10 @@ namespace SkeletorDAL
                                     where h.ID == horse.ID
                                     select h.Blog.Posts).FirstOrDefault();
 
+                posts = posts.OrderBy(o=>o.Created).ToList();
+
+                posts.Reverse();
+
                 List<BlogPostModel> blogposts = posts.Select(x => new BlogPostModel()
                 {
                     BlogID = x.Blog.ID,
@@ -860,16 +864,32 @@ namespace SkeletorDAL
         {
             using (var context = new HorseContext())
             {
-                var list = (from c in context.Horses
-                            where c.ID == id
-                            select c.Tree.Children).FirstOrDefault();
                 var listWithChildren = new List<ChildModel>();
-                foreach (var child in list)
+                var horse = (from c in context.Horses
+                             where c.ID == id
+                             select c).FirstOrDefault();
+                if (horse.Tree == null)
                 {
-                    listWithChildren.Add(new ChildModel() { Description = child.Description, Name = child.Name, horseid = id, HorseName = context.Horses.Find(id).Name });
-
+                    horse.Tree = new FamilyTree() { Children = new List<Child>() };
+                    horse.Tree.Children.Add(new Child());
+                    listWithChildren.Add(new ChildModel() { horseid = id, HorseName = horse.Name });
+                    return listWithChildren;
                 }
-                return listWithChildren;
+                else
+                {
+                    var list = (from c in context.Horses
+                                where c.ID == id
+                                select c.Tree.Children).FirstOrDefault();
+
+
+                    foreach (var child in list)
+                    {
+                        listWithChildren.Add(new ChildModel() { Description = child.Description, Name = child.Name, horseid = id, HorseName = context.Horses.Find(id).Name });
+
+                    } return listWithChildren;
+                }
+
+
             }
         }
         public static ParentModel GetParentsInFamilyTree(int id)
@@ -896,7 +916,7 @@ namespace SkeletorDAL
                 var horse = context.Horses.Find(model.horseid);
                 if (horse.Tree == null)
                 {
-                    horse.Tree = new FamilyTree { Children = new List<Child>()};
+                    horse.Tree = new FamilyTree { Children = new List<Child>() };
                 }
                 horse.Tree.FatherName = model.FatherName;
                 horse.Tree.FatherDescription = model.FatherDescription;
@@ -914,9 +934,9 @@ namespace SkeletorDAL
                 var horse = context.Horses.Find(childModel.horseid);
                 if (horse.Tree == null)
                 {
-                    horse.Tree = new FamilyTree {Children = new List<Child>()};
+                    horse.Tree = new FamilyTree { Children = new List<Child>() };
                 }
-                horse.Tree.Children.Add(new Child() {Name = childModel.Name, Description = childModel.Description});
+                horse.Tree.Children.Add(new Child() { Name = childModel.Name, Description = childModel.Description });
                 horse.LastUpdated = DateTime.Now;
                 context.SaveChanges();
             }
