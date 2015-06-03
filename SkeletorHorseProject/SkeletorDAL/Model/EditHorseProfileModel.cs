@@ -20,7 +20,6 @@ namespace SkeletorDAL.Model
 		public string Race { get; set; }
 		[Required(ErrorMessage = "Wither in Centimeters. (mankhöjd)")]
 		public int Withers { get; set; }
-		[Required(ErrorMessage = "Has the horse won any awards.")]
 		public string Awards { get; set; }
 		[Required(ErrorMessage = "Write something about the horse.")]
 		public string Description { get; set; }
