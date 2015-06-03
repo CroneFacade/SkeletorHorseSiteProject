@@ -307,7 +307,12 @@ a:hover {
     padding-left: 10px;
     padding-bottom: 10px;
 }
-
+#SearchBox {
+    width: 1024px;
+    padding-left: 25px;
+    padding-bottom: 10px;
+    
+}
 #horseName {
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
