@@ -12,12 +12,12 @@ using SkeletorDAL.Helpers;
 using SkeletorDAL.Model;
 using SkeletorDAL.POCO;
 using SkeletorHorseProject.Controllers;
+using SkeletorHorseProject.Models;
 
 namespace SkeletorDAL
 {
     public static class Repository
     {
-
         public static FamilyTreeModel GetFamilyTree(int id)
         {
             using (var context = new HorseContext())

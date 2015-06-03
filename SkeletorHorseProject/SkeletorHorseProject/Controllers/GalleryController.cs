@@ -35,6 +35,8 @@ namespace SkeletorHorseProject.Controllers
                 {
                     var fileName = Path.GetFileName(file.FileName);
 
+                    fileName = fileName.ToLower();
+
                     if (fileName.EndsWith(".jpg") ||
                         fileName.EndsWith(".png") ||
                         fileName.EndsWith(".bmp") ||
