@@ -25,7 +25,7 @@ namespace SkeletorDAL
                 var horse = (from c in context.Horses
                              where c.ID == id
                              select new FamilyTreeModel()
-                             {
+                             { 
                                  Parents = new ParentModel()
                                  {
                                      FatherName = c.Tree.FatherName,
@@ -40,9 +40,11 @@ namespace SkeletorDAL
                                       where c.ID == id
                                       select c.Tree.Children).FirstOrDefault();
                 horse.Children = listOfChildren.Select(childModel => new ChildModel() { Name = childModel.Name, Description = childModel.Description, horseid = id, HorseName = horse.HorseName }).ToList();
+
                 return horse;
             }
         }
+
         public static List<ImageModel> GetAllSlideShowImages()
         {
             using (var context = new HorseContext())
@@ -58,6 +60,7 @@ namespace SkeletorDAL
                         })).ToList();
             }
         }
+
         public static void AddNewSlideShowFile(string fileName, string path)
         {
             using (var context = new HorseContext())
@@ -72,6 +75,7 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
+
         public static void DeleteSlideShowImage(int id)
         {
             using (var context = new HorseContext())
@@ -81,6 +85,7 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
+
         public static string GetAdminEmail()
         {
             using (var context = new HorseContext())
@@ -91,6 +96,7 @@ namespace SkeletorDAL
                      select u.Email).FirstOrDefault();
             }
         }
+
         public static HorseProfileModel GetHorseProfileById(int id)
         {
             using (var context = new HorseContext())
@@ -122,6 +128,7 @@ namespace SkeletorDAL
                 return currentHorse;
             }
         }
+
         public static List<FooterModel> GetAllFooterLinks()
         {
             using (var context = new HorseContext())
@@ -135,7 +142,12 @@ namespace SkeletorDAL
         {
             using (var context = new HorseContext())
             {
-                context.FooterLinks.Add(new FooterLink() { LinkName = model.Name, LinkURL = model.Url, Column = model.Column });
+                context.FooterLinks.Add(new FooterLink()
+                {
+                    LinkName = model.Name,
+                    LinkURL = model.Url,
+                    Column = model.Column
+                });
                 context.SaveChanges();
             }
         }
@@ -152,7 +164,13 @@ namespace SkeletorDAL
 
                 foreach (var video in videoList)
                 {
-                    listToReturn.Add(new HorseVideoModel() { ID = video.ID, HorseID = id, VideoName = video.VideoName, VideoURL = video.VideoURL });
+                    listToReturn.Add(new HorseVideoModel()
+                    {
+                        ID = video.ID,
+                        HorseID = id,
+                        VideoName = video.VideoName,
+                        VideoURL = video.VideoURL
+                    });
                 }
             }
 
@@ -189,6 +207,7 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
+
         public static List<Horse> GetAllHorses()
         {
             using (var context = new HorseContext())
@@ -267,6 +286,26 @@ namespace SkeletorDAL
 
         }
 
+        public static void RemoveAdminByID(int id)
+        {
+            using(var context = new HorseContext())
+            {
+                var user = context.Users.Find(id);
+                user.IsActive = false;
+                context.SaveChanges();
+            }
+        }
+
+        public static List<AdminModel> GetAllAdmins()
+        {
+            using (var context = new HorseContext())
+            {
+                return (from a in context.Users
+                        where a.IsActive == true
+                        select new AdminModel { Username = a.Username, AdminLevel = a.AdminLevel, ID = a.ID }).ToList();
+            }
+        }
+
         public static HorseModel GetSpecificHorseById(int id)
         {
             using (var context = new HorseContext())
@@ -298,7 +337,11 @@ namespace SkeletorDAL
                              select h).FirstOrDefault();
                 horse.LastUpdated = DateTime.Now;
 
-                horse.YoutubeVideoURLs.Add(new YoutubeVideoURL() { VideoName = model.VideoName, VideoURL = model.VideoURL });
+                horse.YoutubeVideoURLs.Add(new YoutubeVideoURL()
+                {
+                    VideoName = model.VideoName,
+                    VideoURL = model.VideoURL
+                });
 
                 context.SaveChanges();
             }
@@ -398,6 +441,7 @@ namespace SkeletorDAL
             }
 
         }
+
         public static AboutReadOnlyModel AboutReadOnly()
         {
             using (var contex = new HorseContext())
@@ -428,16 +472,18 @@ namespace SkeletorDAL
             }
 
         }
+
         public static bool AuthenticateAdminLogin(string username, string password)
         {
             using (var context = new HorseContext())
             {
                 return
                     (from a in context.Users
-                     where a.Username == username && a.Password == password
+                     where a.Username == username && a.Password == password && a.IsActive
                      select a).Any();
             }
         }
+
         public static List<HorseSaleModel> GetHorsesForSale()
         {
             using (var context = new HorseContext())
@@ -457,6 +503,7 @@ namespace SkeletorDAL
                      }).ToList();
             }
         }
+
         public static EditHorseProfileModel GetFullInformationOnSpecificHorseById(int id)
         {
             using (var context = new HorseContext())
@@ -496,6 +543,7 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
+
         public static void UpdateHorseProfile(int horseID, EditHorseProfileModel model)
         {
             using (var context = new HorseContext())
@@ -568,7 +616,8 @@ namespace SkeletorDAL
                 path = image.ImagePath;
                 context.GalleryImages.Remove(image);
                 context.SaveChanges();
-            };
+            }
+            ;
 
             return path;
         }
@@ -589,6 +638,7 @@ namespace SkeletorDAL
                         })).ToList();
             }
         }
+
         public static int DeleteGalleryImage(int id)
         {
             using (var context = new HorseContext())
@@ -634,7 +684,12 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 var blog = context.Blogs.Find(blogId);
-                var newBlogpost = new Post(blogpost.Title, blogpost.Created, blogpost.Content) { Blog = blog, ID = blogpost.ID, Created = DateTime.Now };
+                var newBlogpost = new Post(blogpost.Title, blogpost.Created, blogpost.Content)
+                {
+                    Blog = blog,
+                    ID = blogpost.ID,
+                    Created = DateTime.Now
+                };
 
                 var horse = (from h in context.Horses
                              where blog.ID == blogId
@@ -720,6 +775,7 @@ namespace SkeletorDAL
                 context.SaveChanges();
             }
         }
+
         public static About SetAboutValues(EditAboutModel model, About about)
         {
             about.ID = model.ID;
@@ -740,19 +796,20 @@ namespace SkeletorDAL
                     (from p in context.Puffs
                      orderby p.ID descending
                      select
-                        new EditPuffModel()
-                        {
-                            ID = p.ID,
-                            Header1 = p.Header1,
-                            Header2 = p.Header2,
-                            Header3 = p.Header3,
-                            Textfield1 = p.Textfield1,
-                            Textfield2 = p.Textfield2,
-                            Textfield3 = p.Textfield3,
-                            Link1 = p.Link1,
-                            Link2 = p.Link2,
-                            Link3 = p.Link3
-                        }).FirstOrDefault();
+                         new EditPuffModel()
+                         {
+                             ID = p.ID,
+                             Header1 = p.Header1,
+                             Header2 = p.Header2,
+                             Header3 = p.Header3,
+                             Textfield1 = p.Textfield1,
+                             Textfield2 = p.Textfield2,
+                             Textfield3 = p.Textfield3,
+                             Link1 = p.Link1,
+                             Link2 = p.Link2,
+                             Link3 = p.Link3
+                         }).FirstOrDefault();
+
                 return query;
             }
         }
@@ -774,7 +831,13 @@ namespace SkeletorDAL
 
                 foreach (var user in users)
                 {
-                    model.Add(new EditorModel() { EditorId = user.ID, EditorName = user.Username, HorseId = id, HorseName = horseName });
+                    model.Add(new EditorModel()
+                    {
+                        EditorId = user.ID,
+                        EditorName = user.Username,
+                        HorseId = id,
+                        HorseName = horseName
+                    });
                 }
                 return model;
             }
@@ -942,6 +1005,83 @@ namespace SkeletorDAL
             }
 
         }
+
+        public static List<HorseModel> GetSearchResult(string term, int navigationId)
+        {
+            using (var context = new HorseContext())
+            {
+                List<HorseModel> horseList = new List<HorseModel>();
+                switch (navigationId)
+                {
+                    case 1:
+                        horseList = (from h in context.Horses
+                                     where h.Name.Contains(term)&& h.IsActive == true
+                                     select new HorseModel()
+                                     {
+                                         Awards = h.Awards,
+                                         Birthday = h.Birthday,
+                                         ID = h.ID,
+                                         IsActive = h.IsActive,
+                                         IsForSale = h.IsForSale,
+                                         Name = h.Name,
+                                         Price = h.Price,
+                                         Race = h.Race,
+                                         Withers = h.Withers,
+                                         IsSold = h.IsSold,
+                                         State = "All horses",
+                                         ImagePath = h.ImagePath
+                                     }).ToList();
+                        break;
+
+
+                    case 2:
+                        horseList = (from h in context.Horses
+                                     where h.Name.Contains(term)&&h.IsForSale == true && h.IsActive == true
+                                     select new HorseModel()
+                                     {
+                                         Awards = h.Awards,
+                                         Birthday = h.Birthday,
+                                         ID = h.ID,
+                                         IsActive = h.IsActive,
+                                         IsForSale = h.IsForSale,
+                                         Name = h.Name,
+                                         Price = h.Price,
+                                         Race = h.Race,
+                                         Withers = h.Withers,
+                                         IsSold = h.IsSold,
+                                         State = "Horses for sale",
+                                         ImagePath = h.ImagePath
+                                     }).ToList();
+                        break;
+                    case 3:
+                        horseList = (from h in context.Horses
+                                     where h.Name.Contains(term) && h.IsSold == true && h.IsActive == true
+                                     select new HorseModel()
+                                     {
+                                         Awards = h.Awards,
+                                         Birthday = h.Birthday,
+                                         ID = h.ID,
+                                         IsActive = h.IsActive,
+                                         IsForSale = h.IsForSale,
+                                         Name = h.Name,
+                                         Price = h.Price,
+                                         Race = h.Race,
+                                         Withers = h.Withers,
+                                         IsSold = h.IsSold,
+                                         State = "Sold horses",
+                                         ImagePath = h.ImagePath
+                                     }).ToList();
+                        break;
+
+
+                } return horseList;
+            }
+        }
     }
 }
+
+
+
+
+
 
