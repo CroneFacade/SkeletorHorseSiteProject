@@ -779,11 +779,21 @@ namespace SkeletorDAL
                     (from h in context.Horses
                         where h.ID == horseId
                         select h).FirstOrDefault();
+                var editorExists =
+                    (from e in context.Users
+                     where e.Username == editor.EditorName
+                     select e).Any();
+
+                if (editorExists == false)
+                {
+                    return;
+                }
+
                 var Editor =
                     (from e in context.Users
                      where e.Username == editor.EditorName
                      select e).FirstOrDefault();
-               
+
                 if (horse.AssignedEditors==null)
                 {
                     horse.AssignedEditors= new List<User>();
