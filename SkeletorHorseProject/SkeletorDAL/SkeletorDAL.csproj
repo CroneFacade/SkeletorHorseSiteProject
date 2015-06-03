@@ -97,13 +97,11 @@
     <Compile Include="Model\ContactModel.cs" />
     <Compile Include="Model\CreateHorseModel.cs" />
     <Compile Include="Model\EditAboutModel.cs" />
+    <Compile Include="Model\EditAdminModel.cs" />
     <Compile Include="Model\EditHorseProfileModel.cs" />
-
     <Compile Include="Model\EditorModel.cs" />
-
     <Compile Include="Model\FamilyTreeModel.cs" />
     <Compile Include="Model\EditPuffModel.cs" />
-
     <Compile Include="Model\FooterModel.cs" />
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Model\HorseInfomationModel.cs" />

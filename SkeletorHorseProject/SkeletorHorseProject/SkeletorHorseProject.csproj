@@ -173,6 +173,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CreateHorseController.cs" />
     <Compile Include="Controllers\EditAboutPageController.cs" />
+    <Compile Include="Controllers\EditAdminController.cs" />
     <Compile Include="Controllers\EditHorseProfileController.cs" />
     <Compile Include="Controllers\EditPuffController.cs" />
     <Compile Include="Controllers\EditSlideShowImagesController.cs" />
@@ -260,6 +261,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="HorseProfileImages\" />
+    <Folder Include="Views\EditAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SkeletorDAL\SkeletorDAL.csproj">
