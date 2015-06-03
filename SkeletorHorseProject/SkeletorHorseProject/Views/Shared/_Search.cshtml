@@ -1,0 +1,16 @@
+﻿@using System.Web.UI.HtmlControls
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div>
+            <input id="search_term" type="text" class="form-control" placeholder="Search">
+            <input id="search_id" type="hidden" value="0" />
+            <input type="submit" value="Search" />
+        </div>
+
+       
+
+    </div>
+}
+
