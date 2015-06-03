@@ -287,6 +287,7 @@ namespace SkeletorDAL
                 var horse = (from h in context.Horses
                             where h.ID == model.HorseID
                             select h).FirstOrDefault();
+                horse.LastUpdated = DateTime.Now;
 
                 horse.YoutubeVideoURLs.Add(new YoutubeVideoURL() { VideoName = model.VideoName, VideoURL = model.VideoURL });
 
@@ -489,6 +490,7 @@ namespace SkeletorDAL
             {
 
                 var horse = context.Horses.Find(horseID);
+                horse.LastUpdated = DateTime.Now;
                 horse.Name = model.Name;
                 horse.Birthday = model.Birthday;
                 horse.Race = model.Race;
@@ -595,6 +597,7 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 var horse = context.Horses.Find(horseId);
+                horse.LastUpdated = DateTime.Now;
                 horse.ImagePath = imagePath;
                 context.SaveChanges();
             }
@@ -620,6 +623,13 @@ namespace SkeletorDAL
             {
                 var blog = context.Blogs.Find(blogId);
                 var newBlogpost = new Post(blogpost.Title, blogpost.Created, blogpost.Content) { Blog = blog, ID = blogpost.ID, Created = DateTime.Now };
+
+                var horse = (from h in context.Horses
+                             where blog.ID == blogId
+                             select h).FirstOrDefault();
+
+                horse.LastUpdated = DateTime.Now;
+
                 blog.Posts.Add(newBlogpost);
                 context.SaveChanges();
                 horseId = (from h in context.Horses
@@ -845,6 +855,7 @@ namespace SkeletorDAL
 
                 var horse = context.Horses.Find(model.horseid);
                 horse.Tree = familyTree;
+                horse.LastUpdated = DateTime.Now;
                 context.SaveChanges();
             }
         }
