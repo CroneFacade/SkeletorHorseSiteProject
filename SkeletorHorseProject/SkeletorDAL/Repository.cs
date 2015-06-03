@@ -242,6 +242,10 @@ namespace SkeletorDAL
                                     where h.ID == horse.ID
                                     select h.Blog.Posts).FirstOrDefault();
 
+                posts = posts.OrderBy(o=>o.Created).ToList();
+
+                posts.Reverse();
+
                 List<BlogPostModel> blogposts = posts.Select(x => new BlogPostModel()
                 {
                     BlogID = x.Blog.ID,
