@@ -16,7 +16,7 @@ namespace SkeletorDAL.Model
 		[Required(ErrorMessage = "(yyyy-mm-dd)")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
 		public DateTime Birthday { get; set; }
-		[Required(ErrorMessage = "Pony, Camargue etc.")]
+		[Required(ErrorMessage = "Pony, Camargue etc.")] 
 		public string Race { get; set; }
 		[Required(ErrorMessage = "Wither in Centimeters. (mankhöjd)")]
 		public int Withers { get; set; }
