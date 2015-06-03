@@ -23,13 +23,13 @@
                 <dd>Race: @Model.Race</dd>
                 <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
                 <dt>Races and Prizes</dt>
-                <dd>
-                    @foreach (var award in Model.Awards)
-                    {
-                        @award
-
-                    }
-                </dd>
+                @if(Model.Awards != null)
+                {
+                    <dd>
+                        Awards: @Model.Awards
+                    </dd>
+                    
+                }
             </dl>
             <p>
                 @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
