@@ -10,7 +10,7 @@ namespace SkeletorHorseProject.Controllers
     public class FilteredHorsePageController : Controller
     {
         // GET: FilteredHorsePage
-        public ActionResult Index(int navigationId)
+        public ActionResult FilterPage(int navigationId)
         {
             try
             {
@@ -23,6 +23,11 @@ namespace SkeletorHorseProject.Controllers
                 return View();
             }
 
+        }
+
+        public ActionResult Index()
+        {
+            return RedirectToAction("Index", "Home");
         }
     }
 }

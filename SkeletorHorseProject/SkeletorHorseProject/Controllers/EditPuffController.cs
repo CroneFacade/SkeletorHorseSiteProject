@@ -28,5 +28,10 @@ namespace SkeletorHorseProject.Controllers
 			}
 			return View(model);
 		}
+
+        public ActionResult Index()
+        {
+            return RedirectToAction("Index", "Home");
+        }
 	}
 }

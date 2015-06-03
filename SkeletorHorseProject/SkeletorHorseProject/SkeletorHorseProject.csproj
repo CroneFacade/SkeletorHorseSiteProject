@@ -117,6 +117,7 @@
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Images\hest.jpg" />
+    <Content Include="resources\background_camargue_horse.jpg" />
     <Content Include="Scripts\slideshow.size.js" />
     <Content Include="SlideImages\11273579_10153379658529083_1657643802_o.jpg" />
     <Content Include="SlideImages\11273734_10153379658554083_662969880_o.jpg" />
@@ -214,7 +215,7 @@
     <Content Include="Views\EditHorseProfile\_AddEditor.cshtml" />
     <Content Include="Views\EditPuff\Edit.cshtml" />
     <Content Include="Views\EditHorseProfile\EditHorseProfile.cshtml" />
-    <None Include="Views\FilteredHorsePage\Index.cshtml" />
+    <None Include="Views\FilteredHorsePage\FilterPage.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Gallery\UploadFile.cshtml" />
