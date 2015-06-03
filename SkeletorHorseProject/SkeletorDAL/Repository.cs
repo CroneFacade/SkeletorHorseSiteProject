@@ -25,19 +25,22 @@ namespace SkeletorDAL
                 var horse = (from c in context.Horses
                              where c.ID == id
                              select new FamilyTreeModel()
-                             {
-                                 Father = new ParentModel() { Name = c.Tree.FatherName, Description = c.Tree.FatherDescription },
-                                 Mother = new ParentModel() { Name = c.Tree.MotherName, Description = c.Tree.MotherDescription },
+                             { 
+                                 Parents = new ParentModel()
+                                 {
+                                     FatherName = c.Tree.FatherName,
+                                     FatherDescription = c.Tree.FatherDescription,
+                                     MotherName = c.Tree.MotherName,
+                                     MotherDescription = c.Tree.MotherDescription
+                                 },
                                  horseid = id,
                                  HorseName = c.Name
                              }).FirstOrDefault();
-                List<Child> listOfChildren = (from c in context.Horses
-                                              where c.ID == id
-                                              select c.Tree.Children).FirstOrDefault();
-                horse.Children =
-                    listOfChildren.Select(
-                        childModel => new ChildModel() { Name = childModel.Name, Description = childModel.Description })
-                        .ToList();
+                var listOfChildren = (from c in context.Horses
+                                      where c.ID == id
+                                      select c.Tree.Children).FirstOrDefault();
+                horse.Children = listOfChildren.Select(childModel => new ChildModel() { Name = childModel.Name, Description = childModel.Description, horseid = id, HorseName = horse.HorseName }).ToList();
+
                 return horse;
             }
         }
@@ -263,6 +266,10 @@ namespace SkeletorDAL
                                     where h.ID == horse.ID
                                     select h.Blog.Posts).FirstOrDefault();
 
+                posts = posts.OrderBy(o=>o.Created).ToList();
+
+                posts.Reverse();
+
                 List<BlogPostModel> blogposts = posts.Select(x => new BlogPostModel()
                 {
                     BlogID = x.Blog.ID,
@@ -363,6 +370,7 @@ namespace SkeletorDAL
                                          Race = h.Race,
                                          Withers = h.Withers,
                                          IsSold = h.IsSold,
+                                         Breeding = h.Breeding,
                                          State = "All horses",
                                          ImagePath = h.ImagePath
                                      }).ToList();
@@ -378,6 +386,7 @@ namespace SkeletorDAL
                                          ID = h.ID,
                                          IsActive = h.IsActive,
                                          IsForSale = h.IsForSale,
+                                         Breeding = h.Breeding,
                                          Name = h.Name,
                                          Price = h.Price,
                                          Race = h.Race,
@@ -396,6 +405,7 @@ namespace SkeletorDAL
                                          Birthday = h.Birthday,
                                          ID = h.ID,
                                          IsActive = h.IsActive,
+                                         Breeding = h.Breeding,
                                          IsForSale = h.IsForSale,
                                          Name = h.Name,
                                          Price = h.Price,
@@ -701,7 +711,6 @@ namespace SkeletorDAL
 
             }
         }
-
         public static EditAboutModel GetLatestAboutInformation()
         {
             using (var context = new HorseContext())
@@ -780,6 +789,7 @@ namespace SkeletorDAL
                              Link2 = p.Link2,
                              Link3 = p.Link3
                          }).FirstOrDefault();
+
                 return query;
             }
         }
@@ -893,29 +903,87 @@ namespace SkeletorDAL
 
             }
         }
-
-        public static void EditHorseFamilyTree(FamilyTreeModel model)
+        public static List<ChildModel> GetChildrenInFamilyTree(int id)
         {
             using (var context = new HorseContext())
             {
-                FamilyTree familyTree = new FamilyTree()
+                var listWithChildren = new List<ChildModel>();
+                var horse = (from c in context.Horses
+                             where c.ID == id
+                             select c).FirstOrDefault();
+                if (horse.Tree == null)
                 {
-                    MotherName = model.Mother.Name,
-                    MotherDescription = model.Mother.Description,
-                    FatherName = model.Father.Name,
-                    FatherDescription = model.Father.Description,
-                };
-                var list =
-                    model.Children.Select(
-                        childModel => new Child() { Name = childModel.Name, Description = childModel.Description })
-                        .ToList();
-                familyTree.Children = list;
+                    horse.Tree = new FamilyTree() { Children = new List<Child>() };
+                    horse.Tree.Children.Add(new Child());
+                    listWithChildren.Add(new ChildModel() { horseid = id, HorseName = horse.Name });
+                    return listWithChildren;
+                }
+                else
+                {
+                    var list = (from c in context.Horses
+                                where c.ID == id
+                                select c.Tree.Children).FirstOrDefault();
 
+
+                    foreach (var child in list)
+                    {
+                        listWithChildren.Add(new ChildModel() { Description = child.Description, Name = child.Name, horseid = id, HorseName = context.Horses.Find(id).Name });
+
+                    } return listWithChildren;
+                }
+
+
+            }
+        }
+        public static ParentModel GetParentsInFamilyTree(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                return (from c in context.Horses
+                        where c.ID == id
+                        select new ParentModel()
+                        {
+                            MotherName = c.Tree.MotherName,
+                            MotherDescription = c.Tree.MotherDescription,
+                            FatherName = c.Tree.FatherName,
+                            FatherDescription = c.Tree.FatherDescription,
+                            horseid = id,
+                            HorseName = c.Name
+                        }).FirstOrDefault();
+            }
+        }
+        public static void EditHorseFamilyTree(ParentModel model)
+        {
+            using (var context = new HorseContext())
+            {
                 var horse = context.Horses.Find(model.horseid);
-                horse.Tree = familyTree;
+                if (horse.Tree == null)
+                {
+                    horse.Tree = new FamilyTree { Children = new List<Child>() };
+                }
+                horse.Tree.FatherName = model.FatherName;
+                horse.Tree.FatherDescription = model.FatherDescription;
+                horse.Tree.MotherName = model.MotherName;
+                horse.Tree.MotherDescription = model.MotherDescription;
+                context.SaveChanges();
+            }
+        }
+
+
+        public static void AddNewChild(ChildModel childModel)
+        {
+            using (var context = new HorseContext())
+            {
+                var horse = context.Horses.Find(childModel.horseid);
+                if (horse.Tree == null)
+                {
+                    horse.Tree = new FamilyTree { Children = new List<Child>() };
+                }
+                horse.Tree.Children.Add(new Child() { Name = childModel.Name, Description = childModel.Description });
                 horse.LastUpdated = DateTime.Now;
                 context.SaveChanges();
             }
+
         }
 
         public static List<HorseModel> GetSearchResult(string term, int navigationId)

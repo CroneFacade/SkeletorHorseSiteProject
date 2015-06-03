@@ -1,0 +1,40 @@
+﻿@model List<SkeletorDAL.Model.ChildModel>
+@{
+    Layout = null;
+
+}
+<p>Children</p>
+@foreach (var child in Model)
+{
+
+    ViewBag.horseID = child.horseid;
+    ViewBag.horseName = child.HorseName;
+    if (child.Name != null && child.horseid != null)
+    {
+
+        <br />
+        <div>
+            @Html.Label("Childs name:")
+            @Html.Label(child.Name)
+        </div>
+        <div>
+            @Html.Label("Childs Description:")
+            @Html.Label(child.Description)
+        </div>
+
+    }
+    else
+    {
+        <p>No childs</p>
+    }
+}
+
+<div class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addNewChild" aria-expanded="false" aria-controls="addNewChild">
+    Add new child
+</div>
+<div class="collapse" data-toggle="collapse" data-parent="#changeFamilyTreeInformation" data-target=".navbar-collapse" id="addNewChild">
+    <div class="collapse in">
+        @Html.Action("AddNewChild", new { id = ViewBag.horseID, horseName = ViewBag.horseName })
+    </div>
+
+</div>

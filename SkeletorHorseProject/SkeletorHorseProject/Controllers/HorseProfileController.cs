@@ -253,34 +253,68 @@ namespace SkeletorHorseProject.Controllers
             Repository.DeleteGalleryImage(id);
             return RedirectToAction("Index", new { id = horseid });
         }
-
         [AllowAnonymous]
-        public ActionResult FamilyTree(int id)
+ public ActionResult FamilyTree(int id, string horseName)
         {
-
-            var model = Repository.GetFamilyTree(id);
-
-            return View(model);
+            var familyTree = Repository.GetFamilyTree(id);
+            return View(familyTree);
+    
         }
         [Authorize]
-        public ActionResult EditFamilyTree(int id)
+    public ActionResult EditParentsInFamilyTree(int id)
         {
-           
-            var model = Repository.GetFamilyTree(id);
 
+            var model = Repository.GetParentsInFamilyTree(id);
             return View(model);
 
         }
 
-        [HttpPost]
-        [Authorize]
-        public ActionResult EditHorseFamilyTree(int id, string name, FamilyTreeModel model)
+
+        [HttpPost, Authorize]
+        public ActionResult EditHorseFamilyTree(int id, string name, ParentModel model)
         {
             model.HorseName = name;
             model.horseid = id;
-    
             Repository.EditHorseFamilyTree(model);
-            return RedirectToAction("Index", new {id = id});
+            return RedirectToAction("Index", new { id = id });
+        }
+
+        public ActionResult EditChildrenInFamilyTree(int id)
+        {
+            var model = Repository.GetChildrenInFamilyTree(id);
+            if (model == null)
+            {
+                model = new List<ChildModel>(){new ChildModel(){horseid = id}};
+            }
+            return View(model);
+        }
+
+        public ActionResult AddNewChild(int id, string horseName)
+        {
+            var child = new ChildModel()
+            {
+                horseid = id,
+                HorseName = horseName
+            };
+            return View(child);
+        }
+
+        public ActionResult AddNewChildToHorse(int id, string horseName, ChildModel childModel)
+        {
+            childModel.horseid = id;
+            childModel.HorseName = horseName;
+            Repository.AddNewChild(childModel);
+            return RedirectToAction("Index", new{id=childModel.horseid});
+        }
+
+        public ActionResult AddNewChildPartial(int id, string horseName)
+        {
+            var child = new ChildModel()
+            {
+                horseid = id,
+                HorseName = horseName
+            };
+            return PartialView(child);
         }
     }
 }

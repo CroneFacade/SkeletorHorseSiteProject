@@ -118,6 +118,7 @@
     <Content Include="Icon.png" />
     <Content Include="Images\hest.jpg" />
     <Content Include="resources\background_camargue_horse.jpg" />
+    <Content Include="resources\SkeletorLogo.png" />
     <Content Include="Scripts\slideshow.size.js" />
     <Content Include="SlideImages\11273579_10153379658529083_1657643802_o.jpg" />
     <Content Include="SlideImages\11273734_10153379658554083_662969880_o.jpg" />
@@ -245,8 +246,15 @@
     <Content Include="Views\HorseProfile\UploadImageButton.cshtml" />
     <Content Include="Views\HorseProfile\FamilyTree.cshtml" />
     <Content Include="Views\Shared\_Puff.cshtml" />
+
     <Content Include="Views\HorseProfile\EditFamilyTree.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
+
+    <Content Include="Views\HorseProfile\EditParentsInFamilyTree.cshtml" />
+    <Content Include="Views\HorseProfile\EditChildrenInFamilyTree.cshtml" />
+    <Content Include="Views\HorseProfile\AddNewChild.cshtml" />
+    <Content Include="Views\HorseProfile\AddNewChildPartial.cshtml" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
