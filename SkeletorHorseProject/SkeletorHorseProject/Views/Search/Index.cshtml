@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<ul>
+    <li class="search_box" style="display: none;">@Html.Action("Search", "Search")</li>
+    <li><a href="#" id="search_button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+</ul>
+@Html.Action("Search")
