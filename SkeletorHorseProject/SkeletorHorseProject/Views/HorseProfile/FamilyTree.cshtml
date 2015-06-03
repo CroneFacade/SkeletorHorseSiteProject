@@ -13,48 +13,71 @@
     <link href="~/Content/familyTree.css" rel="stylesheet" />
 </head>
 <body>
-<div class="col-md-12" style="margin-bottom: 20px;">
-    <div class="tree" style="padding-left: 30%">
-        <ul>
-            <li>
-                <a href="#">@Model.Parents.MotherName</a>
-                <a href="#">@Model.Parents.FatherName</a>
-                <ul>
-                    <li>
-                        <a href="#">@Model.HorseName</a>
-                        <ul>
-                            @foreach (var child in Model.Children)
-                            {
-                                <li>
-                                    <a href="#">@child.Name</a>
-                                </li>}
+    <div class="col-md-12" style="margin-bottom: 20px;">
+        <div class="tree" style="padding-left: 30%">
+            <ul>
+                <li>
+                    <a href="#">@Model.Parents.MotherName</a>
+                    <a href="#">@Model.Parents.FatherName</a>
+                    <ul>
+                        <li>
+                            <a href="#">@Model.HorseName</a>
+                            <ul>
+                                @foreach (var child in Model.Children)
+                                {
+                                    <li>
+                                        <a href="#">@child.Name</a>
+                                    </li>}
 
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#changeFamilyTreeInformation" aria-expanded="false" aria-controls="changeFamilyTreeInformation">
-        Change family tree information
-    </button>
-<div class="collapse" data-toggle="collapse" data-target=".navbar-collapse" id="changeFamilyTreeInformation">
-    <div class="well">
-        <div id="edit_tree">
-            @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
-            {
-                <div id="EditParentsInFamilyTree">
-                    @Html.Action("EditParentsInFamilyTree", new { id = Model.horseid })
-                </div>
-                <div id="EditChildrenInFamilyTree">
-                    @Html.Action("EditChildrenInFamilyTree", new { id = Model.horseid })
-                </div>
-            }
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
+    @if (User.Identity.IsAuthenticated && User.Identity.Name == "1")
+    {
 
-</div>
+
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#changeFamilyTreeInformation" aria-expanded="false" aria-controls="changeFamilyTreeInformation">
+            Change family tree information
+        </button>
+        <div class="collapse" data-toggle="collapse" data-target=".navbar-collapse" id="changeFamilyTreeInformation">
+            <div class="well">
+                <div id="edit_tree">
+                    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+                    {
+                        <div id="EditParentsInFamilyTree">
+                            @Html.Action("EditParentsInFamilyTree", new { id = Model.horseid })
+                        </div>
+
+                        <div id="EditChildrenInFamilyTree">
+                            @if (Model.Children.Count == 0)
+                            {
+                                <p>No childs</p>
+                                <div class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addNewChild" aria-expanded="false" aria-controls="addNewChild">
+                                    Add new child
+                                </div>
+                                <div class="collapse" data-toggle="collapse" data-parent="#changeFamilyTreeInformation" data-target=".navbar-collapse" id="addNewChild">
+                                    <div class="collapse in">
+                                        @Html.Action("AddNewChild", new { id = Model.horseid, horseName = Model.HorseName })
+                                    </div>
+
+                                </div>
+                            }
+                            else
+                            {
+                                @Html.Action("EditChildrenInFamilyTree", new { id = Model.horseid })
+                            }
+
+                          
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div> }
 
 
 </body>
