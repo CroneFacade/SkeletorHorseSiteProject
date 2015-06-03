@@ -21,9 +21,9 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="True">Horses <span class="caret"></span></a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("All Horses", "Index", "FilteredHorsePage", new {navigationId = 1}, null)</li>
-                            <li>@Html.ActionLink("Horses For Sale", "Index", "FilteredHorsePage", new {navigationId = 2}, null)</li>
-                            <li>@Html.ActionLink("Sold Horses", "Index", "FilteredHorsePage", new {navigationId = 3}, null)</li>
+                            <li>@Html.ActionLink("All Horses", "FilterPage", "FilteredHorsePage", new {navigationId = 1}, null)</li>
+                            <li>@Html.ActionLink("Horses For Sale", "FilterPage", "FilteredHorsePage", new { navigationId = 2 }, null)</li>
+                            <li>@Html.ActionLink("Sold Horses", "FilterPage", "FilteredHorsePage", new { navigationId = 3 }, null)</li>
 
                         </ul>
                     </li>

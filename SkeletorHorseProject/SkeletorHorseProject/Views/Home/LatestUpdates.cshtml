@@ -6,12 +6,27 @@
 
 <div class="row">
 
-    @for (int i = 0; i < 5; i++)
-    {
-        <div id="puffHorseContainer">
-            <a class="horsePuff" href="@Url.Content("~/HorseProfile/Index/" + Model[i].ID)"> <img src="@Url.Content(Model[i].ImagePath)" style="height: 150px; width: 150px" /></a>
-        </div>
-    }
+    @{
+        if (Model.Count >= 5)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                <div id="puffHorseContainer">
+                    <a class="horsePuff" href="@Url.Content("~/HorseProfile/Index/" + Model[i].ID)"> <img src="@Url.Content(Model[i].ImagePath)" style="height: 150px; width: 150px" /></a>
+                </div>
+            }
+        }
+        else
+        {
+            foreach (var horse in Model)
+            {
+                <div id="puffHorseContainer">
+                    <a class="horsePuff" href="@Url.Content("~/HorseProfile/Index/" + horse.ID)"> <img src="@Url.Content(horse.ImagePath)" style="height: 150px; width: 150px" /></a>
+                </div>
+            }
+        }
+
+}
     
 
 </div>

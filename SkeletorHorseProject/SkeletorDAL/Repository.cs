@@ -12,12 +12,12 @@ using SkeletorDAL.Helpers;
 using SkeletorDAL.Model;
 using SkeletorDAL.POCO;
 using SkeletorHorseProject.Controllers;
+using SkeletorHorseProject.Models;
 
 namespace SkeletorDAL
 {
     public static class Repository
     {
-
         public static FamilyTreeModel GetFamilyTree(int id)
         {
             using (var context = new HorseContext())
@@ -292,6 +292,7 @@ namespace SkeletorDAL
                 var horse = (from h in context.Horses
                              where h.ID == model.HorseID
                              select h).FirstOrDefault();
+                horse.LastUpdated = DateTime.Now;
 
                 horse.YoutubeVideoURLs.Add(new YoutubeVideoURL() { VideoName = model.VideoName, VideoURL = model.VideoURL });
 
@@ -465,7 +466,7 @@ namespace SkeletorDAL
                             FacebookPath = h.FacebookPath,
                             FamilyTree = h.FamilyTree,
                             Gender = h.Gender,
-                            IsActive = h.IsActive,
+                            IsActive = !h.IsActive,
                             IsForSale = h.IsForSale,
                             IsSold = h.IsSold,
                             Medicine = h.Medicine,
@@ -494,6 +495,7 @@ namespace SkeletorDAL
             {
 
                 var horse = context.Horses.Find(horseID);
+                horse.LastUpdated = DateTime.Now;
                 horse.Name = model.Name;
                 horse.Birthday = model.Birthday;
                 horse.Race = model.Race;
@@ -600,6 +602,7 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 var horse = context.Horses.Find(horseId);
+                horse.LastUpdated = DateTime.Now;
                 horse.ImagePath = imagePath;
                 context.SaveChanges();
             }
@@ -624,7 +627,14 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 var blog = context.Blogs.Find(blogId);
-                var newBlogpost = new Post(blogpost.Title, blogpost.Created, blogpost.Content) { Blog = blog, ID = blogpost.ID, Created = blogpost.Created };
+                var newBlogpost = new Post(blogpost.Title, blogpost.Created, blogpost.Content) { Blog = blog, ID = blogpost.ID, Created = DateTime.Now };
+
+                var horse = (from h in context.Horses
+                             where blog.ID == blogId
+                             select h).FirstOrDefault();
+
+                horse.LastUpdated = DateTime.Now;
+
                 blog.Posts.Add(newBlogpost);
                 context.SaveChanges();
                 horseId = (from h in context.Horses
@@ -774,6 +784,16 @@ namespace SkeletorDAL
                     (from h in context.Horses
                      where h.ID == horseId
                      select h).FirstOrDefault();
+                var editorExists =
+                    (from e in context.Users
+                     where e.Username == editor.EditorName
+                     select e).Any();
+
+                if (editorExists == false)
+                {
+                    return;
+                }
+
                 var Editor =
                     (from e in context.Users
                      where e.Username == editor.EditorName
@@ -894,6 +914,7 @@ namespace SkeletorDAL
                     horse.Tree = new FamilyTree {Children = new List<Child>()};
                 }
                 horse.Tree.Children.Add(new Child() {Name = childModel.Name, Description = childModel.Description});
+                horse.LastUpdated = DateTime.Now;
                 context.SaveChanges();
             }
 

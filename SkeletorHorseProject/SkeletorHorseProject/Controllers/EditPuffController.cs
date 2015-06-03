@@ -8,6 +8,7 @@ using SkeletorDAL.Model;
 
 namespace SkeletorHorseProject.Controllers
 {
+    [Authorize]
 	public class EditPuffController : Controller
 	{
 		// GET: EditPuff
@@ -27,5 +28,10 @@ namespace SkeletorHorseProject.Controllers
 			}
 			return View(model);
 		}
+
+        public ActionResult Index()
+        {
+            return RedirectToAction("Index", "Home");
+        }
 	}
 }

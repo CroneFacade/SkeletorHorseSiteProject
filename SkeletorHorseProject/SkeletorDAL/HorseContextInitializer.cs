@@ -156,7 +156,7 @@ namespace SkeletorDAL
 			};
             users = new List<User>()
 			{
-				new User("admin", "admin".SuperHash(), 1, "teamnordahl123@gmail.com"),
+				new User("admin", "admin".SuperHash(),1, "teamnordahl123@gmail.com"),
 				new User("Test1", "admin".SuperHash(), 2, "teamnordahl123@gmail.com"),
 				new User("Test2", "admin".SuperHash(), 2, "teamnordahl123@gmail.com"),
 			};

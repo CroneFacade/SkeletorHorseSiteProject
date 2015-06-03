@@ -9,6 +9,7 @@ using System.IO;
 
 namespace SkeletorHorseProject.Controllers
 {
+    [Authorize]
     public class EditSlideShowImagesController : Controller
     {
         // GET: EditSlideShowImages
@@ -39,6 +40,8 @@ namespace SkeletorHorseProject.Controllers
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
+
+                    fileName = fileName.ToLower();
 
                     if (fileName.EndsWith(".jpg") ||
                         fileName.EndsWith(".png") ||

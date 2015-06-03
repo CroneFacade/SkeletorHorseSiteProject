@@ -9,9 +9,11 @@ using SkeletorDAL.POCO;
 
 namespace SkeletorHorseProject.Controllers
 {
+    [Authorize]
 	public class CreateHorseController : Controller
 	{
 		// GET: CreateHorse
+
 		public ActionResult CreateHorse()
 		{
 			return View();

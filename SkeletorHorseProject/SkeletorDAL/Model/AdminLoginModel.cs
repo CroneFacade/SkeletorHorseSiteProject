@@ -15,5 +15,7 @@ namespace SkeletorHorseProject.Models
         [Required, MinLength(1), MaxLength(20)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public int AdminLevel { get; set; }
     }
 }
