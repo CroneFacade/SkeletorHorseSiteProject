@@ -461,7 +461,7 @@ namespace SkeletorDAL
                         FacebookPath = h.FacebookPath,
                         FamilyTree = h.FamilyTree,
                         Gender = h.Gender,
-                        IsActive = h.IsActive,
+                        IsActive = !h.IsActive,
                         IsForSale = h.IsForSale,
                         IsSold = h.IsSold,
                         Medicine = h.Medicine,

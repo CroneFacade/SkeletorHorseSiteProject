@@ -26,9 +26,8 @@ namespace SkeletorHorseProject.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
-
         }
+
         [Authorize]
         public ActionResult UploadProfilePicture(int id)
         {
