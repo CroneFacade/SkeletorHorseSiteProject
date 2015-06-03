@@ -181,6 +181,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseProfileController.cs" />
     <Compile Include="Controllers\HorseSaleController.cs" />
+    <Compile Include="Controllers\ManageAdminsController.cs" />
     <Compile Include="Controllers\PrintController.cs" />
     <Compile Include="Controllers\RegisterAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -249,6 +250,7 @@
     <Content Include="Views\HorseProfile\EditChildrenInFamilyTree.cshtml" />
     <Content Include="Views\HorseProfile\AddNewChild.cshtml" />
     <Content Include="Views\HorseProfile\AddNewChildPartial.cshtml" />
+    <Content Include="Views\ManageAdmins\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

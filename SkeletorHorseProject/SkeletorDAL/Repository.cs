@@ -267,6 +267,26 @@ namespace SkeletorDAL
 
         }
 
+        public static void RemoveAdminByID(int id)
+        {
+            using(var context = new HorseContext())
+            {
+                var user = context.Users.Find(id);
+                user.IsActive = false;
+                context.SaveChanges();
+            }
+        }
+
+        public static List<AdminModel> GetAllAdmins()
+        {
+            using (var context = new HorseContext())
+            {
+                return (from a in context.Users
+                        where a.IsActive == true
+                        select new AdminModel { Username = a.Username, AdminLevel = a.AdminLevel, ID = a.ID }).ToList();
+            }
+        }
+
         public static HorseModel GetSpecificHorseById(int id)
         {
             using (var context = new HorseContext())
@@ -434,7 +454,7 @@ namespace SkeletorDAL
             {
                 return
                     (from a in context.Users
-                     where a.Username == username && a.Password == password
+                     where a.Username == username && a.Password == password && a.IsActive
                      select a).Any();
             }
         }
