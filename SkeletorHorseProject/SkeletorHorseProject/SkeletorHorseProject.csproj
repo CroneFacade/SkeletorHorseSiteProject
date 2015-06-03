@@ -222,7 +222,6 @@
     <Content Include="Views\RegisterAdmin\Register.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\HorseProfile\UploadProfilePicture.cshtml" />
-    <Content Include="Views\Gallery\DeleteImage.cshtml" />
     <Content Include="Views\Shared\_AddBlogPost.cshtml" />
     <Content Include="Views\HorseProfile\AddBlogPostToBlog.cshtml" />
     <Content Include="Views\Footer\EditLinks.cshtml" />
