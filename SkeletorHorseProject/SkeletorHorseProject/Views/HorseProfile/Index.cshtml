@@ -23,13 +23,18 @@
                 <dd>Race: @Model.Race</dd>
                 <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
                 <dt>Races and Prizes</dt>
+
+
+
                 @if (Model.Awards != null)
                 {
                     <dd>
                         Awards: @Model.Awards
                     </dd>
+
                 }
-              
+
+
             </dl>
             <p>
                 @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
@@ -82,7 +87,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="family-tree">
 
-                        @Html.Action("FamilyTree", new{id=Model.ID, horseName = Model.Name})
+                        @Html.Action("FamilyTree", new { id = Model.ID, horseName = Model.Name })
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="horseBlog">

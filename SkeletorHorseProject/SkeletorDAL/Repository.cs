@@ -343,6 +343,7 @@ namespace SkeletorDAL
                                          Race = h.Race,
                                          Withers = h.Withers,
                                          IsSold = h.IsSold,
+                                         Breeding = h.Breeding,
                                          State = "All horses",
                                          ImagePath = h.ImagePath
                                      }).ToList();
@@ -358,6 +359,7 @@ namespace SkeletorDAL
                                          ID = h.ID,
                                          IsActive = h.IsActive,
                                          IsForSale = h.IsForSale,
+                                         Breeding = h.Breeding,
                                          Name = h.Name,
                                          Price = h.Price,
                                          Race = h.Race,
@@ -376,6 +378,7 @@ namespace SkeletorDAL
                                          Birthday = h.Birthday,
                                          ID = h.ID,
                                          IsActive = h.IsActive,
+                                         Breeding = h.Breeding,
                                          IsForSale = h.IsForSale,
                                          Name = h.Name,
                                          Price = h.Price,
