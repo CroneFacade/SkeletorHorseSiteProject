@@ -115,6 +115,7 @@
     <Compile Include="Model\LatestUpdatesForHomePage.cs" />
     <Compile Include="Model\Parent.cs" />
     <Compile Include="Model\RegisterAdminModel.cs" />
+    <Compile Include="Model\SearchModel.cs" />
     <Compile Include="Model\SlideShowImgModel.cs" />
     <Compile Include="Model\UploadFileModel.cs" />
     <Compile Include="POCO\About.cs" />
