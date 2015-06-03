@@ -10,7 +10,7 @@ using SkeletorDAL.Model;
 using System.IO;
 
 namespace SkeletorHorseProject.Controllers
-{   [Authorize]
+{   
     public class HorseProfileController : Controller
     {
         // GET: HorseProfile
@@ -29,18 +29,19 @@ namespace SkeletorHorseProject.Controllers
 
 
         }
-
+        [Authorize]
         public ActionResult UploadProfilePicture(int id)
         {
             return View(id);
         }
-
+        [Authorize]
         public ActionResult DeleteYoutubeVideoFromHorse(int id)
         {
             int horseID = Repository.DeleteYoutubeVideoFromHorse(id);
             return RedirectToAction("Index", new { id = horseID });
         }
 
+        [AllowAnonymous]
         [ChildActionOnly]
         public ActionResult GetHorseVideos(int id)
         {
@@ -48,13 +49,14 @@ namespace SkeletorHorseProject.Controllers
         }
 
         [ChildActionOnly]
-
+        [Authorize]
         public ActionResult AddNewHorseVideo(int id)
         {
             return View(new HorseVideoModel() { HorseID = id });
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult AddNewHorseVideo(HorseVideoModel model, int id)
         {
             model.HorseID = id;
@@ -84,6 +86,7 @@ namespace SkeletorHorseProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult UploadProfilePicture(HttpPostedFileBase file, int id)
         {
 
@@ -94,6 +97,7 @@ namespace SkeletorHorseProject.Controllers
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
+                    fileName = fileName.ToLower();
                     fileName = id + fileName;
 
                     if (fileName.EndsWith(".jpg") ||
@@ -131,7 +135,7 @@ namespace SkeletorHorseProject.Controllers
                 return RedirectToAction("UploadProfilePicture", id);
             }
         }
-
+        [Authorize]
         private void RemoveOldImage(int id)
         {
             var path = Repository.RemoveOldProfileImage(id);
@@ -158,6 +162,7 @@ namespace SkeletorHorseProject.Controllers
 
 
         [ChildActionOnly]
+        [Authorize]
         public ActionResult AddBlogPost(BlogModel blog)
         {
 
@@ -165,6 +170,7 @@ namespace SkeletorHorseProject.Controllers
             return PartialView("_AddBlogPost", blogpost);
         }
         [HttpPost, ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult AddBlogPostToBlog(BlogPostModel blogpost, int blogID)
         {
             if (!ModelState.IsValid) return View("_AddBlogPost", blogpost);
@@ -179,13 +185,14 @@ namespace SkeletorHorseProject.Controllers
             List<HorseProfileGalleryImagesModel> images = Repository.GetHorseProfileGalleryImages(id);
             return PartialView("_horseProfileGallery", images);
         }
-
+        [Authorize]
         public ActionResult UploadGalleryImage(int id)
         {
             return View(id);
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult UploadGalleryImage(HttpPostedFileBase file, int id)
         {
             try
@@ -229,12 +236,13 @@ namespace SkeletorHorseProject.Controllers
         }
 
         [ChildActionOnly]
+        [Authorize]
         public ActionResult UploadImageButton(int id)
         {
             return View(id);
         }
 
-
+        [Authorize]
         public ActionResult DeleteImage(int id, string path, int horseid)
         {
             string fullPath = Request.MapPath(path);
@@ -254,7 +262,7 @@ namespace SkeletorHorseProject.Controllers
 
             return View(model);
         }
-
+        [Authorize]
         public ActionResult EditFamilyTree(int id)
         {
            
@@ -265,6 +273,7 @@ namespace SkeletorHorseProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult EditHorseFamilyTree(int id, string name, FamilyTreeModel model)
         {
             model.HorseName = name;
