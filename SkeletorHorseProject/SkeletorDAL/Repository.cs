@@ -619,7 +619,7 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 var blog = context.Blogs.Find(blogId);
-                var newBlogpost = new Post(blogpost.Title, blogpost.Created, blogpost.Content) { Blog = blog, ID = blogpost.ID, Created = blogpost.Created };
+                var newBlogpost = new Post(blogpost.Title, blogpost.Created, blogpost.Content) { Blog = blog, ID = blogpost.ID, Created = DateTime.Now };
                 blog.Posts.Add(newBlogpost);
                 context.SaveChanges();
                 horseId = (from h in context.Horses

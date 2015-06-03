@@ -66,5 +66,10 @@ namespace SkeletorHorseProject.Controllers
             Repository.RemoveEditorFromHorse(horseId,editorid);
             return RedirectToAction("EditEditors", new { id = horseId });
         }
+
+        public ActionResult Index()
+        {
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
