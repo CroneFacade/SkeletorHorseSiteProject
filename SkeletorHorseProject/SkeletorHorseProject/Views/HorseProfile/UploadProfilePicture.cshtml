@@ -4,7 +4,7 @@
     ViewBag.Title = "UploadProfilePicture";
 }
 
-@using (Html.BeginForm("UploadGalleryImage", "HorseProfile", new {id = Model}, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UploadProfilePicture", "HorseProfile", new { id = Model }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 { @Html.AntiForgeryToken()
     <fieldset>
         <legend>Upload an avatar image</legend>

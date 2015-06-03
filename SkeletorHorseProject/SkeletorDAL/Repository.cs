@@ -12,12 +12,12 @@ using SkeletorDAL.Helpers;
 using SkeletorDAL.Model;
 using SkeletorDAL.POCO;
 using SkeletorHorseProject.Controllers;
+using SkeletorHorseProject.Models;
 
 namespace SkeletorDAL
 {
     public static class Repository
     {
-
         public static FamilyTreeModel GetFamilyTree(int id)
         {
             using (var context = new HorseContext())
@@ -444,34 +444,34 @@ namespace SkeletorDAL
                      }).ToList();
             }
         }
-        public static EditHorseProfileModel GetFullInformationOnSpecificHorseById(int id, EditHorseProfileModel model)
+        public static EditHorseProfileModel GetFullInformationOnSpecificHorseById(int id)
         {
             using (var context = new HorseContext())
             {
-                var currentHorse = (from h in context.Horses
-                                    where h.ID == id
-                                    select new EditHorseProfileModel
-                                    {
-                                        Awards = h.Awards,
-                                        Birthday = h.Birthday,
-                                        Breeding = h.Breeding,
-                                        Description = h.Description,
-                                        FacebookPath = h.FacebookPath,
-                                        FamilyTree = h.FamilyTree,
-                                        Gender = h.Gender,
-                                        IsActive = !h.IsActive,
-                                        IsForSale = h.IsForSale,
-                                        IsSold = h.IsSold,
-                                        Rent = h.Rent,
-                                        Price = h.Price,
-                                        Medicine = h.Medicine,
-                                        Name = h.Name,
-                                        Race = h.Race,
-                                        Withers = h.Withers,
-                                        LastUpdated = DateTime.Now
 
-                                    }).FirstOrDefault();
-                return currentHorse;
+                return (from h in context.Horses
+                    where h.ID == id
+                    select new EditHorseProfileModel
+                    {
+                        Awards = h.Awards,
+                        Birthday = h.Birthday,
+                        Breeding = h.Breeding,
+                        Description = h.Description,
+                        FacebookPath = h.FacebookPath,
+                        FamilyTree = h.FamilyTree,
+                        Gender = h.Gender,
+                        IsActive = h.IsActive,
+                        IsForSale = h.IsForSale,
+                        IsSold = h.IsSold,
+                        Medicine = h.Medicine,
+                        Rent = h.Rent,
+                        Name = h.Name,
+                        Price = h.Price,
+                        Race = h.Race,
+                        Withers = h.Withers
+                    }).FirstOrDefault();
+
+
             }
         }
 
@@ -619,7 +619,7 @@ namespace SkeletorDAL
             using (var context = new HorseContext())
             {
                 var blog = context.Blogs.Find(blogId);
-                var newBlogpost = new Post(blogpost.Title, blogpost.Created, blogpost.Content) { Blog = blog, ID = blogpost.ID, Created = blogpost.Created };
+                var newBlogpost = new Post(blogpost.Title, blogpost.Created, blogpost.Content) { Blog = blog, ID = blogpost.ID, Created = DateTime.Now };
                 blog.Posts.Add(newBlogpost);
                 context.SaveChanges();
                 horseId = (from h in context.Horses

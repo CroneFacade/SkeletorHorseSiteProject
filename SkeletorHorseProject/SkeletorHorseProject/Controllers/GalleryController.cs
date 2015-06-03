@@ -9,15 +9,18 @@ using System.IO;
 
 namespace SkeletorHorseProject.Controllers
 {
+    [Authorize]
     public class GalleryController : Controller
     {
         // GET: Gallery
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var model = Repository.GetAllGalleryImages();
             return View(model);
         }
 
+        
         public ActionResult UploadFile()
         {
             return View();
@@ -32,6 +35,8 @@ namespace SkeletorHorseProject.Controllers
                 {
                     var fileName = Path.GetFileName(file.FileName);
 
+                    fileName = fileName.ToLower();
+
                     if (fileName.EndsWith(".jpg") ||
                         fileName.EndsWith(".png") ||
                         fileName.EndsWith(".bmp") ||
@@ -39,9 +44,9 @@ namespace SkeletorHorseProject.Controllers
                         fileName.EndsWith(".jpeg"))
                     {
                         var path = Path.Combine(Server.MapPath("~/Images"), fileName);
-                    
+
                         file.SaveAs(path);
-                       path = "~/Images/" + fileName;
+                        path = "~/Images/" + fileName;
                         Repository.AddNewFile(fileName, path);
                     }
                     else
