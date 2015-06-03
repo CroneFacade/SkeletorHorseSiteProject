@@ -77,8 +77,7 @@
                         </dl>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="family-tree">
-
-                        @Html.Action("FamilyTree", new{id=Model.ID})
+                        @Html.Action("FamilyTree", new{id=Model.ID, horseName = Model.Name})
                     </div>
                     <div role="tabpanel" class="tab-pane" id="horseBlog">
                         @foreach (var blog in Model.Blog.Posts)

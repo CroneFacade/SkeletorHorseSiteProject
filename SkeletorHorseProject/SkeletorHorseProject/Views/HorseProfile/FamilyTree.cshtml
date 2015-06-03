@@ -13,11 +13,12 @@
     <link href="~/Content/familyTree.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="tree">
+<div class="col-md-12" style="margin-bottom: 20px;">
+    <div class="tree" style="padding-left: 30%">
         <ul>
             <li>
-                <a href="#">@Model.Mother.Name</a>
-                <a href="#">@Model.Father.Name</a>
+                <a href="#">@Model.Parents.MotherName</a>
+                <a href="#">@Model.Parents.FatherName</a>
                 <ul>
                     <li>
                         <a href="#">@Model.HorseName</a>
@@ -30,36 +31,31 @@
 
                         </ul>
                     </li>
-
-<<<<<<< HEAD
                 </ul>
             </li>
         </ul>
     </div>
-    <div id="edit_tree">
-        @if (User.Identity.IsAuthenticated)
-        {
-            <button class="btn-default" value="Edit family tree">
-                @Html.Action("EditParentsInFamilyTree", new { id = Model.horseid })
-            </button>
-            <button class="btn-default" value="Edit family tree">
-                @Html.Action("EditChildrenInFamilyTree", new { id = Model.horseid })
-            </button>
-        }
+</div>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#changeFamilyTreeInformation" aria-expanded="false" aria-controls="changeFamilyTreeInformation">
+        Change family tree information
+    </button>
+<div class="collapse" data-toggle="collapse" data-target=".navbar-collapse" id="changeFamilyTreeInformation">
+    <div class="well">
+        <div id="edit_tree">
+            @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+            {
+                <div id="EditParentsInFamilyTree">
+                    @Html.Action("EditParentsInFamilyTree", new { id = Model.horseid })
+                </div>
+                <div id="EditChildrenInFamilyTree">
+                    @Html.Action("EditChildrenInFamilyTree", new { id = Model.horseid })
+                </div>
+            }
+        </div>
     </div>
-=======
-            </ul>
-        </li>
-    </ul>
+
 </div>
-<div id="edit_tree">
-   @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
-   {
-       <button class="btn-default" value="Edit family tree">
-           @Html.Action("EditFamilyTree", new{id=Model.horseid})
-       </button>
-   }
-</div>
->>>>>>> a0944e6a22cc6d701be205ad845c144c90d4c3bb
+
+
 </body>
 </html>

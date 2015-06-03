@@ -245,9 +245,10 @@
     <Content Include="Views\HorseProfile\UploadImageButton.cshtml" />
     <Content Include="Views\HorseProfile\FamilyTree.cshtml" />
     <Content Include="Views\Shared\_Puff.cshtml" />
-    <Content Include="Views\HorseProfile\EditFamilyTree.cshtml" />
     <Content Include="Views\HorseProfile\EditParentsInFamilyTree.cshtml" />
     <Content Include="Views\HorseProfile\EditChildrenInFamilyTree.cshtml" />
+    <Content Include="Views\HorseProfile\AddNewChild.cshtml" />
+    <Content Include="Views\HorseProfile\AddNewChildPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

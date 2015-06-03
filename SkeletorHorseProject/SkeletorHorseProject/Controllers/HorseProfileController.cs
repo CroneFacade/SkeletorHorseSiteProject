@@ -243,12 +243,10 @@ namespace SkeletorHorseProject.Controllers
         }
 
 
-        public ActionResult FamilyTree(int id)
+        public ActionResult FamilyTree(int id, string horseName)
         {
-
-            var model = Repository.GetFamilyTree(id);
-
-            return View(model);
+            var familyTree = Repository.GetFamilyTree(id);
+            return View(familyTree);
     
         }
 
@@ -256,13 +254,12 @@ namespace SkeletorHorseProject.Controllers
         {
 
             var model = Repository.GetParentsInFamilyTree(id);
-
             return View(model);
 
         }
 
         [HttpPost]
-        public ActionResult EditHorseFamilyTree(int id, string name, FamilyTreeModel model)
+        public ActionResult EditHorseFamilyTree(int id, string name, ParentModel model)
         {
             model.HorseName = name;
             model.horseid = id;
@@ -273,8 +270,35 @@ namespace SkeletorHorseProject.Controllers
         public ActionResult EditChildrenInFamilyTree(int id)
         {
             var model = Repository.GetChildrenInFamilyTree(id);
-
             return View(model);
+        }
+
+        public ActionResult AddNewChild(int id, string horseName)
+        {
+            var child = new ChildModel()
+            {
+                horseid = id,
+                HorseName = horseName
+            };
+            return View(child);
+        }
+
+        public ActionResult AddNewChildToHorse(int id, string horseName, ChildModel childModel)
+        {
+            childModel.horseid = id;
+            childModel.HorseName = horseName;
+            Repository.AddNewChild(childModel);
+            return RedirectToAction("Index", new{id=childModel.horseid});
+        }
+
+        public ActionResult AddNewChildPartial(int id, string horseName)
+        {
+            var child = new ChildModel()
+            {
+                horseid = id,
+                HorseName = horseName
+            };
+            return PartialView(child);
         }
     }
 }
