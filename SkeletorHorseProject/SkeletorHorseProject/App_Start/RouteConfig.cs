@@ -13,7 +13,12 @@ namespace SkeletorHorseProject
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+              name: "Horses",
+              url: "Horses",
+              defaults: new { controller = "FilteredHorsePage", action = "FilterPage", navigationId = 1 }
 
+              );
             routes.MapRoute(
                name: "Admin",
                url: "Admin",
