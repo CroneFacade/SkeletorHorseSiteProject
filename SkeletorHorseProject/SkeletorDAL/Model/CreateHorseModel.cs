@@ -19,6 +19,7 @@ namespace SkeletorDAL.Model
 		[Required(ErrorMessage = "Pony, Camargue etc.")]
 		public string Race { get; set; }
 		[Required(ErrorMessage = "Wither in Centimeters. (mankhöjd)")]
+        [Display(Name = "Withers(cm)")]
 		public int Withers { get; set; }
 		public string Awards { get; set; }
 		public string Description { get; set; }
