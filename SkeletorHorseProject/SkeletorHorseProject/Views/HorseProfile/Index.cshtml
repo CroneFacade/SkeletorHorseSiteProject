@@ -16,14 +16,10 @@
             </p>
             <dl>
                 <dt>About @Model.Name</dt>
-                <dd>Wither: @Model.Withers</dd>
+                <dd>Wither: @Model.Withers cm</dd>
                 <dd>Race: @Model.Race</dd>
                 <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
-                <dt>Races and Prizes</dt>
-
-
-
-                @if (Model.Awards != null)
+                @if (!string.IsNullOrEmpty(Model.Awards))
                 {
                     <dd>
                         Awards: @Model.Awards
@@ -48,7 +44,7 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
                     <li role="presentation"><a href="#health" aria-controls="health" role="tab" data-toggle="tab">Health</a></li>
-                    <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Famliy-tree</a></li>
+                    <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Family Tree</a></li>
                     <li role="presentation"><a href="#horseBlog" aria-controls="family-tree" role="tab" data-toggle="tab">Blog</a></li>
                     <li role="presentation"><a href="#gallery" aria-controls="Health" role="tab" data-toggle="tab">Gallery</a></li>
                     <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
@@ -70,15 +66,6 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="health">
                         <dl>
-                            <dt>Vaccination: </dt>
-                            <dd>Tetanus</dd>
-                            <dd>Hepatitis A</dd>
-                            <dd>hepatitis B</dd>
-                            <dd>Horsepestilence</dd>
-                            <dt>Diseases: </dt>
-                            <dd>None</dd>
-
-                            <dt>Vaccinationer: </dt>
                             <dd>@Model.Medicine</dd>
                         </dl>
                     </div>
