@@ -1,5 +1,6 @@
 ﻿@using SkeletorDAL.Model
 @using SkeletorHorseProject.Controllers
+@using SkeletorHorseProject.Helpers
 @model SkeletorDAL.Model.HorseProfileModel
 @{
     ViewBag.Title = "Index";
@@ -10,13 +11,27 @@
         <div class="row">
             <div class="HorsePicture">
                 <div id="horse_ProfilePicture" class="col-md-3">
-                    <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image" />
-                    <p>
-                        @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
-                        {
-                            @Html.ActionLink("Change Image", "UploadProfilePicture", "HorseProfile", new { id = Model.ID }, null)
-                        }
-                    </p>
+                    <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image"/>
+                    <div class="editbuttonsForProfile">
+                        <p>
+                            @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+                            {
+                                @Html.ActionLink("Change Image", "UploadProfilePicture", "HorseProfile", new { id = Model.ID }, null)
+                            }
+                        </p>
+
+                        <p>
+                            @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+                            {
+                                @Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
+                                <br />
+                                @Html.ActionLink("Edit Editors", "EditEditors", "EditHorseProfile", new { id = @Model.ID }, null)
+                                <br />
+                            }
+                            @Html.ActionLink("Print friendly version", "Index", "Print", new { id = @Model.ID }, null)
+
+                        </p>
+                    </div>
 
                 </div>
                 <div class="HorseName">
@@ -49,7 +64,7 @@
                     @if (!string.IsNullOrEmpty(Model.Awards))
                     {
                         <p>
-                            <h2>Awards</h2>@Model.Awards
+                            <h2>Awards</h2>@Html.DisplayMultiline(Model.Awards)
                         </p>
                     }
 
@@ -79,28 +94,9 @@
                 
                 </div>
 
-
-
-
-                <div class="editbuttonsForProfile">
-                    <p>
-                        @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
-                        {
-                            @Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
-                            <br />
-                            @Html.ActionLink("Edit Editors", "EditEditors", "EditHorseProfile", new { id = @Model.ID }, null)
-                            <br />
-                        }
-                        @Html.ActionLink("Print friendly version", "Index", "Print", new { id = @Model.ID }, null)
-
-                    </p>
-                </div>
+       
             </div>
         </div>
-
-
-
-
         <div class="tabsIfoboxes">
             <div id="horseDescription" class="col-md-12">
                 <div role="tabpanel" id="horseInformation">
@@ -114,7 +110,7 @@
                     </ul>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="description">
-                            @Model.Description
+                            @Html.DisplayMultiline(Model.Description)
                         </div>
                         <div role="tabpanel" class="tab-pane" id="videos">
                             @if (User.Identity.IsAuthenticated)
@@ -140,11 +136,18 @@
                         <div role="tabpanel" class="tab-pane" id="horseBlog">
                             @foreach (var post in Model.Blog.Posts)
                             {
-                                <h4>@post.Title</h4>
-                                <p style="font-size: 9px;">@post.Created</p>
-                                <br />
-                                <p>@post.Content</p>
-                                <hr />
+                                if (post.IsActive)
+                                {
+                                    <h4>@post.Title</h4>
+                                    <p style="font-size: 9px;">@post.Created</p>
+                                    <br />
+                                    <p>@post.Content</p>
+                                    if (User.Identity.IsAuthenticated)
+                                    {
+                                        @Html.ActionLink("Delete post", "DeleteBlogPost", "HorseProfile", new { postId = post.ID, blogID = post.BlogID }, new { onclick = "return confirm('Are you sure you wish to delete this article?');" })
+                                    }
+                                    <hr />
+                                }
                             }
                             @if (User.Identity.IsAuthenticated)
                             {

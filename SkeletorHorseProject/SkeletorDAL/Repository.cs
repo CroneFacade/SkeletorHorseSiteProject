@@ -280,7 +280,9 @@ namespace SkeletorDAL
                     IsActive = x.IsActive,
                     Created = x.Created,
                     Content = x.Content,
-                    Title = x.Title
+                    Title = x.Title,
+                    
+                    
                 }).ToList();
 
                 horse.Blog.Posts = blogposts;
@@ -326,7 +328,8 @@ namespace SkeletorDAL
                             Medicine = h.Medicine,
                             FamilyTree = h.FamilyTree,
                             Awards = h.Awards,
-                            ImagePath = h.ImagePath
+                            ImagePath = h.ImagePath,
+                            Rent = h.Rent
                         }).FirstOrDefault();
             }
         }
@@ -396,7 +399,8 @@ namespace SkeletorDAL
                                          Breeding = h.Breeding,
                                          State = "All horses",
                                          ImagePath = h.ImagePath,
-										 Gender = h.Gender
+										 Gender = h.Gender,
+                                         Rent = h.Rent
                                      }).ToList();
                         break;
 
@@ -716,7 +720,8 @@ namespace SkeletorDAL
                 {
                     Blog = blog,
                     ID = blogpost.ID,
-                    Created = DateTime.Now
+                    Created = DateTime.Now,
+                    IsActive = true
                 };
 
                 var horse = (from h in context.Horses
@@ -1140,6 +1145,16 @@ namespace SkeletorDAL
 			}
 		}
 
+        public static void DeleteSpecificPost(int postid, int blogid)
+        {
+            using (var context = new HorseContext())
+            {
+                var blog = context.Blogs.Find(blogid);
+                var post = context.Posts.Find(postid);
+                post.IsActive = false;
+                context.SaveChanges();
+            }
+        }
     }
 }
 

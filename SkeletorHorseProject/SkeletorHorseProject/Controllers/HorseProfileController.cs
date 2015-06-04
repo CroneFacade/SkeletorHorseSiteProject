@@ -164,7 +164,6 @@ namespace SkeletorHorseProject.Controllers
         [Authorize]
         public ActionResult AddBlogPost(BlogModel blog)
         {
-
             var blogpost = new BlogPostModel() { BlogID = blog.ID };
             return PartialView("_AddBlogPost", blogpost);
         }
@@ -218,8 +217,6 @@ namespace SkeletorHorseProject.Controllers
                         ViewBag.Message = "Incorrect file type, please only upload jpg, jpeg, bmp, png or gif";
                         return RedirectToAction("UploadGalleryImage");
                     }
-
-
                 }
                 ViewBag.Message = "Upload successful";
 
@@ -318,6 +315,12 @@ namespace SkeletorHorseProject.Controllers
                 HorseName = horseName
             };
             return PartialView(child);
+        }
+
+        public ActionResult DeleteBlogPost(int postid, int blogid)
+        {
+            Repository.DeleteSpecificPost(postid, blogid);
+            return RedirectToAction("Index", new { id = blogid });
         }
     }
 }

@@ -39,7 +39,7 @@ namespace SkeletorDAL
 
             var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005", "650.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { Rent = true, Gender = "Male", ImagePath = @"~/ProfileImages/1Dummy1.jpg", Description = "Detta är Helges beskrivning", Medicine = "Detta är Helges Medicin", FamilyTree = "Detta är Helges släktträd" };
             var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty, "350.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { Gender = "Male", ImagePath = "~/ProfileImages/2Dummy2.gif", Description = "Detta är Jens beskrivning", Medicine = "Detta är Jens Medicin", FamilyTree = "Detta är Jens släktträd" };
-            var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { Gender = "Male", ImagePath = "~/ProfileImages/3Dummy3.jpg", Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
+            var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) {Breeding = true, Gender = "Male", ImagePath = "~/ProfileImages/3Dummy3.jpg", Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
             var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { Gender = "Male", ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Adolf Medicin", Medicine = "Detta är Adolf beskrivning", FamilyTree = "Detta är Adolf släktträd" };
             var Hermina = new Horse("Hermina", DateTime.Now, "Camargue", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { IsSold = true, Gender = "Female", ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Herminas Medicin", Medicine = "Detta är Herminas beskrivning", FamilyTree = "Detta är Herminas släktträd" };
             var LillBritt = new Horse("LillBritt", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) {Rent = true, Gender = "Female", ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är LillBritt Medicin", Medicine = "Detta är LillBritt beskrivning", FamilyTree = "Detta är LillBritts släktträd" };
@@ -137,26 +137,26 @@ namespace SkeletorDAL
             Lisa.Blog = LisaBlog;
             var HelgeBlog = new Blog("Detta är Helges Blogg", DateTime.Now, new List<Post>()
 			{
-				new Post("Helges första inlägg", DateTime.Now, "Hjehhej"),
-				new Post("Helges andra inlägg", DateTime.Now, "ghahhaha")
+				new Post("Helges första inlägg", DateTime.Now, "Hjehhej"){IsActive = true},
+				new Post("Helges andra inlägg", DateTime.Now, "ghahhaha"){IsActive = true}
 			});
             Helge.Blog = HelgeBlog;
             var JensBlog = new Blog("Detta är Jens Blogg", DateTime.Now, new List<Post>()
 			{
-					new Post("Jens första inlägg", DateTime.Now, "jensjensjens"),
-				new Post("Jens andra inlägg", DateTime.Now, "HUAhuhuehu")
+					new Post("Jens första inlägg", DateTime.Now, "jensjensjens"){IsActive = true},
+				new Post("Jens andra inlägg", DateTime.Now, "HUAhuhuehu"){IsActive = true}
 			});
             Jens.Blog = JensBlog;
             var GöstaBlog = new Blog("Detta är Gösta Blogg", DateTime.Now, new List<Post>()
 			{
-				new Post("Gösta första inlägg", DateTime.Now, "ffffffffffffffffffffffffffffsafa"),
-				new Post("Gösta andra inlägg", DateTime.Now, "Gösta e bääääääääst")
+				new Post("Gösta första inlägg", DateTime.Now, "ffffffffffffffffffffffffffffsafa"){IsActive = true},
+				new Post("Gösta andra inlägg", DateTime.Now, "Gösta e bääääääääst"){IsActive = true}
 			});
             Gösta.Blog = GöstaBlog;
             var AdolfBlog = new Blog("Detta är Adolf Blogg", DateTime.Now, new List<Post>()
 			{
-				new Post("Adolfs första inlägg", DateTime.Now, "Adolf shalalala"),
-				new Post("Adolfs andra inlägg", DateTime.Now, "dsaaaaaaaaa")
+				new Post("Adolfs första inlägg", DateTime.Now, "Adolf shalalala"){IsActive = true},
+				new Post("Adolfs andra inlägg", DateTime.Now, "dsaaaaaaaaa"){IsActive = true}
 			});
             Adolf.Blog = AdolfBlog;
             horses = new List<Horse>()
