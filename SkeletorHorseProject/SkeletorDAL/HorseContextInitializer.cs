@@ -137,26 +137,26 @@ namespace SkeletorDAL
             Lisa.Blog = LisaBlog;
             var HelgeBlog = new Blog("Detta är Helges Blogg", DateTime.Now, new List<Post>()
 			{
-				new Post("Helges första inlägg", DateTime.Now, "Hjehhej"),
-				new Post("Helges andra inlägg", DateTime.Now, "ghahhaha")
+				new Post("Helges första inlägg", DateTime.Now, "Hjehhej"){IsActive = true},
+				new Post("Helges andra inlägg", DateTime.Now, "ghahhaha"){IsActive = true}
 			});
             Helge.Blog = HelgeBlog;
             var JensBlog = new Blog("Detta är Jens Blogg", DateTime.Now, new List<Post>()
 			{
-					new Post("Jens första inlägg", DateTime.Now, "jensjensjens"),
-				new Post("Jens andra inlägg", DateTime.Now, "HUAhuhuehu")
+					new Post("Jens första inlägg", DateTime.Now, "jensjensjens"){IsActive = true},
+				new Post("Jens andra inlägg", DateTime.Now, "HUAhuhuehu"){IsActive = true}
 			});
             Jens.Blog = JensBlog;
             var GöstaBlog = new Blog("Detta är Gösta Blogg", DateTime.Now, new List<Post>()
 			{
-				new Post("Gösta första inlägg", DateTime.Now, "ffffffffffffffffffffffffffffsafa"),
-				new Post("Gösta andra inlägg", DateTime.Now, "Gösta e bääääääääst")
+				new Post("Gösta första inlägg", DateTime.Now, "ffffffffffffffffffffffffffffsafa"){IsActive = true},
+				new Post("Gösta andra inlägg", DateTime.Now, "Gösta e bääääääääst"){IsActive = true}
 			});
             Gösta.Blog = GöstaBlog;
             var AdolfBlog = new Blog("Detta är Adolf Blogg", DateTime.Now, new List<Post>()
 			{
-				new Post("Adolfs första inlägg", DateTime.Now, "Adolf shalalala"),
-				new Post("Adolfs andra inlägg", DateTime.Now, "dsaaaaaaaaa")
+				new Post("Adolfs första inlägg", DateTime.Now, "Adolf shalalala"){IsActive = true},
+				new Post("Adolfs andra inlägg", DateTime.Now, "dsaaaaaaaaa"){IsActive = true}
 			});
             Adolf.Blog = AdolfBlog;
             horses = new List<Horse>()

@@ -37,7 +37,11 @@ namespace SkeletorHorseProject.Controllers
                     model.StatusCode = 500;
                     model.ErrorMessage = "Internal Server Error";
                     break;
-
+                    case 502:
+                    model.StatusCode = 502;
+                    model.ErrorMessage = " Bad Gateway";
+                    break;
+                    
             }
             return View(model);
         }
