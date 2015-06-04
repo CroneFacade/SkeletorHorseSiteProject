@@ -535,14 +535,7 @@ namespace SkeletorDAL
             }
         }
 
-        public static void AddHorse(Horse newHorse)
-        {
-            using (var context = new HorseContext())
-            {
-                context.Horses.Add(newHorse);
-                context.SaveChanges();
-            }
-        }
+		
 
         public static void UpdateHorseProfile(int horseID, EditHorseProfileModel model)
         {
@@ -1077,6 +1070,39 @@ namespace SkeletorDAL
                 } return horseList;
             }
         }
+
+		public static void AddHorse(CreateHorseModel model)
+		{
+			using (var context = new HorseContext())
+			{
+				Horse newHorse = new Horse
+				{
+					Name = model.Name,
+					Birthday = model.Birthday,
+					Race = model.Race,
+					Withers = model.Withers,
+					Awards = model.Awards,
+					IsActive = true,
+					IsForSale = model.IsForSale,
+					Price = model.Price,
+					Description = model.Description,
+					Medicine = model.Medicine,
+					FamilyTree = model.FamilyTree,
+					ImagePath = "~/ProfileImages/DefaultHead.jpg",
+					Blog = new Blog
+					{
+						Created = DateTime.Now,
+						Description = "",
+						Posts = new List<Post>()
+					}
+				};
+
+				context.Horses.Add(newHorse);
+				context.Blogs.Add(newHorse.Blog);
+				context.SaveChanges();
+			}
+		}
+
     }
 }
 

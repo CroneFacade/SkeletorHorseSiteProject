@@ -1,4 +1,5 @@
-﻿@model SkeletorHorseProject.Models.AdminLoginModel
+﻿@using SkeletorDAL
+@model SkeletorHorseProject.Models.AdminLoginModel
 @{
     ViewBag.Title = "Login";
 }
@@ -40,5 +41,8 @@
        @Html.ActionLink("Register New Admin","Register","RegisterAdmin");
         <br />
         @Html.ActionLink("Manage all Admins", "Index", "ManageAdmins");
+	    <br />
+		@Html.ActionLink("Add New Horse", "CreateHorse", "CreateHorse");
+		
     }
 </div>
