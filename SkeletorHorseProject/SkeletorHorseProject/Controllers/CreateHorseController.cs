@@ -21,25 +21,15 @@ namespace SkeletorHorseProject.Controllers
 		[HttpPost]
 		public ActionResult CreateHorse(CreateHorseModel model)
 		{
-			if (ModelState.IsValid)
+
+
+			@TempData["CheckboxError"] = "The fields 'For sale' and 'Sold' can't both be checked";
+			if (ModelState.IsValid && (model.IsForSale == true && model.IsSold == false) || (model.IsForSale == false && model.IsSold == true) || (model.IsForSale == false && model.IsSold == false))
 			{
-				Horse newHorse = new Horse
-				{
-					Name = model.Name,
-					Birthday = model.Birthday,
-					Race = model.Race,
-					Withers = model.Withers,
-					Awards = model.Awards,
-					IsActive = true,
-					IsForSale = model.IsForSale,
-					Price = model.Price,
-					Description = model.Description,
-					Medicine = model.Medicine,
-					FamilyTree = model.FamilyTree,
-                    ImagePath = "~/ProfileImages/DefaultHead.jpg"
-				};
-				Repository.AddHorse(newHorse);
-				return RedirectToAction("CreateHorse", "CreateHorse");
+				TempData["CheckboxError"] = string.Empty;
+
+				Repository.AddHorse(model);
+				return RedirectToAction("Index", "Home");
 			}
 			return View(model);
 		}
