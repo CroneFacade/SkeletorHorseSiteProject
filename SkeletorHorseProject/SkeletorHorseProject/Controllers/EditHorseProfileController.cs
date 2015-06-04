@@ -19,7 +19,7 @@ namespace SkeletorHorseProject.Controllers
 	        
             return View(updatedHorse);
         }
-		[HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
 	    public ActionResult EditHorseProfile(int id, EditHorseProfileModel model)
 	    {
 		    @TempData["CheckboxError"] = "The fields 'For sale' and 'Sold' can't both be checked";

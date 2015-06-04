@@ -10,7 +10,7 @@ using SkeletorDAL.Model;
 using System.IO;
 
 namespace SkeletorHorseProject.Controllers
-{   
+{
     public class HorseProfileController : Controller
     {
         // GET: HorseProfile
@@ -253,15 +253,15 @@ namespace SkeletorHorseProject.Controllers
             Repository.DeleteGalleryImage(id);
             return RedirectToAction("Index", new { id = horseid });
         }
-        [AllowAnonymous]
- public ActionResult FamilyTree(int id, string horseName)
+        [AllowAnonymous, ChildActionOnly]
+        public ActionResult FamilyTree(int id, string horseName)
         {
             var familyTree = Repository.GetFamilyTree(id);
             return View(familyTree);
-    
+
         }
-        [Authorize]
-    public ActionResult EditParentsInFamilyTree(int id)
+        [Authorize, ChildActionOnly]
+        public ActionResult EditParentsInFamilyTree(int id)
         {
 
             var model = Repository.GetParentsInFamilyTree(id);
@@ -270,7 +270,7 @@ namespace SkeletorHorseProject.Controllers
         }
 
 
-        [HttpPost, Authorize]
+        [HttpPost, Authorize, ValidateAntiForgeryToken]
         public ActionResult EditHorseFamilyTree(int id, string name, ParentModel model)
         {
             model.HorseName = name;
@@ -279,16 +279,17 @@ namespace SkeletorHorseProject.Controllers
             return RedirectToAction("Index", new { id = id });
         }
 
+        [Authorize, ChildActionOnly]
         public ActionResult EditChildrenInFamilyTree(int id)
         {
             var model = Repository.GetChildrenInFamilyTree(id);
             if (model == null)
             {
-                model = new List<ChildModel>(){new ChildModel(){horseid = id}};
+                model = new List<ChildModel>() { new ChildModel() { horseid = id } };
             }
             return View(model);
         }
-
+        [Authorize, ChildActionOnly]
         public ActionResult AddNewChild(int id, string horseName)
         {
             var child = new ChildModel()
@@ -299,14 +300,16 @@ namespace SkeletorHorseProject.Controllers
             return View(child);
         }
 
+        [HttpPost, Authorize, ValidateAntiForgeryToken]
         public ActionResult AddNewChildToHorse(int id, string horseName, ChildModel childModel)
         {
             childModel.horseid = id;
             childModel.HorseName = horseName;
             Repository.AddNewChild(childModel);
-            return RedirectToAction("Index", new{id=childModel.horseid});
+            return RedirectToAction("Index", new { id = childModel.horseid });
         }
 
+        [Authorize, ValidateAntiForgeryToken]
         public ActionResult AddNewChildPartial(int id, string horseName)
         {
             var child = new ChildModel()
