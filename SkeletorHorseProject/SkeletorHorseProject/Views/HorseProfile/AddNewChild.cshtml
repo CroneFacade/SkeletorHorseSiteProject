@@ -5,6 +5,7 @@
 
 @using (Html.BeginForm("AddNewChildToHorse", "HorseProfile",new{id = Model.horseid, horseName =Model.HorseName}, FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <div>
         @Html.Label("Name")
         @Html.TextBoxFor(m => m.Name)
