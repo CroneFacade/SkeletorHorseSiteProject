@@ -6,41 +6,95 @@
 }
 <div class="container">
 
-
     <div class="ImgAndInfoBox">
         <div class="row">
-            <div id="horse_ProfilePicture" class="col-md-3">
-                <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image" />
-                <p>
-                    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+            <div class="HorsePicture">
+                <div id="horse_ProfilePicture" class="col-md-3">
+                    <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image" />
+                    <p>
+                        @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+                        {
+                            @Html.ActionLink("Change Image", "UploadProfilePicture", "HorseProfile", new { id = Model.ID }, null)
+                        }
+                    </p>
+
+                </div>
+                <div class="HorseName">
+                    <h1>@Model.Name</h1>
+                </div>
+
+                <div class="horseProfileInfoBox">
+                    
+                        <h2>Birthday</h2> @Model.Birthday.ToShortDateString()
+                    
+                    @if (!string.IsNullOrEmpty(Model.Gender))
                     {
-                        @Html.ActionLink("Change Image", "UploadProfilePicture", "HorseProfile", new { id = Model.ID }, null)
+                        <p>
+                            <h2>Gender</h2> @Model.Gender
+                        </p>
                     }
-                </p>
-                <dl>
-                    <dt>About @Model.Name</dt>
-                    <dd>Wither: @Model.Withers cm</dd>
-                    <dd>Race: @Model.Race</dd>
-                    <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
+                    else
+                    {
+                        <p>
+                            <h2>Gender</h2> Gender is not specified
+                        </p>
+                    }
+                    <p>
+                        <h2>Race</h2> @Model.Race
+                    </p>
+                    <p>
+                        <h2>Withers height</h2> @Model.Withers cm
+                    </p>
+
                     @if (!string.IsNullOrEmpty(Model.Awards))
                     {
-                        <dd>
-                            Awards: @Model.Awards
-                        </dd>
-
+                        <p>
+                            <h2>Awards</h2>@Model.Awards
+                        </p>
                     }
-                </dl>
-                <p>
-                    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+
+                    @if (Model.IsForSale)
                     {
-                        @Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
-                        <br />
-                        @Html.ActionLink("Edit Editors", "EditEditors", "EditHorseProfile", new { id = @Model.ID }, null)
+                        <p>
+                            <h2>Status</h2> This Horse is for sale
+                        </p>
+                        <p>
+                            <h2>Price</h2> @Model.Price
+                        </p>
 
                     }
-                    @Html.ActionLink("Print friendly version", "Index", "Print", new { id = @Model.ID }, null)
-                    
-                </p>
+                    @if (Model.IsForRent)
+                    {
+
+                        <p>
+                            <h2>Rental</h2> This horse is available for rent
+                        </p>
+                    }
+                    @if (Model.Breeding)
+                    {
+                        <p>
+                            <h2>Breeding</h2> This horse is available for breeding
+                        </p>
+                    }
+                
+                </div>
+
+
+
+
+                <div class="editbuttonsForProfile">
+                    <p>
+                        @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+                        {
+                            @Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
+                            <br />
+                            @Html.ActionLink("Edit Editors", "EditEditors", "EditHorseProfile", new { id = @Model.ID }, null)
+                            <br />
+                        }
+                        @Html.ActionLink("Print friendly version", "Index", "Print", new { id = @Model.ID }, null)
+
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -48,7 +102,7 @@
 
 
         <div class="tabsIfoboxes">
-            <div id="horseDescription" class="col-md-9">
+            <div id="horseDescription" class="col-md-12">
                 <div role="tabpanel" id="horseInformation">
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
@@ -84,12 +138,12 @@
 
                         </div>
                         <div role="tabpanel" class="tab-pane" id="horseBlog">
-                            @foreach (var blog in Model.Blog.Posts)
+                            @foreach (var post in Model.Blog.Posts)
                             {
-                                <h4>@blog.Title</h4>
-                                <p style="font-size: 9px;">@blog.Created</p>
+                                <h4>@post.Title</h4>
+                                <p style="font-size: 9px;">@post.Created</p>
                                 <br />
-                                <p>@blog.Content</p>
+                                <p>@post.Content</p>
                                 <hr />
                             }
                             @if (User.Identity.IsAuthenticated)
@@ -129,23 +183,24 @@
             </div>
 
         </div>
+        <hr />
     </div>
-
 
 </div>
 
 
 
+@if (!string.IsNullOrEmpty(Model.FacebookPath))
+{
+    <h1 class="HeaderFacebook">
+        See my everyday life on Facebook
+    </h1>
+    <div class="facebookBlog">
+        <div class="row" style="margin-top: 25px;">
 
+            <div class="col-md-12">@Html.Action("HorseBlog", new { id = @Model.ID })</div>
 
-<div class="facebookBlog">
-
-    <hr />
-
-
-    <div class="row" style="margin-top: 25px;">
-        <div class="col-md-4"></div>
-        <div class="col-md-8">@Html.Action("HorseBlog", new { id = @Model.ID })</div>
-
+        </div>
     </div>
-</div>
+}
+

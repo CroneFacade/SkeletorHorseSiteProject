@@ -258,6 +258,9 @@ namespace SkeletorDAL
                                  IsActive = h.IsActive,
                                  IsForSale = h.IsForSale,
                                  Price = h.Price,
+                                 Gender = h.Gender,
+                                 IsForRent = h.Rent,
+                                 Breeding = h.Breeding
 
                              }).FirstOrDefault();
 
@@ -589,6 +592,7 @@ namespace SkeletorDAL
                 horse.IsSold = model.IsSold;
                 horse.Gender = model.Gender;
                 horse.Breeding = model.Breeding;
+                horse.Rent = model.Rent;
 
 
                 context.Entry(horse).State = EntityState.Modified;
@@ -1121,7 +1125,7 @@ namespace SkeletorDAL
 					FamilyTree = model.FamilyTree,
 					Gender = model.Gender,
 					Breeding = model.Breeding,
-                    ImagePath = "~/ProfileImages/DefaultProfile.jpg",
+                    ImagePath = "~/ProfileImages/DefaultHead.jpg",
 					Blog = new Blog
 					{
 						Created = DateTime.Now,
