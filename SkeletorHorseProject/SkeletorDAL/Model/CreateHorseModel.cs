@@ -37,6 +37,7 @@ namespace SkeletorDAL.Model
 		[DisplayName("Last updated")]
 		public DateTime LastUpdated { get; set; }
 		public bool Breeding { get; set; }
+        [Required(ErrorMessage = "Must pick gender")]
 		public string Gender { get; set; }
 		[DisplayName("Is for rent")]
 		public bool Rent { get; set; }
