@@ -8,6 +8,7 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
     <div>
         <fieldset>
             <legend>User</legend>

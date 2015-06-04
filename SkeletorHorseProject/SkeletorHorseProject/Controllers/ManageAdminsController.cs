@@ -36,7 +36,7 @@ namespace SkeletorHorseProject.Controllers
             var admin = Repository.GetAdminInformationForEditModel(id);
             return View(admin);
         }
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Edit(int id, EditAdminModel model)
         {
             if (ModelState.IsValid)
