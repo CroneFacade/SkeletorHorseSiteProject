@@ -38,5 +38,7 @@
     @if(User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) == 1)
     {
        @Html.ActionLink("Register New Admin","Register","RegisterAdmin");
+        <br />
+        @Html.ActionLink("Manage all Admins", "Index", "ManageAdmins");
     }
 </div>
