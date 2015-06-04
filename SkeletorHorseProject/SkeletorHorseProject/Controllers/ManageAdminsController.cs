@@ -8,6 +8,7 @@ using SkeletorDAL;
 
 namespace SkeletorHorseProject.Controllers
 {
+    [Authorize]
     public class ManageAdminsController : Controller
     {
         // GET: ManageAdmins
