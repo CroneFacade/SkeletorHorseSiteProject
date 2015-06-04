@@ -21,10 +21,13 @@ namespace SkeletorDAL.Model
 		[Required(ErrorMessage = "Wither in Centimeters. (mankhöjd)")]
         [Display(Name = "Withers(cm)")]
 		public int Withers { get; set; }
+        [DataType(DataType.MultilineText)]
 		public string Awards { get; set; }
-		[Required(ErrorMessage = "Write something about the horse.")]
+        [DataType(DataType.MultilineText)]
+        [Required(ErrorMessage = "Write something about the horse.")]
 		public string Description { get; set; }
-		[Required(ErrorMessage = "Does the horse need any medicine?")]
+        [DataType(DataType.MultilineText)]
+        [Required(ErrorMessage = "Does the horse need any medicine?")]
 		public string Medicine { get; set; }
 		public string FamilyTree { get; set; }
 		[Required(ErrorMessage = "Is the horse for sale?"), DisplayName("For sale")]

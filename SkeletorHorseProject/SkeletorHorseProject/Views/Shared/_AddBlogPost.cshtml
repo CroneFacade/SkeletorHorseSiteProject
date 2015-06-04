@@ -3,22 +3,20 @@
 @using (Html.BeginForm("AddBlogPostToBlog", "HorseProfile", new { blogID = Model.BlogID }, FormMethod.Post, null))
 {
     @Html.AntiForgeryToken()
-    <div class="row">
-
+    <div>
         @Html.Label("Subject")
     </div>
-    <div class="row">
+    <div>
         @Html.TextBoxFor(m => m.Title)
-        </div>
-
-    <div class="row">
+    </div>
+    <div>
         @Html.LabelFor(m => m.Content)
     </div>
-    <div id="postarea" class="row">
+    <div id="postarea">
         @Html.TextAreaFor(m => m.Content)
     </div>
-                <div class="row">
-            <input type="submit" value="Add post" />
-        </div>
+    <div >
+        <input type="submit" value="Add post" />
+    </div>
 
 }
