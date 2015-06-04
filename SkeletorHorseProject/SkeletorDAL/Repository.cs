@@ -326,7 +326,8 @@ namespace SkeletorDAL
                             Medicine = h.Medicine,
                             FamilyTree = h.FamilyTree,
                             Awards = h.Awards,
-                            ImagePath = h.ImagePath
+                            ImagePath = h.ImagePath,
+                            Rent = h.Rent
                         }).FirstOrDefault();
             }
         }
@@ -396,7 +397,8 @@ namespace SkeletorDAL
                                          Breeding = h.Breeding,
                                          State = "All horses",
                                          ImagePath = h.ImagePath,
-										 Gender = h.Gender
+										 Gender = h.Gender,
+                                         Rent = h.Rent
                                      }).ToList();
                         break;
 
