@@ -4,52 +4,55 @@
 @model List<string>
 
 <div class="slider-container">
-	<div class="hiddenoo">
-		<div class="owl-carousel slider">
-			@foreach (var image in Model)
-			{
-				<div class="panel panel-primary slider-item">
-					<img src="@Url.Content(image)" />
-				</div>
-			}
-		</div>
-	</div>
+    <div class="hiddenoo">
+        <div class="owl-carousel slider">
+            @foreach (var image in Model)
+            {
+                <div class="panel panel-primary slider-item">
+                    <img src="@Url.Content(image)" />
+                </div>
+            }
+        </div>
+    </div>
 </div>
 
 <p>
-	@if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
-	{
-		@*<div class="btn-btn-default">
-				<input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
-			</div> }*@
-		@Html.ActionLink("Edit SlideShow", "UploadSlideshowFile", "EditSlideShowImages")
-	}
+    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+    {
+        @*<div class="btn-btn-default">
+                <input type="button" value="Edit SlideShow" onclick="location.href = '@Url.Action("UploadSlideshowFile", "EditSlideShowImages")'" />
+            </div> }*@
+        @Html.ActionLink("Edit SlideShow", "UploadSlideshowFile", "EditSlideShowImages")
+    }
 </p>
 
 <div id="puffContainer" class="col-md-12">
-	@Html.Action("GetPuffsToHome", "Home")
+    @Html.Action("GetPuffsToHome", "Home")
 </div>
 
+
 <div id="puffHorseContainer" class="col-md-12">
+    <h1>Latest updated profiles</h1>
     @Html.Action("LatestUpdates", "Home")
 </div>
 
 
+
 @section Styles {
-	<link href="~/Content/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.css" rel="stylesheet" />
 }
 
 @section Scripts {
     <script src="~/Scripts/owl.carousel.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $(".slider").owlCarousel({
                 autoPlay: 5000,
                 singleItem: true,
                 //items: 1,
                 responsive: true,
                 navigation: false,
-                afterInit: function(event) {
+                afterInit: function (event) {
                     $(".slider-container > .hiddenoo").fadeIn(100);
                 }
             });
@@ -58,37 +61,37 @@
 }
 
 
-    <script>
+<script>
 
-        $(document).ready(function() {
-            function updateSize() {
-                var minHeight = parseInt($('.owl-item').eq(0).css('height'));
-                $('.owl-item').each(function() {
-                    var thisHeight = parseInt($(this).css('height'));
-                    minHeight = (minHeight <= thisHeight ? minHeight : thisHeight);
-                });
-                $('.owl-wrapper-outer').css('height', minHeight + 'px');
+    $(document).ready(function () {
+        function updateSize() {
+            var minHeight = parseInt($('.owl-item').eq(0).css('height'));
+            $('.owl-item').each(function () {
+                var thisHeight = parseInt($(this).css('height'));
+                minHeight = (minHeight <= thisHeight ? minHeight : thisHeight);
+            });
+            $('.owl-wrapper-outer').css('height', minHeight + 'px');
 
-                /*show the bottom part of the cropped images*/
-                $('.owl-carousel .owl-item img').each(function() {
-                    var thisHeight = parseInt($(this).css('height'));
-                    if (thisHeight > minHeight) {
-                        $(this).css('margin-top', -1 * (thisHeight - minHeight) + 'px');
-                    }
-                });
-                $("#owl-example").owlCarousel({
-                    afterUpdate: function() {
-                        updateSize();
-                    },
-                    afterInit: function() {
-                        updateSize();
-                    }
-                });
+            /*show the bottom part of the cropped images*/
+            $('.owl-carousel .owl-item img').each(function () {
+                var thisHeight = parseInt($(this).css('height'));
+                if (thisHeight > minHeight) {
+                    $(this).css('margin-top', -1 * (thisHeight - minHeight) + 'px');
+                }
+            });
+            $("#owl-example").owlCarousel({
+                afterUpdate: function () {
+                    updateSize();
+                },
+                afterInit: function () {
+                    updateSize();
+                }
+            });
 
 
-            }
-        });
+        }
+    });
 
-    </script>
+</script>
 
 
