@@ -392,7 +392,8 @@ namespace SkeletorDAL
                                          IsSold = h.IsSold,
                                          Breeding = h.Breeding,
                                          State = "All horses",
-                                         ImagePath = h.ImagePath
+                                         ImagePath = h.ImagePath,
+										 Gender = h.Gender
                                      }).ToList();
                         break;
 
@@ -413,7 +414,8 @@ namespace SkeletorDAL
                                          Withers = h.Withers,
                                          IsSold = h.IsSold,
                                          State = "Horses for sale",
-                                         ImagePath = h.ImagePath
+                                         ImagePath = h.ImagePath,
+										 Gender = h.Gender
                                      }).ToList();
                         break;
                     case 3:
@@ -433,7 +435,8 @@ namespace SkeletorDAL
                                          Withers = h.Withers,
                                          IsSold = h.IsSold,
                                          State = "Sold horses",
-                                         ImagePath = h.ImagePath
+                                         ImagePath = h.ImagePath,
+										 Gender = h.Gender
                                      }).ToList();
                         break;
                 }
