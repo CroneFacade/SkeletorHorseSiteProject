@@ -22,15 +22,15 @@ a {
     color: #0000ff;
 }
 
-a:hover {
-    color: #d1081d !important;
-    text-decoration: none !important;
-}
+    a:hover {
+        color: #d1081d !important;
+        text-decoration: none !important;
+    }
 
-a:focus {
-    color: #d1081d !important;
-    text-decoration: none !important;
-}
+    a:focus {
+        color: #d1081d !important;
+        text-decoration: none !important;
+    }
 
 #lightbox {
     min-width: 30px;
@@ -352,13 +352,14 @@ a:hover {
     padding-left: 10px;
     padding-bottom: 10px;
 }
+
 #SearchBox {
     width: 1024px;
     padding-left: 25px;
     padding-bottom: 10px;
     padding-top: 10px;
-    
 }
+
 #horseName {
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
@@ -413,4 +414,80 @@ a:hover {
         column-count: 2;
         column-gap: 25px;
         text-align: justify;
+    }
+
+.container {
+    margin-top: 20px;
+}
+
+.ImgAndInfoBox {
+}
+
+.HorsePicture {
+}
+
+#horse_ProfilePicture {
+    width: 230px;
+}
+
+.horseProfileInfoBox {
+    float: left;
+    height: 225px;
+    width: 550px;
+    -moz-column-count: 2;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 10px;
+    column-count: 2;
+    column-gap: 10px;
+}
+
+.HorseName {
+    height: 35px;
+}
+
+    .HorseName h1 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 30px;
+        text-shadow: 1px 1px 1px #A1A1A1;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        padding-bottom: 3px;
+    }
+
+.horseProfileInfoBox h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    margin-top: 3px;
+    margin-bottom: 2px;
+}
+
+.horseProfileInfoBox p {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    margin: 0 0 0 0;
+    margin-bottom: 15px;
+}
+
+
+.editbuttonsForProfile {
+    float: left;
+}
+
+.tabsIfoboxes {
+    min-height: 400px;
+}
+
+.facebookBlog {
+    margin-left: 230px;
+}
+
+    .HeaderFacebook {
+        font-family: 'Oswald', sans-serif;
+        font-size: 40px;
+        text-shadow: 2px 2px 2px #A1A1A1;
+        text-transform: uppercase;
+        letter-spacing: 10px;
+        text-align: center;
+        padding-bottom: 3px;
     }

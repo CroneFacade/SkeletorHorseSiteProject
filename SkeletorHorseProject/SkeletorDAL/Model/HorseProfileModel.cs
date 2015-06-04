@@ -26,6 +26,8 @@ namespace SkeletorDAL.Model
         public bool IsActive { get; set; }
         [DisplayName("For sale")]
         public bool IsForSale { get; set; }
+        [DisplayName("For rent")]
+        public bool IsForRent { get; set; }
         public string Price { get; set; }
         [DisplayName("Sold")]
         public bool IsSold { get; set; }
