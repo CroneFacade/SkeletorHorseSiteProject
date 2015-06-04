@@ -20,6 +20,18 @@ namespace SkeletorHorseProject
 
               );
             routes.MapRoute(
+              name: "Horses For Sale",
+              url: "HorsesForSale",
+              defaults: new { controller = "FilteredHorsePage", action = "FilterPage", navigationId = 2 }
+
+              );
+            routes.MapRoute(
+              name: "Sold Horses",
+              url: "SoldHorses",
+              defaults: new { controller = "FilteredHorsePage", action = "FilterPage", navigationId = 3 }
+
+              );
+            routes.MapRoute(
                name: "Admin",
                url: "Admin",
                defaults: new { controller = "AdminLogin", action = "Login" }
