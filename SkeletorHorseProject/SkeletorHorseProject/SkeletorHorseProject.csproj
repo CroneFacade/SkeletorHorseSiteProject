@@ -173,7 +173,6 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CreateHorseController.cs" />
     <Compile Include="Controllers\EditAboutPageController.cs" />
-    <Compile Include="Controllers\EditAdminController.cs" />
     <Compile Include="Controllers\EditHorseProfileController.cs" />
     <Compile Include="Controllers\EditPuffController.cs" />
     <Compile Include="Controllers\EditSlideShowImagesController.cs" />
@@ -248,15 +247,14 @@
     <Content Include="Views\HorseProfile\UploadImageButton.cshtml" />
     <Content Include="Views\HorseProfile\FamilyTree.cshtml" />
     <Content Include="Views\Shared\_Puff.cshtml" />
-
     <Content Include="Views\HorseProfile\EditFamilyTree.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
-
     <Content Include="Views\HorseProfile\EditParentsInFamilyTree.cshtml" />
     <Content Include="Views\HorseProfile\EditChildrenInFamilyTree.cshtml" />
     <Content Include="Views\HorseProfile\AddNewChild.cshtml" />
     <Content Include="Views\HorseProfile\AddNewChildPartial.cshtml" />
     <Content Include="Views\ManageAdmins\Index.cshtml" />
+    <Content Include="Views\ManageAdmins\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

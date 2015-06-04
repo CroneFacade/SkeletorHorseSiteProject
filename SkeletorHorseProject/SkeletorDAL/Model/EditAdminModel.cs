@@ -8,12 +8,9 @@ using System.Threading.Tasks;
 
 namespace SkeletorDAL.Model
 {
-    class EditAdminModel
+    public class EditAdminModel
     {
-
-        [StringLength(12, MinimumLength = 1, ErrorMessage = "Username must be 1-12 characters long")]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
+        public int ID { get; set; }
 
         [EmailAddress(ErrorMessage = "Invalid address, try again (example@teamnordahl.se)")]
         public string Email { get; set; }
@@ -27,12 +24,5 @@ namespace SkeletorDAL.Model
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Confirm Password must match with Password")]
         public string ConfirmPassword { get; set; }
-
-        [Display(Name = "Admin Level (1-5)")]
-        [Range(1, 5, ErrorMessage = "Admin Level must be between 1-5")]
-        public int AdminLevel { get; set; }
-
-        [DisplayName("Delete admin")]
-        public bool IsActive { get; set; }
     }
 }

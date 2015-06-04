@@ -5,6 +5,7 @@
 }
 
 <h2>Manage Admins</h2>
+@Html.ActionLink("Edit my own account", "Edit", new { id = 1})
 
 
 <table class="table">
@@ -30,7 +31,8 @@
                 @Html.DisplayFor(modelItem => item.AdminLevel)
             </td>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
             </td>
         </tr>
     }
