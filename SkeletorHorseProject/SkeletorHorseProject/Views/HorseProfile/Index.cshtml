@@ -5,126 +5,147 @@
     ViewBag.Title = "Index";
 }
 <div class="container">
-    <div class="row">
-        <div id="horse_ProfilePicture" class="col-md-3">
-            <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image" />
-            <p>
-                @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
-                {
-                    @Html.ActionLink("Change Image", "UploadProfilePicture", "HorseProfile", new { id = Model.ID }, null)
-                }
-            </p>
-            <dl>
-                <dt>About @Model.Name</dt>
-                <dd>Wither: @Model.Withers cm</dd>
-                <dd>Race: @Model.Race</dd>
-                <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
-                @if (!string.IsNullOrEmpty(Model.Awards))
-                {
-                    <dd>
-                        Awards: @Model.Awards
-                    </dd>
-
-                }
 
 
-            </dl>
-            <p>
-                @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
-                {
-                    @Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
-                    <br />
-                    @Html.ActionLink("Edit Editors", "EditEditors", "EditHorseProfile", new { id = @Model.ID }, null)
+    <div class="ImgAndInfoBox">
+        <div class="row">
+            <div id="horse_ProfilePicture" class="col-md-3">
+                <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image" />
+                <p>
+                    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+                    {
+                        @Html.ActionLink("Change Image", "UploadProfilePicture", "HorseProfile", new { id = Model.ID }, null)
+                    }
+                </p>
+                <dl>
+                    <dt>About @Model.Name</dt>
+                    <dd>Wither: @Model.Withers cm</dd>
+                    <dd>Race: @Model.Race</dd>
+                    <dd>Birthday: @Model.Birthday.ToShortDateString()</dd>
+                    @if (!string.IsNullOrEmpty(Model.Awards))
+                    {
+                        <dd>
+                            Awards: @Model.Awards
+                        </dd>
 
-                }
-            </p>
-        </div>
-        <div id="horseDescription" class="col-md-9">
-            <div role="tabpanel" id="horseInformation">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
-                    <li role="presentation"><a href="#health" aria-controls="health" role="tab" data-toggle="tab">Health</a></li>
-                    <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Family Tree</a></li>
-                    <li role="presentation"><a href="#horseBlog" aria-controls="family-tree" role="tab" data-toggle="tab">Blog</a></li>
-                    <li role="presentation"><a href="#gallery" aria-controls="Health" role="tab" data-toggle="tab">Gallery</a></li>
-                    <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="description">
-                        @Model.Description
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="videos">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            if (Model.AdminId.Contains(int.Parse(User.Identity.Name)) || User.Identity.Name == "1")
-                            {
-                                @Html.Action("AddNewHorseVideo", new { id = Model.ID })
-                            }
-                            @Html.Action("GetHorseVideos", new { id = Model.ID })
-                        }
-
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="health">
-                        <dl>
-                            <dd>@Model.Medicine</dd>
-                        </dl>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="family-tree">
-
-                        @Html.Action("FamilyTree", new { id = Model.ID, horseName = Model.Name })
-
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="horseBlog">
-                        @foreach (var blog in Model.Blog.Posts)
-                        {
-                            <h4>@blog.Title</h4>
-                            <p style="font-size: 9px;">@blog.Created</p>
-                            <br />
-                            <p>@blog.Content</p>
-                            <hr />
-                        }
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            if (Model.AdminId.Contains(int.Parse(User.Identity.Name)) || int.Parse(User.Identity.Name) == 1)
-                            {
-                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBlogPost" aria-expanded="false" aria-controls="addBlogPost">
-                                    Add blogpost
-                                </button>
-                                <div class="collapse" data-toggle="collapse" data-target=".navbar-collapse" id="addBlogPost">
-                                    <div class="well">
-                                        @Html.Action("AddBlogPost", new { blog = @Model.Blog })
-                                    </div>
-
-                                </div>
-                            }
-                        }
-
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="gallery">
+                    }
+                </dl>
+                <p>
+                    @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
+                    {
+                        @Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
                         <br />
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            if (Model.AdminId.Contains(int.Parse(User.Identity.Name)) || int.Parse(User.Identity.Name) == 1)
-                            {
-                                @Html.Action("UploadImageButton", new { id = @Model.ID })
-                            }
-                        }
+                        @Html.ActionLink("Edit Editors", "EditEditors", "EditHorseProfile", new { id = @Model.ID }, null)
 
-                        <br />
-                        @Html.Action("Gallery", new { id = @Model.ID })
-                    </div>
-
-                </div>
-
+                    }
+                    @Html.ActionLink("Print friendly version", "Index", "Print", new { id = @Model.ID }, null)
+                    
+                </p>
             </div>
         </div>
 
+
+
+
+        <div class="tabsIfoboxes">
+            <div id="horseDescription" class="col-md-9">
+                <div role="tabpanel" id="horseInformation">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+                        <li role="presentation"><a href="#health" aria-controls="health" role="tab" data-toggle="tab">Health</a></li>
+                        <li role="presentation"><a href="#family-tree" aria-controls="family-tree" role="tab" data-toggle="tab">Family Tree</a></li>
+                        <li role="presentation"><a href="#horseBlog" aria-controls="family-tree" role="tab" data-toggle="tab">Blog</a></li>
+                        <li role="presentation"><a href="#gallery" aria-controls="Health" role="tab" data-toggle="tab">Gallery</a></li>
+                        <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="description">
+                            @Model.Description
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="videos">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (Model.AdminId.Contains(int.Parse(User.Identity.Name)) || User.Identity.Name == "1")
+                                {
+                                    @Html.Action("AddNewHorseVideo", new { id = Model.ID })
+                                }
+                                @Html.Action("GetHorseVideos", new { id = Model.ID })
+                            }
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="health">
+                            <dl>
+                                <dd>@Model.Medicine</dd>
+                            </dl>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="family-tree">
+
+                            @Html.Action("FamilyTree", new { id = Model.ID, horseName = Model.Name })
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="horseBlog">
+                            @foreach (var blog in Model.Blog.Posts)
+                            {
+                                <h4>@blog.Title</h4>
+                                <p style="font-size: 9px;">@blog.Created</p>
+                                <br />
+                                <p>@blog.Content</p>
+                                <hr />
+                            }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (Model.AdminId.Contains(int.Parse(User.Identity.Name)) || int.Parse(User.Identity.Name) == 1)
+                                {
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBlogPost" aria-expanded="false" aria-controls="addBlogPost">
+                                        Add blogpost
+                                    </button>
+                                    <div class="collapse" data-toggle="collapse" data-target=".navbar-collapse" id="addBlogPost">
+                                        <div class="well">
+                                            @Html.Action("AddBlogPost", new { blog = @Model.Blog })
+                                        </div>
+
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="gallery">
+                            <br />
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (Model.AdminId.Contains(int.Parse(User.Identity.Name)) || int.Parse(User.Identity.Name) == 1)
+                                {
+                                    @Html.Action("UploadImageButton", new { id = @Model.ID })
+                                }
+                            }
+
+                            <br />
+                            @Html.Action("Gallery", new { id = @Model.ID })
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
+
+
 </div>
 
-<hr />
-<div class="row" style="margin-top: 25px;">
-    <div class="col-md-4"></div>
-    <div class="col-md-8">@Html.Action("HorseBlog", new { id = @Model.ID })</div>
 
+
+
+
+<div class="facebookBlog">
+
+    <hr />
+
+
+    <div class="row" style="margin-top: 25px;">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">@Html.Action("HorseBlog", new { id = @Model.ID })</div>
+
+    </div>
 </div>
