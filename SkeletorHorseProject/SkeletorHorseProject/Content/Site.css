@@ -21,7 +21,9 @@ textarea {
 a {
     color: #0000ff;
 }
-
+.familyTreeBoxes {
+    background-color: #ffffff;
+}
     a:hover {
         color: #d1081d !important;
         text-decoration: none !important;
