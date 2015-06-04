@@ -116,7 +116,6 @@
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Images\hest.jpg" />
-    <Content Include="ProfileImages\DefaultProfile.jpg" />
     <Content Include="resources\background_camargue_horse.jpg" />
     <Content Include="resources\SkeletorLogo.png" />
     <Content Include="Scripts\slideshow.size.js" />
