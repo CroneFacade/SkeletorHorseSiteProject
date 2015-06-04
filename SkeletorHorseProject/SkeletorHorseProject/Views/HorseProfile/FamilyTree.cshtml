@@ -17,25 +17,25 @@
         <div class="tree" style="padding-left: 30%">
             <ul>
                 <li>
-                    <a href="#" style="max-width: 130px;">
+                    <a class="familyTreeBoxes" href="#" style="max-width: 130px;">
                         <p>@Model.Parents.MotherName</p>
                         <hr />
                         <p>@Model.Parents.MotherDescription</p>
                     </a>
-                    <a href="#" style="max-width: 130px;">
+                    <a href="#" class="familyTreeBoxes" style="max-width: 130px;">
                         <p>@Model.Parents.FatherName</p>
                         <hr />
                         <p>@Model.Parents.FatherDescription</p>
                     </a>
                     <ul>
                         <li>
-                            <a href="#" style="max-width: 130px;">@Model.HorseName</a>
+                            <a href="#" class="familyTreeBoxes" style="max-width: 130px;">@Model.HorseName</a>
                             <ul>
                                 @foreach (var child in Model.Children)
                                 {
 
                                     <li>
-                                        <a href="#" style="max-width:130px;">
+                                        <a href="#" class="familyTreeBoxes" style="max-width:130px;">
                                             <p>@child.Name</p>
                                             <hr />
                                             <p>@child.Description</p>
