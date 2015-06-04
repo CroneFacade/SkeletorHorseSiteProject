@@ -363,6 +363,7 @@ a:hover {
     padding-top: 15px;
     padding-left: 10px;
     padding-bottom: 10px;
+    height: 170px;
 }
 
 #SearchBox {
@@ -452,6 +453,7 @@ a:hover {
     -webkit-column-gap: 10px;
     column-count: 2;
     column-gap: 10px;
+    overflow: auto;
 }
 
 .HorseName {

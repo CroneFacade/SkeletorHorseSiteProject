@@ -23,12 +23,12 @@
                         <p>
                             @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
                             {
-                                @Html.ActionLink("Edit profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
+                                @Html.ActionLink("Edit Profile", "EditHorseProfile", "EditHorseProfile", new { id = @Model.ID }, null)
                                 <br />
                                 @Html.ActionLink("Edit Editors", "EditEditors", "EditHorseProfile", new { id = @Model.ID }, null)
                                 <br />
                             }
-                            @Html.ActionLink("Print friendly version", "Index", "Print", new { id = @Model.ID }, null)
+                            @Html.ActionLink("Print Friendly Version", "Index", "Print", new { id = @Model.ID }, null)
 
                         </p>
                     </div>

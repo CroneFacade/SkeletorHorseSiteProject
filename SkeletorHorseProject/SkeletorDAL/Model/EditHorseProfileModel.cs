@@ -21,7 +21,7 @@ namespace SkeletorDAL.Model
 		[Required(ErrorMessage = "Wither in Centimeters. (mankhöjd)")]
         [Display(Name = "Withers(cm)")]
 		public int Withers { get; set; }
-        [DataType(DataType.MultilineText)]
+        [DataType(DataType.MultilineText), MaxLength(120)]
 		public string Awards { get; set; }
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Write something about the horse.")]
