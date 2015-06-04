@@ -504,6 +504,34 @@ namespace SkeletorDAL
             }
         }
 
+        public static EditAdminModel GetAdminInformationForEditModel(int id)
+        {
+            using (var context = new HorseContext())
+            {
+                return (from u in context.Users
+                    where u.ID == id
+                    select new EditAdminModel
+                    {
+                        Email = u.Email
+                    }).FirstOrDefault();
+            }
+        }
+
+        public static void UpdateAdminProfile(int adminId, EditAdminModel model)
+        {
+            using (var context = new HorseContext())
+            {
+
+                var admin = context.Users.Find(adminId);
+                admin.Email = model.Email;
+                admin.Password = model.Password.SuperHash();
+
+
+                context.Entry(admin).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
         public static EditHorseProfileModel GetFullInformationOnSpecificHorseById(int id)
         {
             using (var context = new HorseContext())

@@ -1,0 +1,23 @@
+﻿@model SkeletorDAL.Model.ErrorModel
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body>
+    <div>
+        <h1>@Model.StatusCode - @Model.ErrorMessage</h1>
+        <p>You will be redirected to the home page in 3 seconds...</p>
+        <script>
+    var delay = 3000;
+    var URL = "/Home/Index";
+    setTimeout(function () { window.location = URL; }, delay);
+        </script>
+
+    </div>
+</body>
+</html>

@@ -35,7 +35,7 @@ namespace SkeletorHorseProject.Controllers
 
         public ActionResult Index()
         {
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("FilterPage", new {navigationId = 1 });
         }
 
         [ChildActionOnly]
