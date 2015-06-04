@@ -48,12 +48,20 @@
             @Html.ActionLink("Home", "Index", "Home") &ensp;
             @if (ViewContext.RouteData.Values["controller"].ToString() != "Home")
             {
-                @:> &ensp; @Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(), "Index", ViewContext.RouteData.Values["controller"].ToString())
-}
-            @if (ViewContext.RouteData.Values["action"].ToString() != "Index")
+                if (ViewContext.RouteData.Values["controller"].ToString() == "FilteredHorsePage")
+                {
+                    ViewContext.RouteData.Values["controller"] = "Horses";
+                    @:> &ensp; @Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(), "Index", ViewContext.RouteData.Values["controller"].ToString())
+                }
+                else
+                {
+                    @:> &ensp; @Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(), "Index", ViewContext.RouteData.Values["controller"].ToString())
+                }
+            }
+            @*@if (ViewContext.RouteData.Values["action"].ToString() != "Index")
             {
                 @:> &ensp; @Html.ActionLink(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString())
-}
+}*@
         </div>
 
         <div class="content">
