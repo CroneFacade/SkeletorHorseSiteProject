@@ -116,6 +116,7 @@
     <Content Include="Global.asax" />
     <Content Include="Icon.png" />
     <Content Include="Images\hest.jpg" />
+    <Content Include="ProfileImages\DefaultProfile.jpg" />
     <Content Include="resources\background_camargue_horse.jpg" />
     <Content Include="resources\SkeletorLogo.png" />
     <Content Include="Scripts\slideshow.size.js" />
@@ -129,9 +130,7 @@
     <Content Include="Images\Dummy2.jpg" />
     <Content Include="Images\Dummy3.jpg" />
     <Content Include="Images\ladda ned.jpg" />
-    <Content Include="ProfileImages\1Dummy1.jpg" />
     <Content Include="ProfileImages\3Dummy3.jpg" />
-    <Content Include="ProfileImages\DefaultHead.jpg" />
     <Content Include="resources\norobot.jpg" />
     <Content Include="resources\logga.png" />
     <Content Include="resources\splash.png" />

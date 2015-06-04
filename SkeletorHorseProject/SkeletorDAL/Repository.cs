@@ -1121,7 +1121,7 @@ namespace SkeletorDAL
 					FamilyTree = model.FamilyTree,
 					Gender = model.Gender,
 					Breeding = model.Breeding,
-					ImagePath = "~/ProfileImages/DefaultHead.jpg",
+                    ImagePath = "~/ProfileImages/DefaultProfile.jpg",
 					Blog = new Blog
 					{
 						Created = DateTime.Now,
