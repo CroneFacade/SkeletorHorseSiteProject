@@ -23,7 +23,7 @@ namespace SkeletorHorseProject.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Register(RegisterAdminModel model)
         {
             if (ModelState.IsValid)
