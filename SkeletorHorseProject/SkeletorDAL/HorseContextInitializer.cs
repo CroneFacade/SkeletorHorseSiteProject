@@ -37,13 +37,13 @@ namespace SkeletorDAL
 			});
 
 
-            var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005", "650.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = @"~/ProfileImages/1Dummy1.jpg", Description = "Detta är Helges beskrivning", Medicine = "Detta är Helges Medicin", FamilyTree = "Detta är Helges släktträd" };
-            var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty, "350.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/2Dummy2.gif", Description = "Detta är Jens beskrivning", Medicine = "Detta är Jens Medicin", FamilyTree = "Detta är Jens släktträd" };
-            var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/3Dummy3.jpg", Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
-            var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Adolf Medicin", Medicine = "Detta är Adolf beskrivning", FamilyTree = "Detta är Adolf släktträd" };
-            var Hermina = new Horse("Hermina", DateTime.Now, "Camargue", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Herminas Medicin", Medicine = "Detta är Herminas beskrivning", FamilyTree = "Detta är Herminas släktträd" };
-            var LillBritt = new Horse("LillBritt", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är LillBritt Medicin", Medicine = "Detta är LillBritt beskrivning", FamilyTree = "Detta är LillBritts släktträd" };
-            var Lisa = new Horse("Lisa", DateTime.Now, "Camargue", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Lisa Medicin", Medicine = "Detta är Lisa beskrivning", FamilyTree = "Detta är Lisas släktträd" };
+            var Helge = new Horse("Helge", DateTime.Now, "Camargue", 150, "1a i VM 2005", "650.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { Rent = true, Gender = "Male", ImagePath = @"~/ProfileImages/1Dummy1.jpg", Description = "Detta är Helges beskrivning", Medicine = "Detta är Helges Medicin", FamilyTree = "Detta är Helges släktträd" };
+            var Jens = new Horse("Jens", DateTime.Now, "Ponny", 44, string.Empty, "350.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { Gender = "Male", ImagePath = "~/ProfileImages/2Dummy2.gif", Description = "Detta är Jens beskrivning", Medicine = "Detta är Jens Medicin", FamilyTree = "Detta är Jens släktträd" };
+            var Gösta = new Horse("Gösta", DateTime.Now, "Camargue", 100, "-", "100.000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { Gender = "Male", ImagePath = "~/ProfileImages/3Dummy3.jpg", Description = "Detta är Gösta beskrivning", Medicine = "Detta är Gösta Medicin", FamilyTree = "Detta är Gösta släktträd" };
+            var Adolf = new Horse("Adolf", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { Gender = "Male", ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Adolf Medicin", Medicine = "Detta är Adolf beskrivning", FamilyTree = "Detta är Adolf släktträd" };
+            var Hermina = new Horse("Hermina", DateTime.Now, "Camargue", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { IsSold = true, Gender = "Female", ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Herminas Medicin", Medicine = "Detta är Herminas beskrivning", FamilyTree = "Detta är Herminas släktträd" };
+            var LillBritt = new Horse("LillBritt", DateTime.Now, "Conny", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) {Rent = true, Gender = "Female", ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är LillBritt Medicin", Medicine = "Detta är LillBritt beskrivning", FamilyTree = "Detta är LillBritts släktträd" };
+            var Lisa = new Horse("Lisa", DateTime.Now, "Camargue", 150, "Superduktig men har inte vunnit något", "1 000 000", ("https://www.facebook.com/cramagoTriton?__mref=message_bubble")) { Gender = "Female", ImagePath = "~/ProfileImages/DefaultHead.jpg", Description = "Detta är Lisa Medicin", Medicine = "Detta är Lisa beskrivning", FamilyTree = "Detta är Lisas släktträd" };
 
             Helge.Tree = new FamilyTree() { FatherName = "Åke", FatherDescription = "Åke är pappan", MotherName = "Åsa", MotherDescription = "Åsa är mamma", Children = new List<Child>() { new Child() { Name = "Grete", Description = "Grete är en unge" }, new Child() { Name = "Martin", Description = "Martin är en unge" } } };
             Helge.YoutubeVideoURLs.Add(new YoutubeVideoURL() { VideoName = "Test Video", VideoURL = @"http://www.youtube.com/embed/3rYoRaxgOE0?autoplay=0" });
@@ -117,9 +117,24 @@ namespace SkeletorDAL
                 Active = true
             });
 
-
-
-
+            var HerminaBlog = new Blog("Detta är Hermina Blogg", DateTime.Now, new List<Post>()
+			{
+				new Post("Hermina första inlägg", DateTime.Now, "Hjehhej"),
+				new Post("Hermina andra inlägg", DateTime.Now, "ghahhaha")
+			});
+            Hermina.Blog = HerminaBlog;
+            var LillBrittBlog = new Blog("Detta är LillBritt Blogg", DateTime.Now, new List<Post>()
+			{
+				new Post("LillBritt första inlägg", DateTime.Now, "Hjehhej"),
+				new Post("LillBritt andra inlägg", DateTime.Now, "ghahhaha")
+			});
+            LillBritt.Blog = LillBrittBlog;
+            var LisaBlog = new Blog("Detta är Lisa Blogg", DateTime.Now, new List<Post>()
+			{
+				new Post("Lisa första inlägg", DateTime.Now, "Hjehhej"),
+				new Post("Lisa andra inlägg", DateTime.Now, "ghahhaha")
+			});
+            Lisa.Blog = LisaBlog;
             var HelgeBlog = new Blog("Detta är Helges Blogg", DateTime.Now, new List<Post>()
 			{
 				new Post("Helges första inlägg", DateTime.Now, "Hjehhej"),
@@ -152,7 +167,7 @@ namespace SkeletorDAL
 
             blogs = new List<Blog>()
 			{
-				HelgeBlog, JensBlog, GöstaBlog, AdolfBlog
+				HelgeBlog, JensBlog, GöstaBlog, AdolfBlog, HerminaBlog, LillBrittBlog, LisaBlog
 			};
             users = new List<User>()
 			{
