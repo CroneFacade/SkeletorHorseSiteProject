@@ -1119,6 +1119,8 @@ namespace SkeletorDAL
 					Description = model.Description,
 					Medicine = model.Medicine,
 					FamilyTree = model.FamilyTree,
+					Gender = model.Gender,
+					Breeding = model.Breeding,
 					ImagePath = "~/ProfileImages/DefaultHead.jpg",
 					Blog = new Blog
 					{
