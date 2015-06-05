@@ -11,7 +11,7 @@
         <div class="row">
             <div class="HorsePicture">
                 <div id="horse_ProfilePicture" class="col-md-3">
-                    <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image"/>
+                    <img src="@Url.Content(Model.ImagePath)" style="height: 250px; width: 200px;" alt="Image" />
                     <div class="editbuttonsForProfile">
                         <p>
                             @if (User.Identity.IsAuthenticated && int.Parse(User.Identity.Name) < 2)
@@ -39,9 +39,9 @@
                 </div>
 
                 <div class="horseProfileInfoBox">
-                    
-                        <h2>Birthday</h2> @Model.Birthday.ToShortDateString()
-                    
+
+                    <h2>Birthday</h2> @Model.Birthday.ToShortDateString()
+
                     @if (!string.IsNullOrEmpty(Model.Gender))
                     {
                         <p>
@@ -91,10 +91,10 @@
                             <h2>Breeding</h2> This horse is available for breeding
                         </p>
                     }
-                
+
                 </div>
 
-       
+
             </div>
         </div>
         <div class="tabsIfoboxes">
@@ -119,9 +119,8 @@
                                 {
                                     @Html.Action("AddNewHorseVideo", new { id = Model.ID })
                                 }
-                                @Html.Action("GetHorseVideos", new { id = Model.ID })
                             }
-
+                            @Html.Action("GetHorseVideos", new { id = Model.ID })
                         </div>
                         <div role="tabpanel" class="tab-pane" id="health">
                             <dl>

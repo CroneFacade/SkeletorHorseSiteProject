@@ -13,7 +13,7 @@ namespace SkeletorHorseProject.Helpers
             {
                 return MvcHtmlString.Empty;
             }
-            return MvcHtmlString.Create(str.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).Aggregate((a, b) => a + "<br />" + b));
+            return MvcHtmlString.Create(str.Split(new string[] { "\n\n", "\n" }, StringSplitOptions.None).Aggregate((a, b) => a + "<br />" + b));
         }
     }
 }

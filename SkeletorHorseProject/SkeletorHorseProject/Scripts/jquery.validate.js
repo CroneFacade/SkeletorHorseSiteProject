@@ -594,7 +594,7 @@ $.extend( $.validator, {
 
 			val = $element.val();
 			if ( typeof val === "string" ) {
-				return val.replace(/\r/g, "" );
+				return val.replace(/\n/g, "" );
 			}
 			return val;
 		},

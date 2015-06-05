@@ -628,7 +628,7 @@ var i,
 	// Regular expressions
 
 	// Whitespace characters http://www.w3.org/TR/css3-selectors/#whitespace
-	whitespace = "[\\x20\\t\\r\\n\\f]",
+	whitespace = "[\\x20\\t\\n\\n\\f]",
 	// http://www.w3.org/TR/css3-syntax/#characters
 	characterEncoding = "(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",
 
@@ -7164,7 +7164,7 @@ jQuery.each([
 
 
 
-var rclass = /[\t\r\n\f]/g;
+var rclass = /[\t\n\n\f]/g;
 
 jQuery.fn.extend({
 	addClass: function( value ) {
@@ -7316,7 +7316,7 @@ jQuery.fn.extend({
 
 
 
-var rreturn = /\r/g;
+var rreturn = /\n/g;
 
 jQuery.fn.extend({
 	val: function( value ) {
@@ -7548,7 +7548,7 @@ jQuery.parseXML = function( data ) {
 var
 	rhash = /#.*$/,
 	rts = /([?&])_=[^&]*/,
-	rheaders = /^(.*?):[ \t]*([^\r\n]*)$/mg,
+	rheaders = /^(.*?):[ \t]*([^\n\n]*)$/mg,
 	// #7653, #8125, #8152: local protocol detection
 	rlocalProtocol = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
 	rnoContent = /^(?:GET|HEAD)$/,
@@ -8416,7 +8416,7 @@ jQuery.expr.filters.visible = function( elem ) {
 
 var r20 = /%20/g,
 	rbracket = /\[\]$/,
-	rCRLF = /\r?\n/g,
+	rCRLF = /\n?\n/g,
 	rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i,
 	rsubmittable = /^(?:input|select|textarea|keygen)/i;
 
@@ -8508,9 +8508,9 @@ jQuery.fn.extend({
 				null :
 				jQuery.isArray( val ) ?
 					jQuery.map( val, function( val ) {
-						return { name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+						return { name: elem.name, value: val.replace( rCRLF, "\n\n" ) };
 					}) :
-					{ name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+					{ name: elem.name, value: val.replace( rCRLF, "\n\n" ) };
 		}).get();
 	}
 });
